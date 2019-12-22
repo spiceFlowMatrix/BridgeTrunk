@@ -1,0 +1,12 @@
+<div>
+  <mat-toolbar class="mat-elevation-z2">
+    <mat-toolbar-row>
+      <span (click)="goHome()"><a>Ward</a></span>
+      <span class="spacer"></span>
+      <button mat-button (click)="login()">Log In</button>
+      <button mat-button (click)="logout()">Log Out</button>
+      <a [routerLink]="['/']">Home</a>&nbsp;
+      <a [routerLink]="['profile']" *ngIf="auth.loggedIn">Profile</a>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>

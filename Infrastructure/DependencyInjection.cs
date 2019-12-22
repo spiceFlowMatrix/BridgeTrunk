@@ -1,4 +1,5 @@
 using Bridge.Common;
+using Bridge.Infrastructure.Identity;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,6 +12,7 @@ namespace Bridge.Infrastructure
             IConfiguration configuration, IWebHostEnvironment environment)
         {
             services.AddTransient<IDateTime, MachineDateTime>();
+            services.Configure<AuthManagementApiConnectionOptions>(configuration);
 
             return services;
         }

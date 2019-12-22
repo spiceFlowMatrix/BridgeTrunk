@@ -11,7 +11,7 @@ namespace Bridge.Persistence
     public class BridgeDbContext : DbContext, IBridgeDbContext
     {
         private readonly IDateTime _dateTime;
-        public DbSet<User> Users { get; set; }
+        public DbSet<ApplicationUser> Users { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<Organization> Organizations { get; set; }
 
@@ -28,7 +28,7 @@ namespace Bridge.Persistence
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
             // TODO: Add audit tracking for user and time of event after integration with auth0 is completed. See clean architecture northwind github example for reference.
-            foreach (var entry in ChangeTracker.Entries<BaseEntity>())
+            foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
             {
                 switch (entry.State)
                 {
