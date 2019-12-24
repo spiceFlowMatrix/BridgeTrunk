@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './core/header/header.component';
 import { ProfileComponent } from './core/profile/profile.component';
 import { AuthGuard } from './core/guards/auth.guard';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 
 @NgModule({
     declarations: [
@@ -25,6 +27,7 @@ import { AuthGuard } from './core/guards/auth.guard';
     imports: [
         BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
         HttpClientModule,
+        MatToolbarModule,
         FormsModule,
         RouterModule.forRoot([
             { path: '', component: HomeComponent, pathMatch: 'full' },

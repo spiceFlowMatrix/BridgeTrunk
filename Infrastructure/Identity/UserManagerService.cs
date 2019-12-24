@@ -21,6 +21,7 @@ namespace Bridge.Infrastructure.Identity
         {
             managementClientTokenRequest = optionsAccessor.Value;
             _managementApiClient = new ManagementApiClient("token", "AUTH0_DOMAIN");
+            RenewAccessToken();
         }
 
         private void RenewAccessToken()
