@@ -4,6 +4,7 @@ using Bridge.Application.Common.Interfaces;
 using Bridge.Infrastructure;
 using Bridge.Persistence;
 using Bridge.WebUI.Common;
+using Bridge.WebUI.Services;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -38,7 +39,7 @@ namespace Bridge.WebUI
             services.AddHealthChecks()
                 .AddDbContextCheck<BridgeDbContext>();
 
-            // TODO: Add current user service here once auth0 infrastructure is implemented
+            services.AddScoped<ICurrentUserService, CurrentUserService>();
 
             services.AddHttpContextAccessor();
 

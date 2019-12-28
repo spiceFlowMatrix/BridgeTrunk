@@ -4,12 +4,10 @@ using Bridge.Application.Common.Interfaces;
 using Bridge.Domain.Entities;
 using MediatR;
 
-namespace Bridge.Application.Customers.Commands.CreateCustomer
+namespace Bridge.Application.Clients.Commands.CreateCustomer
 {
     public class CreateClientCommand : IRequest
     {
-        public string Id { get; set; }
-
         public string Address { get; set; }
 
         public string City { get; set; }
@@ -45,7 +43,6 @@ namespace Bridge.Application.Customers.Commands.CreateCustomer
             {
                 var entity = new Client
                 {
-                    CustomerId = request.Id,
                     Address = request.Address,
                     City = request.City,
                     CompanyName = request.CompanyName,
@@ -61,7 +58,7 @@ namespace Bridge.Application.Customers.Commands.CreateCustomer
 
                 await _context.SaveChangesAsync(cancellationToken);
 
-                await _mediator.Publish(new ClientCreated {CustomerId = entity.CustomerId}, cancellationToken);
+                await _mediator.Publish(new ClientCreated {ClientId = entity.EntityId}, cancellationToken);
 
                 return Unit.Value;
             }

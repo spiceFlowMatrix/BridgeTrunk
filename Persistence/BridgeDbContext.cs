@@ -10,32 +10,47 @@ namespace Bridge.Persistence
 {
     public class BridgeDbContext : DbContext, IBridgeDbContext
     {
+        private readonly ICurrentUserService _currentUserService;
         private readonly IDateTime _dateTime;
-        public DbSet<ApplicationUser> Users { get; set; }
-        public DbSet<Project> Projects { get; set; }
-        public DbSet<Organization> Organizations { get; set; }
 
         public BridgeDbContext(DbContextOptions<BridgeDbContext> options)
             : base(options)
         {
         }
 
-        public BridgeDbContext(DbContextOptions<BridgeDbContext> options, IDateTime dateTime)
+        public BridgeDbContext(DbContextOptions<BridgeDbContext> options, 
+            ICurrentUserService currentUserService, 
+            IDateTime dateTime)
             : base(options)
         {
+            _currentUserService = currentUserService;
             _dateTime = dateTime;
         }
+
+        public DbSet<ProductCategory> Categories { get; set; }
+        public DbSet<Client> Customers { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<EmployeeTerritory> EmployeeTerritories { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Region> Region { get; set; }
+        public DbSet<Shipper> Shippers { get; set; }
+        public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<Territory> Territories { get; set; }
+
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
-            // TODO: Add audit tracking for user and time of event after integration with auth0 is completed. See clean architecture northwind github example for reference.
             foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
             {
                 switch (entry.State)
                 {
                     case EntityState.Added:
+                        entry.Entity.CreatedBy = _currentUserService.UserId;
                         entry.Entity.CreatedOn = _dateTime.Now;
                         break;
                     case EntityState.Modified:
+                        entry.Entity.LastModifiedBy = _currentUserService.UserId;
                         entry.Entity.LastModifiedOn = _dateTime.Now;
                         break;
                 }

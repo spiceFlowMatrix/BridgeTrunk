@@ -10,7 +10,7 @@ namespace Bridge.Domain.Entities.Saas
         public int MembersMin { get; set; }
         public int MembersMax { get; set; }
 
-        // Users get or lose this permission when they join (or are added to) or leave (or are removed from) a group.
+        // Users get or lose this permission (in auth infrastructure) when they join (or are added to) or leave (or are removed from) a group.
         public string NormalizedAuthPermissionName { get; set; }
     }
 }

@@ -4,11 +4,11 @@ using Bridge.Application.Common.Interfaces;
 using Bridge.Application.Notifications.Models;
 using MediatR;
 
-namespace Bridge.Application.Customers.Commands.CreateCustomer
+namespace Bridge.Application.Clients.Commands.CreateCustomer
 {
     public class ClientCreated : INotification
     {
-        public string CustomerId { get; set; }
+        public string ClientId { get; set; }
 
         public class CustomerCreatedHandler : INotificationHandler<ClientCreated>
         {
