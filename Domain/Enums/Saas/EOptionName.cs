@@ -1,4 +1,4 @@
-﻿namespace Bridge.Domain.Enums
+﻿namespace Bridge.Domain.Enums.Saas
 {
     public enum EOptionName
     {

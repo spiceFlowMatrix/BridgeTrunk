@@ -1,6 +1,6 @@
-﻿namespace Bridge.Domain.Enums
+﻿namespace Bridge.Domain.Enums.Saas
 {
-    public enum UserGroupTypes
+    public enum EUserGroupType
     {
         SUPER_ADMIN = 0,
         CLIENT_ADMIN = 1,

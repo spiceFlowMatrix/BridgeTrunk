@@ -7,9 +7,9 @@ namespace Bridge.Application.Common.Interfaces
 {
     public interface IBridgeDbContext
     {
-        DbSet<Category> Categories { get; set; }
+        DbSet<ProductCategory> Categories { get; set; }
 
-        DbSet<Customer> Customers { get; set; }
+        DbSet<Client> Customers { get; set; }
 
         DbSet<Employee> Employees { get; set; }
 

@@ -1,11 +1,12 @@
-﻿using Bridge.Domain.Enums;
+﻿using Bridge.Domain.Enums.Saas;
 
-namespace Bridge.Domain.Entities
+namespace Bridge.Domain.Entities.Saas
 {
+    // TODO: This must be a static list. The list should have a set of entries that corresponds to the set of options listed for enum: EUserGroupType
     public class UserGroupType
     {
         public int Id { get; set; }
-        public UserGroupTypes TypeName { get; set; }
+        public EUserGroupType TypeName { get; set; }
         public int MembersMin { get; set; }
         public int MembersMax { get; set; }
 

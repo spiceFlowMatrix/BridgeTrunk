@@ -1,6 +1,6 @@
-﻿namespace Bridge.Domain.Enums
+﻿namespace Bridge.Domain.Enums.Saas
 {
-    public enum EPlanNames
+    public enum EPlanName
     {
         BRIDGE_DEVTEST = 0,
         BRIDGE_FREE = 1,

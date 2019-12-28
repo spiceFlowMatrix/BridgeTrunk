@@ -1,16 +1,16 @@
-﻿using Bridge.Domain.Enums;
+﻿using Bridge.Domain.Common;
+using Bridge.Domain.Enums.Saas;
 
 namespace Bridge.Domain.Entities.Saas
 {
-    public class Plan
+    public class Plan : AuditableEntity
     {
-        public int Id { get; set; }
-        public EPlanNames PlanName { get; set; }
+        public EPlanName PlanName { get; set; }
 
-        public int SoftwareId { get; set; }
+        public string SoftwareId { get; set; }
         public Software Software { get; set; }
 
-        public int UserGroupTypeId { get; set; }
+        public string UserGroupTypeId { get; set; }
         public UserGroupType UserGroupType { get; set; }
 
         public decimal CurrentPrice { get; set; }

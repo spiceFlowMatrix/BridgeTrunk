@@ -2,9 +2,9 @@
 
 namespace Bridge.Domain.Entities
 {
-    public class Category
+    public class ProductCategory
     {
-        public Category()
+        public ProductCategory()
         {
             Products = new HashSet<Product>();
         }

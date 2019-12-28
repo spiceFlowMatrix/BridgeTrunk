@@ -43,7 +43,7 @@ namespace Bridge.Application.Customers.Commands.CreateCustomer
 
             public async Task<Unit> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
             {
-                var entity = new Customer
+                var entity = new Client
                 {
                     CustomerId = request.Id,
                     Address = request.Address,

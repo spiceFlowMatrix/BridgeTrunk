@@ -1,11 +1,11 @@
-﻿using Bridge.Domain.Enums;
+﻿using Bridge.Domain.Common;
+using Bridge.Domain.Enums.Saas;
 
 namespace Bridge.Domain.Entities.Saas
 {
-    public class Software
+    public class Software : AuditableEntity
     {
-        public int SoftwareId { get; set; }
-        public SoftwareNames SoftwareName { get; set; }
+        public ESoftwareName SoftwareName { get; set; }
         public string Details { get; set; }
         public string AccessLink { get; set; }
     }
