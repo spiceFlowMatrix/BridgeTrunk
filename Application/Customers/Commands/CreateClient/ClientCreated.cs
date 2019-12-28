@@ -6,11 +6,11 @@ using MediatR;
 
 namespace Bridge.Application.Customers.Commands.CreateCustomer
 {
-    public class CustomerCreated : INotification
+    public class ClientCreated : INotification
     {
         public string CustomerId { get; set; }
 
-        public class CustomerCreatedHandler : INotificationHandler<CustomerCreated>
+        public class CustomerCreatedHandler : INotificationHandler<ClientCreated>
         {
             private INotificationService _notification;
 
@@ -19,7 +19,7 @@ namespace Bridge.Application.Customers.Commands.CreateCustomer
                 _notification = notification;
             }
 
-            public async Task Handle(CustomerCreated notification, CancellationToken cancellationToken)
+            public async Task Handle(ClientCreated notification, CancellationToken cancellationToken)
             {
                 await _notification.SendAsync(new MessageDto());
             }

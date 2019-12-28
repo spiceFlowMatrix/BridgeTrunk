@@ -6,7 +6,7 @@ using MediatR;
 
 namespace Bridge.Application.Customers.Commands.CreateCustomer
 {
-    public class CreateCustomerCommand : IRequest
+    public class CreateClientCommand : IRequest
     {
         public string Id { get; set; }
 
@@ -30,7 +30,7 @@ namespace Bridge.Application.Customers.Commands.CreateCustomer
 
         public string Region { get; set; }
 
-        public class Handler : IRequestHandler<CreateCustomerCommand>
+        public class Handler : IRequestHandler<CreateClientCommand>
         {
             private IBridgeDbContext _context;
             private IMediator _mediator;
@@ -41,7 +41,7 @@ namespace Bridge.Application.Customers.Commands.CreateCustomer
                 _mediator = mediator;
             }
 
-            public async Task<Unit> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
+            public async Task<Unit> Handle(CreateClientCommand request, CancellationToken cancellationToken)
             {
                 var entity = new Client
                 {
@@ -61,7 +61,7 @@ namespace Bridge.Application.Customers.Commands.CreateCustomer
 
                 await _context.SaveChangesAsync(cancellationToken);
 
-                await _mediator.Publish(new CustomerCreated {CustomerId = entity.CustomerId}, cancellationToken);
+                await _mediator.Publish(new ClientCreated {CustomerId = entity.CustomerId}, cancellationToken);
 
                 return Unit.Value;
             }
