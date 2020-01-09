@@ -1,11 +1,9 @@
 ﻿using Bridge.Domain.Common;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Bridge.Domain.Entities.Saas
 {
-    class PlanHistory : AuditableEntity
+    public class PlanHistory : AuditableEntity
     {
         public string SubscriptionId { get; set; }
         public Subscription Subscription { get; set; }

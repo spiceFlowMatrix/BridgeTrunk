@@ -1,6 +1,8 @@
+using Bridge.Application.Common.Interfaces;
 using Bridge.Common;
 using Bridge.Infrastructure.Identity;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -13,6 +15,11 @@ namespace Bridge.Infrastructure
         {
             services.AddTransient<IDateTime, MachineDateTime>();
             services.Configure<AuthManagementApiConnectionOptions>(configuration);
+
+            services.AddScoped<IUserManager, UserManagerService>();
+
+            services.AddDbContext<IdentityDbContext>(options =>
+                options.UseNpgsql(configuration.GetConnectionString("BridgeDatabase")));
 
             return services;
         }

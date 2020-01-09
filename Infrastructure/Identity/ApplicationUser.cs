@@ -2,7 +2,7 @@
 
 namespace Bridge.Infrastructure.Identity
 {
-    class ApplicationUser : User
+    public class ApplicationUser : User
     {
     }
 }

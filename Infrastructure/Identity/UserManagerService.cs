@@ -1,6 +1,7 @@
 using Auth0.AuthenticationApi.Models;
 using Auth0.ManagementApi;
 using Auth0.ManagementApi.Models;
+using Bridge.Application.Common.Interfaces;
 using Bridge.Application.Common.Models;
 using Microsoft.Extensions.Options;
 using RestSharp;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Bridge.Infrastructure.Identity
 {
-    public class UserManagerService
+    public class UserManagerService : IUserManager
     {
         private readonly AuthManagementApiConnectionOptions managementClientTokenRequest;
         private ManagementApiClient _managementApiClient;
@@ -38,14 +39,26 @@ namespace Bridge.Infrastructure.Identity
             tokenExpiresOn = DateTime.Now.AddSeconds(_managementApiClientAccessToken.ExpiresIn);
         }
 
-        public async Task<(Result Result, string UserId)> CreateUserAsync(UserCreateRequest request)
+        public Task<Result> DeleteUserAsync(string userId)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<Result> DeleteUserAsync(string userId)
+        public Task<(Result Result, string UserId)> CreateUserAsync(string firstName, string lastName, string userName, string email, string password)
         {
-            throw new System.NotImplementedException();
+            if (tokenExpiresOn <= DateTime.Now)
+                RenewAccessToken();
+
+            var userCreateRequest = new UserCreateRequest
+            {
+                FirstName = firstName,
+                LastName = lastName,
+                UserName = userName,
+                Email = email,
+                Password = password,
+                Connection = managementClientTokenRequest.DatabaseConnectionId,
+            };
+            throw new NotImplementedException();
         }
     }
 }
