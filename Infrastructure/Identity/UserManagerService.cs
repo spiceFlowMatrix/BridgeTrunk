@@ -6,12 +6,13 @@ using Bridge.Application.Common.Models;
 using Microsoft.Extensions.Options;
 using RestSharp;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 
 namespace Bridge.Infrastructure.Identity
 {
-    public class UserManagerService : IUserManager
+    public class UserManagerService : IUserManager, IDisposable
     {
         private readonly AuthManagementApiConnectionOptions managementClientTokenRequest;
         private ManagementApiClient _managementApiClient;
@@ -58,6 +59,78 @@ namespace Bridge.Infrastructure.Identity
                 Password = password,
                 Connection = managementClientTokenRequest.DatabaseConnectionId,
             };
+            throw new NotImplementedException();
+        }
+
+        public async Task<Result> CreateClientAsync(string clientName, string clientDescription)
+        {
+            try
+            {
+                await _managementApiClient.Clients.CreateAsync(new ClientCreateRequest
+                {
+                    Name = clientName,
+                    Description = clientDescription,
+                    ApplicationType = ClientApplicationType.Spa,
+                }).ConfigureAwait(true); 
+            }
+            catch (Exception ex)
+            {
+                return Result.Failure(new List<string> { ex.Message });
+                throw;
+            }
+            return Result.Success();
+        }
+
+        public async Task<Result> EditClientAsync(string clientId, string newName, string description, string newLogoUri)
+        {
+            try
+            {
+                await _managementApiClient.Clients.UpdateAsync(clientId, new ClientUpdateRequest
+                {
+                    Name = newName,
+                    Description = description,
+                    LogoUri = newLogoUri
+                }).ConfigureAwait(true);
+            }
+            catch (Exception ex)
+            {
+                return Result.Failure(new List<string> { ex.Message });
+                throw;
+            }
+            throw new NotImplementedException();
+        }
+
+        public async Task<Result> BlockClientAsync(string clientId)
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                return Result.Failure(new List<string> { ex.Message });
+                throw;
+            }
+            throw new NotImplementedException();
+        }
+
+        public Task<Result> GetClients()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Result> GetClient(string clientId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Result> CreateClientAsync(string clientId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual void Dispose()
+        {
             throw new NotImplementedException();
         }
     }
