@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{47BE3C1D-A9C5-445D-8E30-7F2A69412990}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaasControlPanel", "SaasControlPanel\SaasControlPanel.csproj", "{87E92D76-262F-40B1-ACCF-3E00A6249780}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaasControlPanel", "SaasControlPanel\SaasControlPanel.csproj", "{87E92D76-262F-40B1-ACCF-3E00A6249780}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

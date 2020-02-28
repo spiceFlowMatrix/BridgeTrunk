@@ -3,12 +3,14 @@ using System.Collections.Generic;
 
 namespace Bridge.Domain.Entities
 {
-    public class Client : AuditableEntity
+    public class Customer : AuditableEntity
     {
-        public Client()
+        public Customer()
         {
             Orders = new HashSet<Order>();
         }
+
+        public string CustomerId { get; set; }
         public string Name { get; set; }
         public string CompanyName { get; set; }
         public string ContactName { get; set; }

@@ -13,7 +13,7 @@ namespace Bridge.Domain.Entities
             Orders = new HashSet<Order>();
         }
 
-        public int EmployeeId { get; set; }
+        public string EmployeeId { get; set; }
         public string UserId { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
@@ -30,7 +30,7 @@ namespace Bridge.Domain.Entities
         public string Extension { get; set; }
         public byte[] Photo { get; set; }
         public string Notes { get; set; }
-        public int? ReportsTo { get; set; }
+        public string ReportsTo { get; set; }
         public string PhotoPath { get; set; }
 
         public Employee Manager { get; set; }

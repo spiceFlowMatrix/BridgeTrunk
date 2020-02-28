@@ -7,6 +7,6 @@ namespace Bridge.Domain.Entities.Saas
         public UserGroupType UserGroupType { get; set; }
 
         public string ClientId { get; set; }
-        public Client Client { get; set; }
+        public Customer Client { get; set; }
     }
 }

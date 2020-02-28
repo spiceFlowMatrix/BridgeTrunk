@@ -133,5 +133,10 @@ namespace Bridge.Infrastructure.Identity
         {
             throw new NotImplementedException();
         }
+
+        public Task<Result> EditClientAsync(string clientId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
