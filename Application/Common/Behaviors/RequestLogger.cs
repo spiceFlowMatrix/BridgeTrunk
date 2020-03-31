@@ -21,7 +21,7 @@ namespace Bridge.Application.Common.Behaviors
         {
             var name = typeof(TRequest).Name;
 
-            _logger.LogInformation("Northwind Request: {Name} {@UserId} {@Request}",
+            _logger.LogInformation("Bridge Request: {Name} {@UserId} {@Request}",
                 name, _currentUserService.UserId, request);
 
             return Task.CompletedTask;
