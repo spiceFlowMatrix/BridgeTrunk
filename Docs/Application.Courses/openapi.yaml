@@ -1,0 +1,241 @@
+openapi: 3.0.1
+info:
+  title: Swagger Petstore
+  description: 'This is a sample server Petstore server.  You can find out more about     Swagger
+    at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For
+    this sample, you can use the api key `special-key` to test the authorization     filters.'
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+- url: https://petstore.swagger.io/v2
+- url: http://petstore.swagger.io/v2
+tags:
+- name: device
+  description: Everything about your devices
+paths:
+  /device:
+    put:
+      tags:
+      - device
+      summary: Deactivate an existing device
+      operationId: deactivateDevice
+      requestBody:
+        description: Device object that needs to be deactivated
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Device'
+        required: true
+      responses:
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Pet not found
+          content: {}
+        405:
+          description: Validation exception
+          content: {}
+      security:
+      - noononline_auth:
+        - write:pets
+        - read:pets
+      x-codegen-request-body-name: body
+    post:
+      tags:
+      - device
+      summary: Try to activate a device for the application
+      operationId: activateDevice
+      requestBody:
+        description: New device that I want to activate
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Device'
+        required: true
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+      security:
+      - noononline_auth:
+        - write:pets
+        - read:pets
+      x-codegen-request-body-name: body
+  /pet/findByStatus:
+    get:
+      tags:
+      - pet
+      summary: Finds Pets by status
+      description: Multiple status values can be provided with comma separated strings
+      operationId: findPetsByStatus
+      parameters:
+      - name: status
+        in: query
+        description: Status values that need to be considered for filter
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+            default: available
+            enum:
+            - available
+            - pending
+            - sold
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Device'
+        400:
+          description: Invalid status value
+          content: {}
+      security:
+      - noononline_auth:
+        - write:pets
+        - read:pets
+  /pet/findByTags:
+    get:
+      tags:
+      - pet
+      summary: Finds Pets by tags
+      description: Muliple tags can be provided with comma separated strings. Use         tag1,
+        tag2, tag3 for testing.
+      operationId: findPetsByTags
+      parameters:
+      - name: tags
+        in: query
+        description: Tags to filter by
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Device'
+        400:
+          description: Invalid tag value
+          content: {}
+      deprecated: true
+      security:
+      - noononline_auth:
+        - write:pets
+        - read:pets
+components:
+  schemas:
+    OperatingSystem:
+      type: object
+      properties:
+        name:
+          type: string
+          enum:
+          - android
+          - iOs
+          - windows
+          - macOs
+        version:
+          type: string
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        username:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        phone:
+          type: string
+        userStatus:
+          type: integer
+          description: User Status
+          format: int32
+    DeviceQuota:
+      type: object
+      properties:
+        id:
+          type: string
+          format: guid
+        user:
+          $ref: '#/components/schemas/User'
+    Tag:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+    Device:
+      type: object
+      properties:
+        id:
+          type: string
+          description: unique id of the device after it is recorded in database
+        user:
+          $ref: '#/components/schemas/User'
+        macAddress:
+          type: string
+        ipAddress:
+          type: string
+          description: the ip address of the device at the time of activation
+        operatingSystem:
+          $ref: '#/components/schemas/OperatingSystem'
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        type:
+          type: string
+        message:
+          type: string
+  securitySchemes:
+    noononline_auth:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: http://petstore.swagger.io/oauth/dialog
+          scopes:
+            write:pets: modify pets in your account
+            read:pets: read your pets
+    api_key:
+      type: apiKey
+      name: api_key
+      in: header

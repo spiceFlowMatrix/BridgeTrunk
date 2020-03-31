@@ -1,0 +1,22 @@
+{
+  "npmScope": "js-mono",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "init-demo": {
+      "tags": []
+    },
+    "init-demo-e2e": {
+      "tags": [],
+      "implicitDependencies": ["init-demo"]
+    }
+  }
+}
