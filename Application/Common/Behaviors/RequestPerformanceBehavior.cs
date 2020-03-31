@@ -33,7 +33,7 @@ namespace Bridge.Application.Common.Behaviors
             {
                 var name = typeof(TRequest).Name;
 
-                _logger.LogWarning("Northwind Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds) {@UserId} {@Request}",
+                _logger.LogWarning("Bridge Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds) {@UserId} {@Request}",
                     name, _timer.ElapsedMilliseconds, _currentUserService.UserId, request);
             }
 

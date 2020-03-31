@@ -81,12 +81,14 @@ namespace Bridge.WebUI
             else
             {
                 app.UseExceptionHandler("/Error");
+                // TODO: Check if our reverse proxy infrastructure (kubernetes workload) handles hsts before deciding whether or not to remove hsts here. See https://docs.microsoft.com/en-us/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio#require-https
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
             app.UseCustomExceptionHandler();
             app.UseHealthChecks("/health");
+            // TODO: Check if our reverse proxy infrastructure (kubernetes workload) handles httpsredirection before deciding whether or not to remove httpsredirection here. See https://docs.microsoft.com/en-us/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio#require-https
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();

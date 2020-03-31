@@ -41,6 +41,7 @@ namespace Bridge.Persistence
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
+            // TODO: See if it's possible to automate more complex database record operations such as running complex queries and feeding query data to database trigger functions (actually triggering stored procedures right from here)
             foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
             {
                 switch (entry.State)
