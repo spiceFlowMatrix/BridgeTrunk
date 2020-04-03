@@ -5,10 +5,11 @@ using Bridge.Persistence;
 using System.Linq;
 using System;
 using Bridge.Domain.Entities;
+using Bridge.Application.Models;
 
 namespace Application.Courses.Commands.UpsertCourseGrade
 {
-    public class UpsertCourseGradeCommandHandler : IRequestHandler<UpsertCourseGradeCommand, object>
+    public class UpsertCourseGradeCommandHandler : IRequestHandler<UpsertCourseGradeCommand, ApiResponse>
     {
         private readonly BridgeDbContext _dbContext;
         public UpsertCourseGradeCommandHandler(BridgeDbContext dbContext)
@@ -16,8 +17,9 @@ namespace Application.Courses.Commands.UpsertCourseGrade
             _dbContext = dbContext;
         }
   
-        public async Task<object> Handle(UpsertCourseGradeCommand request, CancellationToken cancellationToken)
+        public async Task<ApiResponse> Handle(UpsertCourseGradeCommand request, CancellationToken cancellationToken)
         {
+            ApiResponse res = new ApiResponse();
             try {
             var isExist = _dbContext.CourseGrade.Where(x=>x.CourseId==request.courseid).FirstOrDefault();
             if(isExist==null)
@@ -31,6 +33,11 @@ namespace Application.Courses.Commands.UpsertCourseGrade
                 };
                 await _dbContext.CourseGrade.AddAsync(obj);
                 await _dbContext.SaveChangesAsync();
+                // res.data = responseCourseGradeModel;
+                res.response_code = 0;
+                res.message = "CourseGrade Created";
+                res.status = "Success";
+                res.ReturnCode = 200;
             } else {
                 if(isExist.Gradeid == request.gradeid)
                 {
@@ -42,11 +49,14 @@ namespace Application.Courses.Commands.UpsertCourseGrade
                     await _dbContext.SaveChangesAsync();
                 }
             }
-            return "ghj"; 
             } 
             catch(Exception ex){
-                return ex;
+                res.ReturnCode = 500;
+                res.response_code = 1;
+                res.message = ex.Message;
+                res.status = "Unsuccess";
             }
+            return res;
         }
     }
 }
