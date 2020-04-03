@@ -29,7 +29,7 @@ namespace Bridge.Persistence
                 .AddEnvironmentVariables()
                 .Build();
 
-            var connectionString = configuration.GetConnectionString(ConnectionStringName);
+            var connectionString = Environment.GetEnvironmentVariable("ASPNET_DB_CONNECTIONSTRING");
 
             return Create(connectionString);
         }
@@ -45,7 +45,7 @@ namespace Bridge.Persistence
 
             var optionsBuilder = new DbContextOptionsBuilder<TContext>();
 
-            optionsBuilder.UseNpgsql(connectionString);
+            optionsBuilder.UseMySql(connectionString);
 
             return CreateNewInstance(optionsBuilder.Options);
         }

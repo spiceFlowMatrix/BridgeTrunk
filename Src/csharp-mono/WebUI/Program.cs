@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Persistence;
 
 namespace Bridge.WebUI
 {
@@ -26,7 +27,8 @@ namespace Bridge.WebUI
                 {
                     var bridgeDbContext = services.GetRequiredService<BridgeDbContext>();
                     bridgeDbContext.Database.Migrate();
-
+                    DataInitializer.Initialize(bridgeDbContext).Wait();
+                    
                     var mediator = services.GetRequiredService<IMediator>();
                     // await mediator.Send(new SeedSampleDataCommand(), CancellationToken.None);
                 }

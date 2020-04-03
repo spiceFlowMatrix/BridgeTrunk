@@ -4,7 +4,6 @@ using Bridge.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Bridge.Persistence.Migrations
 {
@@ -15,493 +14,5729 @@ namespace Bridge.Persistence.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
                 .HasAnnotation("ProductVersion", "3.0.0")
-                .HasAnnotation("Relational:MaxIdentifierLength", 63);
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("Bridge.Domain.Entities.Customer", b =>
+            modelBuilder.Entity("Bridge.Domain.Entities.AddtionalServices", b =>
                 {
-                    b.Property<string>("CustomerId")
-                        .HasColumnType("text");
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
 
-                    b.Property<string>("Address")
-                        .HasColumnType("character varying(60)")
-                        .HasMaxLength(60);
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("City")
-                        .HasColumnType("text");
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("CompanyName")
-                        .HasColumnType("text");
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("ContactName")
-                        .HasColumnType("text");
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("ContactTitle")
-                        .HasColumnType("text");
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("Country")
-                        .HasColumnType("text");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("Fax")
-                        .HasColumnType("text");
-
-                    b.Property<string>("LastModifiedBy")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("timestamp without time zone");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("Phone")
-                        .HasColumnType("text");
+                    b.Property<string>("Price")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("PostalCode")
-                        .HasColumnType("text");
+                    b.HasKey("Id");
 
-                    b.Property<string>("Region")
-                        .HasColumnType("text");
+                    b.ToTable("AddtionalServices");
 
-                    b.HasKey("CustomerId");
-
-                    b.ToTable("Customers");
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Homework",
+                            Price = "0"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Discussion",
+                            Price = "0"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Library",
+                            Price = "0"
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Parental Control",
+                            Price = "0"
+                        });
                 });
 
-            modelBuilder.Entity("Bridge.Domain.Entities.Employee", b =>
+            modelBuilder.Entity("Bridge.Domain.Entities.AgentCategory", b =>
                 {
-                    b.Property<string>("EmployeeId")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Address")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime?>("BirthDate")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("City")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Country")
-                        .HasColumnType("text");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("Extension")
-                        .HasColumnType("text");
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime?>("HireDate")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("HomePhone")
-                        .HasColumnType("text");
-
-                    b.Property<string>("LastModifiedBy")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Notes")
-                        .HasColumnType("text");
-
-                    b.Property<byte[]>("Photo")
-                        .HasColumnType("bytea");
-
-                    b.Property<string>("PhotoPath")
-                        .HasColumnType("text");
-
-                    b.Property<string>("PostalCode")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Region")
-                        .HasColumnType("text");
-
-                    b.Property<string>("ReportsTo")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("text");
-
-                    b.Property<string>("TitleOfCourtesy")
-                        .HasColumnType("text");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("text");
-
-                    b.HasKey("EmployeeId");
-
-                    b.HasIndex("ReportsTo");
-
-                    b.ToTable("Employees");
-                });
-
-            modelBuilder.Entity("Bridge.Domain.Entities.EmployeeTerritory", b =>
-                {
-                    b.Property<string>("EmployeeId")
-                        .HasColumnType("text");
-
-                    b.Property<string>("TerritoryId")
-                        .HasColumnType("text");
-
-                    b.HasKey("EmployeeId", "TerritoryId");
-
-                    b.HasIndex("TerritoryId");
-
-                    b.ToTable("EmployeeTerritories");
-                });
-
-            modelBuilder.Entity("Bridge.Domain.Entities.Order", b =>
-                {
-                    b.Property<string>("OrderId")
-                        .HasColumnType("text");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("CustomerId")
-                        .HasColumnType("text");
-
-                    b.Property<string>("EmployeeId")
-                        .HasColumnType("text");
-
-                    b.Property<decimal?>("Freight")
-                        .HasColumnType("numeric");
-
-                    b.Property<string>("LastModifiedBy")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<DateTime?>("OrderDate")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<DateTime?>("RequiredDate")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("ShipAddress")
-                        .HasColumnType("text");
-
-                    b.Property<string>("ShipCity")
-                        .HasColumnType("text");
-
-                    b.Property<string>("ShipCountry")
-                        .HasColumnType("text");
-
-                    b.Property<string>("ShipName")
-                        .HasColumnType("text");
-
-                    b.Property<string>("ShipPostalCode")
-                        .HasColumnType("text");
-
-                    b.Property<string>("ShipRegion")
-                        .HasColumnType("text");
-
-                    b.Property<string>("ShipVia")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime?>("ShippedDate")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.HasKey("OrderId");
-
-                    b.HasIndex("CustomerId");
-
-                    b.HasIndex("EmployeeId");
-
-                    b.HasIndex("ShipVia");
-
-                    b.ToTable("Orders");
-                });
-
-            modelBuilder.Entity("Bridge.Domain.Entities.OrderDetail", b =>
-                {
-                    b.Property<string>("OrderId")
-                        .HasColumnType("text");
-
-                    b.Property<string>("ProductId")
-                        .HasColumnType("text");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<float>("Discount")
-                        .HasColumnType("real");
-
-                    b.Property<string>("LastModifiedBy")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<short>("Quantity")
-                        .HasColumnType("smallint");
-
-                    b.Property<decimal>("UnitPrice")
-                        .HasColumnType("numeric");
-
-                    b.HasKey("OrderId", "ProductId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("OrderDetails");
-                });
-
-            modelBuilder.Entity("Bridge.Domain.Entities.Product", b =>
-                {
-                    b.Property<string>("ProductId")
-                        .HasColumnType("text");
-
-                    b.Property<string>("CategoryId")
-                        .HasColumnType("text");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<bool>("Discontinued")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("LastModifiedBy")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("ProductName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("QuantityPerUnit")
-                        .HasColumnType("text");
-
-                    b.Property<short?>("ReorderLevel")
-                        .HasColumnType("smallint");
-
-                    b.Property<string>("SupplierId")
-                        .HasColumnType("text");
-
-                    b.Property<decimal?>("UnitPrice")
-                        .HasColumnType("numeric");
-
-                    b.Property<short?>("UnitsInStock")
-                        .HasColumnType("smallint");
-
-                    b.Property<short?>("UnitsOnOrder")
-                        .HasColumnType("smallint");
-
-                    b.HasKey("ProductId");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("SupplierId");
-
-                    b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("Bridge.Domain.Entities.ProductCategory", b =>
-                {
-                    b.Property<string>("ProductCategoryId")
-                        .HasColumnType("text");
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
 
                     b.Property<string>("CategoryName")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("Commission")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AgentCategory");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.AnswerFile", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("AnswerId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("FileId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AnswerFile");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.AppTimeTrack", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("ActivityTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Grade")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("HardwarePlatform")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Isp")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Latitude")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Longitude")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("NetworkSpeed")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("OperatingSystem")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Outtime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("School")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("ServiceProvider")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("SubjectsTaken")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Version")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AppTimeTracks");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.Assignment", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("ChapterId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Description")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<byte[]>("Picture")
-                        .HasColumnType("bytea");
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
 
-                    b.HasKey("ProductCategoryId");
+                    b.Property<int>("ItemOrder")
+                        .HasColumnType("int");
 
-                    b.ToTable("ProductCategories");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Assignment");
                 });
 
-            modelBuilder.Entity("Bridge.Domain.Entities.Region", b =>
+            modelBuilder.Entity("Bridge.Domain.Entities.AssignmentFile", b =>
                 {
-                    b.Property<string>("RegionId")
-                        .HasColumnType("text");
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
 
-                    b.Property<string>("RegionDescription")
-                        .HasColumnType("text");
+                    b.Property<long>("AssignmentId")
+                        .HasColumnType("bigint");
 
-                    b.HasKey("RegionId");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.ToTable("Region");
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("FileId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AssignmentFile");
                 });
 
-            modelBuilder.Entity("Bridge.Domain.Entities.Shipper", b =>
+            modelBuilder.Entity("Bridge.Domain.Entities.AssignmentStudent", b =>
                 {
-                    b.Property<string>("ShipperId")
-                        .HasColumnType("text");
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
 
-                    b.Property<string>("CompanyName")
-                        .HasColumnType("text");
+                    b.Property<long>("AssignmentId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool>("IsApproved")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("StudentId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AssignmentStudent");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.AssignmentSubmission", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("AssignmentId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Comment")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool>("IsApproved")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsSubmission")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Remark")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("Score")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("TeacherId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AssignmentSubmissions");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.AssignmentSubmissionFile", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("FileId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("SubmissionId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AssignmentSubmissionFiles");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.Books", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Author")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("BookPublisher")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("FileId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("GradeId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsPublished")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PublishedTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("PublisherUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Subject")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("coverimage")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Books");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.Buckets", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("BucketName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Buckets");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            BucketName = "core-api-sql-migrations",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            BucketName = "edg-primary-course-image-storage",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            BucketName = "edg-primary-profile-image-storage",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            BucketName = "edg-sales-primary-storage",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 5L,
+                            BucketName = "eu.artifacts.training24-197210.appspot.com",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 6L,
+                            BucketName = "t24-app-builds",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 7L,
+                            BucketName = "t24-primary-audio-storage",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 8L,
+                            BucketName = "t24-primary-image-storage",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 9L,
+                            BucketName = "t24-primary-pdf-storage",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 10L,
+                            BucketName = "t24-primary-video-storage",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 11L,
+                            BucketName = "t24-secure-files",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false
+                        });
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.Bundle", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Bundle");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.BundleCourse", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("BundleId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("CourseId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BundleCourse");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.Chapter", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("CourseId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("ItemOrder")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long?>("QuizId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Chapter");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.ChapterProgress", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("ChapterId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("CourseId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("Progress")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ChapterProgresses");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.ChapterQuiz", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("ChapterId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("ItemOrder")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("QuizId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("chapterQuiz");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.Contact", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CountryCode")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Phone")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.HasKey("ShipperId");
+                    b.HasKey("Id");
 
-                    b.ToTable("Shippers");
+                    b.ToTable("Contact");
                 });
 
-            modelBuilder.Entity("Bridge.Domain.Entities.Supplier", b =>
+            modelBuilder.Entity("Bridge.Domain.Entities.Course", b =>
                 {
-                    b.Property<string>("SupplierId")
-                        .HasColumnType("text");
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
 
-                    b.Property<string>("Address")
-                        .HasColumnType("text");
+                    b.Property<string>("Code")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("City")
-                        .HasColumnType("text");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("CompanyName")
-                        .HasColumnType("text");
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("ContactName")
-                        .HasColumnType("text");
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("ContactTitle")
-                        .HasColumnType("text");
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("Country")
-                        .HasColumnType("text");
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("Fax")
-                        .HasColumnType("text");
+                    b.Property<string>("Image")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("HomePage")
-                        .HasColumnType("text");
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<decimal?>("PassMark")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<bool>("istrial")
+                        .HasColumnType("tinyint(1)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Course");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.CourseDefination", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("BasePrice")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("CourseId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("GradeId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Subject")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CourseDefination");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.CourseGrade", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("CourseId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("Gradeid")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CourseGrade");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.CourseItemProgressSync", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<long>("IsStatus")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("Lessonid")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("Lessonprogress")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("Quizid")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("Userid")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CourseItemProgressSync");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.Currency", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("abbreviation")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("currency")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("symbol")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Currency");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.DefaultValues", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("intervals")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("istimeouton")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("reminder")
+                        .HasColumnType("int");
+
+                    b.Property<int>("timeout")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DefaultValues");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            intervals = 3,
+                            istimeouton = true,
+                            reminder = 5,
+                            timeout = 15
+                        });
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.Deposit", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<decimal>("DepositAmount")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<string>("DepositDate")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("DocumentIds")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool>("IsConfirm")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsRevoke")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("SalesAgentId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Deposit");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.Discount", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("FreeSubscriptions")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OffSubscriptions")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OffTotalPrice")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PackageName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Discount");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.DiscussionCommentFiles", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("CommentId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Duration")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("FileName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("FileSize")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("FileTypeId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("TotalPages")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DiscussionCommentFiles");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.DiscussionCommentLikes", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("CommentId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool>("DisLike")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Like")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DiscussionCommentLikes");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.DiscussionComments", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Comment")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("TopicId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DiscussionComments");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.DiscussionFiles", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Duration")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("FileName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("FileSize")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("FileTypeId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long?>("TopicId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("TotalPages")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DiscussionFiles");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.DiscussionTopic", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("CourseId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsPrivate")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsPublic")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DiscussionTopic");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.DiscussionTopicLikes", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool>("DisLike")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Like")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<long>("TopicId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DiscussionTopicLikes");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.DocumentDetails", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("DocumentUrl")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DocumentDetails");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.ERPAccounts", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("AccountCode")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ERPAccounts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            AccountCode = "",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Type = 1
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            AccountCode = "",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            AccountCode = "",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            AccountCode = "",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Type = 4
+                        },
+                        new
+                        {
+                            Id = 5L,
+                            AccountCode = "",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Type = 5
+                        });
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.FeebackTime", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("FeedbackId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Time")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FeebackTime");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.FeedBackActivity", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("FeedbackId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("FeedbackTaskId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("Type")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FeedBackActivity");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.FeedBackCategory", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FeedBackCategory");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.FeedBackStaff", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("FeedBackId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsManager")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("Type")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FeedBackStaff");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.FeedBackTask", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("FeedbackId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("FileLink")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("Type")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FeedBackTask");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.FeedBackTaskStatus", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("FeedbackId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("Status")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FeedBackTaskStatus");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.FeedBackTaskStatusOption", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FeedBackTaskStatusOption");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "UnApproved"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Approved"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Completed"
+                        });
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.Feedback", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("CategoryId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("ChapterId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("Contactid")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("Coordinator")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("CourseId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("GradeId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("LessonId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("QaUser")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Feedback");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.FeedbackFile", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("FeedtimeId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("FileId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FeedbackFile");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.FileProgress", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("FileId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("LessonId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("Progress")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FileProgresses");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.FileTypes", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Filetype")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FileTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            Filetype = "PDF",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            Filetype = "Video",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            Filetype = "Image",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            Filetype = "Zip",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 5L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            Filetype = "Audio",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 6L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            Filetype = "Xlsx",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 7L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            Filetype = "Docs",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 8L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            Filetype = "PPT",
+                            IsDeleted = false
+                        });
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.Files", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Duration")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("FileName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("FileSize")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("FileTypeId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("TotalPages")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Files");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.Grade", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("SchoolId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Grade");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.IndividualDetails", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CityId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("CountryId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CurrentAddress")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("DateOfBirth")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("FatherNumber")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long?>("GradeId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("IdCardNumber")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MaritalStatusId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Nationality")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("ParentTazrika")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("PassportNumber")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("PermanentAddress")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Phone")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("PostalCode")
-                        .HasColumnType("text");
+                    b.Property<string>("PlaceOfBirth")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("Region")
-                        .HasColumnType("text");
+                    b.Property<string>("PreviousMarksheets")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.HasKey("SupplierId");
+                    b.Property<string>("ProvinceId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.ToTable("Suppliers");
+                    b.Property<string>("RefferedBy")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Remarks")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("SchoolName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("SexId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("SocialMediaAccount")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("SoicalMediaLinked")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("StudentCode")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("StudentName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("StudentTazkira")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long?>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Village")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("IndividualDetails");
                 });
 
-            modelBuilder.Entity("Bridge.Domain.Entities.Territory", b =>
+            modelBuilder.Entity("Bridge.Domain.Entities.Lesson", b =>
                 {
-                    b.Property<string>("TerritoryId")
-                        .HasColumnType("text");
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
 
-                    b.Property<string>("RegionId")
-                        .HasColumnType("text");
+                    b.Property<long?>("ChapterId")
+                        .HasColumnType("bigint");
 
-                    b.Property<string>("TerritoryDescription")
-                        .HasColumnType("text");
+                    b.Property<string>("Code")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.HasKey("TerritoryId");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.HasIndex("RegionId");
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
 
-                    b.ToTable("Territories");
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("ItemOrder")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Lesson");
                 });
 
-            modelBuilder.Entity("Bridge.Domain.Entities.Employee", b =>
+            modelBuilder.Entity("Bridge.Domain.Entities.LessonAssignment", b =>
                 {
-                    b.HasOne("Bridge.Domain.Entities.Employee", "Manager")
-                        .WithMany("DirectReports")
-                        .HasForeignKey("ReportsTo");
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("LessonId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LessonAssignments");
                 });
 
-            modelBuilder.Entity("Bridge.Domain.Entities.EmployeeTerritory", b =>
+            modelBuilder.Entity("Bridge.Domain.Entities.LessonAssignmentFile", b =>
                 {
-                    b.HasOne("Bridge.Domain.Entities.Employee", "Employee")
-                        .WithMany("EmployeeTerritories")
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("AssignmentId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("FileId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LessonAssignmentFiles");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.LessonAssignmentSubmission", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("AssignmentId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Comment")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool>("IsApproved")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsSubmission")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Remark")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("Score")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("TeacherId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LessonAssignmentSubmissions");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.LessonAssignmentSubmissionFile", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("FileId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("SubmissionId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LessonAssignmentSubmissionFiles");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.LessonFile", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("FileId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("LessionId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LessonFile");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.LessonProgress", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("ChapterId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("LessonId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("Progress")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LessonProgresses");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.LogObject", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("ActionUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("EntityKey")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TimeStamp")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("TypeId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LogObjects");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.LogObjectTypes", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Action")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("EntityType")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LogObjectTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Action = "Create",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "Course",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Action = "Update",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "Course",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            Action = "Delete",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "Course",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            Action = "Create",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "User",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 5L,
+                            Action = "Update",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "User",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 6L,
+                            Action = "Delete",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "User",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 7L,
+                            Action = "Create",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "Chapter",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 8L,
+                            Action = "Update",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "Chapter",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 9L,
+                            Action = "Delete",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "Chapter",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 10L,
+                            Action = "Create",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "Lesson",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 11L,
+                            Action = "Update",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "Lesson",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 12L,
+                            Action = "Delete",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "Lesson",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 13L,
+                            Action = "Create",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "Quiz",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 14L,
+                            Action = "Update",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "Quiz",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 15L,
+                            Action = "Delete",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "Quiz",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 16L,
+                            Action = "Create",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "Question",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 17L,
+                            Action = "Update",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "Question",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 18L,
+                            Action = "Delete",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "Question",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 19L,
+                            Action = "Create",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "File",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 20L,
+                            Action = "Update",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "File",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 21L,
+                            Action = "Delete",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "File",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 22L,
+                            Action = "Create",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "Notification",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 23L,
+                            Action = "Update",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "Notification",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 24L,
+                            Action = "Delete",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "Notification",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 25L,
+                            Action = "Create",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "Discussion",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 26L,
+                            Action = "Update",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "Discussion",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 27L,
+                            Action = "Delete",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "Discussion",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 28L,
+                            Action = "Create",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "Comment",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 29L,
+                            Action = "Update",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "Comment",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 30L,
+                            Action = "Delete",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "Comment",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 31L,
+                            Action = "Create",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "DiscussionFile",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 32L,
+                            Action = "Update",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "DiscussionFile",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 33L,
+                            Action = "Delete",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "DiscussionFile",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 34L,
+                            Action = "Create",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "CommentFile",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 35L,
+                            Action = "Update",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "CommentFile",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 36L,
+                            Action = "Delete",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "CommentFile",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 37L,
+                            Action = "Create",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "AddtionalServices",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 38L,
+                            Action = "Update",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "AddtionalServices",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 39L,
+                            Action = "Delete",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "AddtionalServices",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 40L,
+                            Action = "Create",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "Package",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 41L,
+                            Action = "Update",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "Package",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 42L,
+                            Action = "Delete",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "Package",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 43L,
+                            Action = "Create",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "PackageCourse",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 44L,
+                            Action = "Update",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "PackageCourse",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 45L,
+                            Action = "Delete",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "PackageCourse",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 46L,
+                            Action = "Create",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "BookAdd",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 47L,
+                            Action = "Update",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "BookUpdate",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 48L,
+                            Action = "Delete",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "BookDelete",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 49L,
+                            Action = "Update",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            EntityType = "BookPublish",
+                            IsDeleted = false
+                        });
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.Logs", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Data")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TestColumn")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Logs");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.ManagementInfo", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("individual_receipt_notes")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("noon_background")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("sales_partner_dari")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("sales_partner_eng")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("school_receipt_notes")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ManagementInfo");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.MetaDataDetail", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("DetailId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("DetailTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("MetadataId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MetaDataDetail");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.NotificationLog", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("LogObjectId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("NotifiedUserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("NotificationLogs");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.Package", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Price")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Packages");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.PackageCourse", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("CourseId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("PackageId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PackageCourses");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.ProgessSync", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("FileId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("GradeId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsStatus")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long?>("LessonId")
+                        .HasColumnType("bigint");
+
+                    b.Property<decimal?>("LessonProgress")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<long?>("LessonProgressId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("QuizId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("TotalRecords")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProgessSync");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.ProgressStatus", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProgressStatus");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.PurchagePdf", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("PdfFile")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("PurchageId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PurchagePdf");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.PurchageUpload", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("PdfFile")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("PurchageId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PurchageUpload");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.Question", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Explanation")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
+                        .HasMaxLength(255);
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsMultiAnswer")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("QuestionText")
+                        .IsRequired()
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
+                        .HasMaxLength(255);
+
+                    b.Property<long>("QuestionTypeId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuestionTypeId");
+
+                    b.ToTable("Question");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.QuestionAnswer", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Answer")
+                        .IsRequired()
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("ExtraText")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
+                        .HasMaxLength(255);
+
+                    b.Property<bool>("IsCorrect")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("QuestionId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuestionId");
+
+                    b.ToTable("QuestionAnswer");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.QuestionFile", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("FileId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("QuestionId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("QuestionFile");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.QuestionType", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("varchar(6) CHARACTER SET utf8mb4")
+                        .HasMaxLength(6);
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("QuestionType");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Code = "MCQ",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Code = "SA",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            Code = "nonmcq",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            Code = "abc",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false
+                        });
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.Quiz", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("ItemOrder")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
+                        .HasMaxLength(255);
+
+                    b.Property<int>("NumQuestions")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("PassMark")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<int>("TimeOut")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Quiz");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.QuizProgress", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("ChapterId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("Progress")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("QuizId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("QuizProgresses");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.QuizQuestion", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("QuestionId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("QuizId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuestionId");
+
+                    b.HasIndex("QuizId");
+
+                    b.ToTable("QuizQuestion");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.QuizSummary", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("Attempts")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QSummary")
+                        .HasColumnType("int");
+
+                    b.Property<long>("QuizId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("StudentId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("QuizSummary");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.QuizTimerSync", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("isStatus")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("passingScore")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("quizId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("quizTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("userId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("yourScore")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("QuizTimerSync");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.Role", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("RoleKey")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Role");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Administrator",
+                            RoleKey = "admin"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Analyst",
+                            RoleKey = "analyst"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Teacher",
+                            RoleKey = "teacher"
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Student",
+                            RoleKey = "student"
+                        },
+                        new
+                        {
+                            Id = 5L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Customer",
+                            RoleKey = "customer"
+                        },
+                        new
+                        {
+                            Id = 6L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "AAF manager",
+                            RoleKey = "aaf_manager"
+                        },
+                        new
+                        {
+                            Id = 7L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Coordinator",
+                            RoleKey = "coordinator"
+                        },
+                        new
+                        {
+                            Id = 8L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Edit team leader",
+                            RoleKey = "edit_team_leader"
+                        },
+                        new
+                        {
+                            Id = 9L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Shooting team leader",
+                            RoleKey = "shooting_team_leader"
+                        },
+                        new
+                        {
+                            Id = 10L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Graphics team leader",
+                            RoleKey = "graphics_team_leader"
+                        },
+                        new
+                        {
+                            Id = 11L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Quality assurance",
+                            RoleKey = "quality_assurance"
+                        },
+                        new
+                        {
+                            Id = 12L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Feedback edge team",
+                            RoleKey = "feedback_edge_team"
+                        },
+                        new
+                        {
+                            Id = 13L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Sales admin",
+                            RoleKey = "sales_admin"
+                        },
+                        new
+                        {
+                            Id = 14L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Filming staff",
+                            RoleKey = "filming_staff"
+                        },
+                        new
+                        {
+                            Id = 15L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Editing staff",
+                            RoleKey = "editing_staff"
+                        },
+                        new
+                        {
+                            Id = 16L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Graphics staff",
+                            RoleKey = "graphics_staff"
+                        },
+                        new
+                        {
+                            Id = 17L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Sales Agent",
+                            RoleKey = "sales_agent"
+                        },
+                        new
+                        {
+                            Id = 18L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Parent",
+                            RoleKey = "parent"
+                        });
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.SalesAgent", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("AgentCategoryId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("AgentName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("AgreedMonthlyDeposit")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CurrencyCode")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("FocalPoint")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PartnerBackgroud")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("PhysicalAddress")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Position")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SalesAgent");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.SalesTax", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Tax")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SalesTax");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Tax = 4
+                        });
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.School", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("School");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.SchoolDetails", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("BuildingOwnershipId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Computers")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Dongles")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("InternetAccessId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Monitors")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("NumberOfStaffFemale")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NumberOfStaffMale")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NumberOfStudentFemale")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NumberOfStudentMale")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NumberOfTeacherFemale")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NumberOfTeacherMale")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PowerAddressId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("RegisterNumber")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("RegisterationPaper")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Routers")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("SchoolAddress")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("SchoolLicense")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("SchoolName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("SchoolTypeId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("SectionTypeId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SchoolDetails");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.StudParent", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("ParentId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("StudentId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("StudParents");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.StudentChapterProgress", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("ChapterId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("ChapterStatus")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("StudentId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("StudentChapterProgress");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.StudentCourseProgress", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("CourseId")
+                        .HasColumnType("bigint");
+
+                    b.Property<decimal>("CourseProgress")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<long>("CourseStatus")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("StudentId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("StudentCourseProgress");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.StudentLessonProgress", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("Duration")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("LessonId")
+                        .HasColumnType("bigint");
+
+                    b.Property<decimal>("LessonProgress")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<long>("LessonStatus")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("StudentId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("StudentLessonProgress");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.StudentProgress", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("ChapterId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("ChapterStatus")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("CourseId")
+                        .HasColumnType("bigint");
+
+                    b.Property<decimal>("CourseProgress")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<long>("CourseStatus")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("LessonId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("LessonStatus")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("StudentId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("StudentProgress");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.SubscriptionMetadata", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CourseId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("DiscountPackageId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("EnrollmentFromDate")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("EnrollmentToDate")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NoOfMonths")
+                        .HasColumnType("int");
+
+                    b.Property<long>("PackageId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("PurchageId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("SalesAgentId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("ServiceId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("SubscriptionTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Tax")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SubscriptionMetadata");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.Subscriptions", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("SubscriptionMetadataId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Subscriptions");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.TaskActivityCategoryFeedBack", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TaskActivityCategoryFeedBacks");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreationTime = "4/1/2020 9:24:07 AM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "In Queue"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            CreationTime = "4/1/2020 9:24:07 AM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "In Progress"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            CreationTime = "4/1/2020 9:24:07 AM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Completed"
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            CreationTime = "4/1/2020 9:24:07 AM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Archived"
+                        });
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.TaskActivityFeedBack", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("TaskId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TaskActivityFeedBacks");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.TaskCategoryFeedBack", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TaskCategoryFeedBacks");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreationTime = "4/1/2020 9:24:07 AM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Something Isn't Working in the App"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            CreationTime = "4/1/2020 9:24:07 AM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Video Issue"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            CreationTime = "4/1/2020 9:24:07 AM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Text Issue"
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            CreationTime = "4/1/2020 9:24:07 AM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Lesson Assignment Issue"
+                        },
+                        new
+                        {
+                            Id = 5L,
+                            CreationTime = "4/1/2020 9:24:07 AM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Chapter Assignment Issue"
+                        },
+                        new
+                        {
+                            Id = 6L,
+                            CreationTime = "4/1/2020 9:24:07 AM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "Quiz Issue"
+                        },
+                        new
+                        {
+                            Id = 7L,
+                            CreationTime = "4/1/2020 9:24:07 AM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            Name = "General Feedback"
+                        });
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.TaskFeedBack", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("AppVersion")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("ArchivedDate")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("Assign")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("CategoryId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("ChapterId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("ComplatedDate")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long?>("CourseId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Device")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long?>("GradeId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long?>("LessonId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("OperatingSystem")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("StartDate")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Time")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Version")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TaskFeedBacks");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.TaskFileFeedBack", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("FileId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("TaskId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TaskFileFeedBacks");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.TermsAndConditions", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Terms")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TermsAndConditions");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.TimeInterval", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("Interval")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TimeIntervals");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            Interval = 5,
+                            IsDeleted = false
+                        });
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.User", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("AuthId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Bio")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("FullName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool>("IsBlocked")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("ProfilePicUrl")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("forgotkey")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("intervals")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("is_assignment_authorized")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("is_discussion_authorized")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("is_library_authorized")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("is_skippable")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("isallowmap")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("isfirstlogin")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("isforgot")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("istimeouton")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("istrial")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("phonenumber")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("reminder")
+                        .HasColumnType("int");
+
+                    b.Property<int>("timeout")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            AuthId = "auth0|5c08a3afe9f0262e9378a9b2",
+                            Bio = "string",
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            Email = "adminuser@email.com",
+                            FullName = "Admin",
+                            IsBlocked = false,
+                            IsDeleted = false,
+                            Password = "F925916E2754E5E03F75DD58A5733251",
+                            ProfilePicUrl = "https://www.googleapis.com/download/storage/v1/b/edg-primary-profile-image-storage/o/3_d279c045-9325-4cbb-bd31-16a40f70a080.png?generation=1540626401907278&alt=media",
+                            Username = "Admin",
+                            intervals = 0,
+                            is_assignment_authorized = false,
+                            is_discussion_authorized = false,
+                            is_library_authorized = false,
+                            is_skippable = true,
+                            isallowmap = false,
+                            isfirstlogin = false,
+                            isforgot = false,
+                            istimeouton = false,
+                            istrial = false,
+                            reminder = 0,
+                            timeout = 0
+                        });
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.UserCourse", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("CourseId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("EndDate")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool?>("IsExpire")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("StartDate")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserCourse");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.UserNotifications", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("AssignmentId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("ChapterId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("CommentId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("CourseId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long?>("DiscussionId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("FileId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long?>("LessionId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("QuizId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Tag")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserNotifications");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.UserQuizResult", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("AnsweredQuestion")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("PassingScore")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("PerformDate")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("QuizId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("Score")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("TotalQuestion")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserQuizResults");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.UserRole", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("RoleId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserRole");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreationTime = "4/1/2020 2:54:07 PM",
+                            CreatorUserId = 1,
+                            IsDeleted = false,
+                            RoleId = 1L,
+                            UserId = 1L
+                        });
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.UserSessions", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("AccessToken")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("DeviceToken")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("DeviceType")
+                        .HasColumnType("varchar(10) CHARACTER SET utf8mb4")
+                        .HasMaxLength(10);
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Version")
+                        .HasColumnType("varchar(20) CHARACTER SET utf8mb4")
+                        .HasMaxLength(20);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserSessions");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.Question", b =>
+                {
+                    b.HasOne("Bridge.Domain.Entities.QuestionType", "QuestionType")
+                        .WithMany()
+                        .HasForeignKey("QuestionTypeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.QuestionAnswer", b =>
+                {
+                    b.HasOne("Bridge.Domain.Entities.Question", "Question")
+                        .WithMany()
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.QuizQuestion", b =>
+                {
+                    b.HasOne("Bridge.Domain.Entities.Question", "Question")
+                        .WithMany()
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Bridge.Domain.Entities.Territory", "Territory")
-                        .WithMany("EmployeeTerritories")
-                        .HasForeignKey("TerritoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                    b.HasOne("Bridge.Domain.Entities.Quiz", "Quiz")
+                        .WithMany()
+                        .HasForeignKey("QuizId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Bridge.Domain.Entities.Order", b =>
-                {
-                    b.HasOne("Bridge.Domain.Entities.Customer", "Customer")
-                        .WithMany("Orders")
-                        .HasForeignKey("CustomerId");
-
-                    b.HasOne("Bridge.Domain.Entities.Employee", "Employee")
-                        .WithMany("Orders")
-                        .HasForeignKey("EmployeeId");
-
-                    b.HasOne("Bridge.Domain.Entities.Shipper", "Shipper")
-                        .WithMany("Orders")
-                        .HasForeignKey("ShipVia");
-                });
-
-            modelBuilder.Entity("Bridge.Domain.Entities.OrderDetail", b =>
-                {
-                    b.HasOne("Bridge.Domain.Entities.Order", "Order")
-                        .WithMany("OrderDetails")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Bridge.Domain.Entities.Product", "Product")
-                        .WithMany("OrderDetails")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Bridge.Domain.Entities.Product", b =>
-                {
-                    b.HasOne("Bridge.Domain.Entities.ProductCategory", "Category")
-                        .WithMany("Products")
-                        .HasForeignKey("CategoryId");
-
-                    b.HasOne("Bridge.Domain.Entities.Supplier", "Supplier")
-                        .WithMany("Products")
-                        .HasForeignKey("SupplierId");
-                });
-
-            modelBuilder.Entity("Bridge.Domain.Entities.Territory", b =>
-                {
-                    b.HasOne("Bridge.Domain.Entities.Region", "Region")
-                        .WithMany("Territories")
-                        .HasForeignKey("RegionId");
                 });
 #pragma warning restore 612, 618
         }
