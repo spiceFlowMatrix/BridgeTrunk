@@ -1,6 +1,5 @@
 using System.Threading.Tasks;
-using Application.Courses.Commands.AddEditCourseGrade;
-using MediatR;
+using Application.Courses.Commands.UpsertCourseGrade;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebUI.Controllers.Courses
@@ -11,10 +10,10 @@ namespace WebUI.Controllers.Courses
     {
         [HttpPost]
         [Route("CourseGrade")]
-        public async Task<IActionResult> PostCourseGrade([FromBody] AddEditCourseGradeCommand command)
+        public async Task<IActionResult> PostCourseGrade([FromBody] UpsertCourseGradeCommand command)
         {
             var result= await _mediator.Send(command);
-            return Ok(result);            
+            return StatusCode(200,result);            
         }
     }
 }
