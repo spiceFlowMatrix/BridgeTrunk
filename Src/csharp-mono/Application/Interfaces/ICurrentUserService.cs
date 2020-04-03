@@ -2,7 +2,7 @@ namespace Bridge.Application.Interfaces
 {
     public interface ICurrentUserService
     {
-        string UserId { get; }
+        int? UserId { get; }
         bool IsAuthenticated { get; }
     }
 }
