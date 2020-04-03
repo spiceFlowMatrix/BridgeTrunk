@@ -1,6 +1,6 @@
 ﻿namespace Bridge.Domain.Entities
 {
-    public class PdfFile //: EntityBase, IPdfFile
+    public class PdfFile //: AuditableEntity, IPdfFile
     {
         public long Id { get; set; }
         public string Name { get; set; }

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Bridge.Domain.Common;
 
 namespace Bridge.Domain.Entities
 {
-    public class Deposit : EntityBase
+    public class Deposit : AuditableEntity
     {
         public string DepositDate { get; set; }
         public decimal DepositAmount { get; set; }

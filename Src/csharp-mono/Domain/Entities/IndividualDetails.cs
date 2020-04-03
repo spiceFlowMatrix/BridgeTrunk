@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Bridge.Domain.Common;
 
 namespace Bridge.Domain.Entities
 {
-    public class IndividualDetails : EntityBase
+    public class IndividualDetails : AuditableEntity
     {
         public string StudentCode { get; set; }
         public string StudentName { get; set; }
@@ -36,13 +37,13 @@ namespace Bridge.Domain.Entities
         public long? UserId { get; set; }
     }
 
-    public class DocumentDetails : EntityBase
+    public class DocumentDetails : AuditableEntity
     {
         public string name { get; set; }
         public string DocumentUrl { get; set; }
     }
 
-    public class SchoolDetails : EntityBase
+    public class SchoolDetails : AuditableEntity
     {
         public string RegisterNumber { get; set; }
         public string SchoolTypeId { get; set; }

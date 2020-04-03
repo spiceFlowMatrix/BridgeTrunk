@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Bridge.Domain.Common;
 
 namespace Bridge.Domain.Entities
 {
-    public class Books : EntityBase
+    public class Books : AuditableEntity
     {
         public string Title { get; set; }
         public string Author { get; set; }

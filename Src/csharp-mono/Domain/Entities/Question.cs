@@ -1,10 +1,11 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Bridge.Domain.Common;
 
 namespace Bridge.Domain.Entities
 {
-    public class Question : EntityBase
+    public class Question : AuditableEntity
     {
         public long QuestionTypeId { get; set; }
 

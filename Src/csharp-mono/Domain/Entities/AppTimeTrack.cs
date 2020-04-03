@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Bridge.Domain.Common;
 
 namespace Bridge.Domain.Entities
 {
-    public class AppTimeTrack : EntityBase
+    public class AppTimeTrack : AuditableEntity
     {
         public long UserId { get; set; }
         public string Latitude { get; set; }

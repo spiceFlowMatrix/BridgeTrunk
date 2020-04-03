@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Bridge.Domain.Common;
 
 namespace Bridge.Domain.Entities
 {
-    public class FeedBackTask : EntityBase
+    public class FeedBackTask : AuditableEntity
     {
         public long FeedbackId { get; set; }        
         public string Description { get; set; }
@@ -13,13 +14,13 @@ namespace Bridge.Domain.Entities
         //public int Status { get; set; }
     }
 
-    public class FeedBackTaskStatus : EntityBase
+    public class FeedBackTaskStatus : AuditableEntity
     {
         public long FeedbackId { get; set; }
         public long Status { get; set; }
     }
 
-    public class FeedBackTaskStatusOption : EntityBase
+    public class FeedBackTaskStatusOption : AuditableEntity
     {        
         public string Name { get; set; }
     }

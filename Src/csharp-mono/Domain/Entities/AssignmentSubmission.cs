@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Bridge.Domain.Common;
 
 namespace Bridge.Domain.Entities
 {
-    public class AssignmentSubmission : EntityBase
+    public class AssignmentSubmission : AuditableEntity
     {
         public long AssignmentId { get; set; }
         public long UserId { get; set; }

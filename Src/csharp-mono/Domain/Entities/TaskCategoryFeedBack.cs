@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Bridge.Domain.Common;
 
 namespace Bridge.Domain.Entities
 {
-    public class TaskCategoryFeedBack : EntityBase 
+    public class TaskCategoryFeedBack : AuditableEntity 
     {
         public string Name { get; set; }
     }

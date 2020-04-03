@@ -1,9 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Bridge.Domain.Common;
 
 namespace Bridge.Domain.Entities
 {
-    public class QuestionType : EntityBase
+    public class QuestionType : AuditableEntity
     {
 
         [Required]

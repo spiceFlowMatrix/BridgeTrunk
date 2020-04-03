@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Bridge.Domain.Common;
 
 namespace Bridge.Domain.Entities
 {
-    public class CourseItemProgressSync : EntityBase
+    public class CourseItemProgressSync : AuditableEntity
     {
         public long Userid { get; set; }
         public long Lessonid { get; set; }

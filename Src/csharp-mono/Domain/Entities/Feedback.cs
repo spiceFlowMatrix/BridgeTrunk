@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Bridge.Domain.Common;
 
 namespace Bridge.Domain.Entities
 {
-    public class Feedback : EntityBase
+    public class Feedback : AuditableEntity
     {
         public long Contactid { get; set; }
         public long CategoryId { get; set; }

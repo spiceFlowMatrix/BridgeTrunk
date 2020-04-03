@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bridge.Domain.Entities
 {
-    public class StudentLessonComplete //: EntityBase, IStudentLessonComplete
+    public class StudentLessonComplete //: AuditableEntity, IStudentLessonComplete
     {
         public Lesson Lesson { get; set; }
         //public Video Video { get; set; }

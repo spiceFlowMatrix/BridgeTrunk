@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Bridge.Domain.Common;
 
 namespace Bridge.Domain.Entities
 {
-    public class SalesAgent : EntityBase
+    public class SalesAgent : AuditableEntity
     {
         public string AgentName { get; set; }
         public long AgentCategoryId { get; set; }

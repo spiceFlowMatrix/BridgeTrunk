@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using Bridge.Domain.Common;
 
 namespace Bridge.Domain.Entities
 {
-    public class ProgessSync : EntityBase
+    public class ProgessSync : AuditableEntity
     {
         //public long Id { get; set; }
         public long? GradeId { get; set; }
@@ -20,7 +21,7 @@ namespace Bridge.Domain.Entities
     }
 
 
-    public class QuizTimerSync : EntityBase
+    public class QuizTimerSync : AuditableEntity
     {     
         public bool isStatus { get; set; }
         public string passingScore { get; set; }

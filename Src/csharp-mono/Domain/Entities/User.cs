@@ -1,8 +1,9 @@
 ﻿using System;
+using Bridge.Domain.Common;
 
 namespace Bridge.Domain.Entities
 {
-    public class User : EntityBase
+    public class User : AuditableEntity
     {
         public string Username { get; set; }
         public string FullName { get; set; }

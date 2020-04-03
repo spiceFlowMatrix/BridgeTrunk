@@ -5,10 +5,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Bridge.Domain.Common;
 
 namespace Bridge.Domain.Entities
 {
-    public class QuestionAnswer : EntityBase
+    public class QuestionAnswer : AuditableEntity
     {
         [Required]
         [StringLength(255)]

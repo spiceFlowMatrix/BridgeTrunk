@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel;
+using Bridge.Domain.Common;
 
 namespace Bridge.Domain.Entities
 {
-    public class Course : EntityBase
+    public class Course : AuditableEntity
     {        
         public string Name { get; set; }
         public string Code { get; set; }

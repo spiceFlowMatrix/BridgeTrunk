@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Bridge.Domain.Common;
 
 namespace Bridge.Domain.Entities
 {
-    public class Quiz : EntityBase
+    public class Quiz : AuditableEntity
     {
         public Quiz()
         {

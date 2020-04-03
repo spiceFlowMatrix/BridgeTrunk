@@ -1,6 +1,8 @@
-﻿namespace Bridge.Domain.Entities
+﻿using Bridge.Domain.Common;
+
+namespace Bridge.Domain.Entities
 {
-    public class Lesson : EntityBase
+    public class Lesson : AuditableEntity
     {        
         public string Name { get; set; }
         public string Code { get; set; }

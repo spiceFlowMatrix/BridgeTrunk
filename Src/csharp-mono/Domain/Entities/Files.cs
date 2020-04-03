@@ -1,8 +1,9 @@
 ﻿using System;
+using Bridge.Domain.Common;
 
 namespace Bridge.Domain.Entities
 {
-    public class Files : EntityBase
+    public class Files : AuditableEntity
     {        
         public string Name { get; set; }
         public string FileName { get; set; }

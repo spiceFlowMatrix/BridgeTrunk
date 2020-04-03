@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Bridge.Domain.Common;
 
 namespace Bridge.Domain.Entities
 {
-    public class FileProgress : EntityBase
+    public class FileProgress : AuditableEntity
     {
         public long LessonId { get; set; }
         public long FileId { get; set; }

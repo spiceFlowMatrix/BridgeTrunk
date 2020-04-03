@@ -1,8 +1,9 @@
 ﻿using System;
+using Bridge.Domain.Common;
 
 namespace Bridge.Domain.Entities
 {
-    public class StudentCourseProgress : EntityBase
+    public class StudentCourseProgress : AuditableEntity
     {
         public long CourseId { get; set; }
         public long CourseStatus { get; set; }

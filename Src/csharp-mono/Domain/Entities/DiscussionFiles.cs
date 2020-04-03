@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Bridge.Domain.Common;
 
 namespace Bridge.Domain.Entities
 {
-    public class DiscussionFiles : EntityBase
+    public class DiscussionFiles : AuditableEntity
     {
         public string Name { get; set; }
         public long? TopicId { get; set; }

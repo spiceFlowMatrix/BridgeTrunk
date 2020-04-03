@@ -1,6 +1,8 @@
-﻿namespace Bridge.Domain.Entities
+﻿using Bridge.Domain.Common;
+
+namespace Bridge.Domain.Entities
 {
-    public class Chapter : EntityBase
+    public class Chapter : AuditableEntity
     {        
         public string Name { get; set; }
         public string Code { get; set; }

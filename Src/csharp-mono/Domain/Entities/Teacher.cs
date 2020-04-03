@@ -2,7 +2,7 @@
 
 namespace Bridge.Domain.Entities
 {
-    public class Teacher //: EntityBase, ITeacher
+    public class Teacher //: AuditableEntity, ITeacher
     {
 
         public long Id { get; set; }

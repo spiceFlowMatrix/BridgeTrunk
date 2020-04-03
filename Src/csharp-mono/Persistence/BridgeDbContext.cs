@@ -139,7 +139,7 @@ namespace Bridge.Persistence
                 switch (entry.State)
                 {
                     case EntityState.Added:
-                        entry.Entity.CreatedBy = _currentUserService.UserId;
+                        entry.Entity.CreatedBy =Convert.ToInt32(_currentUserService.UserId) ;
                         entry.Entity.CreatedOn = _dateTime.Now;
                         break;
                     case EntityState.Modified:

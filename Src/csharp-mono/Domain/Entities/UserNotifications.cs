@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Bridge.Domain.Common;
 
 namespace Bridge.Domain.Entities
 {
-    public class UserNotifications : EntityBase
+    public class UserNotifications : AuditableEntity
     {
         public string Tag { get; set; }
         public int Type { get; set; }

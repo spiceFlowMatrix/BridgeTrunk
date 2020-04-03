@@ -1,9 +1,8 @@
 ﻿using System;
-using Domain.AbstractEntities;
 
 namespace Bridge.Domain.Entities
 {
-    public class EntityBase : IEntityBase
+    public class EntityBase
     {
         public long Id { get; set; }
 

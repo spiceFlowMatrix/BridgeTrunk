@@ -2,7 +2,7 @@
 
 namespace Bridge.Domain.Entities
 {
-    public class Credential //: EntityBase, ICredential
+    public class Credential //: AuditableEntity, ICredential
     {
         public int Id { get; set; }
         public int UserId { get; set; }

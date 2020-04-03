@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Bridge.Domain.Common;
 
 namespace Bridge.Domain.Entities
 {
-    public class FeedBackActivity : EntityBase
+    public class FeedBackActivity : AuditableEntity
     {
         public long FeedbackId { get; set; }
         public long FeedbackTaskId { get; set; }
