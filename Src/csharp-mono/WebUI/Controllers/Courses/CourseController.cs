@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
-using Application.Courses.Commands.UpsertCourseGrade;
 using Microsoft.AspNetCore.Mvc;
+using Application.Courses.Commands.UpsertCourseGrade;
 
 namespace WebUI.Controllers.Courses
 {

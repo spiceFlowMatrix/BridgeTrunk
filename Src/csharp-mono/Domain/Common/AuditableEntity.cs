@@ -12,5 +12,6 @@ namespace Bridge.Domain.Common
         public int? LastModifiedBy { get; set; }
 
         public DateTime? LastModifiedOn { get; set; }
+        public bool? IsDeleted { get; set; }
     }
 }
