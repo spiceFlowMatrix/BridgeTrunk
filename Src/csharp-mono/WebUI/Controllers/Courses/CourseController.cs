@@ -13,7 +13,7 @@ namespace WebUI.Controllers.Courses
         public async Task<IActionResult> PostCourseGrade([FromBody] UpsertCourseGradeCommand command)
         {
             var result= await _mediator.Send(command);
-            return StatusCode(200,result);            
+            return StatusCode(result.ReturnCode, result);            
         }
     }
 }
