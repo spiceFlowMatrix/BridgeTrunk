@@ -2,7 +2,7 @@
 
 namespace Bridge.Domain.Entities
 {
-    public class Video //: AuditableEntity, IVideo
+    public class Video
     {
         public long Id { get; set; }
         public string Name { get; set; }
