@@ -11,10 +11,4 @@ namespace Bridge.Domain.Entities
         public long PdfFile { get; set; }
     }
 
-    public class PurchageUpload : AuditableEntity
-    {
-        public string PurchageId { get; set; }
-        public long PdfFile { get; set; }
-    }
-
 }

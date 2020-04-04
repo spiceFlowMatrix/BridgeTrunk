@@ -155,7 +155,7 @@ namespace Bridge.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // TODO: Ensure all generated data structure naming follows snake casing.
-            // modelBuilder.ApplyConfigurationsFromAssembly(typeof(BridgeDbContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(BridgeDbContext).Assembly);
 
             var cascadeFKs = modelBuilder.Model.GetEntityTypes()
                 .SelectMany(t => t.GetForeignKeys())
