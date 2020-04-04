@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Bridge.Domain.Entities
 {
-    public class StudentCourseComplete //: AuditableEntity, IBundleCourseComplete
+    public class StudentCourseComplete
     {
 		public Course Course { get; set; }
 		public List<StudentChapterComplete> Chapters { get; set; }

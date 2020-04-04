@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Bridge.Domain.Entities
 {
-    public class StudentChapterComplete //: AuditableEntity, IStudentChapterComplete
+    public class StudentChapterComplete
     {
 		public Chapter Chapter { get; set;}
 		public List<StudentLessonComplete> Lessons { get; set; }

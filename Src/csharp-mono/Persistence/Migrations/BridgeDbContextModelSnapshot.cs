@@ -23,26 +23,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -53,44 +44,6 @@ namespace Bridge.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AddtionalServices");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Homework",
-                            Price = "0"
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Discussion",
-                            Price = "0"
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Library",
-                            Price = "0"
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Parental Control",
-                            Price = "0"
-                        });
                 });
 
             modelBuilder.Entity("Bridge.Domain.Entities.AgentCategory", b =>
@@ -105,26 +58,17 @@ namespace Bridge.Persistence.Migrations
                     b.Property<int>("Commission")
                         .HasColumnType("int");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -140,29 +84,20 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("AnswerId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("FileId")
                         .HasColumnType("bigint");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -178,17 +113,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("ActivityTime")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Grade")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -196,17 +125,14 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("HardwarePlatform")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<string>("Isp")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Latitude")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -255,32 +181,23 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("Code")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<int>("ItemOrder")
                         .HasColumnType("int");
 
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -299,29 +216,20 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("AssignmentId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("FileId")
                         .HasColumnType("bigint");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -337,29 +245,20 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("AssignmentId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("IsApproved")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("StudentId")
                         .HasColumnType("bigint");
@@ -381,32 +280,23 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("Comment")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("IsApproved")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool?>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<bool>("IsSubmission")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Remark")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -431,29 +321,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("FileId")
                         .HasColumnType("bigint");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("SubmissionId")
                         .HasColumnType("bigint");
@@ -475,17 +356,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("BookPublisher")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -496,17 +371,14 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("GradeId")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<bool>("IsPublished")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("PublishedTime")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -537,120 +409,21 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("BucketName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Buckets");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            BucketName = "core-api-sql-migrations",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            BucketName = "edg-primary-course-image-storage",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            BucketName = "edg-primary-profile-image-storage",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            BucketName = "edg-sales-primary-storage",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 5L,
-                            BucketName = "eu.artifacts.training24-197210.appspot.com",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 6L,
-                            BucketName = "t24-app-builds",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 7L,
-                            BucketName = "t24-primary-audio-storage",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 8L,
-                            BucketName = "t24-primary-image-storage",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 9L,
-                            BucketName = "t24-primary-pdf-storage",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 10L,
-                            BucketName = "t24-primary-video-storage",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 11L,
-                            BucketName = "t24-secure-files",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false
-                        });
                 });
 
             modelBuilder.Entity("Bridge.Domain.Entities.Bundle", b =>
@@ -659,26 +432,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -700,26 +464,17 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("CourseId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -738,29 +493,20 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("CourseId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("ItemOrder")
                         .HasColumnType("int");
 
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -785,26 +531,17 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("CourseId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("Progress")
                         .HasColumnType("bigint");
@@ -826,29 +563,20 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("ChapterId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("ItemOrder")
                         .HasColumnType("int");
 
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("QuizId")
                         .HasColumnType("bigint");
@@ -867,17 +595,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("CountryCode")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Email")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -885,14 +607,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Phone")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -911,17 +630,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("Code")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -929,14 +642,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("Image")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -964,29 +674,20 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("CourseId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("GradeId")
                         .HasColumnType("bigint");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Subject")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1005,29 +706,20 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("CourseId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("Gradeid")
                         .HasColumnType("bigint");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -1040,29 +732,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("IsStatus")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("Lessonid")
                         .HasColumnType("bigint");
@@ -1087,26 +770,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("abbreviation")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1128,26 +802,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("intervals")
                         .HasColumnType("int");
@@ -1164,19 +829,6 @@ namespace Bridge.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DefaultValues");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            intervals = 3,
-                            istimeouton = true,
-                            reminder = 5,
-                            timeout = 15
-                        });
                 });
 
             modelBuilder.Entity("Bridge.Domain.Entities.Deposit", b =>
@@ -1185,17 +837,11 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<decimal>("DepositAmount")
                         .HasColumnType("decimal(65,30)");
@@ -1209,17 +855,14 @@ namespace Bridge.Persistence.Migrations
                     b.Property<bool>("IsConfirm")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<bool>("IsRevoke")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("SalesAgentId")
                         .HasColumnType("bigint");
@@ -1235,29 +878,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("FreeSubscriptions")
                         .HasColumnType("int");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("OffSubscriptions")
                         .HasColumnType("int");
@@ -1273,6 +907,32 @@ namespace Bridge.Persistence.Migrations
                     b.ToTable("Discount");
                 });
 
+            modelBuilder.Entity("Bridge.Domain.Entities.DiscountPackage", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DiscountPackage");
+                });
+
             modelBuilder.Entity("Bridge.Domain.Entities.DiscussionCommentFiles", b =>
                 {
                     b.Property<long>("Id")
@@ -1282,17 +942,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long?>("CommentId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Duration")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1306,14 +960,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("FileTypeId")
                         .HasColumnType("bigint");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1338,29 +989,20 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("CommentId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("DisLike")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("Like")
                         .HasColumnType("tinyint(1)");
@@ -1382,26 +1024,17 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("Comment")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("TopicId")
                         .HasColumnType("bigint");
@@ -1417,17 +1050,11 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1444,14 +1071,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("FileTypeId")
                         .HasColumnType("bigint");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1479,23 +1103,14 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("CourseId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<bool>("IsPrivate")
                         .HasColumnType("tinyint(1)");
@@ -1503,11 +1118,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<bool>("IsPublic")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Title")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1523,29 +1138,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("DisLike")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("Like")
                         .HasColumnType("tinyint(1)");
@@ -1567,29 +1173,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("DocumentUrl")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1608,26 +1205,17 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("AccountCode")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("Type")
                         .HasColumnType("int");
@@ -1635,53 +1223,6 @@ namespace Bridge.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ERPAccounts");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            AccountCode = "",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Type = 1
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            AccountCode = "",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Type = 2
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            AccountCode = "",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Type = 3
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            AccountCode = "",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Type = 4
-                        },
-                        new
-                        {
-                            Id = 5L,
-                            AccountCode = "",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Type = 5
-                        });
                 });
 
             modelBuilder.Entity("Bridge.Domain.Entities.FeebackTime", b =>
@@ -1690,17 +1231,11 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1708,14 +1243,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("FeedbackId")
                         .HasColumnType("bigint");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Time")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1731,17 +1263,11 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("FeedbackId")
                         .HasColumnType("bigint");
@@ -1749,14 +1275,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("FeedbackTaskId")
                         .HasColumnType("bigint");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("Type")
                         .HasColumnType("bigint");
@@ -1775,26 +1298,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1810,32 +1324,23 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("FeedBackId")
                         .HasColumnType("bigint");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<bool>("IsManager")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("Type")
                         .HasColumnType("bigint");
@@ -1854,17 +1359,11 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1875,14 +1374,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("FileLink")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("Type")
                         .HasColumnType("bigint");
@@ -1898,29 +1394,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("FeedbackId")
                         .HasColumnType("bigint");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("Status")
                         .HasColumnType("bigint");
@@ -1936,26 +1423,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1963,32 +1441,6 @@ namespace Bridge.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("FeedBackTaskStatusOption");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "UnApproved"
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Approved"
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Completed"
-                        });
                 });
 
             modelBuilder.Entity("Bridge.Domain.Entities.Feedback", b =>
@@ -2012,17 +1464,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("CourseId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -2030,14 +1476,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("GradeId")
                         .HasColumnType("bigint");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("LessonId")
                         .HasColumnType("bigint");
@@ -2059,17 +1502,11 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("FeedtimeId")
                         .HasColumnType("bigint");
@@ -2077,14 +1514,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("FileId")
                         .HasColumnType("bigint");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -2097,29 +1531,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("FileId")
                         .HasColumnType("bigint");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("LessonId")
                         .HasColumnType("bigint");
@@ -2141,99 +1566,24 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Filetype")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
                     b.ToTable("FileTypes");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            Filetype = "PDF",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            Filetype = "Video",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            Filetype = "Image",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            Filetype = "Zip",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 5L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            Filetype = "Audio",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 6L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            Filetype = "Xlsx",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 7L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            Filetype = "Docs",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 8L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            Filetype = "PPT",
-                            IsDeleted = false
-                        });
                 });
 
             modelBuilder.Entity("Bridge.Domain.Entities.Files", b =>
@@ -2242,17 +1592,11 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -2269,14 +1613,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("FileTypeId")
                         .HasColumnType("bigint");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -2298,29 +1639,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -2345,22 +1677,16 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("CountryId")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("CurrentAddress")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("DateOfBirth")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Email")
@@ -2375,14 +1701,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("IdCardNumber")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("MaritalStatusId")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -2461,32 +1784,23 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("Code")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<int>("ItemOrder")
                         .HasColumnType("int");
 
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -2505,29 +1819,20 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("Code")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("LessonId")
                         .HasColumnType("bigint");
@@ -2549,29 +1854,20 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("AssignmentId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("FileId")
                         .HasColumnType("bigint");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -2590,32 +1886,23 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("Comment")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("IsApproved")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool?>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<bool>("IsSubmission")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Remark")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -2640,29 +1927,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("FileId")
                         .HasColumnType("bigint");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("SubmissionId")
                         .HasColumnType("bigint");
@@ -2678,29 +1956,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("FileId")
                         .HasColumnType("bigint");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("LessionId")
                         .HasColumnType("bigint");
@@ -2763,29 +2032,20 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("ActionUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("EntityKey")
                         .HasColumnType("bigint");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("TimeStamp")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -2807,476 +2067,24 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("Action")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("EntityType")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
                     b.ToTable("LogObjectTypes");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            Action = "Create",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "Course",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            Action = "Update",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "Course",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            Action = "Delete",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "Course",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            Action = "Create",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "User",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 5L,
-                            Action = "Update",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "User",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 6L,
-                            Action = "Delete",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "User",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 7L,
-                            Action = "Create",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "Chapter",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 8L,
-                            Action = "Update",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "Chapter",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 9L,
-                            Action = "Delete",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "Chapter",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 10L,
-                            Action = "Create",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "Lesson",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 11L,
-                            Action = "Update",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "Lesson",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 12L,
-                            Action = "Delete",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "Lesson",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 13L,
-                            Action = "Create",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "Quiz",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 14L,
-                            Action = "Update",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "Quiz",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 15L,
-                            Action = "Delete",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "Quiz",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 16L,
-                            Action = "Create",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "Question",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 17L,
-                            Action = "Update",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "Question",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 18L,
-                            Action = "Delete",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "Question",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 19L,
-                            Action = "Create",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "File",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 20L,
-                            Action = "Update",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "File",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 21L,
-                            Action = "Delete",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "File",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 22L,
-                            Action = "Create",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "Notification",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 23L,
-                            Action = "Update",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "Notification",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 24L,
-                            Action = "Delete",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "Notification",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 25L,
-                            Action = "Create",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "Discussion",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 26L,
-                            Action = "Update",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "Discussion",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 27L,
-                            Action = "Delete",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "Discussion",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 28L,
-                            Action = "Create",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "Comment",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 29L,
-                            Action = "Update",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "Comment",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 30L,
-                            Action = "Delete",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "Comment",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 31L,
-                            Action = "Create",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "DiscussionFile",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 32L,
-                            Action = "Update",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "DiscussionFile",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 33L,
-                            Action = "Delete",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "DiscussionFile",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 34L,
-                            Action = "Create",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "CommentFile",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 35L,
-                            Action = "Update",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "CommentFile",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 36L,
-                            Action = "Delete",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "CommentFile",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 37L,
-                            Action = "Create",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "AddtionalServices",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 38L,
-                            Action = "Update",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "AddtionalServices",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 39L,
-                            Action = "Delete",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "AddtionalServices",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 40L,
-                            Action = "Create",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "Package",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 41L,
-                            Action = "Update",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "Package",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 42L,
-                            Action = "Delete",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "Package",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 43L,
-                            Action = "Create",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "PackageCourse",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 44L,
-                            Action = "Update",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "PackageCourse",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 45L,
-                            Action = "Delete",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "PackageCourse",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 46L,
-                            Action = "Create",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "BookAdd",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 47L,
-                            Action = "Update",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "BookUpdate",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 48L,
-                            Action = "Delete",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "BookDelete",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 49L,
-                            Action = "Update",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            EntityType = "BookPublish",
-                            IsDeleted = false
-                        });
                 });
 
             modelBuilder.Entity("Bridge.Domain.Entities.Logs", b =>
@@ -3285,29 +2093,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Data")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("TestColumn")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -3323,26 +2122,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("individual_receipt_notes")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -3370,17 +2160,11 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("DetailId")
                         .HasColumnType("bigint");
@@ -3388,14 +2172,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<int>("DetailTypeId")
                         .HasColumnType("int");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("MetadataId")
                         .HasColumnType("bigint");
@@ -3411,29 +2192,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("IsRead")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("LogObjectId")
                         .HasColumnType("bigint");
@@ -3452,26 +2224,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -3493,26 +2256,17 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("CourseId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("PackageId")
                         .HasColumnType("bigint");
@@ -3528,17 +2282,11 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("FileId")
                         .HasColumnType("bigint");
@@ -3546,17 +2294,14 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long?>("GradeId")
                         .HasColumnType("bigint");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<bool>("IsStatus")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long?>("LessonId")
                         .HasColumnType("bigint");
@@ -3587,26 +2332,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -3622,26 +2358,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("PdfFile")
                         .HasColumnType("bigint");
@@ -3660,26 +2387,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("PdfFile")
                         .HasColumnType("bigint");
@@ -3698,33 +2416,24 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Explanation")
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<bool>("IsMultiAnswer")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("QuestionText")
                         .IsRequired()
@@ -3752,17 +2461,11 @@ namespace Bridge.Persistence.Migrations
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("ExtraText")
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
@@ -3771,14 +2474,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<bool>("IsCorrect")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("QuestionId")
                         .HasColumnType("bigint");
@@ -3796,29 +2496,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("FileId")
                         .HasColumnType("bigint");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("QuestionId")
                         .HasColumnType("bigint");
@@ -3839,64 +2530,21 @@ namespace Bridge.Persistence.Migrations
                         .HasColumnType("varchar(6) CHARACTER SET utf8mb4")
                         .HasMaxLength(6);
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
                     b.ToTable("QuestionType");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            Code = "MCQ",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            Code = "SA",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            Code = "nonmcq",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            Code = "abc",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false
-                        });
                 });
 
             modelBuilder.Entity("Bridge.Domain.Entities.Quiz", b =>
@@ -3909,29 +2557,20 @@ namespace Bridge.Persistence.Migrations
                         .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("ItemOrder")
                         .HasColumnType("int");
 
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -3961,26 +2600,17 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("ChapterId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("Progress")
                         .HasColumnType("bigint");
@@ -4002,26 +2632,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("QuestionId")
                         .HasColumnType("bigint");
@@ -4047,26 +2668,17 @@ namespace Bridge.Persistence.Migrations
                     b.Property<int>("Attempts")
                         .HasColumnType("int");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("QSummary")
                         .HasColumnType("int");
@@ -4088,26 +2700,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("isStatus")
                         .HasColumnType("tinyint(1)");
@@ -4138,26 +2741,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -4168,170 +2762,6 @@ namespace Bridge.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Role");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Administrator",
-                            RoleKey = "admin"
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Analyst",
-                            RoleKey = "analyst"
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Teacher",
-                            RoleKey = "teacher"
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Student",
-                            RoleKey = "student"
-                        },
-                        new
-                        {
-                            Id = 5L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Customer",
-                            RoleKey = "customer"
-                        },
-                        new
-                        {
-                            Id = 6L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "AAF manager",
-                            RoleKey = "aaf_manager"
-                        },
-                        new
-                        {
-                            Id = 7L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Coordinator",
-                            RoleKey = "coordinator"
-                        },
-                        new
-                        {
-                            Id = 8L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Edit team leader",
-                            RoleKey = "edit_team_leader"
-                        },
-                        new
-                        {
-                            Id = 9L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Shooting team leader",
-                            RoleKey = "shooting_team_leader"
-                        },
-                        new
-                        {
-                            Id = 10L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Graphics team leader",
-                            RoleKey = "graphics_team_leader"
-                        },
-                        new
-                        {
-                            Id = 11L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Quality assurance",
-                            RoleKey = "quality_assurance"
-                        },
-                        new
-                        {
-                            Id = 12L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Feedback edge team",
-                            RoleKey = "feedback_edge_team"
-                        },
-                        new
-                        {
-                            Id = 13L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Sales admin",
-                            RoleKey = "sales_admin"
-                        },
-                        new
-                        {
-                            Id = 14L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Filming staff",
-                            RoleKey = "filming_staff"
-                        },
-                        new
-                        {
-                            Id = 15L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Editing staff",
-                            RoleKey = "editing_staff"
-                        },
-                        new
-                        {
-                            Id = 16L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Graphics staff",
-                            RoleKey = "graphics_staff"
-                        },
-                        new
-                        {
-                            Id = 17L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Sales Agent",
-                            RoleKey = "sales_agent"
-                        },
-                        new
-                        {
-                            Id = 18L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Parent",
-                            RoleKey = "parent"
-                        });
                 });
 
             modelBuilder.Entity("Bridge.Domain.Entities.SalesAgent", b =>
@@ -4349,19 +2779,13 @@ namespace Bridge.Persistence.Migrations
                     b.Property<int>("AgreedMonthlyDeposit")
                         .HasColumnType("int");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("CurrencyCode")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Email")
@@ -4373,14 +2797,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("PartnerBackgroud")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -4408,26 +2829,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("Tax")
                         .HasColumnType("int");
@@ -4435,16 +2847,6 @@ namespace Bridge.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("SalesTax");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Tax = 4
-                        });
                 });
 
             modelBuilder.Entity("Bridge.Domain.Entities.School", b =>
@@ -4456,26 +2858,17 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("Code")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -4497,17 +2890,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("Computers")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Dongles")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -4515,14 +2902,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("InternetAccessId")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Monitors")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -4583,26 +2967,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("ParentId")
                         .HasColumnType("bigint");
@@ -4627,26 +3002,17 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("ChapterStatus")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("StudentId")
                         .HasColumnType("bigint");
@@ -4671,26 +3037,17 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("CourseStatus")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("StudentId")
                         .HasColumnType("bigint");
@@ -4700,35 +3057,58 @@ namespace Bridge.Persistence.Migrations
                     b.ToTable("StudentCourseProgress");
                 });
 
+            modelBuilder.Entity("Bridge.Domain.Entities.StudentFileProgress", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long>("FileId")
+                        .HasColumnType("bigint");
+
+                    b.Property<decimal>("FileProgress")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<int?>("LastModifiedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long>("StudentId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("StudentFileProgress");
+                });
+
             modelBuilder.Entity("Bridge.Domain.Entities.StudentLessonProgress", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("Duration")
                         .HasColumnType("bigint");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("LessonId")
                         .HasColumnType("bigint");
@@ -4768,26 +3148,17 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("CourseStatus")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("LessonId")
                         .HasColumnType("bigint");
@@ -4803,6 +3174,32 @@ namespace Bridge.Persistence.Migrations
                     b.ToTable("StudentProgress");
                 });
 
+            modelBuilder.Entity("Bridge.Domain.Entities.Subcriptions", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Subcriptions");
+                });
+
             modelBuilder.Entity("Bridge.Domain.Entities.SubscriptionMetadata", b =>
                 {
                     b.Property<long>("Id")
@@ -4812,17 +3209,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("CourseId")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("DiscountPackageId")
                         .HasColumnType("bigint");
@@ -4833,14 +3224,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("EnrollmentToDate")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("NoOfMonths")
                         .HasColumnType("int");
@@ -4877,26 +3265,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("SubscriptionMetadataId")
                         .HasColumnType("bigint");
@@ -4915,26 +3294,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -4942,40 +3312,6 @@ namespace Bridge.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TaskActivityCategoryFeedBacks");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            CreationTime = "4/1/2020 9:24:07 AM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "In Queue"
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            CreationTime = "4/1/2020 9:24:07 AM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "In Progress"
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            CreationTime = "4/1/2020 9:24:07 AM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Completed"
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            CreationTime = "4/1/2020 9:24:07 AM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Archived"
-                        });
                 });
 
             modelBuilder.Entity("Bridge.Domain.Entities.TaskActivityFeedBack", b =>
@@ -4987,26 +3323,17 @@ namespace Bridge.Persistence.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("TaskId")
                         .HasColumnType("bigint");
@@ -5025,26 +3352,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -5052,64 +3370,6 @@ namespace Bridge.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TaskCategoryFeedBacks");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            CreationTime = "4/1/2020 9:24:07 AM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Something Isn't Working in the App"
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            CreationTime = "4/1/2020 9:24:07 AM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Video Issue"
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            CreationTime = "4/1/2020 9:24:07 AM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Text Issue"
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            CreationTime = "4/1/2020 9:24:07 AM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Lesson Assignment Issue"
-                        },
-                        new
-                        {
-                            Id = 5L,
-                            CreationTime = "4/1/2020 9:24:07 AM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Chapter Assignment Issue"
-                        },
-                        new
-                        {
-                            Id = 6L,
-                            CreationTime = "4/1/2020 9:24:07 AM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "Quiz Issue"
-                        },
-                        new
-                        {
-                            Id = 7L,
-                            CreationTime = "4/1/2020 9:24:07 AM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            Name = "General Feedback"
-                        });
                 });
 
             modelBuilder.Entity("Bridge.Domain.Entities.TaskFeedBack", b =>
@@ -5139,17 +3399,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long?>("CourseId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -5160,14 +3414,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long?>("GradeId")
                         .HasColumnType("bigint");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long?>("LessonId")
                         .HasColumnType("bigint");
@@ -5201,29 +3452,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("FileId")
                         .HasColumnType("bigint");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("TaskId")
                         .HasColumnType("bigint");
@@ -5239,26 +3481,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Terms")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -5274,43 +3507,24 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("Interval")
                         .HasColumnType("int");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
                     b.ToTable("TimeIntervals");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            Interval = 5,
-                            IsDeleted = false
-                        });
                 });
 
             modelBuilder.Entity("Bridge.Domain.Entities.User", b =>
@@ -5325,17 +3539,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("Bio")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Email")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -5346,14 +3554,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<bool>("IsBlocked")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Password")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -5409,35 +3614,6 @@ namespace Bridge.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            AuthId = "auth0|5c08a3afe9f0262e9378a9b2",
-                            Bio = "string",
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            Email = "adminuser@email.com",
-                            FullName = "Admin",
-                            IsBlocked = false,
-                            IsDeleted = false,
-                            Password = "F925916E2754E5E03F75DD58A5733251",
-                            ProfilePicUrl = "https://www.googleapis.com/download/storage/v1/b/edg-primary-profile-image-storage/o/3_d279c045-9325-4cbb-bd31-16a40f70a080.png?generation=1540626401907278&alt=media",
-                            Username = "Admin",
-                            intervals = 0,
-                            is_assignment_authorized = false,
-                            is_discussion_authorized = false,
-                            is_library_authorized = false,
-                            is_skippable = true,
-                            isallowmap = false,
-                            isfirstlogin = false,
-                            isforgot = false,
-                            istimeouton = false,
-                            istrial = false,
-                            reminder = 0,
-                            timeout = 0
-                        });
                 });
 
             modelBuilder.Entity("Bridge.Domain.Entities.UserCourse", b =>
@@ -5449,32 +3625,23 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("CourseId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("EndDate")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<bool?>("IsExpire")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("StartDate")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -5505,17 +3672,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long?>("CourseId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long?>("DiscussionId")
                         .HasColumnType("bigint");
@@ -5523,17 +3684,14 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long?>("FileId")
                         .HasColumnType("bigint");
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<bool>("IsRead")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long?>("LessionId")
                         .HasColumnType("bigint");
@@ -5564,26 +3722,17 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("AnsweredQuestion")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("PassingScore")
                         .HasColumnType("bigint");
@@ -5614,26 +3763,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("RoleId")
                         .HasColumnType("bigint");
@@ -5644,17 +3784,6 @@ namespace Bridge.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UserRole");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            CreationTime = "4/1/2020 2:54:07 PM",
-                            CreatorUserId = 1,
-                            IsDeleted = false,
-                            RoleId = 1L,
-                            UserId = 1L
-                        });
                 });
 
             modelBuilder.Entity("Bridge.Domain.Entities.UserSessions", b =>
@@ -5666,17 +3795,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("AccessToken")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("CreationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("CreatorUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeletionTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("DeviceToken")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -5685,14 +3808,11 @@ namespace Bridge.Persistence.Migrations
                         .HasColumnType("varchar(10) CHARACTER SET utf8mb4")
                         .HasMaxLength(10);
 
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastModificationTime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("LastModifierUserId")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("UserId")
                         .HasColumnType("bigint");
