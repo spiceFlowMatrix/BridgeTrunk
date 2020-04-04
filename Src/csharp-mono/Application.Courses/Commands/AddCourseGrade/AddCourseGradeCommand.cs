@@ -1,9 +1,9 @@
 using MediatR;
 using Bridge.Application.Models;
 
-namespace Application.Courses.Commands.UpsertCourseGrade
+namespace Application.Courses.Commands.AddCourseGrade
 {
-    public class UpsertCourseGradeCommand : IRequest<ApiResponse>
+    public class AddCourseGradeCommand : IRequest<ApiResponse>
     {
         public long courseid { get; set; }
         public long gradeid { get; set; }

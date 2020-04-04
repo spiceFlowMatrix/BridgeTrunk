@@ -1,8 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
-using System;
-using System.Collections.Generic;
-
 namespace Bridge.Application.Models
 {
     public class ApiResponse

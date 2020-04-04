@@ -17,7 +17,6 @@ namespace Bridge.Domain.Entities
         public string FocalPoint { get; set; }
         public string Position { get; set; }
         public string PhysicalAddress { get; set; }
-        //public long CurrencyId { get; set; }
         public string CurrencyCode { get; set; }
         public int AgreedMonthlyDeposit { get; set; }
         public bool IsActive { get; set; }

@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Bridge.Domain.Entities
 {
-    public class StudentLessonComplete //: AuditableEntity, IStudentLessonComplete
+    public class StudentLessonComplete
     {
         public Lesson Lesson { get; set; }
-        //public Video Video { get; set; }
         public PdfFile PdfFile { get; set; }
         public Quiz Quiz { get; set; }
         public StudentLessonProgress StudentProgress { get; set; }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Bridge.Domain.Entities
 {
-    public class UpdateStudentCourseProgress //: AuditableEntity, IUpdateBundleCourseProgress
+    public class UpdateStudentCourseProgress
     {
         public long ID { get; set; }
 
