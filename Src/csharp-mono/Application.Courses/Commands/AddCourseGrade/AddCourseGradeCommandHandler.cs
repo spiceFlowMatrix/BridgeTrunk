@@ -21,15 +21,17 @@ namespace Application.Courses.Commands.AddCourseGrade
         {
             ApiResponse res = new ApiResponse();
             try {
-            var isExist = await _dbContext.CourseGrade.Where(x=>x.CourseId==request.courseid && x.IsDeleted==false).FirstOrDefaultAsync();
+            var isExist = await _dbContext.CourseGrade.Where(x=>x.CourseId==request.courseid
+            //  && x.IsDeleted==false
+             ).FirstOrDefaultAsync();
             if(isExist==null)
             {
                 CourseGrade obj= new CourseGrade(){
                 CourseId = request.courseid,
                 Gradeid = request.gradeid,
-                IsDeleted = false,
-                CreatedOn = DateTime.UtcNow,
-                CreatedBy = 0
+               // IsDeleted = false,
+                CreationTime = DateTime.UtcNow,
+                CreatorUserId = 0
                 };
                 await _dbContext.CourseGrade.AddAsync(obj);
                 await _dbContext.SaveChangesAsync(cancellationToken);
@@ -48,8 +50,8 @@ namespace Application.Courses.Commands.AddCourseGrade
                 {                       
                     isExist.CourseId = request.courseid;
                     isExist.Gradeid = request.gradeid;                    
-                    isExist.LastModifiedOn = DateTime.UtcNow;
-                    isExist.LastModifiedBy = 0;
+                    isExist.LastModificationTime = DateTime.UtcNow;
+                    isExist.LastModifierUserId = 0;
                     await _dbContext.SaveChangesAsync(cancellationToken);
                     CourseGradeVm model=new CourseGradeVm(){
                     id=isExist.Id,
