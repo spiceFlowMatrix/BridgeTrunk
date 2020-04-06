@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Security.Claims;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Bridge.WebUI.Services
 {
@@ -11,7 +13,7 @@ namespace Bridge.WebUI.Services
         {
             UserId = Convert.ToInt32(httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier));
             IsAuthenticated = UserId != null;
-            RoleList = httpContextAccessor.HttpContext?.User?.Claims.Where(c => c.Type == "https://noon-online/roles").ToList();
+            RoleList = httpContextAccessor.HttpContext?.User?.Claims.Where(c => c.Type == "https://noon-online/roles").Select(c=> c.Value).ToList();
         }
         public int? UserId { get; }
 

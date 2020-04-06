@@ -12,6 +12,7 @@ using Application.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.IO;
 using Google.Cloud.Storage.V1;
+using Google.Apis.Auth.OAuth2;
 
 namespace Application.Courses.Commands.AddCourse
 {
@@ -35,10 +36,10 @@ namespace Application.Courses.Commands.AddCourse
             {
                 if (_userService.RoleList.Contains(Roles.admin.ToString()))
                 {
-                    string jsonPath = Path.GetFileName(hostingEnvironment.WebRootPath + "/training24-28e994f9833c.json");
-                    var credential = GoogleCredential.FromFile(jsonPath);
+                    // string jsonPath = Path.GetFileName(hostingEnvironment.WebRootPath + "/training24-28e994f9833c.json");
+                    var credential = GoogleCredential.FromFile("../../training24-28e994f9833c.json");
                     var _storageClient = StorageClient.Create(credential);
-                    var userId = await _userHelper.getUserId(_userService.UserId);
+                    var userId = await _userHelper.getUserId(_userService.UserId.ToString());
                     if (request.file != null)
                     {
                         IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".gif", ".png" };
