@@ -10,6 +10,7 @@ using Application.Courses.Commands.DeleteCourseGrade;
 using Application.Courses.Queries.GetCourseGrade;
 using Application.Courses.Queries.GetCourseListByGradeId;
 using Application.Courses.Queries.GetCoursePreviewById;
+using Application.Courses.Commands.AddCourse;
 
 namespace WebUI.Controllers.Courses
 {
@@ -25,7 +26,25 @@ namespace WebUI.Controllers.Courses
             {
                 addCourseItemProgressSyncs = addCourseItemProgressSyncs
             };
-            var result= await _mediator.Send(command);
+            var result = await _mediator.Send(command);
+            return StatusCode(result.ReturnCode, result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> PostAsync()
+        {
+            // uses role
+            AddCourseCommand command = new AddCourseCommand
+            {
+                file = Request.Form.Files[0],
+                FileName = Request.Form.Files[0].FileName,
+                name = Request.Form["name"],
+                code = Request.Form["code"],
+                description = Request.Form["description"],
+                gradeid = string.IsNullOrEmpty(Request.Form["gradeid"]) ? 0 : long.Parse(Request.Form["gradeid"]),
+                istrial = string.IsNullOrEmpty(Request.Form["istrial"]) ? false : bool.Parse(Request.Form["istrial"])
+            };
+            var result = await _mediator.Send(command);
             return StatusCode(result.ReturnCode, result);
         }
 

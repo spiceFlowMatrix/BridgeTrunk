@@ -32,13 +32,21 @@ namespace Application.Courses.Commands.AddCourseItemProgressSync
                         
                         Quizid = courseItemProgress.quizid,
                         // CreationTime = DateTime.Now.ToString()
-                    });
-                    await _dbContext.SaveChangesAsync(cancellationToken);
+                    });  
                 }
+                await _dbContext.SaveChangesAsync(cancellationToken);
+                res.data = request.addCourseItemProgressSyncs;
+                res.response_code = 0;
+                res.message = "CourseItemProgressSync";
+                res.status = "Success";
+                res.ReturnCode = 200;
             }
             catch (Exception ex)
             {
-                throw;
+                res.response_code = 2;
+                res.message = ex.Message;
+                res.status = "Failure";
+                res.ReturnCode = 500;
             }
             return res;
         }

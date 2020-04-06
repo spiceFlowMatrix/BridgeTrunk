@@ -11,9 +11,11 @@ namespace Bridge.WebUI.Services
         {
             UserId = Convert.ToInt32(httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier));
             IsAuthenticated = UserId != null;
+            RoleList = httpContextAccessor.HttpContext?.User?.Claims.Where(c => c.Type == "https://noon-online/roles").ToList();
         }
         public int? UserId { get; }
 
         public bool IsAuthenticated { get; }
+        public List<string> RoleList { get; }
     }
 }
