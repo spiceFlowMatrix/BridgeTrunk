@@ -85,7 +85,9 @@ namespace Application.Helpers
         //getting userid by auth0 id
         public async Task<string> getUserId(string authid)
         {
-            User user = await _dbContext.Users.FirstOrDefaultAsync(b => b.AuthId == authid && b.IsDeleted == false);
+            User user = await _dbContext.Users.FirstOrDefaultAsync(b => b.AuthId == authid 
+            // && b.IsDeleted == false
+            );
             if (user != null)
             {
                 return user.Id.ToString();

@@ -20,7 +20,9 @@ namespace Application.Courses.Queries.GetCourseGrade
         {
             ApiResponse res = new ApiResponse();
             try {
-                   CourseGradeVm objVm= await _dbContext.CourseGrade.Where(x=>x.Id==request.id && x.IsDeleted==false).Select(y=>new CourseGradeVm {
+                   CourseGradeVm objVm= await _dbContext.CourseGrade.Where(x=>x.Id==request.id
+                    // && x.IsDeleted==false
+                    ).Select(y=>new CourseGradeVm {
                        id = y.Id,
                        courseid = y.CourseId,
                        gradeid = y.Gradeid

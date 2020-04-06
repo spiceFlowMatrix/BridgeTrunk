@@ -20,13 +20,15 @@ namespace Application.Courses.Commands.UpdateCourseGrade
         {
             ApiResponse res = new ApiResponse();
             try {
-                var isExist= await _dbContext.CourseGrade.Where(x=>x.Id==request.id && x.IsDeleted==false).FirstOrDefaultAsync();
+                var isExist= await _dbContext.CourseGrade.Where(x=>x.Id==request.id 
+                // && x.IsDeleted==false
+                ).FirstOrDefaultAsync();
                     if(isExist!=null)
                     {
                     isExist.CourseId = request.courseid;
                     isExist.Gradeid = request.gradeid;                
-                    isExist.LastModifiedOn = DateTime.UtcNow;
-                    isExist.LastModifiedBy = 0;
+                    isExist.LastModificationTime = DateTime.UtcNow;
+                    isExist.LastModifierUserId = 0;
                     await _dbContext.SaveChangesAsync(cancellationToken);
                     CourseGradeVm model=new CourseGradeVm(){
                     id=isExist.Id,

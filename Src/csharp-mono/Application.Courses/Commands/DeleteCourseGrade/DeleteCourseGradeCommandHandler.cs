@@ -20,12 +20,14 @@ namespace Application.Courses.Commands.DeleteCourseGrade
         {
             ApiResponse res = new ApiResponse();
             try {
-                    var isExist= await _dbContext.CourseGrade.Where(x=>x.Id==request.id && x.IsDeleted==false).FirstOrDefaultAsync();
+                    var isExist= await _dbContext.CourseGrade.Where(x=>x.Id==request.id
+                    //  && x.IsDeleted==false
+                     ).FirstOrDefaultAsync();
                     if(isExist!=null)
                     {
-                    isExist.IsDeleted = true;               
-                    isExist.LastModifiedOn = DateTime.UtcNow;
-                    isExist.LastModifiedBy = 0;
+                  //  isExist.IsDeleted = true;               
+                    isExist.LastModificationTime = DateTime.UtcNow;
+                    isExist.LastModifierUserId = 0;
                     await _dbContext.SaveChangesAsync(cancellationToken);
                     CourseGradeVm model=new CourseGradeVm(){
                     id=isExist.Id,
