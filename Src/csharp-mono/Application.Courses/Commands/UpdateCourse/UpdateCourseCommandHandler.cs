@@ -83,7 +83,7 @@ namespace Application.Courses.Commands.UpdateCourse
                             courseGradeExits.CourseId = request.id;
                             courseGradeExits.Gradeid = request.gradeid;
                             // courseGradeExits.IsDeleted = false;
-                            // courseGradeExits.LastModificationTime = DateTime.Now.ToString();
+                            courseGradeExits.LastModificationTime = DateTime.Now.ToString();
                             courseGradeExits.LastModifierUserId = int.Parse(userId);
                             await _dbContext.SaveChangesAsync(cancellationToken);
                         }

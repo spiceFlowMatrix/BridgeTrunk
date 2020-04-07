@@ -64,8 +64,8 @@ namespace Application.Courses.Commands.AddCourse
                         Code = request.code,
                         Description = request.description,
                         Image = mediaLink,
-                        // CreationTime = DateTime.Now.ToString(),
-                        // CreatorUserId = userId,
+                        CreationTime = DateTime.Now.ToString(),
+                        CreatorUserId = int.Parse(userId),
                         istrial = request.istrial,
                         // IsDeleted = false
                     };
@@ -76,8 +76,8 @@ namespace Application.Courses.Commands.AddCourse
                         CourseId = obj.Id,
                         Gradeid = request.gradeid,
                         //IsDeleted = false,
-                        //CreationTime = DateTime.Now.ToString();
-                        //CreatorUserId = userId,
+                        CreationTime = DateTime.Now.ToString(),
+                        CreatorUserId = int.Parse(userId)
                     };
                     _dbContext.CourseGrade.Add(courseGrade);
                     await _dbContext.SaveChangesAsync(cancellationToken);

@@ -7,15 +7,20 @@ using MediatR;
 using Bridge.Application.Models;
 using Bridge.Domain.Entities;
 using Bridge.Application.Interfaces;
+using Application.Interfaces;
 
 namespace Application.Courses.Commands.AddCourseItemProgressSync
 {
     public class AddCourseItemProgressSyncCommandHandler: IRequestHandler<AddCourseItemProgressSyncCommand, ApiResponse>
     {
         private readonly IBridgeDbContext _dbContext;
-        public AddCourseItemProgressSyncCommandHandler(IBridgeDbContext dbContext)
+        private readonly ICurrentUserService _userService;
+        private readonly IUserHelper _userHelper;
+        public AddCourseItemProgressSyncCommandHandler(IBridgeDbContext dbContext, ICurrentUserService userService, IUserHelper userHelper)
         {
             _dbContext = dbContext;
+            _userService = userService;
+            _userHelper = userHelper;
         }
 
         public async Task<ApiResponse> Handle(AddCourseItemProgressSyncCommand request, CancellationToken cancellationToken)
@@ -23,6 +28,7 @@ namespace Application.Courses.Commands.AddCourseItemProgressSync
             ApiResponse res = new ApiResponse();
             try
             {
+                var userId = await _userHelper.getUserId(_userService.UserId.ToString());
                 foreach (var courseItemProgress in request.addCourseItemProgressSyncs)
                 {
                     _dbContext.CourseItemProgressSync.Add(new CourseItemProgressSync()
@@ -31,7 +37,8 @@ namespace Application.Courses.Commands.AddCourseItemProgressSync
                         Lessonprogress = courseItemProgress.lessonprogress,
                         
                         Quizid = courseItemProgress.quizid,
-                        // CreationTime = DateTime.Now.ToString()
+                        CreationTime = DateTime.Now.ToString(),
+                        CreatorUserId = int.Parse(userId)
                     });  
                 }
                 await _dbContext.SaveChangesAsync(cancellationToken);
