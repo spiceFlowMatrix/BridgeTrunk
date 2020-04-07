@@ -2,9 +2,9 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Bridge.Application.Interfaces;
 using Bridge.Application.Models;
 using Bridge.Domain.Entities;
-using Bridge.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,8 +12,8 @@ namespace Application.Courses.Commands.UpsertCourseDefinition
 {
     public class UpsertCourseDefinationCommandHandler : IRequestHandler<UpsertCourseDefinationCommand, ApiResponse>
     {
-        private readonly BridgeDbContext _dbContext;
-        public UpsertCourseDefinationCommandHandler(BridgeDbContext dbContext)
+        private readonly IBridgeDbContext _dbContext;
+        public UpsertCourseDefinationCommandHandler(IBridgeDbContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -24,9 +24,9 @@ namespace Application.Courses.Commands.UpsertCourseDefinition
             {
                 if (request.Id == 0)
                 {
-                    CourseDefination coourse = _dbContext.CourseDefination.FirstOrDefault(b => b.Subject == request.Subject);
+                    CourseDefination ifExistCourse = await _dbContext.CourseDefination.FirstOrDefaultAsync(b => b.Subject == request.Subject);
 
-                    if (coourse != null)
+                    if (ifExistCourse != null)
                     {
                         res.response_code = 1;
                         res.message = "Duplicate entry.";
@@ -40,10 +40,13 @@ namespace Application.Courses.Commands.UpsertCourseDefinition
                             CreatedOn = DateTime.UtcNow,
                             CreatedBy = 0,
                             IsDeleted = false,
-                            //Subject = request.Subject
+                            Subject = request.Subject,
+                            BasePrice = request.BasePrice,
+                            GradeId = request.GradeId,
+                            CourseId = request.CourseId,
                         };
-                        await _dbContext.AddAsync(obj);
-                        await _dbContext.SaveChangesAsync();
+                        await _dbContext.CourseDefination.AddAsync(obj);
+                        await _dbContext.SaveChangesAsync(cancellationToken);
                         UpsertCourseDefinitionVm vmObj = new UpsertCourseDefinitionVm();
                         if (obj != null)
                         {
@@ -70,9 +73,9 @@ namespace Application.Courses.Commands.UpsertCourseDefinition
 
                 else
                 {
-                    CourseDefination courseDefination = _dbContext.CourseDefination.Where(b => b.Subject.ToLower().ToString() == request.Subject.ToLower().ToString() && b.Id == request.Id).SingleOrDefault();
+                    CourseDefination ifExistCourseDefinition = _dbContext.CourseDefination.Where(b => b.Subject.ToLower().ToString() == request.Subject.ToLower().ToString() && b.Id == request.Id).SingleOrDefault();
 
-                    if (courseDefination != null)
+                    if (ifExistCourseDefinition != null)
                     {
                         res.response_code = 1;
                         res.message = "Duplicate entry.";
@@ -81,12 +84,13 @@ namespace Application.Courses.Commands.UpsertCourseDefinition
                     }
                     else
                     {
-                        courseDefination.BasePrice = request.BasePrice;
-                        courseDefination.CourseId = request.CourseId;
-                        courseDefination.GradeId = request.GradeId;
-                        courseDefination.Subject = request.Subject;
-                        courseDefination.LastModifiedOn = DateTime.UtcNow;
-                        courseDefination.LastModifiedBy = 0;
+                        ifExistCourseDefinition.BasePrice = request.BasePrice;
+                        ifExistCourseDefinition.CourseId = request.CourseId;
+                        ifExistCourseDefinition.GradeId = request.GradeId;
+                        ifExistCourseDefinition.Subject = request.Subject;
+                        ifExistCourseDefinition.LastModifiedOn = DateTime.UtcNow;
+                        ifExistCourseDefinition.LastModifiedBy = 0;
+                        await _dbContext.SaveChangesAsync(cancellationToken);
                     }
                 }
             }
