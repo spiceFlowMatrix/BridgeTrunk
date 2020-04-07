@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bridge.Persistence.Migrations
 {
     [DbContext(typeof(BridgeDbContext))]
-    [Migration("20200404072817_InitialMigrations")]
-    partial class InitialMigrations
+    [Migration("20200407053805_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,17 +25,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -60,17 +60,17 @@ namespace Bridge.Persistence.Migrations
                     b.Property<int>("Commission")
                         .HasColumnType("int");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -86,20 +86,20 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("AnswerId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("FileId")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -115,11 +115,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("ActivityTime")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Grade")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -130,11 +130,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("Isp")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Latitude")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -183,11 +183,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("Code")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -195,11 +195,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<int>("ItemOrder")
                         .HasColumnType("int");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -218,20 +218,20 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("AssignmentId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("FileId")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -247,20 +247,20 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("AssignmentId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsApproved")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("StudentId")
                         .HasColumnType("bigint");
@@ -282,11 +282,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("Comment")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsApproved")
                         .HasColumnType("tinyint(1)");
@@ -294,11 +294,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<bool>("IsSubmission")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Remark")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -323,20 +323,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("FileId")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("SubmissionId")
                         .HasColumnType("bigint");
@@ -358,11 +358,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("BookPublisher")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -376,11 +376,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<bool>("IsPublished")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("PublishedTime")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -411,17 +411,17 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("BucketName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -434,17 +434,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -466,17 +466,17 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("CourseId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -495,20 +495,20 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("CourseId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<int>("ItemOrder")
                         .HasColumnType("int");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -533,17 +533,17 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("CourseId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("Progress")
                         .HasColumnType("bigint");
@@ -565,20 +565,20 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("ChapterId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<int>("ItemOrder")
                         .HasColumnType("int");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("QuizId")
                         .HasColumnType("bigint");
@@ -597,11 +597,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("CountryCode")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -609,11 +609,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Phone")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -632,11 +632,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("Code")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -644,11 +644,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("Image")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -676,20 +676,20 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("CourseId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("GradeId")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Subject")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -708,20 +708,20 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("CourseId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("Gradeid")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -734,20 +734,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("IsStatus")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("Lessonid")
                         .HasColumnType("bigint");
@@ -772,17 +772,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("abbreviation")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -804,17 +804,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("intervals")
                         .HasColumnType("int");
@@ -839,11 +839,11 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("DepositAmount")
                         .HasColumnType("decimal(65,30)");
@@ -860,11 +860,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<bool>("IsRevoke")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("SalesAgentId")
                         .HasColumnType("bigint");
@@ -880,20 +880,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<int>("FreeSubscriptions")
                         .HasColumnType("int");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<int>("OffSubscriptions")
                         .HasColumnType("int");
@@ -915,17 +915,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -944,11 +944,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long?>("CommentId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Duration")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -962,11 +962,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("FileTypeId")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -991,20 +991,20 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("CommentId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("DisLike")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("Like")
                         .HasColumnType("tinyint(1)");
@@ -1026,17 +1026,17 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("Comment")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("TopicId")
                         .HasColumnType("bigint");
@@ -1052,11 +1052,11 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1073,11 +1073,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("FileTypeId")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1105,11 +1105,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("CourseId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1120,11 +1120,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<bool>("IsPublic")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1140,20 +1140,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("DisLike")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("Like")
                         .HasColumnType("tinyint(1)");
@@ -1175,20 +1175,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("DocumentUrl")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1207,17 +1207,17 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("AccountCode")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("Type")
                         .HasColumnType("int");
@@ -1233,11 +1233,11 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1245,11 +1245,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("FeedbackId")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Time")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1265,11 +1265,11 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("FeedbackId")
                         .HasColumnType("bigint");
@@ -1277,11 +1277,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("FeedbackTaskId")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("Type")
                         .HasColumnType("bigint");
@@ -1300,17 +1300,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1326,11 +1326,11 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("FeedBackId")
                         .HasColumnType("bigint");
@@ -1338,11 +1338,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<bool>("IsManager")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("Type")
                         .HasColumnType("bigint");
@@ -1361,11 +1361,11 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1376,11 +1376,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("FileLink")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("Type")
                         .HasColumnType("bigint");
@@ -1396,20 +1396,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("FeedbackId")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("Status")
                         .HasColumnType("bigint");
@@ -1425,17 +1425,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1466,11 +1466,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("CourseId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1478,11 +1478,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("GradeId")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("LessonId")
                         .HasColumnType("bigint");
@@ -1504,11 +1504,11 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("FeedtimeId")
                         .HasColumnType("bigint");
@@ -1516,11 +1516,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("FileId")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -1533,20 +1533,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("FileId")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("LessonId")
                         .HasColumnType("bigint");
@@ -1568,20 +1568,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Filetype")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -1594,11 +1594,11 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1615,11 +1615,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("FileTypeId")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1641,20 +1641,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1679,11 +1679,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("CountryId")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("CurrentAddress")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1703,11 +1703,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("IdCardNumber")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("MaritalStatusId")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1786,11 +1786,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("Code")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1798,11 +1798,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<int>("ItemOrder")
                         .HasColumnType("int");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1821,20 +1821,20 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("Code")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("LessonId")
                         .HasColumnType("bigint");
@@ -1856,20 +1856,20 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("AssignmentId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("FileId")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -1888,11 +1888,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("Comment")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsApproved")
                         .HasColumnType("tinyint(1)");
@@ -1900,11 +1900,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<bool>("IsSubmission")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Remark")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -1929,20 +1929,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("FileId")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("SubmissionId")
                         .HasColumnType("bigint");
@@ -1958,20 +1958,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("FileId")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("LessionId")
                         .HasColumnType("bigint");
@@ -2034,20 +2034,20 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("ActionUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("EntityKey")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("TimeStamp")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -2069,20 +2069,20 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("Action")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("EntityType")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -2095,20 +2095,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Data")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("TestColumn")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -2124,17 +2124,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("individual_receipt_notes")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -2162,11 +2162,11 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("DetailId")
                         .HasColumnType("bigint");
@@ -2174,11 +2174,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<int>("DetailTypeId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("MetadataId")
                         .HasColumnType("bigint");
@@ -2194,20 +2194,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsRead")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("LogObjectId")
                         .HasColumnType("bigint");
@@ -2226,17 +2226,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -2258,17 +2258,17 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("CourseId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("PackageId")
                         .HasColumnType("bigint");
@@ -2284,11 +2284,11 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("FileId")
                         .HasColumnType("bigint");
@@ -2299,11 +2299,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<bool>("IsStatus")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<long?>("LessonId")
                         .HasColumnType("bigint");
@@ -2334,17 +2334,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -2360,17 +2360,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("PdfFile")
                         .HasColumnType("bigint");
@@ -2389,17 +2389,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("PdfFile")
                         .HasColumnType("bigint");
@@ -2418,11 +2418,11 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Explanation")
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
@@ -2431,11 +2431,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<bool>("IsMultiAnswer")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("QuestionText")
                         .IsRequired()
@@ -2463,11 +2463,11 @@ namespace Bridge.Persistence.Migrations
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("ExtraText")
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
@@ -2476,11 +2476,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<bool>("IsCorrect")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("QuestionId")
                         .HasColumnType("bigint");
@@ -2498,20 +2498,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("FileId")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("QuestionId")
                         .HasColumnType("bigint");
@@ -2532,17 +2532,17 @@ namespace Bridge.Persistence.Migrations
                         .HasColumnType("varchar(6) CHARACTER SET utf8mb4")
                         .HasMaxLength(6);
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -2559,20 +2559,20 @@ namespace Bridge.Persistence.Migrations
                         .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<int>("ItemOrder")
                         .HasColumnType("int");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -2602,17 +2602,17 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("ChapterId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("Progress")
                         .HasColumnType("bigint");
@@ -2634,17 +2634,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("QuestionId")
                         .HasColumnType("bigint");
@@ -2670,17 +2670,17 @@ namespace Bridge.Persistence.Migrations
                     b.Property<int>("Attempts")
                         .HasColumnType("int");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("QSummary")
                         .HasColumnType("int");
@@ -2702,17 +2702,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("isStatus")
                         .HasColumnType("tinyint(1)");
@@ -2743,17 +2743,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -2781,11 +2781,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<int>("AgreedMonthlyDeposit")
                         .HasColumnType("int");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("CurrencyCode")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -2799,11 +2799,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("PartnerBackgroud")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -2831,17 +2831,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("Tax")
                         .HasColumnType("int");
@@ -2860,17 +2860,17 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("Code")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -2892,11 +2892,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("Computers")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Dongles")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -2904,11 +2904,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("InternetAccessId")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Monitors")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -2969,17 +2969,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("ParentId")
                         .HasColumnType("bigint");
@@ -3004,17 +3004,17 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("ChapterStatus")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("StudentId")
                         .HasColumnType("bigint");
@@ -3039,17 +3039,17 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("CourseStatus")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("StudentId")
                         .HasColumnType("bigint");
@@ -3065,11 +3065,11 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("FileId")
                         .HasColumnType("bigint");
@@ -3077,11 +3077,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<decimal>("FileProgress")
                         .HasColumnType("decimal(65,30)");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("StudentId")
                         .HasColumnType("bigint");
@@ -3097,20 +3097,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("Duration")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("LessonId")
                         .HasColumnType("bigint");
@@ -3150,17 +3150,17 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("CourseStatus")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("LessonId")
                         .HasColumnType("bigint");
@@ -3182,17 +3182,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -3211,11 +3211,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("CourseId")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("DiscountPackageId")
                         .HasColumnType("bigint");
@@ -3226,11 +3226,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("EnrollmentToDate")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<int>("NoOfMonths")
                         .HasColumnType("int");
@@ -3267,17 +3267,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("SubscriptionMetadataId")
                         .HasColumnType("bigint");
@@ -3296,17 +3296,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -3325,17 +3325,17 @@ namespace Bridge.Persistence.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("TaskId")
                         .HasColumnType("bigint");
@@ -3354,17 +3354,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -3401,11 +3401,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long?>("CourseId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -3416,11 +3416,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long?>("GradeId")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<long?>("LessonId")
                         .HasColumnType("bigint");
@@ -3454,20 +3454,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("FileId")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("TaskId")
                         .HasColumnType("bigint");
@@ -3483,17 +3483,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Terms")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -3509,20 +3509,20 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Interval")
                         .HasColumnType("int");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -3541,11 +3541,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("Bio")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -3556,11 +3556,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<bool>("IsBlocked")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Password")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -3627,11 +3627,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("CourseId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("EndDate")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -3639,11 +3639,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<bool?>("IsExpire")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("StartDate")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -3674,11 +3674,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long?>("CourseId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<long?>("DiscussionId")
                         .HasColumnType("bigint");
@@ -3689,11 +3689,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<bool>("IsRead")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<long?>("LessionId")
                         .HasColumnType("bigint");
@@ -3724,17 +3724,17 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long>("AnsweredQuestion")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("PassingScore")
                         .HasColumnType("bigint");
@@ -3765,17 +3765,17 @@ namespace Bridge.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CreatorUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int?>("LastModifierUserId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("RoleId")
                         .HasColumnType("bigint");
@@ -3797,11 +3797,11 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("AccessToken")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int>("CreatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("DeviceToken")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -3810,11 +3810,11 @@ namespace Bridge.Persistence.Migrations
                         .HasColumnType("varchar(10) CHARACTER SET utf8mb4")
                         .HasMaxLength(10);
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("int");
 
                     b.Property<long>("UserId")
                         .HasColumnType("bigint");

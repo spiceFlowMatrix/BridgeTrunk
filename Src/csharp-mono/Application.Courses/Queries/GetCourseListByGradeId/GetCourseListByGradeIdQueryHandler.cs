@@ -19,10 +19,12 @@ namespace Application.Courses.Queries.GetCourseListByGradeId {
         public async Task<ApiResponse> Handle (GetCourseListByGradeIdQuery request, CancellationToken cancellationToken) {
             ApiResponse res = new ApiResponse ();
             try {                                
-               var CourseGradeList = await _dbContext.CourseGrade.Where(x=>x.Gradeid == request.Id && x.IsDeleted == false).ToListAsync();
+               var CourseGradeList = await _dbContext.CourseGrade.Where(x=>x.Gradeid == request.Id
+                // && x.IsDeleted == false
+                ).ToListAsync();
                if(request.PerPageRecord != 0 && request.PageNumber != 0)
                {
-                CourseGradeList = CourseGradeList.OrderByDescending(b => b.CreatedOn).
+                CourseGradeList = CourseGradeList.OrderByDescending(b => b.CreationTime).
                         Skip(request.PerPageRecord * (request.PageNumber - 1)).
                         Take(request.PerPageRecord).
                         ToList();

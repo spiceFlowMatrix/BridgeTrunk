@@ -1,10 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Bridge.Persistence.Migrations
 {
-    public partial class InitialMigrations : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,10 +13,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     Price = table.Column<string>(nullable: true)
                 },
@@ -32,10 +31,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     CategoryName = table.Column<string>(nullable: true),
                     Commission = table.Column<int>(nullable: false)
                 },
@@ -50,10 +49,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     AnswerId = table.Column<long>(nullable: false),
                     FileId = table.Column<long>(nullable: false)
                 },
@@ -68,10 +67,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     UserId = table.Column<long>(nullable: false),
                     Latitude = table.Column<string>(nullable: true),
                     Longitude = table.Column<string>(nullable: true),
@@ -98,10 +97,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     Code = table.Column<string>(nullable: true),
@@ -119,10 +118,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     AssignmentId = table.Column<long>(nullable: false),
                     FileId = table.Column<long>(nullable: false)
                 },
@@ -137,10 +136,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     AssignmentId = table.Column<long>(nullable: false),
                     StudentId = table.Column<long>(nullable: false),
                     IsApproved = table.Column<bool>(nullable: false)
@@ -156,10 +155,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     SubmissionId = table.Column<long>(nullable: false),
                     FileId = table.Column<long>(nullable: false)
                 },
@@ -174,10 +173,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     AssignmentId = table.Column<long>(nullable: false),
                     UserId = table.Column<long>(nullable: false),
                     TeacherId = table.Column<long>(nullable: false),
@@ -198,10 +197,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Title = table.Column<string>(nullable: true),
                     Author = table.Column<string>(nullable: true),
                     Subject = table.Column<string>(nullable: true),
@@ -225,10 +224,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     BucketName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -242,10 +241,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -259,10 +258,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     BundleId = table.Column<long>(nullable: false),
                     CourseId = table.Column<long>(nullable: false)
                 },
@@ -277,10 +276,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     Code = table.Column<string>(nullable: true),
                     CourseId = table.Column<long>(nullable: false),
@@ -298,10 +297,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     CourseId = table.Column<long>(nullable: false),
                     ChapterId = table.Column<long>(nullable: false),
                     UserId = table.Column<long>(nullable: false),
@@ -318,10 +317,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     QuizId = table.Column<long>(nullable: false),
                     ChapterId = table.Column<long>(nullable: false),
                     ItemOrder = table.Column<int>(nullable: false)
@@ -337,10 +336,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     FirstName = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
                     CountryCode = table.Column<string>(nullable: true),
@@ -357,10 +356,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     Code = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
@@ -379,10 +378,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     GradeId = table.Column<long>(nullable: false),
                     CourseId = table.Column<long>(nullable: false),
                     Subject = table.Column<string>(nullable: true),
@@ -399,10 +398,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     CourseId = table.Column<long>(nullable: false),
                     Gradeid = table.Column<long>(nullable: false)
                 },
@@ -417,10 +416,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Userid = table.Column<long>(nullable: false),
                     Lessonid = table.Column<long>(nullable: false),
                     Lessonprogress = table.Column<long>(nullable: false),
@@ -438,10 +437,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     currency = table.Column<string>(nullable: true),
                     abbreviation = table.Column<string>(nullable: true),
                     symbol = table.Column<string>(nullable: true)
@@ -457,10 +456,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     timeout = table.Column<int>(nullable: false),
                     reminder = table.Column<int>(nullable: false),
                     intervals = table.Column<int>(nullable: false),
@@ -477,10 +476,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     DepositDate = table.Column<string>(nullable: true),
                     DepositAmount = table.Column<decimal>(nullable: false),
                     SalesAgentId = table.Column<long>(nullable: false),
@@ -499,10 +498,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     PackageName = table.Column<string>(nullable: true),
                     OffTotalPrice = table.Column<int>(nullable: false),
                     OffSubscriptions = table.Column<int>(nullable: false),
@@ -519,10 +518,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -536,10 +535,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     CommentId = table.Column<long>(nullable: true),
                     FileName = table.Column<string>(nullable: true),
@@ -560,10 +559,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     CommentId = table.Column<long>(nullable: false),
                     UserId = table.Column<long>(nullable: false),
                     Like = table.Column<bool>(nullable: false),
@@ -580,10 +579,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Comment = table.Column<string>(nullable: true),
                     TopicId = table.Column<long>(nullable: false)
                 },
@@ -598,10 +597,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     TopicId = table.Column<long>(nullable: true),
                     FileName = table.Column<string>(nullable: true),
@@ -623,10 +622,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     CourseId = table.Column<long>(nullable: false),
                     Title = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
@@ -644,10 +643,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     TopicId = table.Column<long>(nullable: false),
                     UserId = table.Column<long>(nullable: false),
                     Like = table.Column<bool>(nullable: false),
@@ -664,10 +663,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     name = table.Column<string>(nullable: true),
                     DocumentUrl = table.Column<string>(nullable: true)
                 },
@@ -682,10 +681,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Type = table.Column<int>(nullable: false),
                     AccountCode = table.Column<string>(nullable: true)
                 },
@@ -700,10 +699,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     FeedbackId = table.Column<long>(nullable: false),
                     Time = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true)
@@ -719,10 +718,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Contactid = table.Column<long>(nullable: false),
                     CategoryId = table.Column<long>(nullable: false),
                     GradeId = table.Column<long>(nullable: false),
@@ -745,10 +744,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     FeedbackId = table.Column<long>(nullable: false),
                     FeedbackTaskId = table.Column<long>(nullable: false),
                     UserId = table.Column<long>(nullable: false),
@@ -765,10 +764,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -782,10 +781,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     FeedtimeId = table.Column<long>(nullable: false),
                     FileId = table.Column<long>(nullable: false)
                 },
@@ -800,10 +799,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     FeedBackId = table.Column<long>(nullable: false),
                     UserId = table.Column<long>(nullable: false),
                     Type = table.Column<long>(nullable: false),
@@ -820,10 +819,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     FeedbackId = table.Column<long>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     FileLink = table.Column<string>(nullable: true),
@@ -840,10 +839,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     FeedbackId = table.Column<long>(nullable: false),
                     Status = table.Column<long>(nullable: false)
                 },
@@ -858,10 +857,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -875,10 +874,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     LessonId = table.Column<long>(nullable: false),
                     FileId = table.Column<long>(nullable: false),
                     UserId = table.Column<long>(nullable: false),
@@ -895,10 +894,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     FileName = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
@@ -919,10 +918,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Filetype = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -936,10 +935,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     SchoolId = table.Column<long>(nullable: false)
@@ -955,10 +954,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     StudentCode = table.Column<string>(nullable: true),
                     StudentName = table.Column<string>(nullable: true),
                     SchoolName = table.Column<string>(nullable: true),
@@ -999,10 +998,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     Code = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
@@ -1020,10 +1019,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     AssignmentId = table.Column<long>(nullable: false),
                     FileId = table.Column<long>(nullable: false)
                 },
@@ -1038,10 +1037,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     Code = table.Column<string>(nullable: true),
@@ -1058,10 +1057,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     SubmissionId = table.Column<long>(nullable: false),
                     FileId = table.Column<long>(nullable: false)
                 },
@@ -1076,10 +1075,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     AssignmentId = table.Column<long>(nullable: false),
                     UserId = table.Column<long>(nullable: false),
                     TeacherId = table.Column<long>(nullable: false),
@@ -1100,10 +1099,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     LessionId = table.Column<long>(nullable: false),
                     FileId = table.Column<long>(nullable: false)
                 },
@@ -1141,10 +1140,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     TypeId = table.Column<long>(nullable: false),
                     EntityKey = table.Column<long>(nullable: false),
                     ActionUserId = table.Column<long>(nullable: false),
@@ -1161,10 +1160,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     EntityType = table.Column<string>(nullable: true),
                     Action = table.Column<string>(nullable: true)
                 },
@@ -1179,10 +1178,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Data = table.Column<string>(nullable: true),
                     TestColumn = table.Column<string>(nullable: true)
                 },
@@ -1197,10 +1196,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     noon_background = table.Column<string>(nullable: true),
                     sales_partner_eng = table.Column<string>(nullable: true),
                     sales_partner_dari = table.Column<string>(nullable: true),
@@ -1218,10 +1217,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     MetadataId = table.Column<long>(nullable: false),
                     DetailId = table.Column<long>(nullable: false),
                     DetailTypeId = table.Column<int>(nullable: false)
@@ -1237,10 +1236,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     NotifiedUserId = table.Column<long>(nullable: false),
                     LogObjectId = table.Column<long>(nullable: false),
                     IsRead = table.Column<bool>(nullable: false)
@@ -1256,10 +1255,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     PackageId = table.Column<long>(nullable: false),
                     CourseId = table.Column<long>(nullable: false)
                 },
@@ -1274,10 +1273,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     Price = table.Column<string>(nullable: true)
                 },
@@ -1292,10 +1291,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     GradeId = table.Column<long>(nullable: true),
                     IsStatus = table.Column<bool>(nullable: false),
                     LessonProgressId = table.Column<long>(nullable: true),
@@ -1317,10 +1316,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -1334,10 +1333,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     PurchageId = table.Column<string>(nullable: true),
                     PdfFile = table.Column<long>(nullable: false)
                 },
@@ -1352,10 +1351,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     PurchageId = table.Column<string>(nullable: true),
                     PdfFile = table.Column<long>(nullable: false)
                 },
@@ -1370,10 +1369,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     QuestionId = table.Column<long>(nullable: false),
                     FileId = table.Column<long>(nullable: false)
                 },
@@ -1388,10 +1387,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Code = table.Column<string>(maxLength: 6, nullable: false)
                 },
                 constraints: table =>
@@ -1405,10 +1404,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Name = table.Column<string>(maxLength: 255, nullable: false),
                     Code = table.Column<string>(maxLength: 50, nullable: true),
                     NumQuestions = table.Column<int>(nullable: false),
@@ -1427,10 +1426,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     ChapterId = table.Column<long>(nullable: false),
                     QuizId = table.Column<long>(nullable: false),
                     UserId = table.Column<long>(nullable: false),
@@ -1447,10 +1446,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     StudentId = table.Column<long>(nullable: false),
                     QuizId = table.Column<long>(nullable: false),
                     QSummary = table.Column<int>(nullable: false),
@@ -1467,10 +1466,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     isStatus = table.Column<bool>(nullable: false),
                     passingScore = table.Column<string>(nullable: true),
                     quizId = table.Column<long>(nullable: false),
@@ -1489,10 +1488,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     RoleKey = table.Column<string>(nullable: true)
                 },
@@ -1507,10 +1506,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     AgentName = table.Column<string>(nullable: true),
                     AgentCategoryId = table.Column<long>(nullable: false),
                     Phone = table.Column<string>(nullable: true),
@@ -1535,10 +1534,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Tax = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -1552,10 +1551,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Code = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true)
                 },
@@ -1570,10 +1569,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     RegisterNumber = table.Column<string>(nullable: true),
                     SchoolTypeId = table.Column<string>(nullable: true),
                     SchoolName = table.Column<string>(nullable: true),
@@ -1606,10 +1605,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     ChapterId = table.Column<long>(nullable: false),
                     ChapterStatus = table.Column<long>(nullable: false),
                     StudentId = table.Column<long>(nullable: false)
@@ -1625,10 +1624,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     CourseId = table.Column<long>(nullable: false),
                     CourseStatus = table.Column<long>(nullable: false),
                     CourseProgress = table.Column<decimal>(nullable: false),
@@ -1645,10 +1644,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     FileId = table.Column<long>(nullable: false),
                     StudentId = table.Column<long>(nullable: false),
                     FileProgress = table.Column<decimal>(nullable: false)
@@ -1664,10 +1663,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     LessonId = table.Column<long>(nullable: false),
                     LessonStatus = table.Column<long>(nullable: false),
                     StudentId = table.Column<long>(nullable: false),
@@ -1685,10 +1684,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     CourseId = table.Column<long>(nullable: false),
                     ChapterId = table.Column<long>(nullable: false),
                     LessonId = table.Column<long>(nullable: false),
@@ -1709,10 +1708,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     StudentId = table.Column<long>(nullable: false),
                     ParentId = table.Column<long>(nullable: false)
                 },
@@ -1727,10 +1726,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -1744,10 +1743,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     CourseId = table.Column<string>(nullable: true),
                     DiscountPackageId = table.Column<long>(nullable: false),
                     SalesAgentId = table.Column<long>(nullable: false),
@@ -1772,10 +1771,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     UserId = table.Column<string>(nullable: true),
                     SubscriptionMetadataId = table.Column<long>(nullable: false)
                 },
@@ -1790,10 +1789,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -1807,10 +1806,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     TaskId = table.Column<long>(nullable: false),
                     UserId = table.Column<long>(nullable: false),
                     CategoryId = table.Column<int>(nullable: false)
@@ -1826,10 +1825,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -1843,10 +1842,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Title = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     CategoryId = table.Column<long>(nullable: false),
@@ -1876,10 +1875,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     TaskId = table.Column<long>(nullable: false),
                     FileId = table.Column<long>(nullable: false)
                 },
@@ -1894,10 +1893,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Terms = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -1911,10 +1910,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Interval = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -1928,10 +1927,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     UserId = table.Column<long>(nullable: false),
                     CourseId = table.Column<long>(nullable: false),
                     StartDate = table.Column<string>(nullable: true),
@@ -1949,10 +1948,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Tag = table.Column<string>(nullable: true),
                     Type = table.Column<int>(nullable: false),
                     UserId = table.Column<long>(nullable: false),
@@ -1977,10 +1976,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     QuizId = table.Column<long>(nullable: false),
                     UserId = table.Column<long>(nullable: false),
                     TotalQuestion = table.Column<long>(nullable: false),
@@ -2000,10 +1999,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     UserId = table.Column<long>(nullable: false),
                     RoleId = table.Column<long>(nullable: false)
                 },
@@ -2018,10 +2017,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Username = table.Column<string>(nullable: true),
                     FullName = table.Column<string>(nullable: true),
                     Password = table.Column<string>(nullable: true),
@@ -2056,10 +2055,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     UserId = table.Column<long>(nullable: false),
                     AccessToken = table.Column<string>(nullable: true),
                     DeviceToken = table.Column<string>(nullable: true),
@@ -2077,10 +2076,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     QuestionTypeId = table.Column<long>(nullable: false),
                     QuestionText = table.Column<string>(maxLength: 255, nullable: false),
                     Explanation = table.Column<string>(maxLength: 255, nullable: true),
@@ -2103,10 +2102,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     Answer = table.Column<string>(maxLength: 255, nullable: false),
                     ExtraText = table.Column<string>(maxLength: 255, nullable: true),
                     IsCorrect = table.Column<bool>(nullable: false),
@@ -2129,10 +2128,10 @@ namespace Bridge.Persistence.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    LastModifiedBy = table.Column<int>(nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(nullable: true),
+                    CreatorUserId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<int>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
                     QuizId = table.Column<long>(nullable: false),
                     QuestionId = table.Column<long>(nullable: false)
                 },
