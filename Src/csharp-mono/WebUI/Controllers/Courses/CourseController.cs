@@ -11,6 +11,11 @@ using Application.Courses.Queries.GetCourseGrade;
 using Application.Courses.Queries.GetCourseListByGradeId;
 using Application.Courses.Queries.GetCoursePreviewById;
 using Application.Courses.Commands.AddCourse;
+using Application.Courses.Commands.UpdateCourse;
+using Application.Courses.Commands.DeleteCourse;
+using Application.Courses.Queries.GetCourse;
+using Application.Courses.Queries.GetPaginatedCourse;
+using Application.Courses.Queries.GetCourseList;
 
 namespace WebUI.Controllers.Courses
 {
@@ -45,6 +50,68 @@ namespace WebUI.Controllers.Courses
                 istrial = string.IsNullOrEmpty(Request.Form["istrial"]) ? false : bool.Parse(Request.Form["istrial"])
             };
             var result = await _mediator.Send(command);
+            return StatusCode(result.ReturnCode, result);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id)
+        {
+            // uses role
+            UpdateCourseCommand command = new UpdateCourseCommand
+            {
+                id = id,
+                file = Request.Form.Files[0],
+                FileName = Request.Form.Files[0].FileName,
+                name = Request.Form["name"],
+                code = Request.Form["code"],
+                description = Request.Form["description"],
+                gradeid = string.IsNullOrEmpty(Request.Form["gradeid"]) ? 0 : long.Parse(Request.Form["gradeid"]),
+                istrial = string.IsNullOrEmpty(Request.Form["istrial"]) ? false : bool.Parse(Request.Form["istrial"])
+            };
+            var result = await _mediator.Send(command);
+            return StatusCode(result.ReturnCode, result);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            // uses role
+            DeleteCourseCommand command = new DeleteCourseCommand { id =id };
+            var result = await _mediator.Send(command);
+            return StatusCode(result.ReturnCode, result);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
+        {   // uses role
+            GetCourseQuery query = new GetCourseQuery { id =id };
+            var result = await _mediator.Send(query);
+            return StatusCode(result.ReturnCode, result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Get(int pagenumber, int perpagerecord, string search)
+        {   // uses role
+            GetPaginatedCourseQuery query = new GetPaginatedCourseQuery
+            {
+                pagenumber = pagenumber,
+                perpagerecord = perpagerecord,
+                search = search
+            };
+            var result = await _mediator.Send(query);
+            return StatusCode(result.ReturnCode, result);
+        }
+
+        [HttpGet("GetCourseList")]
+        public async Task<IActionResult> GetCourseList(int pagenumber, int perpagerecord, string search)
+        {   // uses role
+            GetCourseListQuery query = new GetCourseListQuery
+            {
+                pagenumber = pagenumber,
+                perpagerecord = perpagerecord,
+                search = search
+            };
+            var result = await _mediator.Send(query);
             return StatusCode(result.ReturnCode, result);
         }
 

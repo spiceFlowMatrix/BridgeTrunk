@@ -1,0 +1,100 @@
+using System;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using MediatR;
+using Bridge.Application.Models;
+using Bridge.Domain.Entities;
+using Bridge.Application.Interfaces;
+using Application.Helpers;
+using Application.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using System.IO;
+using Google.Cloud.Storage.V1;
+using Google.Apis.Auth.OAuth2;
+
+namespace Application.Courses.Queries.GetCourseList
+{
+    public class GetCourseListQueryHandler: IRequestHandler<GetCourseListQuery, ApiResponse>
+    {
+        private readonly IBridgeDbContext _dbContext;
+        private readonly ICurrentUserService _userService;
+        private readonly IUserHelper _userHelper;
+        public GetCourseListQueryHandler(IBridgeDbContext dbContext, ICurrentUserService userService, IUserHelper userHelper)
+        {
+            _dbContext = dbContext;
+            _userService = userService;
+            _userHelper = userHelper;
+        }
+        public async Task<ApiResponse> Handle(GetCourseListQuery request, CancellationToken cancellationToken)
+        {
+            ApiResponse res = new ApiResponse();
+            try
+            {
+                string Certificate = Path.GetFileName("../../training24-28e994f9833c.json");
+                if (_userService.RoleList.Contains(Roles.admin.ToString()))
+                {
+                    int total = 0;
+                    var courseList = await _dbContext.Course.Select(s => new
+                    {
+                        s.Id,
+                        s.Name,
+                        s.Code
+                    }).ToListAsync();
+                    if (request.pagenumber != 0 && request.perpagerecord != 0)
+                    {
+                        total = courseList.Count();
+
+                        if (!string.IsNullOrEmpty(request.search))
+                        {
+                            courseList = courseList.Where(b => b.Code != null && b.Code.ToLower().Contains(request.search.ToLower()) ||
+                            b.Name != null && b.Name.ToLower().Contains(request.search.ToLower()) ||
+                            b.Id.ToString().ToLower().Contains(request.search.ToLower())).ToList();
+
+                            total = courseList.Count();
+
+                            courseList = courseList.OrderByDescending(b => b.Id).
+                                        Skip(request.perpagerecord * (request.pagenumber - 1)).
+                                        Take(request.perpagerecord).
+                                        ToList();
+                        }
+                        else
+                        {
+                            courseList = courseList.OrderByDescending(b => b.Id).
+                                        Skip(request.perpagerecord * (request.pagenumber - 1)).
+                                        Take(request.perpagerecord).
+                                        ToList();
+                        }
+                    }
+                    else 
+                    {
+                        total = courseList.Count();
+                    }
+
+                    res.data = courseList;
+                    res.totalcount = total;
+                    res.response_code = 0;
+                    res.message = "Course Details";
+                    res.status = "Success";
+                    res.ReturnCode = 200;
+                }
+                else 
+                {
+                    res.response_code = 1;
+                    res.message = "You are not authorized.";
+                    res.status = "Unsuccess";
+                    res.ReturnCode = 401;
+                }
+            }
+            catch (Exception ex)
+            {
+                res.response_code = 2;
+                res.message = ex.Message;
+                res.status = "Failure";
+                res.ReturnCode = 500;
+            }
+            return res;
+        }
+    }
+}
