@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
@@ -10,7 +9,6 @@ using Bridge.Application.Interfaces;
 using Application.Helpers;
 using Application.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System.IO;
 using Google.Cloud.Storage.V1;
 using Google.Apis.Auth.OAuth2;
 

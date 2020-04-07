@@ -16,6 +16,7 @@ using Application.Courses.Commands.DeleteCourse;
 using Application.Courses.Queries.GetCourse;
 using Application.Courses.Queries.GetPaginatedCourse;
 using Application.Courses.Queries.GetCourseList;
+using Application.Courses.Queries.GetCoursePreviewGradeWise;
 
 namespace WebUI.Controllers.Courses
 {
@@ -127,6 +128,7 @@ namespace WebUI.Controllers.Courses
         [Route("CourseGrade/{id}")]
         public async Task<IActionResult> PutCourseGrade(int id, UpdateCourseGradeCommand command)
         {
+            command.id=id;
             var result= await _mediator.Send(command);
             return StatusCode(result.ReturnCode, result);            
         }
@@ -171,6 +173,18 @@ namespace WebUI.Controllers.Courses
                 StudentId = studentid              
             });
             return StatusCode(result.ReturnCode, result);
+        }
+
+        [HttpGet("CoursePriviewGradeWise")]
+        public async Task<IActionResult> CoursePrviewGradeWise(int pagenumber, int perpagerecord, string search, int gradeid)
+        {
+            var result = await _mediator.Send(new GetCoursePreviewGradeWiseQuery{
+                PageNumber = pagenumber,
+                PerPageRecord = perpagerecord,
+                Search = search,
+                GradeId = gradeid
+            });
+            return StatusCode(result.ReturnCode,result);
         }
     }
 }
