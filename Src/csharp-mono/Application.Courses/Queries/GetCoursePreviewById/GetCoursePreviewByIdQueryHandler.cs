@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Application.Helpers;
 using Application.Interfaces;
 using Bridge.Application.Interfaces;
 using Bridge.Application.Models;
@@ -14,15 +15,20 @@ using Microsoft.EntityFrameworkCore;
 namespace Application.Courses.Queries.GetCoursePreviewById {
     public class GetCoursePreviewByIdQueryHandler : IRequestHandler<GetCoursePreviewByIdQuery, ApiResponse> {
         private readonly IBridgeDbContext _dbContext;
+        private readonly ICurrentUserService _userService;
         private readonly IUserHelper _userHelper;
-        public GetCoursePreviewByIdQueryHandler (IBridgeDbContext dbContext, IUserHelper userHelper) {
+        public GetCoursePreviewByIdQueryHandler (IBridgeDbContext dbContext, ICurrentUserService userService, IUserHelper userHelper) {
             _dbContext = dbContext;
+            _userService = userService;
             _userHelper = userHelper;
         }
 
         public async Task<ApiResponse> Handle (GetCoursePreviewByIdQuery request, CancellationToken cancellationToken) {
             ApiResponse res = new ApiResponse ();
             try {
+                if (_userService.RoleList.Contains (Roles.admin.ToString ())||
+                _userService.RoleList.Contains (Roles.teacher.ToString ())||
+                _userService.RoleList.Contains (Roles.student.ToString ())) {
                 string certificate = Path.GetFileName ("../../training24-28e994f9833c.json");
                 // if (request.StudentId == 0)
                 // {
@@ -230,6 +236,12 @@ namespace Application.Courses.Queries.GetCoursePreviewById {
                         res.status = "Success";
                         res.ReturnCode = 404;
                     }
+                }
+                } else {
+                    res.response_code = 1;
+                    res.message = "You are not authorized";
+                    res.status = "Unsuccess";
+                    res.ReturnCode = 401;
                 }
             } catch (Exception ex) {
                 res.ReturnCode = 500;
