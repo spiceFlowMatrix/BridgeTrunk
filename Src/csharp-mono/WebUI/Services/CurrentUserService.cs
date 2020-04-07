@@ -1,5 +1,6 @@
 ﻿using Bridge.Application.Interfaces;
 using Microsoft.AspNetCore.Http;
+using System;
 using System.Security.Claims;
 
 namespace Bridge.WebUI.Services
@@ -8,10 +9,10 @@ namespace Bridge.WebUI.Services
     {
         public CurrentUserService(IHttpContextAccessor httpContextAccessor)
         {
-            UserId = httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier);
+            UserId = Convert.ToInt32(httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier));
             IsAuthenticated = UserId != null;
         }
-        public string UserId { get; }
+        public int? UserId { get; }
 
         public bool IsAuthenticated { get; }
     }

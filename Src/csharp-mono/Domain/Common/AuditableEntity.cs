@@ -4,12 +4,13 @@ namespace Bridge.Domain.Common
 {
     public class AuditableEntity
     {
-        public string CreatedBy { get; set; }
+        public long Id { get; set; }
+        public int CreatorUserId { get; set; }
 
-        public DateTime CreatedOn { get; set; }
+        public string CreationTime { get; set; }
 
-        public string LastModifiedBy { get; set; }
+        public int? LastModifierUserId { get; set; }
 
-        public DateTime? LastModifiedOn { get; set; }
+        public string LastModificationTime { get; set; }
     }
 }
