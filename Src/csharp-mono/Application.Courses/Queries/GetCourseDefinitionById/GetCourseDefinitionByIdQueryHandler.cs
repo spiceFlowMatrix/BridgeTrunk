@@ -32,7 +32,7 @@ namespace Application.Courses.Queries.GetCourseDefinitionById
                         Id = ifExist.Id,
                         BasePrice = ifExist.BasePrice,
                         CourseId = ifExist.CourseId,
-                        CourseName = _dbContext.Course.FirstOrDefault(x => x.Id == ifExist.CourseId && x.IsDeleted == false).Name,
+                        CourseName = _dbContext.Course.FirstOrDefault(x => x.Id == ifExist.CourseId ).Name,
                         GradeId = ifExist.GradeId,
                         GradeName = _dbContext.Grade.FirstOrDefault(x => x.Id == ifExist.GradeId).Name,
                         Subject = ifExist.Subject,

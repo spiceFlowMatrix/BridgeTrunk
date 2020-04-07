@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Application.Interfaces;
 using Bridge.Application.Interfaces;
 using Bridge.Application.Models;
 using Bridge.Domain.Entities;
@@ -20,18 +21,22 @@ namespace Application.Courses.Queries.GetAllCoursesDetail
 
         private readonly IBridgeDbContext _dbContext;
         private readonly IHostingEnvironment _env;
-        private readonly ICommonServices _commonService;
-        public GetAllCoursesDetailQueryHandler(IBridgeDbContext dbContext, IHostingEnvironment env, ICommonServices commonService)
+        private readonly ICurrentUserService _userService;
+        private readonly IUserHelper _userHelper;
+        public GetAllCoursesDetailQueryHandler(IBridgeDbContext dbContext, ICurrentUserService userService, IUserHelper userHelper, IHostingEnvironment env)
         {
             _dbContext = dbContext;
             _env = env;
-            _commonService = commonService;
+            _userService = userService;
+            _userHelper = userHelper;
         }
         public async Task<ApiResponse> Handle(GetAllCoursesDetailQuery request, CancellationToken cancellationToken)
         {
             ApiResponse res = new ApiResponse();
             try
             {
+                var userId = await _userHelper.getUserId(_userService.UserId.ToString());
+
                 if (request.Search == null)
                 {
                     res.response_code = 1;
@@ -53,7 +58,7 @@ namespace Application.Courses.Queries.GetAllCoursesDetail
                 List<CourseDetailModel> courseList = new List<CourseDetailModel>();
                 List<LessonDetailModel> responseLessonModel = new List<LessonDetailModel>();
 
-                var studentCoursesList = await _dbContext.UserCourse.Where(s => s.UserId == 1).ToListAsync();
+                var studentCoursesList = await _dbContext.UserCourse.Where(s => s.UserId == int.Parse(userId)).ToListAsync();
                 var coursesList = await _dbContext.Course.Where(x => studentCoursesList.Select(y => y.CourseId).Contains(x.Id)).ToListAsync();
                 if (studentCoursesList.Any())
                 {
@@ -71,7 +76,7 @@ namespace Application.Courses.Queries.GetAllCoursesDetail
                                 if (course.Image.Contains("t24-primary-image-storage"))
                                     imageurl = course.Image;
                                 else
-                                    imageurl = await _commonService.Geturl(course.Image, Certificate);
+                                    imageurl =  _userHelper.getUrl(course.Image, Certificate);
                             }
 
                             CourseDetailModel responseCourseModel = new CourseDetailModel
@@ -91,7 +96,7 @@ namespace Application.Courses.Queries.GetAllCoursesDetail
                             {
                                 ResponseFilesModel lessonfile = await GetLessionFilesByLessionId1(lesson.Id);
 
-                                var quiz = await _dbContext.chapterQuiz.Where(b => b.ChapterId == lesson.ChapterId.Value ).ToListAsync();
+                                var quiz = await _dbContext.chapterQuiz.Where(b => b.ChapterId == lesson.ChapterId.Value).ToListAsync();
 
                                 try
                                 {
@@ -142,7 +147,7 @@ namespace Application.Courses.Queries.GetAllCoursesDetail
                             }
                         }
 
-                        List<Assignment> assignmentList = await GetAssignmentStudentById(1);//selected user id
+                        List<Assignment> assignmentList = await GetAssignmentStudentById(int.Parse(userId));
                         List<AssignmentDetails> responseAssignmentModels = new List<AssignmentDetails>();
 
                         foreach (var assignemnt in assignmentList)
@@ -299,7 +304,7 @@ namespace Application.Courses.Queries.GetAllCoursesDetail
 
         public async Task<List<ResponseGradeModel>> GetGradeByCourseId(long id)
         {
-            List<CourseGrade> courseGrades = _dbContext.CourseGrade.Where(b => b.CourseId == id ).ToList();
+            List<CourseGrade> courseGrades = _dbContext.CourseGrade.Where(b => b.CourseId == id).ToList();
 
             List<ResponseGradeModel> gradedt = new List<ResponseGradeModel>();
 
@@ -352,7 +357,7 @@ namespace Application.Courses.Queries.GetAllCoursesDetail
 
         public async Task<Files> getFilesById(long id)
         {
-            return await _dbContext.Files.FirstOrDefaultAsync(x => x.Id == id );
+            return await _dbContext.Files.FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<FileTypes> FileType(Files files)

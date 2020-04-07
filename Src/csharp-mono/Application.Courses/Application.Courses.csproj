@@ -7,7 +7,7 @@
     <PackageReference Include="MediatR" Version="8.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.App"/>
-    <PackageReference Include="Google.Cloud.Storage.V1" Version="2.1.0" />
+    <PackageReference Include="Google.Cloud.Storage.V1" Version="2.5.0" />
 </ItemGroup>
 
 <ItemGroup>
