@@ -25,7 +25,7 @@ namespace Application.Courses.Commands.UpdateCourseGrade {
             try {
 
                 var userId = await _userHelper.getUserId (_userService.UserId.ToString ());
-                var id = int.Parse (userId);
+                // var id = int.Parse (userId);
                 if (_userService.RoleList.Contains (Roles.admin.ToString ())) {
 
                     var isExist = await _dbContext.CourseGrade.Where (x => x.Id == request.id
@@ -35,7 +35,7 @@ namespace Application.Courses.Commands.UpdateCourseGrade {
                         isExist.CourseId = request.courseid;
                         isExist.Gradeid = request.gradeid;
                         isExist.LastModificationTime = DateTime.UtcNow.ToString ();
-                        isExist.LastModifierUserId = id;
+                        isExist.LastModifierUserId = userId;
                         await _dbContext.SaveChangesAsync (cancellationToken);
                         CourseGradeVm model = new CourseGradeVm () {
                             id = isExist.Id,

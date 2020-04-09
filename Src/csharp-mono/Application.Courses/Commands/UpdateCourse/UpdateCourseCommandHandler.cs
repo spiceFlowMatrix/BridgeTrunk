@@ -84,7 +84,7 @@ namespace Application.Courses.Commands.UpdateCourse
                             courseGradeExits.Gradeid = request.gradeid;
                             // courseGradeExits.IsDeleted = false;
                             courseGradeExits.LastModificationTime = DateTime.Now.ToString();
-                            courseGradeExits.LastModifierUserId = int.Parse(userId);
+                            courseGradeExits.LastModifierUserId = userId;
                             await _dbContext.SaveChangesAsync(cancellationToken);
                         }
                     }
