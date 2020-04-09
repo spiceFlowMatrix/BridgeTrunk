@@ -48,7 +48,7 @@ namespace Application.Courses.Commands.UpsertCourseDefinition
                             CourseDefination obj = new CourseDefination()
                             {
                                 CreationTime = DateTime.UtcNow.ToString(),
-                                CreatorUserId = int.Parse(userId),
+                                CreatorUserId = userId,
                                 Subject = request.Subject,
                                 BasePrice = request.BasePrice,
                                 GradeId = request.GradeId,
@@ -98,7 +98,7 @@ namespace Application.Courses.Commands.UpsertCourseDefinition
                             ifExistCourseDefinition.GradeId = request.GradeId;
                             ifExistCourseDefinition.Subject = request.Subject;
                             ifExistCourseDefinition.LastModificationTime = DateTime.UtcNow.ToString();
-                            ifExistCourseDefinition.LastModifierUserId = int.Parse(userId);
+                            ifExistCourseDefinition.LastModifierUserId = userId;
                             await _dbContext.SaveChangesAsync(cancellationToken);
                         }
                     }

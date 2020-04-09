@@ -37,7 +37,7 @@ namespace Application.Courses.Commands.DeleteCourseDefination
                     if (ifExistCourseDefinition != null)
                     {
                         // ifExistCourseDefinition.IsDeleted = true;
-                        ifExistCourseDefinition.LastModifierUserId = int.Parse(userId);
+                        ifExistCourseDefinition.LastModifierUserId = userId;
                         ifExistCourseDefinition.LastModificationTime = DateTime.UtcNow.ToString();
                         await _dbContext.SaveChangesAsync(cancellationToken);
 

@@ -4,7 +4,7 @@ namespace Bridge.Application.Interfaces
 {
     public interface ICurrentUserService
     {
-        int? UserId { get; }
+        string UserId { get; }
         bool IsAuthenticated { get; }
         List<string> RoleList { get; }
     }

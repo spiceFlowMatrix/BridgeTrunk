@@ -38,7 +38,7 @@ namespace Application.Courses.Commands.AddCourseItemProgressSync
                         
                         Quizid = courseItemProgress.quizid,
                         CreationTime = DateTime.Now.ToString(),
-                        CreatorUserId = int.Parse(userId)
+                        CreatorUserId = userId
                     });  
                 }
                 await _dbContext.SaveChangesAsync(cancellationToken);
