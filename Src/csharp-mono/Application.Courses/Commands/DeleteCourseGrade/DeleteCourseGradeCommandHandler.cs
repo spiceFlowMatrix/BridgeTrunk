@@ -24,7 +24,7 @@ namespace Application.Courses.Commands.DeleteCourseGrade {
             ApiResponse res = new ApiResponse ();
             try {
                 var userId = await _userHelper.getUserId (_userService.UserId.ToString ());
-                var id = int.Parse (userId);
+                //var id = int.Parse (userId);
                 if (_userService.RoleList.Contains (Roles.admin.ToString ())) {
 
                     var isExist = await _dbContext.CourseGrade.Where (x => x.Id == request.id
@@ -33,7 +33,7 @@ namespace Application.Courses.Commands.DeleteCourseGrade {
                     if (isExist != null) {
                         //  isExist.IsDeleted = true;               
                         isExist.LastModificationTime = DateTime.UtcNow.ToString ();
-                        isExist.LastModifierUserId = id;
+                        isExist.LastModifierUserId = userId;
                         await _dbContext.SaveChangesAsync (cancellationToken);
                         CourseGradeVm model = new CourseGradeVm () {
                             id = isExist.Id,

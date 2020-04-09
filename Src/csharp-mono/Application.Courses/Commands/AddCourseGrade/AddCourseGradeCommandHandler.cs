@@ -24,8 +24,8 @@ namespace Application.Courses.Commands.AddCourseGrade {
         public async Task<ApiResponse> Handle (AddCourseGradeCommand request, CancellationToken cancellationToken) {
             ApiResponse res = new ApiResponse ();
             try {
-                var userId = await _userHelper.getUserId (_userService.UserId.ToString ());
-                var id= int.Parse(userId);
+                var userId = await _userHelper.getUserId (_userService.UserId.ToString());
+                //var id= int.Parse(userId);
                 if (_userService.RoleList.Contains (Roles.admin.ToString ())) {
 
                     var isExist = await _dbContext.CourseGrade.Where (x => x.CourseId == request.courseid
@@ -37,7 +37,7 @@ namespace Application.Courses.Commands.AddCourseGrade {
                         Gradeid = request.gradeid,
                         // IsDeleted = false,
                         CreationTime = DateTime.UtcNow.ToString (),
-                        CreatorUserId = id
+                        CreatorUserId = userId
                         };
                         await _dbContext.CourseGrade.AddAsync (obj);
                         await _dbContext.SaveChangesAsync (cancellationToken);
@@ -56,7 +56,7 @@ namespace Application.Courses.Commands.AddCourseGrade {
                             isExist.CourseId = request.courseid;
                             isExist.Gradeid = request.gradeid;
                             isExist.LastModificationTime = DateTime.UtcNow.ToString ();
-                            isExist.LastModifierUserId = id;
+                            isExist.LastModifierUserId = userId;
                             await _dbContext.SaveChangesAsync (cancellationToken);
                             CourseGradeVm model = new CourseGradeVm () {
                                 id = isExist.Id,
