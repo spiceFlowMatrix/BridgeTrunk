@@ -27,7 +27,7 @@ namespace Persistence.IntegrationTests
 
             _userId = 1;
             _currentUserServiceMock = new Mock<ICurrentUserService>();
-            _currentUserServiceMock.Setup(m => m.UserId).Returns(_userId);
+            _currentUserServiceMock.Setup(m => m.UserId).Returns(_userId.ToString());
 
             var options = new DbContextOptionsBuilder<BridgeDbContext>()
                 .UseInMemoryDatabase(Guid.NewGuid().ToString())
@@ -58,8 +58,8 @@ namespace Persistence.IntegrationTests
 
             await _sut.SaveChangesAsync();
 
-            school.CreationTime.ShouldBe(_dateTime);
-            school.CreatorUserId.ShouldBe(_userId);
+            school.CreationTime.ShouldBe(_dateTime.ToString());
+            school.CreatorUserId.ShouldBe(_userId.ToString());
         }
 
         [Fact]
@@ -72,8 +72,8 @@ namespace Persistence.IntegrationTests
             await _sut.SaveChangesAsync();
 
             school.LastModificationTime.ShouldNotBeNull();
-            school.LastModificationTime.ShouldBe(_dateTime);
-            school.LastModifierUserId.ShouldBe(_userId);
+            school.LastModificationTime.ShouldBe(_dateTime.ToString());
+            school.LastModifierUserId.ShouldBe(_userId.ToString());
         }
 
         public void Dispose()
