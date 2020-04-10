@@ -103,6 +103,7 @@ namespace Bridge.WebUI
             app.UseRouting();
 
             app.UseAuthentication();
+            app.UseIdentityServer();
             app.UseAuthorization();
 
 
