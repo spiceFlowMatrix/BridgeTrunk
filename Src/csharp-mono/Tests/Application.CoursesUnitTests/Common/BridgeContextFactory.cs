@@ -2,6 +2,11 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Bridge.Domain.Entities;
 using Bridge.Persistence;
+using Microsoft.AspNetCore.Http;
+using Moq;
+using System.Security.Claims;
+using System.Collections.Generic;
+using System.Security.Principal;
 
 namespace Application.CoursesUnitTests.Common
 {
@@ -37,12 +42,45 @@ namespace Application.CoursesUnitTests.Common
                                 CourseId = 1 }
 
                     });
+                context.Grade.Add(new Grade
+                {
+                    Id = 1,
+                    Name = "Test",
+                    Description = "test",
+                    SchoolId = 1,
+                    IsDeleted = false
+                });
+
+                context.School.Add(new School
+                {
+                    Id = 1,
+                    Code = "001",
+                    Name = "Abc",
+                    IsDeleted = false
+                });
 
             context.SaveChanges();
 
             return context;
         }
 
+        public static HttpContextAccessor CreateHttpContext() 
+        {
+            var userIdClaim = new Mock<Claim>(ClaimTypes.NameIdentifier, "auth0|test123456");
+            var roleClaim =  new Mock<Claim>(ClaimTypes.Role, "Admin");
+
+            var httpContextAccessor = new Mock<HttpContextAccessor>();
+            var httpContext = new Mock<HttpContext>();
+            var fakeIdentity = new GenericIdentity("User");
+            var principal = new GenericPrincipal(fakeIdentity, new String[]{"Admin"});
+
+            httpContext.Setup(t => t.User).Returns(principal);
+            //httpContextAccessor.SetupProperty(_=>_.HttpContext).Setup(_=>_.HttpContext).Returns(httpContext.Object);
+            // httpContextAccessor.Setup(_ => _.HttpContext).Returns(httpContext.Object);
+            // httpContextAccessor.SetupSet(_ => _.HttpContext.User = new Mock<ClaimsPrincipal>().Object);
+            //httpContextAccessor.SetupSet(_ => _.HttpContext.User.Claims = new List<Claim> { userIdClaim.Object, roleClaim.Object }).Returns(new List<Claim> { userIdClaim.Object, roleClaim.Object });
+            return httpContextAccessor.Object;
+        }
         public static void Destroy(BridgeDbContext context)
         {
             context.Database.EnsureDeleted();

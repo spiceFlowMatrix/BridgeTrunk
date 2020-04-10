@@ -139,12 +139,12 @@ namespace Bridge.Persistence
                 switch (entry.State)
                 {
                     case EntityState.Added:
-                        entry.Entity.CreatorUserId =_currentUserService.UserId;
-                        entry.Entity.CreationTime = _dateTime.Now.ToString();
+                        // entry.Entity.CreatorUserId =_currentUserService.UserId;
+                        entry.Entity.CreationTime = DateTime.Now.ToString();
                         break;
                     case EntityState.Modified:
-                        entry.Entity.LastModifierUserId = _currentUserService.UserId;
-                        entry.Entity.LastModificationTime = _dateTime.Now.ToString();
+                        // entry.Entity.LastModifierUserId = _currentUserService.UserId;
+                        entry.Entity.LastModificationTime = DateTime.Now.ToString();
                         break;
                 }
             }

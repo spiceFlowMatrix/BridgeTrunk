@@ -11,6 +11,7 @@ using Application.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Google.Cloud.Storage.V1;
 using Google.Apis.Auth.OAuth2;
+using System.IO;
 
 namespace Application.Courses.Commands.AddCourse
 {
@@ -18,94 +19,96 @@ namespace Application.Courses.Commands.AddCourse
     {
         private readonly IBridgeDbContext _dbContext;
         private readonly ICurrentUserService _userService;
-        private readonly IUserHelper _userHelper;
-        public AddCourseCommandHandler(IBridgeDbContext dbContext, ICurrentUserService userService, IUserHelper userHelper)
+        public AddCourseCommandHandler(IBridgeDbContext dbContext, ICurrentUserService userService)
         {
             _dbContext = dbContext;
             _userService = userService;
-            _userHelper = userHelper;
         }
 
         public async Task<ApiResponse> Handle(AddCourseCommand request, CancellationToken cancellationToken)
         {
             ApiResponse res = new ApiResponse();
             string mediaLink = "";
+            GoogleCredential cred;
             try
             {
-                if (_userService.RoleList.Contains(Roles.admin.ToString()))
+                // if (_userService.RoleList.Contains(Roles.admin.ToString()))
+                // {
+                using (var stream = new FileStream(Environment.GetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS"), FileMode.Open, FileAccess.Read))
                 {
-                    // string jsonPath = Path.GetFileName(hostingEnvironment.WebRootPath + "/training24-28e994f9833c.json");
-                    var credential = GoogleCredential.FromFile("../../training24-28e994f9833c.json");
-                    var _storageClient = StorageClient.Create(credential);
-                    var userId = await _userHelper.getUserId(_userService.UserId.ToString());
-                    if (request.file != null)
+                    cred = GoogleCredential.FromStream(stream);
+                }
+                // var credential = GoogleCredential.FromFile(Directory.GetCurrentDirectory() + "../../training24-28e994f9833c.json");
+                var _storageClient = StorageClient.Create(cred);
+                string userId = _userService.UserId;
+                if (request.file != null)
+                {
+                    IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".gif", ".png" };
+                    var ext = request.FileName.Substring(request.FileName.LastIndexOf("."));
+                    var extension = ext.ToLower();
+                    if (AllowedFileExtensions.Contains(extension))
                     {
-                        IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".gif", ".png" };
-                        var ext = request.FileName.Substring(request.FileName.LastIndexOf("."));
-                        var extension = ext.ToLower();
-                        if (AllowedFileExtensions.Contains(extension))
-                        {
-                            Guid imageGuid = Guid.NewGuid();
-                            request.FileName = request.FileName.Split(".")[0] + "_" + imageGuid.ToString() + extension;
+                        Guid imageGuid = Guid.NewGuid();
+                        request.FileName = request.FileName.Split(".")[0] + "_" + imageGuid.ToString() + extension;
 
-                            var imageAcl = PredefinedObjectAcl.PublicRead;
-                            var imageObject = await _storageClient.UploadObjectAsync(
-                                bucket: "edg-primary-course-image-storage",
-                                objectName: request.FileName,
-                                contentType: request.file.ContentType,
-                                source: request.file.OpenReadStream(),
-                                options: new UploadObjectOptions { PredefinedAcl = imageAcl }
-                            );
-                            mediaLink = imageObject.MediaLink;
-                        }
+                        var imageAcl = PredefinedObjectAcl.PublicRead;
+                        var imageObject = await _storageClient.UploadObjectAsync(
+                            bucket: "edg-primary-course-image-storage",
+                            objectName: request.FileName,
+                            contentType: request.file.ContentType,
+                            source: request.file.OpenReadStream(),
+                            options: new UploadObjectOptions { PredefinedAcl = imageAcl }
+                        );
+                        mediaLink = imageObject.MediaLink;
                     }
-                    Course obj = new Course {
-                        Name = request.name,
-                        Code = request.code,
-                        Description = request.description,
-                        Image = mediaLink,
-                        CreationTime = DateTime.Now.ToString(),
-                        CreatorUserId = userId,
-                        istrial = request.istrial,
-                        // IsDeleted = false
-                    };
-                    _dbContext.Course.Add(obj);
-                    await _dbContext.SaveChangesAsync(cancellationToken);
-                    
-                    CourseGrade courseGrade = new CourseGrade {
-                        CourseId = obj.Id,
-                        Gradeid = request.gradeid,
-                        //IsDeleted = false,
-                        CreationTime = DateTime.Now.ToString(),
-                        CreatorUserId = userId
-                    };
-                    _dbContext.CourseGrade.Add(courseGrade);
-                    await _dbContext.SaveChangesAsync(cancellationToken);
-                    Grade newGrade = await _dbContext.Grade.FirstOrDefaultAsync(x=>x.Id == request.gradeid);
-                    var responseModel = new {
-                        Name = obj.Name,
-                        Id = int.Parse(obj.Id.ToString()),
-                        Code = obj.Code,
-                        Description = obj.Description,
-                        Image = obj.Image,
-                        gradeid = newGrade.Id,
-                        gradename = newGrade.Name,
-                        istrial = obj.istrial
-                    };
+                }
+                Course obj = new Course {
+                    Name = request.name,
+                    Code = request.code,
+                    Description = request.description,
+                    Image = mediaLink,
+                    CreationTime = DateTime.Now.ToString(),
+                    CreatorUserId = userId,
+                    istrial = request.istrial,
+                    IsDeleted = false
+                };
+                _dbContext.Course.Add(obj);
+                await _dbContext.SaveChangesAsync(cancellationToken);
+                
+                CourseGrade courseGrade = new CourseGrade {
+                    CourseId = obj.Id,
+                    Gradeid = request.gradeid,
+                    IsDeleted = false,
+                    CreationTime = DateTime.Now.ToString(),
+                    CreatorUserId = userId
+                };
+                _dbContext.CourseGrade.Add(courseGrade);
+                await _dbContext.SaveChangesAsync(cancellationToken);
+                Grade newGrade = await _dbContext.Grade.FirstOrDefaultAsync(x=>x.Id == request.gradeid && x.IsDeleted == false);
+                var responseModel = new {
+                    Name = obj.Name,
+                    Id = int.Parse(obj.Id.ToString()),
+                    Code = obj.Code,
+                    Description = obj.Description,
+                    Image = obj.Image,
+                    gradeid = newGrade.Id,
+                    gradename = newGrade.Name,
+                    istrial = obj.istrial
+                };
 
-                    res.data = responseModel;
-                    res.response_code = 0;
-                    res.message = "Course Created";
-                    res.status = "Success";
-                    res.ReturnCode = 200;
-                }
-                else 
-                {
-                    res.response_code = 1;
-                    res.message = "You are not authorized.";
-                    res.status = "Unsuccess";
-                    res.ReturnCode = 401;
-                }
+                res.data = responseModel;
+                res.response_code = 0;
+                res.message = "Course Created";
+                res.status = "Success";
+                res.ReturnCode = 200;
+                // }
+                // else 
+                // {
+                //     res.response_code = 1;
+                //     res.message = "You are not authorized.";
+                //     res.status = "Unsuccess";
+                //     res.ReturnCode = 401;
+                // }
             }
             catch (Exception ex)
             {
