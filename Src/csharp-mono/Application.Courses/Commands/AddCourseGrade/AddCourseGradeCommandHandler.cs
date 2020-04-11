@@ -14,22 +14,20 @@ namespace Application.Courses.Commands.AddCourseGrade {
     public class AddCourseGradeCommandHandler : IRequestHandler<AddCourseGradeCommand, ApiResponse> {
         private readonly IBridgeDbContext _dbContext;
         private readonly ICurrentUserService _userService;
-        private readonly IUserHelper _userHelper;
-        public AddCourseGradeCommandHandler (IBridgeDbContext dbContext, ICurrentUserService userService, IUserHelper userHelper) {
+        public AddCourseGradeCommandHandler (IBridgeDbContext dbContext, ICurrentUserService userService) {
             _dbContext = dbContext;
             _userService = userService;
-            _userHelper = userHelper;
         }
 
         public async Task<ApiResponse> Handle (AddCourseGradeCommand request, CancellationToken cancellationToken) {
             ApiResponse res = new ApiResponse ();
             try {
-                var userId = await _userHelper.getUserId (_userService.UserId.ToString());
+                var userId = _userService.UserId;
                 //var id= int.Parse(userId);
-                if (_userService.RoleList.Contains (Roles.admin.ToString ())) {
+                // if (_userService.RoleList.Contains (Roles.admin.ToString ())) {
 
-                    var isExist = await _dbContext.CourseGrade.Where (x => x.CourseId == request.courseid
-                        //  && x.IsDeleted==false
+                    var isExist = await _dbContext.CourseGrade.Where (x => x.CourseId == request.courseid &&
+                        x.IsDeleted == false
                     ).FirstOrDefaultAsync ();
                     if (isExist == null) {
                         CourseGrade obj = new CourseGrade () {
@@ -75,12 +73,12 @@ namespace Application.Courses.Commands.AddCourseGrade {
                             res.ReturnCode = 422;
                         }
                     }
-                } else {
-                    res.response_code = 1;
-                    res.message = "You are not authorized";
-                    res.status = "Unsuccess";
-                    res.ReturnCode = 401;
-                }
+                // } else {
+                //     res.response_code = 1;
+                //     res.message = "You are not authorized";
+                //     res.status = "Unsuccess";
+                //     res.ReturnCode = 401;
+                // }
 
             } catch (Exception ex) {
                 res.ReturnCode = 500;

@@ -26,9 +26,9 @@ namespace Application.Courses.Queries.GetCoursePreviewById {
         public async Task<ApiResponse> Handle (GetCoursePreviewByIdQuery request, CancellationToken cancellationToken) {
             ApiResponse res = new ApiResponse ();
             try {
-                if (_userService.RoleList.Contains (Roles.admin.ToString ())||
-                _userService.RoleList.Contains (Roles.teacher.ToString ())||
-                _userService.RoleList.Contains (Roles.student.ToString ())) {
+                // if (_userService.RoleList.Contains (Roles.admin.ToString ())||
+                // _userService.RoleList.Contains (Roles.teacher.ToString ())||
+                // _userService.RoleList.Contains (Roles.student.ToString ())) {
                 string certificate = Path.GetFileName ("../../training24-28e994f9833c.json");
                 // if (request.StudentId == 0)
                 // {
@@ -87,8 +87,8 @@ namespace Application.Courses.Queries.GetCoursePreviewById {
                                 coursePreview.Image = _userHelper.getUrl (course.Image, certificate);
                         }
                         coursePreview.Name = course.Name;
-                        var chapters = await _dbContext.Chapter.Where (x => x.CourseId == course.Id 
-                        // && x.IsDeleted == false
+                        var chapters = await _dbContext.Chapter.Where (x => x.CourseId == course.Id &&
+                            x.IsDeleted == false
                         ).ToListAsync ();
                         List<ChapterPreviewModel> chapterPM = new List<ChapterPreviewModel> ();
                         foreach (var item in chapters) {
@@ -97,8 +97,8 @@ namespace Application.Courses.Queries.GetCoursePreviewById {
                             obj.Code = item.Code;
                             obj.Name = item.Name;
                             obj.itemorder = item.ItemOrder;
-                            var quizList = await _dbContext.chapterQuiz.Where (x => x.ChapterId == item.Id 
-                            // && x.IsDeleted == false
+                            var quizList = await _dbContext.chapterQuiz.Where (x => x.ChapterId == item.Id &&
+                                x.IsDeleted == false
                             ).ToListAsync ();
                             List<QuizPreviewModel> quizPreviewModel = new List<QuizPreviewModel> ();
                             if (quizList != null) {
@@ -131,8 +131,8 @@ namespace Application.Courses.Queries.GetCoursePreviewById {
                             } else {
                                 obj.quizs = null;
                             }
-                            var assignments = await _dbContext.Assignment.Where (x => x.ChapterId == item.Id 
-                            // && x.IsDeleted == false
+                            var assignments = await _dbContext.Assignment.Where (x => x.ChapterId == item.Id &&
+                                x.IsDeleted == false
                             ).ToListAsync ();
                             List<AssignmentPreviewModel> assignmentPreviewModel = new List<AssignmentPreviewModel> ();
                             if (assignments != null) {
@@ -158,8 +158,8 @@ namespace Application.Courses.Queries.GetCoursePreviewById {
                             } else {
                                 obj.assignments = null;
                             }
-                            var lessons = await _dbContext.Lesson.Where (x => x.ChapterId == item.Id 
-                            // && x.IsDeleted == false
+                            var lessons = await _dbContext.Lesson.Where (x => x.ChapterId == item.Id &&
+                                x.IsDeleted == false
                             ).ToListAsync ();
                             List<LessonPreviewModel> lessonPreviewModel = new List<LessonPreviewModel> ();
                             if (request.StudentId == 0) {
@@ -196,8 +196,8 @@ namespace Application.Courses.Queries.GetCoursePreviewById {
                                                 description = x.Description,
                                                 itemorder = x.ItemOrder,
                                                 lessonfiles = GetLessionFilesByLessionId (x.Id, request.StudentId, certificate),
-                                                assignment = _dbContext.LessonAssignments.Where (x => x.LessonId == x.Id
-                                                //  && x.IsDeleted == false
+                                                assignment = _dbContext.LessonAssignments.Where (x => x.LessonId == x.Id &&
+                                                    x.IsDeleted == false
                                                 ).Select (x => new ResponseLessionAssignmentDTO {
                                                     id = Convert.ToInt32 (x.Id),
                                                         name = x.Name,
@@ -226,10 +226,10 @@ namespace Application.Courses.Queries.GetCoursePreviewById {
                         }
                         chapterPM = chapterPM.OrderBy (x => x.itemorder).ToList ();
                         coursePreview.chapters = chapterPM;
-                    res.data = coursePreview;
-                    res.response_code = 0;
-                    res.message = "Course detail";
-                    res.status = "Success";
+                        res.data = coursePreview;
+                        res.response_code = 0;
+                        res.message = "Course detail";
+                        res.status = "Success";
                     } else {
                         res.response_code = 1;
                         res.message = "Course not found";
@@ -237,12 +237,12 @@ namespace Application.Courses.Queries.GetCoursePreviewById {
                         res.ReturnCode = 404;
                     }
                 }
-                } else {
-                    res.response_code = 1;
-                    res.message = "You are not authorized";
-                    res.status = "Unsuccess";
-                    res.ReturnCode = 401;
-                }
+                // } else {
+                //     res.response_code = 1;
+                //     res.message = "You are not authorized";
+                //     res.status = "Unsuccess";
+                //     res.ReturnCode = 401;
+                // }
             } catch (Exception ex) {
                 res.ReturnCode = 500;
                 res.response_code = 2;
@@ -253,15 +253,15 @@ namespace Application.Courses.Queries.GetCoursePreviewById {
         }
 
         public List<ResponseLessonAssignmentFileDTO> GetLessonAssignmentFilesByAssignmentId (long Id, string Certificate) {
-            List<LessonAssignmentFile> AssignmentFiles = _dbContext.LessonAssignmentFiles.Where (x => x.AssignmentId == Id 
-            // && x.IsDeleted == false
+            List<LessonAssignmentFile> AssignmentFiles = _dbContext.LessonAssignmentFiles.Where (x => x.AssignmentId == Id &&
+                x.IsDeleted == false
             ).ToList ();
             List<ResponseLessonAssignmentFileDTO> AssignmentFileList = new List<ResponseLessonAssignmentFileDTO> ();
             List<ResponseFilesModel> responseFilesModelList = new List<ResponseFilesModel> ();
             foreach (var AssignmentFile in AssignmentFiles) {
                 ResponseLessonAssignmentFileDTO responseAssignmentFileModel = new ResponseLessonAssignmentFileDTO ();
-                Files newFiles = _dbContext.Files.FirstOrDefault (x => x.Id == AssignmentFile.FileId 
-                // && x.IsDeleted == false
+                Files newFiles = _dbContext.Files.FirstOrDefault (x => x.Id == AssignmentFile.FileId &&
+                    x.IsDeleted == false
                 );
                 if (newFiles != null) {
                     ResponseFilesModel responseFilesModel = new ResponseFilesModel ();
@@ -282,15 +282,15 @@ namespace Application.Courses.Queries.GetCoursePreviewById {
             return AssignmentFileList;
         }
         public List<ResponseAssignmentFileModel> GetAssignmentFilesByAssignmentId (long Id, string Certificate) {
-            var AssignmentFiles = _dbContext.AssignmentFile.Where (x => x.AssignmentId == Id 
-            // && x.IsDeleted == false
+            var AssignmentFiles = _dbContext.AssignmentFile.Where (x => x.AssignmentId == Id &&
+                x.IsDeleted == false
             ).ToList ();
             List<ResponseAssignmentFileModel> AssignmentFileList = new List<ResponseAssignmentFileModel> ();
             List<ResponseFilesModel> responseFilesModelList = new List<ResponseFilesModel> ();
             foreach (var AssignmentFile in AssignmentFiles) {
                 ResponseAssignmentFileModel responseAssignmentFileModel = new ResponseAssignmentFileModel ();
-                Files newFiles = _dbContext.Files.FirstOrDefault (x => x.Id == AssignmentFile.FileId 
-                // && x.IsDeleted == false
+                Files newFiles = _dbContext.Files.FirstOrDefault (x => x.Id == AssignmentFile.FileId &&
+                    x.IsDeleted == false
                 );
                 ResponseFilesModel responseFilesModel = new ResponseFilesModel ();
                 var filetyped = _dbContext.FileTypes.FirstOrDefault (x => x.Id == newFiles.Id);
@@ -312,15 +312,15 @@ namespace Application.Courses.Queries.GetCoursePreviewById {
             return AssignmentFileList;
         }
         public List<ResponseLessonFileModel> GetLessionFilesByLessionId (long Id, long studentid, string Certificate) {
-            List<LessonFile> lessonFiles = _dbContext.LessonFile.Where (x => x.LessionId == Id 
-            // && x.IsDeleted == false
+            List<LessonFile> lessonFiles = _dbContext.LessonFile.Where (x => x.LessionId == Id &&
+                x.IsDeleted == false
             ).ToList ();
             List<ResponseLessonFileModel> LessonFileList = new List<ResponseLessonFileModel> ();
             List<ResponseFilesModel> responseFilesModelList = new List<ResponseFilesModel> ();
             foreach (var lessonFile in lessonFiles) {
                 ResponseLessonFileModel responseLessonFileModel = new ResponseLessonFileModel ();
-                Files newFiles = _dbContext.Files.FirstOrDefault (x => x.Id == lessonFile.FileId 
-                // && x.IsDeleted == false
+                Files newFiles = _dbContext.Files.FirstOrDefault (x => x.Id == lessonFile.FileId &&
+                    x.IsDeleted == false
                 );
                 ResponseFilesModel responseFilesModel = new ResponseFilesModel ();
                 var filetyped = _dbContext.FileTypes.FirstOrDefault (x => x.Id == newFiles.Id);
