@@ -25,6 +25,7 @@ namespace Application.CoursesUnitTests.Common {
                         Subject = "test",
                         BasePrice = "123",
                         GradeId = 1,
+                        CourseId = 1,
                         IsDeleted = false
                 },
                 new CourseDefination {

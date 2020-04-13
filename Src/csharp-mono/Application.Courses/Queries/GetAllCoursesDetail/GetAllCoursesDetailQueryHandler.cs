@@ -35,7 +35,8 @@ namespace Application.Courses.Queries.GetAllCoursesDetail
             ApiResponse res = new ApiResponse();
             try
             {
-                var userId = await _userHelper.getUserId(_userService.UserId.ToString());
+                // var userId = await _userHelper.getUserId(_userService.UserId.ToString());
+                var userId = _userService.UserId;
 
                 if (request.Search == null)
                 {

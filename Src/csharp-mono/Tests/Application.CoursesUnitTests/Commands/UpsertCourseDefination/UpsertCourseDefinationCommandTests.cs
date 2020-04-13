@@ -11,8 +11,6 @@ namespace Application.CoursesUnitTests.Commands.UpsertCourseDefination
 {
     public class UpsertCourseDefinationCommandTests : CommandTestBase
     {
-        private readonly ICurrentUserService _userService;
-        private readonly IUserHelper _userHelper;
         [Fact]
         public void Handle_GivenValidRequest_ShouldCourseDefinationCreate()
         {

@@ -13,9 +13,6 @@ namespace Application.CoursesUnitTests.Commands.DeleteCourseDefination
     public class DeleteCourseDefinationCommandTest : CommandTestBase
     {
         private readonly DeleteCourseDefinationCommandHandler _sut;
-        private readonly ICurrentUserService _userService;
-        private readonly IUserHelper _userHelper;
-
         public DeleteCourseDefinationCommandTest()
             : base()
         {

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Courses.Queries.GetCourseDefinition;
@@ -10,16 +11,8 @@ using Xunit;
 namespace Application.CoursesUnitTests.Queries.GetCourseDefinition
 {
     [Collection("QueryCollection")]
-    public class GetCourseDefinitionQueryTests
+    public class GetCourseDefinitionQueryTests: CommandTestBase
     {
-        private readonly BridgeDbContext _context;
-        private readonly IMapper _mapper;
-        public GetCourseDefinitionQueryTests(QueryTestFixture fixture)
-        {
-            _context = fixture.Context;
-            _mapper = fixture.Mapper;
-        }
-
         [Fact]
         public async Task GetCourseDefinationTest()
         {
@@ -27,7 +20,7 @@ namespace Application.CoursesUnitTests.Queries.GetCourseDefinition
 
             var result = await sut.Handle(new GetCourseDefinitionQuery { Pagenumber = 1, Perpagerecord = 5, Search = "Test" }, CancellationToken.None);
 
-            // result.ShouldBeOfType<CourseDefinitionVm>();
+             result.data.ShouldBeOfType<List<CourseDefinitionVm>>();
 
             result.ReturnCode.ShouldBe(200);
         }

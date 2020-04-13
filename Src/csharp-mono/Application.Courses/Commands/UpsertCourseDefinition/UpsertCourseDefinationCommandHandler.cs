@@ -30,7 +30,7 @@ namespace Application.Courses.Commands.UpsertCourseDefinition
             {
                 // if (_userService.RoleList.Contains(Roles.admin.ToString()))
                 // {
-                //     var userId = await _userHelper.getUserId(_userService.UserId.ToString());
+                var userId = _userService.UserId;
 
                 if (request.Id == 0)
                 {
@@ -48,7 +48,7 @@ namespace Application.Courses.Commands.UpsertCourseDefinition
                         CourseDefination obj = new CourseDefination()
                         {
                             CreationTime = DateTime.UtcNow.ToString(),
-                            // CreatorUserId = userId,
+                            CreatorUserId = userId,
                             Subject = request.Subject,
                             BasePrice = request.BasePrice,
                             GradeId = request.GradeId,

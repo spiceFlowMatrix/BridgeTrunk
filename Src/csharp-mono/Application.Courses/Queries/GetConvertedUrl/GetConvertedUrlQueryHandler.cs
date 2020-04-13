@@ -24,7 +24,9 @@ namespace Application.Courses.Queries.GetConvertedUrl
 
             try
             {
-                string jsonPath = Path.GetFileName(_env.WebRootPath + "/training24-28e994f9833c.json");
+                string jsonPath = Path.GetFileName("../../training24-28e994f9833c.json");
+
+                // string jsonPath = Path.GetFileName(_env.WebRootPath + "/training24-28e994f9833c.json");
                 var credential = GoogleCredential.FromFile(jsonPath);
                 var storage = StorageClient.Create(credential);
 
@@ -50,6 +52,7 @@ namespace Application.Courses.Queries.GetConvertedUrl
                 res.response_code = 0;
                 res.message = "file converted";
                 res.status = "Success";
+                res.ReturnCode = 200;
             }
             catch (Exception ex)
             {
