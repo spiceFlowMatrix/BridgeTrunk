@@ -15,9 +15,8 @@ namespace Application.CoursesUnitTests.Queries.GetCoursePreviewGradeWise {
                 PageNumber = 1,
                     PerPageRecord = 5,
                     GradeId = 1,
-                    Search = "A"
-            }, CancellationToken.None);
-            result.data.ShouldBeOfType<object> ();
+                    Search = "t"
+            }, CancellationToken.None);            
             result.ReturnCode.ShouldBe (200);
         }
     }

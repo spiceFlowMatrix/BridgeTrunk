@@ -11,7 +11,7 @@ namespace Application.CoursesUnitTests.Queries.GetCoursePrivewById {
         [Fact]
         public async Task GetCoursePreviewByIdQueryHandlerTest () {
             var sut = new GetCoursePreviewByIdQueryHandler (_context, _userService, _userHelper);
-            var result = await sut.Handle (new GetCoursePreviewByIdQuery { Id = 1, StudentId = 1 }, CancellationToken.None);
+            var result = await sut.Handle (new GetCoursePreviewByIdQuery { Id = 1, StudentId = 0 }, CancellationToken.None);
             result.data.ShouldBeOfType<CoursePreviewVm> ();
             result.ReturnCode.ShouldBe (200);
         }
