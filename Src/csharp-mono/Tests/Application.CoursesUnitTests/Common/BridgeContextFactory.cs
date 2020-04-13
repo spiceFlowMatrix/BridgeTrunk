@@ -103,6 +103,42 @@ namespace Application.CoursesUnitTests.Common {
                         IsDeleted = false
                 }
             });
+
+            context.Chapter.Add(new Chapter{
+                Id = 1,
+                Name = "test",
+                Code = "C001",
+                CourseId = 1,
+                QuizId = 1,
+                IsDeleted = false,
+                ItemOrder = 1 
+            });
+
+            context.Quiz.Add(new Quiz() {
+                Id = 1,
+                Name = "testquiz",
+                Code = "Q001",
+                TimeOut = 10,
+                ItemOrder = 1,
+                IsDeleted = false
+            });
+
+            context.Lesson.Add( new Lesson(){
+                IsDeleted = false,
+                Id = 1,
+                Name = "test",
+                Description = "test",
+                ChapterId = 1,
+                ItemOrder = 1
+            });
+
+            context.LessonProgresses.Add(new LessonProgress() {
+                Id = 1,
+                ChapterId = 1,
+                LessonId = 1,
+                Progress = 50 
+            });
+            
             context.SaveChanges ();
 
             return context;
