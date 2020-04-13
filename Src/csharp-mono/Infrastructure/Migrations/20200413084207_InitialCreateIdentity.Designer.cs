@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bridge.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200410122045_CreateIdentitySchema")]
-    partial class CreateIdentitySchema
+    [Migration("20200413084207_InitialCreateIdentity")]
+    partial class InitialCreateIdentity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,7 +22,8 @@ namespace Bridge.Infrastructure.Migrations
             modelBuilder.Entity("Bridge.Infrastructure.Identity.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(127) CHARACTER SET utf8mb4")
+                        .HasMaxLength(127);
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
@@ -32,8 +33,8 @@ namespace Bridge.Infrastructure.Migrations
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Email")
-                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
-                        .HasMaxLength(256);
+                        .HasColumnType("varchar(127) CHARACTER SET utf8mb4")
+                        .HasMaxLength(127);
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("tinyint(1)");
@@ -49,8 +50,8 @@ namespace Bridge.Infrastructure.Migrations
                         .HasMaxLength(256);
 
                     b.Property<string>("NormalizedUserName")
-                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
-                        .HasMaxLength(256);
+                        .HasColumnType("varchar(127) CHARACTER SET utf8mb4")
+                        .HasMaxLength(127);
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -68,8 +69,8 @@ namespace Bridge.Infrastructure.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("UserName")
-                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
-                        .HasMaxLength(256);
+                        .HasColumnType("varchar(127) CHARACTER SET utf8mb4")
+                        .HasMaxLength(127);
 
                     b.HasKey("Id");
 
@@ -86,13 +87,13 @@ namespace Bridge.Infrastructure.Migrations
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.DeviceFlowCodes", b =>
                 {
                     b.Property<string>("UserCode")
-                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
-                        .HasMaxLength(200);
+                        .HasColumnType("varchar(127) CHARACTER SET utf8mb4")
+                        .HasMaxLength(127);
 
                     b.Property<string>("ClientId")
                         .IsRequired()
-                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
-                        .HasMaxLength(200);
+                        .HasColumnType("varchar(127) CHARACTER SET utf8mb4")
+                        .HasMaxLength(127);
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
@@ -104,16 +105,16 @@ namespace Bridge.Infrastructure.Migrations
 
                     b.Property<string>("DeviceCode")
                         .IsRequired()
-                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
-                        .HasMaxLength(200);
+                        .HasColumnType("varchar(127) CHARACTER SET utf8mb4")
+                        .HasMaxLength(127);
 
                     b.Property<DateTime?>("Expiration")
                         .IsRequired()
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("SubjectId")
-                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
-                        .HasMaxLength(200);
+                        .HasColumnType("varchar(127) CHARACTER SET utf8mb4")
+                        .HasMaxLength(127);
 
                     b.HasKey("UserCode");
 
@@ -128,13 +129,13 @@ namespace Bridge.Infrastructure.Migrations
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.PersistedGrant", b =>
                 {
                     b.Property<string>("Key")
-                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
-                        .HasMaxLength(200);
+                        .HasColumnType("varchar(127) CHARACTER SET utf8mb4")
+                        .HasMaxLength(127);
 
                     b.Property<string>("ClientId")
                         .IsRequired()
-                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
-                        .HasMaxLength(200);
+                        .HasColumnType("varchar(127) CHARACTER SET utf8mb4")
+                        .HasMaxLength(127);
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
@@ -148,8 +149,8 @@ namespace Bridge.Infrastructure.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("SubjectId")
-                        .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
-                        .HasMaxLength(200);
+                        .HasColumnType("varchar(127) CHARACTER SET utf8mb4")
+                        .HasMaxLength(127);
 
                     b.Property<string>("Type")
                         .IsRequired()
@@ -168,19 +169,20 @@ namespace Bridge.Infrastructure.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(127) CHARACTER SET utf8mb4")
+                        .HasMaxLength(127);
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Name")
-                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
-                        .HasMaxLength(256);
+                        .HasColumnType("varchar(127) CHARACTER SET utf8mb4")
+                        .HasMaxLength(127);
 
                     b.Property<string>("NormalizedName")
-                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
-                        .HasMaxLength(256);
+                        .HasColumnType("varchar(127) CHARACTER SET utf8mb4")
+                        .HasMaxLength(127);
 
                     b.HasKey("Id");
 
@@ -205,13 +207,69 @@ namespace Bridge.Infrastructure.Migrations
 
                     b.Property<string>("RoleId")
                         .IsRequired()
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(127) CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetRoleClaims");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(127) CHARACTER SET utf8mb4")
+                        .HasMaxLength(127);
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("varchar(127) CHARACTER SET utf8mb4")
+                        .HasMaxLength(127);
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasColumnType("varchar(127) CHARACTER SET utf8mb4")
+                        .HasMaxLength(127);
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("varchar(127) CHARACTER SET utf8mb4")
+                        .HasMaxLength(127);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("IdentityUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -228,7 +286,7 @@ namespace Bridge.Infrastructure.Migrations
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(127) CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -240,19 +298,19 @@ namespace Bridge.Infrastructure.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
-                        .HasMaxLength(128);
+                        .HasColumnType("varchar(127) CHARACTER SET utf8mb4")
+                        .HasMaxLength(127);
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
-                        .HasMaxLength(128);
+                        .HasColumnType("varchar(127) CHARACTER SET utf8mb4")
+                        .HasMaxLength(127);
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(127) CHARACTER SET utf8mb4");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -264,10 +322,12 @@ namespace Bridge.Infrastructure.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(127) CHARACTER SET utf8mb4")
+                        .HasMaxLength(127);
 
                     b.Property<string>("RoleId")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(127) CHARACTER SET utf8mb4")
+                        .HasMaxLength(127);
 
                     b.HasKey("UserId", "RoleId");
 
@@ -279,15 +339,16 @@ namespace Bridge.Infrastructure.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(127) CHARACTER SET utf8mb4")
+                        .HasMaxLength(127);
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
-                        .HasMaxLength(128);
+                        .HasColumnType("varchar(127) CHARACTER SET utf8mb4")
+                        .HasMaxLength(127);
 
                     b.Property<string>("Name")
-                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
-                        .HasMaxLength(128);
+                        .HasColumnType("varchar(127) CHARACTER SET utf8mb4")
+                        .HasMaxLength(127);
 
                     b.Property<string>("Value")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");

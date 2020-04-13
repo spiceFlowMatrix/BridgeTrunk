@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Bridge.Infrastructure.Migrations
 {
-    public partial class CreateIdentitySchema : Migration
+    public partial class InitialCreateIdentity : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,9 +12,9 @@ namespace Bridge.Infrastructure.Migrations
                 name: "AspNetRoles",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(maxLength: 256, nullable: true),
-                    NormalizedName = table.Column<string>(maxLength: 256, nullable: true),
+                    Id = table.Column<string>(maxLength: 127, nullable: false),
+                    Name = table.Column<string>(maxLength: 127, nullable: true),
+                    NormalizedName = table.Column<string>(maxLength: 127, nullable: true),
                     ConcurrencyStamp = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -26,10 +26,10 @@ namespace Bridge.Infrastructure.Migrations
                 name: "AspNetUsers",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
-                    UserName = table.Column<string>(maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
-                    Email = table.Column<string>(maxLength: 256, nullable: true),
+                    Id = table.Column<string>(maxLength: 127, nullable: false),
+                    UserName = table.Column<string>(maxLength: 127, nullable: true),
+                    NormalizedUserName = table.Column<string>(maxLength: 127, nullable: true),
+                    Email = table.Column<string>(maxLength: 127, nullable: true),
                     NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(nullable: false),
                     PasswordHash = table.Column<string>(nullable: true),
@@ -51,10 +51,10 @@ namespace Bridge.Infrastructure.Migrations
                 name: "DeviceCodes",
                 columns: table => new
                 {
-                    UserCode = table.Column<string>(maxLength: 200, nullable: false),
-                    DeviceCode = table.Column<string>(maxLength: 200, nullable: false),
-                    SubjectId = table.Column<string>(maxLength: 200, nullable: true),
-                    ClientId = table.Column<string>(maxLength: 200, nullable: false),
+                    UserCode = table.Column<string>(maxLength: 127, nullable: false),
+                    DeviceCode = table.Column<string>(maxLength: 127, nullable: false),
+                    SubjectId = table.Column<string>(maxLength: 127, nullable: true),
+                    ClientId = table.Column<string>(maxLength: 127, nullable: false),
                     CreationTime = table.Column<DateTime>(nullable: false),
                     Expiration = table.Column<DateTime>(nullable: false),
                     Data = table.Column<string>(maxLength: 50000, nullable: false)
@@ -65,13 +65,38 @@ namespace Bridge.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "IdentityUser",
+                columns: table => new
+                {
+                    Id = table.Column<string>(maxLength: 127, nullable: false),
+                    UserName = table.Column<string>(maxLength: 127, nullable: true),
+                    NormalizedUserName = table.Column<string>(maxLength: 127, nullable: true),
+                    Email = table.Column<string>(maxLength: 127, nullable: true),
+                    NormalizedEmail = table.Column<string>(nullable: true),
+                    EmailConfirmed = table.Column<bool>(nullable: false),
+                    PasswordHash = table.Column<string>(nullable: true),
+                    SecurityStamp = table.Column<string>(nullable: true),
+                    ConcurrencyStamp = table.Column<string>(nullable: true),
+                    PhoneNumber = table.Column<string>(nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
+                    LockoutEnabled = table.Column<bool>(nullable: false),
+                    AccessFailedCount = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IdentityUser", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "PersistedGrants",
                 columns: table => new
                 {
-                    Key = table.Column<string>(maxLength: 200, nullable: false),
+                    Key = table.Column<string>(maxLength: 127, nullable: false),
                     Type = table.Column<string>(maxLength: 50, nullable: false),
-                    SubjectId = table.Column<string>(maxLength: 200, nullable: true),
-                    ClientId = table.Column<string>(maxLength: 200, nullable: false),
+                    SubjectId = table.Column<string>(maxLength: 127, nullable: true),
+                    ClientId = table.Column<string>(maxLength: 127, nullable: false),
                     CreationTime = table.Column<DateTime>(nullable: false),
                     Expiration = table.Column<DateTime>(nullable: true),
                     Data = table.Column<string>(maxLength: 50000, nullable: false)
@@ -127,8 +152,8 @@ namespace Bridge.Infrastructure.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
-                    ProviderKey = table.Column<string>(maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(maxLength: 127, nullable: false),
+                    ProviderKey = table.Column<string>(maxLength: 127, nullable: false),
                     ProviderDisplayName = table.Column<string>(nullable: true),
                     UserId = table.Column<string>(nullable: false)
                 },
@@ -147,8 +172,8 @@ namespace Bridge.Infrastructure.Migrations
                 name: "AspNetUserRoles",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(nullable: false),
-                    RoleId = table.Column<string>(nullable: false)
+                    UserId = table.Column<string>(maxLength: 127, nullable: false),
+                    RoleId = table.Column<string>(maxLength: 127, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -171,9 +196,9 @@ namespace Bridge.Infrastructure.Migrations
                 name: "AspNetUserTokens",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(nullable: false),
-                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
-                    Name = table.Column<string>(maxLength: 128, nullable: false),
+                    UserId = table.Column<string>(maxLength: 127, nullable: false),
+                    LoginProvider = table.Column<string>(maxLength: 127, nullable: false),
+                    Name = table.Column<string>(maxLength: 127, nullable: false),
                     Value = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -265,6 +290,9 @@ namespace Bridge.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "DeviceCodes");
+
+            migrationBuilder.DropTable(
+                name: "IdentityUser");
 
             migrationBuilder.DropTable(
                 name: "PersistedGrants");
