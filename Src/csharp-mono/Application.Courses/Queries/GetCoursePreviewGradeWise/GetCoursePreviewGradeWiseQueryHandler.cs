@@ -46,8 +46,8 @@ namespace Application.Courses.Queries.GetCoursePreviewGradeWise {
                         var list = await _dbContext.Course.Where (x => x.istrial == true).ToListAsync ();
                         foreach (var usercourse in list) {
                             var courseGrade = await _dbContext.CourseGrade.Where (x => x.CourseId == usercourse.Id).ToListAsync ();
-                            var course = await _dbContext.Course.FirstOrDefaultAsync (x => x.Id == usercourse.Id
-                                && x.IsDeleted == false
+                            var course = await _dbContext.Course.FirstOrDefaultAsync (x => x.Id == usercourse.Id &&
+                                x.IsDeleted == false
                             );
                             if (course != null) {
                                 foreach (var cgrade in courseGrade) {
@@ -79,14 +79,13 @@ namespace Application.Courses.Queries.GetCoursePreviewGradeWise {
                         }
                     }
                 } else {
-
-                    var list = await _dbContext.UserCourse.Where (x => x.UserId == id && x.IsExpire == false
-                         && x.IsDeleted==false
+                    var list = await _dbContext.UserCourse.Where (x => x.UserId == id && x.IsExpire == false &&
+                        x.IsDeleted == false
                     ).ToListAsync ();
                     foreach (var usercourse in list) {
                         var courseGrade = await _dbContext.CourseGrade.Where (x => x.CourseId == usercourse.Id).ToListAsync ();
-                        var course = await _dbContext.Course.FirstOrDefaultAsync (x => x.Id == usercourse.Id
-                            && x.IsDeleted == false
+                        var course = await _dbContext.Course.FirstOrDefaultAsync (x => x.Id == usercourse.Id &&
+                            x.IsDeleted == false
                         );
                         if (course != null) {
                             foreach (var cgrade in courseGrade) {

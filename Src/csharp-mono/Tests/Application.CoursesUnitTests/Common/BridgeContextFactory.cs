@@ -57,17 +57,23 @@ namespace Application.CoursesUnitTests.Common {
 
             context.Grade.AddRange (new [] {
                 new Grade {
-                    Name = "test",
+                    Id = 1,
+                        Name = "test",
                         Description = "test",
-                        SchoolId = 1, IsDeleted = false
+                        SchoolId = 1,
+                        IsDeleted = false
                 }, new Grade {
-                    Name = "testGrade",
+                    Id = 2,
+                        Name = "testGrade",
                         Description = "testGrade",
-                        SchoolId = 1, IsDeleted = false
+                        SchoolId = 1,
+                        IsDeleted = false
                 }, new Grade {
-                    Name = "testGrade1",
+                    Id = 3,
+                        Name = "testGrade1",
                         Description = "testGrade1",
-                        SchoolId = 1, IsDeleted = false
+                        SchoolId = 1,
+                        IsDeleted = false
                 },
             });
             context.CourseGrade.AddRange (new [] {
@@ -86,21 +92,236 @@ namespace Application.CoursesUnitTests.Common {
             context.Course.AddRange (new [] {
                 new Course {
                     Id = 1,
-                        Name = "Test",
-                        Code = "Test",
-                        Description = "Test",
-                        Image = "Test",
+                        Name = "test",
+                        Code = "test",
+                        Description = "test",
+                        Image = "test",
                         PassMark = (decimal) 9.9,
                         istrial = false,
                         IsDeleted = false
                 }, new Course {
                     Id = 2,
-                        Name = "Test2",
-                        Code = "Test2",
-                        Description = "Test2",
-                        Image = "Test2",
+                        Name = "test2",
+                        Code = "test2",
+                        Description = "test2",
+                        Image = "test2",
                         PassMark = (decimal) 9.9,
                         istrial = false,
+                        IsDeleted = false
+                }
+            });
+            context.Chapter.AddRange (new [] {
+                new Chapter {
+                    Id = 1,
+                        Name = "test",
+                        Code = "1",
+                        CourseId = 1,
+                        QuizId = 1,
+                        ItemOrder = 1,
+                        IsDeleted = false
+                }, new Chapter {
+                    Id = 2,
+                        Name = "test2",
+                        Code = "2",
+                        CourseId = 1,
+                        QuizId = 1,
+                        ItemOrder = 1,
+                        IsDeleted = false
+                }
+            });
+            context.chapterQuiz.AddRange (new [] {
+                new ChapterQuiz {
+                    Id = 1,
+                        ChapterId = 1,
+                        QuizId = 1,
+                        ItemOrder = 1,
+                        IsDeleted = false
+                }, new ChapterQuiz {
+                    Id = 2,
+                        ChapterId = 2,
+                        QuizId = 2,
+                        ItemOrder = 1,
+                        IsDeleted = false
+                }
+            });
+            context.Quiz.AddRange (new [] {
+                new Quiz {
+                    Id = 1,
+                        Name = "test",
+                        Code = "1",
+                        NumQuestions = 4,
+                        PassMark = 50,
+                        TimeOut = 10,
+                        ItemOrder = 1,
+                        IsDeleted = false
+                }, new Quiz {
+                    Id = 2,
+                        Name = "test2",
+                        Code = "2",
+                        NumQuestions = 4,
+                        PassMark = 50,
+                        TimeOut = 20,
+                        ItemOrder = 1,
+                        IsDeleted = false
+                }
+            });
+            context.Assignment.AddRange (new [] {
+                new Assignment {
+                    Id = 1,
+                        Name = "test",
+                        Code = "1",
+                        Description = "test",
+                        ChapterId = 1,
+                        ItemOrder = 1,
+                        IsDeleted = false
+                }, new Assignment {
+                    Id = 2,
+                        Name = "test2",
+                        Code = "2",
+                        Description = "test2",
+                        ChapterId = 2,
+                        ItemOrder = 1,
+                        IsDeleted = false
+                }
+            });
+            context.Lesson.AddRange (new [] {
+                new Lesson {
+                    Id = 1,
+                        Name = "test",
+                        Code = "1",
+                        Description = "test",
+                        ChapterId = 1,
+                        ItemOrder = 1,
+                        IsDeleted = false
+                }, new Lesson {
+                    Id = 2,
+                        Name = "test2",
+                        Code = "2",
+                        Description = "test2",
+                        ChapterId = 2,
+                        ItemOrder = 1,
+                        IsDeleted = false
+                }
+            });
+            context.LessonAssignmentFiles.AddRange (new [] {
+                new LessonAssignmentFile {
+                    Id = 1,
+                        FileId = 1,
+                        AssignmentId = 1,
+                        IsDeleted = false
+                }, new LessonAssignmentFile {
+                    Id = 2,
+                        FileId = 1,
+                        AssignmentId = 2,
+                        IsDeleted = false
+                }
+            });
+            context.Files.AddRange (new [] {
+                new Files {
+                    Id = 1,
+                        Name = "test",
+                        FileName = "test",
+                        Description = "test",
+                        Url = "test",
+                        FileSize = 10,
+                        FileTypeId = 1,
+                        TotalPages = 5,
+                        Duration = "test",
+                        IsDeleted = false
+                }, new Files {
+                    Id = 2,
+                        Name = "test2",
+                        FileName = "test2",
+                        Description = "test2",
+                        Url = "test2",
+                        FileSize = 10,
+                        FileTypeId = 2,
+                        TotalPages = 5,
+                        Duration = "test2",
+                        IsDeleted = false
+                }
+            });
+            context.FileTypes.AddRange (new [] {
+                new FileTypes {
+                    Id = 1,
+                        Filetype = "test",
+                        IsDeleted = false
+                }, new FileTypes {
+                    Id = 2,
+                        Filetype = "test2",
+                        IsDeleted = false
+                }
+            });
+            context.AssignmentFile.AddRange (new [] {
+                new AssignmentFile {
+                    Id = 1,
+                        AssignmentId = 1,
+                        FileId = 1,
+                        IsDeleted = false
+                }, new AssignmentFile {
+                    Id = 2,
+                        AssignmentId = 2,
+                        FileId = 2,
+                        IsDeleted = false
+                }
+            });
+            context.LessonFile.AddRange (new [] {
+                new LessonFile {
+                    Id = 1,
+                        LessionId = 1,
+                        FileId = 1,
+                        IsDeleted = false
+                }, new LessonFile {
+                    Id = 2,
+                        LessionId = 2,
+                        FileId = 2,
+                        IsDeleted = false
+                }
+            });
+            context.UserCourse.AddRange (new [] {
+                new UserCourse {
+                    Id = 1,
+                        UserId = 1,
+                        CourseId = 1,
+                        StartDate = "02/02/2020",
+                        EndDate = "05/05/2020",
+                        IsExpire = false,
+                        IsDeleted = false
+                }, new UserCourse {
+                    Id = 2,
+                        UserId = 2,
+                        CourseId = 2,
+                        StartDate = "02/02/2020",
+                        EndDate = "05/05/2020",
+                        IsExpire = false,
+                        IsDeleted = false
+                }
+            });
+            context.Users.AddRange (new [] {
+                new User {
+                    Id = 1,
+                        Username = "test",
+                        FullName = "test",
+                        Password = "test",
+                        Email = "test",
+                        Bio = "test",
+                        ProfilePicUrl = "test",
+                        IsBlocked = false,
+                        is_skippable = false,
+                        timeout = 10,
+                        reminder = 10,
+                        istimeouton = false,
+                        intervals = 2,
+                        phonenumber = "test",
+                        AuthId = "test",
+                        isfirstlogin = false,
+                        isforgot = false,
+                        forgotkey = "test",
+                        is_discussion_authorized = false,
+                        is_library_authorized = false,
+                        is_assignment_authorized = false,
+                        istrial = false,
+                        isallowmap = false,
                         IsDeleted = false
                 }
             });
