@@ -21,14 +21,21 @@ namespace Application.Courses.Queries.GetConvertedUrl
         public async Task<ApiResponse> Handle(GetConvertedUrlQuery request, CancellationToken cancellationToken)
         {
             ApiResponse res = new ApiResponse();
-
+            GoogleCredential cred;
             try
             {
-                string jsonPath = Path.GetFileName("../../training24-28e994f9833c.json");
+                // note: Read credential from local for testing.
+                using (var stream = new FileStream(Path.GetFileName("../../training24-28e994f9833c.json"), FileMode.Open, FileAccess.Read))
+                {
+                    cred = GoogleCredential.FromStream(stream);
+                }
+                // Note: read cred from environnment
+                // using (var stream = new FileStream(Environment.GetEnvironmentVariable ("GOOGLE_APPLICATION_CREDENTIALS"), FileMode.Open, FileAccess.Read))
+                // {
+                //     cred = GoogleCredential.FromStream(stream);
+                // }
 
-                // string jsonPath = Path.GetFileName(_env.WebRootPath + "/training24-28e994f9833c.json");
-                var credential = GoogleCredential.FromFile(jsonPath);
-                var storage = StorageClient.Create(credential);
+                var _storageClient = StorageClient.Create(cred);
 
                 // string Authorization = Request.Headers["id_token"];
 
@@ -40,7 +47,7 @@ namespace Application.Courses.Queries.GetConvertedUrl
                 // tc.RoleName.Contains(General.getRoleType("3"))
                 // )
                 // {
-                foreach (var obj in storage.ListObjects("edg-primary-course-image-storage", ""))
+                foreach (var obj in _storageClient.ListObjects("edg-primary-course-image-storage", ""))
                 {
                     if (obj.MediaLink == "https://www.googleapis.com/download/storage/v1/b/edg-primary-course-image-storage/o/splash_b6225b52-ffce-4c6b-ad68-4e03eb31eccd.png?generation=1537353117899874&alt=media")
                     {
