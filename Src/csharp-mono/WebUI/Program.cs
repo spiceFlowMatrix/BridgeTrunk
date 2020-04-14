@@ -1,5 +1,6 @@
 using System;
 using System.Reflection;
+using Bridge.Infrastructure.Identity;
 using Bridge.Persistence;
 using MediatR;
 using Microsoft.AspNetCore;
@@ -26,8 +27,12 @@ namespace Bridge.WebUI
                 try
                 {
                     var bridgeDbContext = services.GetRequiredService<BridgeDbContext>();
+
                     bridgeDbContext.Database.Migrate();
                     DataInitializer.Initialize(bridgeDbContext).Wait();
+
+                    var identityContext = services.GetRequiredService<ApplicationDbContext>();
+                    identityContext.Database.Migrate();
                     
                     var mediator = services.GetRequiredService<IMediator>();
                     // await mediator.Send(new SeedSampleDataCommand(), CancellationToken.None);
