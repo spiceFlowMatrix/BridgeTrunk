@@ -26,7 +26,7 @@ namespace WebUI.Controllers.Courses
     [ApiController]
     public class CourseController : BaseController
     {
-        [Authorize]
+        //[Authorize]
         [HttpPost("CourseItemProgressSync")]
         public async Task<IActionResult> AddCourseItemProgressSyncBusiness([FromBody] List<AddCourseItemProgressSyncModel> addCourseItemProgressSyncs)
         {

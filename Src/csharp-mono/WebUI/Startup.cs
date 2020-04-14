@@ -1,4 +1,5 @@
 using System.Text;
+using Application.Authentication;
 using Bridge.Application;
 using Bridge.Application.Interfaces;
 using Bridge.Infrastructure;
@@ -36,6 +37,7 @@ namespace Bridge.WebUI
             services.AddInfrastructure(Configuration, Environment);
             services.AddPersistence(Configuration);
             services.AddApplication();
+            services.AddApplicationAuthentication();
 
             services.AddHealthChecks()
                 .AddDbContextCheck<BridgeDbContext>();
