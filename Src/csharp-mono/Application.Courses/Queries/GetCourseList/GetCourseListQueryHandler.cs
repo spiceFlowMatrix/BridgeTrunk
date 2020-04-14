@@ -19,73 +19,69 @@ namespace Application.Courses.Queries.GetCourseList
     public class GetCourseListQueryHandler: IRequestHandler<GetCourseListQuery, ApiResponse>
     {
         private readonly IBridgeDbContext _dbContext;
-        private readonly ICurrentUserService _userService;
-        private readonly IUserHelper _userHelper;
-        public GetCourseListQueryHandler(IBridgeDbContext dbContext, ICurrentUserService userService, IUserHelper userHelper)
+        public GetCourseListQueryHandler(IBridgeDbContext dbContext)
         {
             _dbContext = dbContext;
-            _userService = userService;
-            _userHelper = userHelper;
         }
         public async Task<ApiResponse> Handle(GetCourseListQuery request, CancellationToken cancellationToken)
         {
             ApiResponse res = new ApiResponse();
             try
             {
-                string Certificate = Path.GetFileName("../../training24-28e994f9833c.json");
-                if (_userService.RoleList.Contains(Roles.admin.ToString()))
+                string Certificate = Path.GetFileName(Environment.GetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS"));
+                // if (_userService.RoleList.Contains(Roles.admin.ToString()))
+                // {
+                int total = 0;
+                var courseList = await _dbContext.Course.Where(x=>x.IsDeleted == false).Select(s => new
                 {
-                    int total = 0;
-                    var courseList = await _dbContext.Course.Select(s => new
+                    s.Id,
+                    s.Name,
+                    s.Code
+                }).ToListAsync();
+                if (request.pagenumber != 0 && request.perpagerecord != 0)
+                {
+                    total = courseList.Count();
+
+                    if (!string.IsNullOrEmpty(request.search))
                     {
-                        s.Id,
-                        s.Name,
-                        s.Code
-                    }).ToListAsync();
-                    if (request.pagenumber != 0 && request.perpagerecord != 0)
-                    {
+                        courseList = courseList.Where(b => b.Code != null && b.Code.ToLower().Contains(request.search.ToLower()) ||
+                        b.Name != null && b.Name.ToLower().Contains(request.search.ToLower()) ||
+                        b.Id.ToString().ToLower().Contains(request.search.ToLower())).ToList();
+
                         total = courseList.Count();
 
-                        if (!string.IsNullOrEmpty(request.search))
-                        {
-                            courseList = courseList.Where(b => b.Code != null && b.Code.ToLower().Contains(request.search.ToLower()) ||
-                            b.Name != null && b.Name.ToLower().Contains(request.search.ToLower()) ||
-                            b.Id.ToString().ToLower().Contains(request.search.ToLower())).ToList();
-
-                            total = courseList.Count();
-
-                            courseList = courseList.OrderByDescending(b => b.Id).
-                                        Skip(request.perpagerecord * (request.pagenumber - 1)).
-                                        Take(request.perpagerecord).
-                                        ToList();
-                        }
-                        else
-                        {
-                            courseList = courseList.OrderByDescending(b => b.Id).
-                                        Skip(request.perpagerecord * (request.pagenumber - 1)).
-                                        Take(request.perpagerecord).
-                                        ToList();
-                        }
+                        courseList = courseList.OrderByDescending(b => b.Id).
+                                    Skip(request.perpagerecord * (request.pagenumber - 1)).
+                                    Take(request.perpagerecord).
+                                    ToList();
                     }
-                    else 
+                    else
                     {
-                        total = courseList.Count();
+                        courseList = courseList.OrderByDescending(b => b.Id).
+                                    Skip(request.perpagerecord * (request.pagenumber - 1)).
+                                    Take(request.perpagerecord).
+                                    ToList();
                     }
-
-                    res.data = courseList;
-                    res.totalcount = total;
-                    res.response_code = 0;
-                    res.message = "Course Details";
-                    res.status = "Success";
-                    res.ReturnCode = 200;
                 }
                 else 
                 {
-                    res.response_code = 1;
-                    res.message = "You are not authorized.";
-                    res.status = "Unsuccess";
-                    res.ReturnCode = 401;
+                    total = courseList.Count();
                 }
+
+                res.data = courseList;
+                res.totalcount = total;
+                res.response_code = 0;
+                res.message = "Course Details";
+                res.status = "Success";
+                res.ReturnCode = 200;
+                // }
+                // else 
+                // {
+                //     res.response_code = 1;
+                //     res.message = "You are not authorized.";
+                //     res.status = "Unsuccess";
+                //     res.ReturnCode = 401;
+                // }
             }
             catch (Exception ex)
             {

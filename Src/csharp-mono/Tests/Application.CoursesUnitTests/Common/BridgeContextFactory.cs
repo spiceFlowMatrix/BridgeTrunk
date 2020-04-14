@@ -110,6 +110,14 @@ namespace Application.CoursesUnitTests.Common {
                         IsDeleted = false
                 }
             });
+
+            context.LessonProgresses.Add(new LessonProgress() {
+                Id = 1,
+                ChapterId = 1,
+                LessonId = 1,
+                Progress = 50 
+            });
+            
             context.Chapter.AddRange (new [] {
                 new Chapter {
                     Id = 1,

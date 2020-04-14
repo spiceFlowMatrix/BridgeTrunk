@@ -15,12 +15,10 @@ namespace Application.Courses.Commands.AddCourseItemProgressSync
     {
         private readonly IBridgeDbContext _dbContext;
         private readonly ICurrentUserService _userService;
-        private readonly IUserHelper _userHelper;
-        public AddCourseItemProgressSyncCommandHandler(IBridgeDbContext dbContext, ICurrentUserService userService, IUserHelper userHelper)
+        public AddCourseItemProgressSyncCommandHandler(IBridgeDbContext dbContext, ICurrentUserService userService)
         {
             _dbContext = dbContext;
             _userService = userService;
-            _userHelper = userHelper;
         }
 
         public async Task<ApiResponse> Handle(AddCourseItemProgressSyncCommand request, CancellationToken cancellationToken)
@@ -28,14 +26,14 @@ namespace Application.Courses.Commands.AddCourseItemProgressSync
             ApiResponse res = new ApiResponse();
             try
             {
-                var userId = await _userHelper.getUserId(_userService.UserId.ToString());
+                var userId = _userService.UserId;
                 foreach (var courseItemProgress in request.addCourseItemProgressSyncs)
                 {
                     _dbContext.CourseItemProgressSync.Add(new CourseItemProgressSync()
                     {
                         Lessonid = courseItemProgress.lessonid,
                         Lessonprogress = courseItemProgress.lessonprogress,
-                        
+                        IsDeleted = false,
                         Quizid = courseItemProgress.quizid,
                         CreationTime = DateTime.Now.ToString(),
                         CreatorUserId = userId

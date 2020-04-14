@@ -1,4 +1,5 @@
 using System;
+using Application.Helpers;
 using AutoMapper;
 using Bridge.Application.Mappings;
 using Bridge.Persistence;
@@ -10,6 +11,7 @@ namespace Application.CoursesUnitTests.Common
     {
         public BridgeDbContext Context { get; private set; }
         public IMapper Mapper { get; private set; }
+        public UserHelper _userHelper { get; private set; }
 
         public QueryTestFixture()
         {
@@ -21,6 +23,7 @@ namespace Application.CoursesUnitTests.Common
             });
 
             Mapper = configurationProvider.CreateMapper();
+            _userHelper = new UserHelper(Context);
         }
 
         public void Dispose()
