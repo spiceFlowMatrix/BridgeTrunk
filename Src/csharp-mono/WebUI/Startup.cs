@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Application.Courses;
 
 namespace Bridge.WebUI
 {
@@ -37,6 +38,7 @@ namespace Bridge.WebUI
             services.AddInfrastructure(Configuration, Environment);
             services.AddPersistence(Configuration);
             services.AddApplication();
+            services.AddApplicationCourses();
             services.AddApplicationAuthentication();
 
             services.AddHealthChecks()
