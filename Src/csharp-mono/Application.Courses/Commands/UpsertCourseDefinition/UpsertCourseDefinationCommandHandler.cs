@@ -82,13 +82,12 @@ namespace Application.Courses.Commands.UpsertCourseDefinition
 
                 else
                 {
-                    var ifExistCourseSubject = await _dbContext.CourseDefination.Where(b =>  b.Id == request.Id &&
-                                                                                            // b.Subject.ToLower().ToString() == request.Subject.ToLower().ToString() &&
-                                                                                             b.IsDeleted == false)
-                                                                                 .ToListAsync();
+                    var ifExistCourseSubject = _dbContext.CourseDefination.Where(b => b.Id == request.Id &&
+                                                                                           b.IsDeleted == false)
+                                                                                 .AsQueryable();
 
 
-                    if (ifExistCourseSubject.Any())
+                    if (ifExistCourseSubject != null)
                     {
                         var ifEXist = ifExistCourseSubject.Where(b => b.Id == request.Id && b.Subject.ToLower().ToString() == request.Subject.ToLower().ToString()).FirstOrDefault();
                         if (ifEXist != null)
@@ -100,7 +99,7 @@ namespace Application.Courses.Commands.UpsertCourseDefinition
                         }
                         else
                         {
-                             var ifEXistSubject = ifExistCourseSubject.Where(x => x.Id == request.Id).FirstOrDefault();
+                            CourseDefination ifEXistSubject = ifExistCourseSubject.Where(x => x.Id == request.Id).FirstOrDefault();
 
                             ifEXistSubject.BasePrice = request.BasePrice;
                             ifEXistSubject.CourseId = request.CourseId;
