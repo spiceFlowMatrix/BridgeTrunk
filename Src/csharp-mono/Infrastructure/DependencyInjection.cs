@@ -1,6 +1,7 @@
 using Bridge.Application.Interfaces;
 using Bridge.Common;
 using Bridge.Infrastructure.Identity;
+using Infrastructure.Unleash;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -17,6 +18,7 @@ namespace Bridge.Infrastructure
             services.Configure<AuthManagementApiConnectionOptions>(configuration);
 
             services.AddScoped<IUserManager, UserManagerService>();
+            services.AddScoped<IFeatureFlagService, FeatureFlagService>();
 
             services.AddDbContext<IdentityDbContext>(options =>
                 options.UseNpgsql(configuration.GetConnectionString("BridgeDatabase")));
