@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace WebUI.Handler
 {
-    public class FeatureFlagHandler : Attribute, IAuthorizationFilter
+    public class FeatureFlagAttribute : Attribute, IAuthorizationFilter
     {
         readonly string _flag;
         private IFeatureFlagService _featureFlagservice;
