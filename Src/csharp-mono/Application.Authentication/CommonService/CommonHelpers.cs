@@ -27,7 +27,6 @@ namespace Application.Authentication.CommonService
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(ClaimTypes.NameIdentifier, user.Id)
             };
-            string test =_configuration["JwtIssuerOptions:JwtKey"]; 
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtIssuerOptions:JwtKey"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -36,7 +35,7 @@ namespace Application.Authentication.CommonService
 
             var token = new JwtSecurityToken(
                 _configuration["JwtIssuerOptions:JwtIssuer"],
-                _configuration["JwtIssuerOptions:JwtIssuer"],
+                _configuration["JwtIssuerOptions:JwtAudience"],
                 claims,
                 expires: expires,
                 signingCredentials: creds
