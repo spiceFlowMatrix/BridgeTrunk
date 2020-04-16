@@ -68,6 +68,14 @@ namespace Bridge.WebUI
             services.AddOpenApiDocument(configure =>
             {
                 configure.Title = "Bridge API";
+                configure.AddSecurity("Bearer",
+                new NSwag.OpenApiSecurityScheme
+                {
+                    In = NSwag.OpenApiSecurityApiKeyLocation.Header,
+                    Description = "Please enter into field the word 'Bearer' following by space and JWT",
+                    Name = "Authorization",
+                    Type = NSwag.OpenApiSecuritySchemeType.ApiKey
+                });
             });
 
             _services = services;
