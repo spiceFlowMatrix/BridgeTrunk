@@ -9,7 +9,7 @@ namespace WebUI.Handler
     {
         readonly string _flag;
         private IFeatureFlagService _featureFlagservice;
-        public FeatureFlagHandler(string flag)
+        public FeatureFlagAttribute(string flag)
         {
             // _featureFlagservice = new FeatureFlagService()
             _flag = flag;
