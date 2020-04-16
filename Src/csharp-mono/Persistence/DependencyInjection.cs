@@ -11,7 +11,7 @@ namespace Bridge.Persistence
         public static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
         {
             string dbconnection = string.Empty;
-            dbconnection = Environment.GetEnvironmentVariable("ASPNET_DB_CONNECTIONSTRING");
+            dbconnection = configuration.GetConnectionString("BridgeDatabase");
             
             services.AddDbContext<BridgeDbContext>(options =>
                 options.UseMySql(dbconnection));
