@@ -26,6 +26,7 @@ namespace Bridge.WebUI
 
                 try
                 {
+                    var connectionString = Environment.GetEnvironmentVariable("ASPNET_DB_CONNECTIONSTRING");
                     var bridgeDbContext = services.GetRequiredService<BridgeDbContext>();
 
                     bridgeDbContext.Database.Migrate();
@@ -34,9 +35,12 @@ namespace Bridge.WebUI
                     var identityContext = services.GetRequiredService<IdentityDbContext>();
                     identityContext.Database.Migrate();
 
-                    var userManagerService = services.GetRequiredService<IdentityUserManagerService>();
+                    IdentityDbInitializer init = new IdentityDbInitializer();
+                    init.SeedData(identityContext);
+
+                    //var userManagerService = services.GetRequiredService<IdentityUserManagerService>();
                     
-                    IdentityDbInitializer.SeedData(identityContext, userManagerService);
+                    //IdentityDbInitializer.SeedData(identityContext, userManagerService);
                     
                 }
                 catch (Exception ex)

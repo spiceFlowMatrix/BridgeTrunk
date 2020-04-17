@@ -15,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Application.Interfaces;
 
 namespace Bridge.Infrastructure
 {
@@ -28,6 +29,7 @@ namespace Bridge.Infrastructure
 
             services.AddScoped<IUserManager, UserManagerService>();
             services.AddScoped<IFeatureFlagService, FeatureFlagService>();
+            services.AddScoped<IIdentityUserManager, IdentityUserManagerService>();
 
             services.AddDbContext<IdentityDbContext>(options =>
                 options.UseMySql(Environment.GetEnvironmentVariable("ASPNET_DB_CONNECTIONSTRING")));

@@ -2,7 +2,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Application.Interfaces;
 using Bridge.Application.Models;
-using Bridge.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 
 namespace Bridge.Infrastructure.Identity

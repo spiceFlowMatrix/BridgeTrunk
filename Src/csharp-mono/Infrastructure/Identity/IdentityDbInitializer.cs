@@ -8,6 +8,15 @@ namespace Bridge.Infrastructure.Identity
 {
     public class IdentityDbInitializer
     {
+        private readonly UserManager<ApplicationUser> _userManager;
+        public IdentityDbInitializer(UserManager<ApplicationUser> userManager)
+        {
+            _userManager= userManager;
+        }
+        public IdentityDbInitializer()
+        {
+            
+        }
         private const string AdminEmail = "hamza@yopmail.com";
         private const string AdminPassword = "aA123456!";
 
@@ -16,20 +25,21 @@ namespace Bridge.Infrastructure.Identity
             new IdentityRole {Name = "Admin", NormalizedName = "ADMIN", ConcurrencyStamp = Guid.NewGuid().ToString()}
         };
 
-        public static void SeedData(IdentityDbContext dbContext, IdentityUserManagerService userManager)
+        public void SeedData(IdentityDbContext dbContext)
         {
             dbContext.Database.EnsureCreated();
+
             if (!dbContext.Roles.Any())
             {
                 AddRoles(dbContext);
             }
             if (!dbContext.Users.Any())
             {
-                AddUser(dbContext, userManager);
+                AddUser(dbContext);
             }
             if (!dbContext.UserRoles.Any())
             {
-                AddUserRoles(dbContext, userManager);
+                AddUserRoles(dbContext);
             }
         }
 
@@ -43,12 +53,18 @@ namespace Bridge.Infrastructure.Identity
             }
         }
 
-        private static async void AddUser(IdentityDbContext dbContext, IdentityUserManagerService userManager)
+        private async void AddUser(IdentityDbContext dbContext)
         {
-            await userManager.CreateUserAsync(AdminEmail, AdminPassword);
+            var newuser = new ApplicationUser
+            {
+                UserName = AdminEmail,
+                Email = AdminEmail,
+                PhoneNumber = "5365425698"
+            };
+            await _userManager.CreateAsync(newuser, AdminPassword);
         }
 
-        private static void AddUserRoles(IdentityDbContext dbContext, IdentityUserManagerService userManager)
+        private static void AddUserRoles(IdentityDbContext dbContext)
         {
 
             var userRole = new IdentityUserRole<string>
