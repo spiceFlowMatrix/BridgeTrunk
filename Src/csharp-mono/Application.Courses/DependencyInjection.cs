@@ -2,6 +2,8 @@
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using Application.Helpers;
+using Application.Interfaces;
 
 namespace Application.Courses
 {
@@ -11,7 +13,7 @@ namespace Application.Courses
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(Assembly.GetExecutingAssembly());
-
+            services.AddScoped(typeof(IUserHelper), typeof(UserHelper));
             return services;
         }
     }
