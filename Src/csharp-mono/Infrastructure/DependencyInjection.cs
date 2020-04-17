@@ -8,6 +8,7 @@ using IdentityModel;
 using IdentityServer4.Models;
 using IdentityServer4.Test;
 using Microsoft.AspNetCore.Authentication;
+using Infrastructure.Unleash;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -25,6 +26,7 @@ namespace Bridge.Infrastructure
             services.Configure<AuthManagementApiConnectionOptions>(configuration);
 
             services.AddScoped<IUserManager, UserManagerService>();
+            services.AddScoped<IFeatureFlagService, FeatureFlagService>();
 
             services.AddDbContext<IdentityDbContext>(options =>
                 options.UseMySql(Environment.GetEnvironmentVariable("ASPNET_DB_CONNECTIONSTRING")));

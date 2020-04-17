@@ -19,6 +19,7 @@ using Application.Courses.Queries.GetCourse;
 using Application.Courses.Queries.GetPaginatedCourse;
 using Application.Courses.Queries.GetCourseList;
 using Application.Courses.Queries.GetCoursePreviewGradeWise;
+using WebUI.Handler;
 
 namespace WebUI.Controllers.Courses
 {
@@ -106,6 +107,7 @@ namespace WebUI.Controllers.Courses
         }
 
         [HttpGet("GetCourseList")]
+        [FeatureFlag(flag:"application_coursesapplication_courses")]
         public async Task<IActionResult> GetCourseList(int pagenumber, int perpagerecord, string search)
         {   // uses role
             GetCourseListQuery query = new GetCourseListQuery
