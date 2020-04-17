@@ -28,14 +28,14 @@ namespace Application.Authentication.CommonService
                 new Claim(ClaimTypes.NameIdentifier, user.Id)
             };
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtKey"]));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtIssuerOptions:JwtKey"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-            var expires = DateTime.Now.AddDays(Convert.ToDouble(_configuration["JwtExpireDays"]));
+            var expires = DateTime.Now.AddDays(Convert.ToDouble(_configuration["JwtIssuerOptions:JwtExpireDays"]));
             IdentityModelEventSource.ShowPII = true;
 
             var token = new JwtSecurityToken(
-                _configuration["JwtIssuer"],
-                _configuration["JwtIssuer"],
+                _configuration["JwtIssuerOptions:JwtIssuer"],
+                _configuration["JwtIssuerOptions:JwtAudience"],
                 claims,
                 expires: expires,
                 signingCredentials: creds

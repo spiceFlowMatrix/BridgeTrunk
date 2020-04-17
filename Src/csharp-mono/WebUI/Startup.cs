@@ -18,6 +18,12 @@ using Microsoft.Extensions.Hosting;
 using Application.Courses;
 using Application.Interfaces;
 using Application.Helpers;
+using NSwag;
+using NSwag.Generation.Processors.Security;
+using System.Linq;
+using System.Net;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Bridge.WebUI
 {
@@ -71,16 +77,31 @@ namespace Bridge.WebUI
             services.AddOpenApiDocument(configure =>
             {
                 configure.Title = "Bridge API";
-                configure.AddSecurity("Bearer",
-                new NSwag.OpenApiSecurityScheme
-                {
-                    In = NSwag.OpenApiSecurityApiKeyLocation.Header,
-                    Description = "Please enter into field the word 'Bearer' following by space and JWT",
-                    Name = "Authorization",
-                    Type = NSwag.OpenApiSecuritySchemeType.ApiKey
-                });
+                configure.OperationProcessors.Add(new OperationSecurityScopeProcessor("Bearer"));
+                configure.AddSecurity("Bearer", Enumerable.Empty<string>(),
+                    new OpenApiSecurityScheme()
+                    {
+                        Type = OpenApiSecuritySchemeType.ApiKey,
+                        Name = nameof(Authorization),
+                        In = OpenApiSecurityApiKeyLocation.Header,
+                        Description = "Copy this into the value field: Bearer {token}"
+                    }
+                );
             });
-
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(cfg =>
+            {
+                cfg.RequireHttpsMetadata = false;
+                cfg.SaveToken = true;
+                cfg.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidIssuer = Configuration["JwtIssuerOptions:JwtIssuer"],
+                    ValidAudience = Configuration["JwtIssuerOptions:JwtAudience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtIssuerOptions:JwtKey"])),
+                    RequireExpirationTime = true
+                };
+            });
+            
             _services = services;
         }
 
@@ -141,7 +162,7 @@ namespace Bridge.WebUI
                 if (Environment.IsDevelopment() || Environment.IsEnvironment("Test"))
                 {
                     // spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
-                    spa.UseAngularCliServer(npmScript: "start");
+                    //spa.UseAngularCliServer(npmScript: "start");
                 }
             });
         }

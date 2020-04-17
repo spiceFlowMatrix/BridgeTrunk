@@ -33,34 +33,38 @@ namespace Application.Courses.Queries.GetCourse
                 string Certificate = Path.GetFileName(Environment.GetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS"));
                 // if (_userService.RoleList.Contains(Roles.admin.ToString()))
                 // {
+                CourseDTO responseCourseModel = null;
                 Course course = await _dbContext.Course.FirstOrDefaultAsync(x=>x.Id == request.id && x.IsDeleted == false);
                 string imageurl = "";
-                if (!string.IsNullOrEmpty(course.Image))
+                if(course != null)
                 {
-                    if (course.Image.Contains("t24-primary-image-storage"))
-                        imageurl = course.Image;
-                    else
-                        imageurl = _userHelper.getUrl(course.Image, Certificate);
-                }
-
-                CourseDTO responseCourseModel = new CourseDTO
-                {
-                    Name = course.Name,
-                    Id = int.Parse(course.Id.ToString()),
-                    Code = course.Code,
-                    Description = course.Description,
-                    Image = imageurl,
-                    istrial = course.istrial
-                };
-
-                CourseGrade courseGrade = await _dbContext.CourseGrade.FirstOrDefaultAsync(x=>x.CourseId == course.Id && x.IsDeleted == false);
-                if (courseGrade != null)
-                {
-                    Grade grade = await _dbContext.Grade.FirstOrDefaultAsync(x=>x.Id == courseGrade.Gradeid && x.IsDeleted == false);
-                    if (grade != null) 
+                    if (!string.IsNullOrEmpty(course.Image))
                     {
-                        responseCourseModel.gradeid = grade.Id;
-                        responseCourseModel.gradename = grade.Name;
+                        if (course.Image.Contains("t24-primary-image-storage"))
+                            imageurl = course.Image;
+                        else
+                            imageurl = _userHelper.getUrl(course.Image, Certificate);
+                    }
+
+                    responseCourseModel = new CourseDTO
+                    {
+                        Name = course.Name,
+                        Id = int.Parse(course.Id.ToString()),
+                        Code = course.Code,
+                        Description = course.Description,
+                        Image = imageurl,
+                        istrial = course.istrial
+                    };
+
+                    CourseGrade courseGrade = await _dbContext.CourseGrade.FirstOrDefaultAsync(x=>x.CourseId == course.Id && x.IsDeleted == false);
+                    if (courseGrade != null)
+                    {
+                        Grade grade = await _dbContext.Grade.FirstOrDefaultAsync(x=>x.Id == courseGrade.Gradeid && x.IsDeleted == false);
+                        if (grade != null) 
+                        {
+                            responseCourseModel.gradeid = grade.Id;
+                            responseCourseModel.gradename = grade.Name;
+                        }
                     }
                 }
 
@@ -69,14 +73,6 @@ namespace Application.Courses.Queries.GetCourse
                 res.message = "Course Detail";
                 res.status = "Success";
                 res.ReturnCode = 200;
-                // }
-                // else 
-                // {
-                //     res.response_code = 1;
-                //     res.message = "You are not authorized.";
-                //     res.status = "Unsuccess";
-                //     res.ReturnCode = 401;
-                // }
             }
             catch (Exception ex)
             {

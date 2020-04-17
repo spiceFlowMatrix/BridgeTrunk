@@ -31,7 +31,7 @@ namespace Bridge.WebUI
                     bridgeDbContext.Database.Migrate();
                     DataInitializer.Initialize(bridgeDbContext).Wait();
 
-                    var identityContext = services.GetRequiredService<ApplicationDbContext>();
+                    var identityContext = services.GetRequiredService<IdentityDbContext>();
                     identityContext.Database.Migrate();
                     
                     var mediator = services.GetRequiredService<IMediator>();

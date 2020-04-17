@@ -26,16 +26,16 @@ namespace Bridge.Infrastructure
 
             services.AddScoped<IUserManager, UserManagerService>();
 
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<IdentityDbContext>(options =>
                 options.UseMySql(Environment.GetEnvironmentVariable("ASPNET_DB_CONNECTIONSTRING")));
 
              services.AddDefaultIdentity<ApplicationUser>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<IdentityDbContext>();
 
             if (environment.IsEnvironment("Test"))
             {
                 services.AddIdentityServer()
-                    .AddApiAuthorization<ApplicationUser, ApplicationDbContext>(options =>
+                    .AddApiAuthorization<ApplicationUser, IdentityDbContext>(options =>
                     {
                         options.Clients.Add(new Client
                         {
@@ -61,7 +61,7 @@ namespace Bridge.Infrastructure
             else
             {
                 services.AddIdentityServer()
-                    .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
+                    .AddApiAuthorization<ApplicationUser, IdentityDbContext>();
             }
 
             services.AddAuthentication()
