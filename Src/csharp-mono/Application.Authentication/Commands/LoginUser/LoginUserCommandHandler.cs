@@ -39,8 +39,9 @@ namespace Application.Authentication.Commands.LoginUser
             if (result.Succeeded)
             {
                 var appUser = _userManager.Users.SingleOrDefault(r => r.Email == request.Email);
+                IList<string> roles = await _userManager.GetRolesAsync(appUser);
                 CommonHelpers helper = new CommonHelpers(_configuration);
-                return await helper.GenerateJwtToken(request.Email, appUser);
+                return await helper.GenerateJwtToken(request.Email, appUser, roles);
             }
 
             throw new ApplicationException("INVALID_LOGIN_ATTEMPT");

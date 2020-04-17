@@ -33,9 +33,11 @@ namespace Bridge.WebUI
 
                     var identityContext = services.GetRequiredService<IdentityDbContext>();
                     identityContext.Database.Migrate();
+
+                    var userManagerService = services.GetRequiredService<IdentityUserManagerService>();
                     
-                    var mediator = services.GetRequiredService<IMediator>();
-                    // await mediator.Send(new SeedSampleDataCommand(), CancellationToken.None);
+                    IdentityDbInitializer.SeedData(identityContext, userManagerService);
+                    
                 }
                 catch (Exception ex)
                 {

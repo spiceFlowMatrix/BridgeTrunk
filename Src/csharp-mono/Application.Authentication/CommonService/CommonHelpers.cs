@@ -19,14 +19,19 @@ namespace Application.Authentication.CommonService
             _configuration = configuration;
         }
 
-        public async Task<object> GenerateJwtToken(string email, ApplicationUser user)
+        public async Task<object> GenerateJwtToken(string Email, ApplicationUser User, IList<string> Roles)
         {
             var claims = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.Sub, email),
+                new Claim(JwtRegisteredClaimNames.Sub, Email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(ClaimTypes.NameIdentifier, user.Id)
+                new Claim(ClaimTypes.NameIdentifier, User.Id)
             };
+
+            foreach (var role in Roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtIssuerOptions:JwtKey"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
