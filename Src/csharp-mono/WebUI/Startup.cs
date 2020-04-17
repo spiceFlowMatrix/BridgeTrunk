@@ -16,6 +16,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Application.Courses;
+using Application.Interfaces;
+using Application.Helpers;
 
 namespace Bridge.WebUI
 {
@@ -45,6 +47,7 @@ namespace Bridge.WebUI
                 .AddDbContextCheck<BridgeDbContext>();
 
             services.AddScoped<ICurrentUserService, CurrentUserService>();
+            services.AddScoped<IUserHelper, UserHelper>();
 
             services.AddHttpContextAccessor();
 

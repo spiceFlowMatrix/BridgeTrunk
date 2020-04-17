@@ -16,12 +16,11 @@ namespace Application.Courses.Commands.UpsertCourseDefinition
     {
         private readonly IBridgeDbContext _dbContext;
         private readonly ICurrentUserService _userService;
-        private readonly IUserHelper _userHelper;
-        public UpsertCourseDefinationCommandHandler(IBridgeDbContext dbContext, ICurrentUserService userService, IUserHelper userHelper)
+        public UpsertCourseDefinationCommandHandler(IBridgeDbContext dbContext, ICurrentUserService userService
+        )
         {
             _dbContext = dbContext;
             _userService = userService;
-            _userHelper = userHelper;
         }
         public async Task<ApiResponse> Handle(UpsertCourseDefinationCommand request, CancellationToken cancellationToken)
         {

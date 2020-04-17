@@ -15,7 +15,7 @@ namespace Application.CoursesUnitTests.Commands.UpsertCourseDefination
         public void Handle_GivenValidRequest_ShouldCourseDefinationCreate()
         {
             // Arrange
-            var sut = new UpsertCourseDefinationCommandHandler(_context, _userService, _userHelper);
+            var sut = new UpsertCourseDefinationCommandHandler(_context, _userService);
 
             // Act
             var response = sut.Handle(new UpsertCourseDefinationCommand
@@ -34,7 +34,7 @@ namespace Application.CoursesUnitTests.Commands.UpsertCourseDefination
         public void Handle_GivenValidRequest_CheckForDuplicateCourseDefination()
         {
             // Arrange
-            var sut = new UpsertCourseDefinationCommandHandler(_context, _userService, _userHelper);
+            var sut = new UpsertCourseDefinationCommandHandler(_context, _userService);
 
             // Act
             var response = sut.Handle(new UpsertCourseDefinationCommand
@@ -53,7 +53,7 @@ namespace Application.CoursesUnitTests.Commands.UpsertCourseDefination
         public void Handle_GivenValidRequest_ShouldCourseDefinationUpdate()
         {
             // Arrange
-            var sut = new UpsertCourseDefinationCommandHandler(_context, _userService, _userHelper);
+            var sut = new UpsertCourseDefinationCommandHandler(_context, _userService);
 
             // Act
             var response = sut.Handle(new UpsertCourseDefinationCommand
