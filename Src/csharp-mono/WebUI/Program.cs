@@ -5,6 +5,7 @@ using Bridge.Persistence;
 using MediatR;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,12 +36,8 @@ namespace Bridge.WebUI
                     var identityContext = services.GetRequiredService<IdentityDbContext>();
                     identityContext.Database.Migrate();
 
-                    IdentityDbInitializer init = new IdentityDbInitializer();
-                    init.SeedData(identityContext);
-
-                    //var userManagerService = services.GetRequiredService<IdentityUserManagerService>();
-                    
-                    //IdentityDbInitializer.SeedData(identityContext, userManagerService);
+                    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+                    IdentityDbInitializer.SeedData(identityContext, userManager);
                     
                 }
                 catch (Exception ex)

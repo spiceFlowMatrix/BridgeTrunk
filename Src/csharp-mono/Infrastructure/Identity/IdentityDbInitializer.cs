@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Application.Interfaces;
 using Bridge.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 
@@ -8,15 +9,6 @@ namespace Bridge.Infrastructure.Identity
 {
     public class IdentityDbInitializer
     {
-        private readonly UserManager<ApplicationUser> _userManager;
-        public IdentityDbInitializer(UserManager<ApplicationUser> userManager)
-        {
-            _userManager= userManager;
-        }
-        public IdentityDbInitializer()
-        {
-            
-        }
         private const string AdminEmail = "hamza@yopmail.com";
         private const string AdminPassword = "aA123456!";
 
@@ -25,7 +17,7 @@ namespace Bridge.Infrastructure.Identity
             new IdentityRole {Name = "Admin", NormalizedName = "ADMIN", ConcurrencyStamp = Guid.NewGuid().ToString()}
         };
 
-        public void SeedData(IdentityDbContext dbContext)
+        public static void SeedData(IdentityDbContext dbContext, UserManager<ApplicationUser> userManager)
         {
             dbContext.Database.EnsureCreated();
 
@@ -35,7 +27,7 @@ namespace Bridge.Infrastructure.Identity
             }
             if (!dbContext.Users.Any())
             {
-                AddUser(dbContext);
+                AddUser(dbContext, userManager);
             }
             if (!dbContext.UserRoles.Any())
             {
@@ -53,7 +45,7 @@ namespace Bridge.Infrastructure.Identity
             }
         }
 
-        private async void AddUser(IdentityDbContext dbContext)
+        private static async void AddUser(IdentityDbContext dbContext, UserManager<ApplicationUser> userManager)
         {
             var newuser = new ApplicationUser
             {
@@ -61,7 +53,7 @@ namespace Bridge.Infrastructure.Identity
                 Email = AdminEmail,
                 PhoneNumber = "5365425698"
             };
-            await _userManager.CreateAsync(newuser, AdminPassword);
+            await userManager.CreateAsync(newuser, AdminPassword);
         }
 
         private static void AddUserRoles(IdentityDbContext dbContext)
