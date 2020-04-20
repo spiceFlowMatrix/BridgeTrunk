@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Application.Interfaces;
 using Bridge.Infrastructure.Identity;
+using Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 
 namespace Bridge.Infrastructure.Identity
@@ -12,40 +14,40 @@ namespace Bridge.Infrastructure.Identity
         private const string AdminEmail = "hamza@yopmail.com";
         private const string AdminPassword = "aA123456!";
 
-        private static readonly List<IdentityRole> Roles = new List<IdentityRole>()
+        private static readonly List<ApplicationRole> Roles = new List<ApplicationRole>()
         {
-            new IdentityRole {Name = "Admin", NormalizedName = "ADMIN", ConcurrencyStamp = Guid.NewGuid().ToString()}
+            new ApplicationRole {Name = "Admin", NormalizedName = "ADMIN", ConcurrencyStamp = Guid.NewGuid().ToString()}
         };
 
-        public static void SeedData(IdentityDbContext dbContext, UserManager<ApplicationUser> userManager)
+        public static async Task SeedData(IdentityDbContext dbContext, UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager)
         {
             dbContext.Database.EnsureCreated();
 
             if (!dbContext.Roles.Any())
             {
-                AddRoles(dbContext);
+                await AddRoles(dbContext, roleManager);
             }
             if (!dbContext.Users.Any())
             {
-                AddUser(dbContext, userManager);
+                await AddUser(dbContext, userManager);
             }
             if (!dbContext.UserRoles.Any())
             {
-                AddUserRoles(dbContext);
+                await AddUserRoles(dbContext, userManager);
             }
         }
 
-        private static void AddRoles(IdentityDbContext dbContext)
+        private static async Task<IdentityResult> AddRoles(IdentityDbContext dbContext, RoleManager<ApplicationRole> roleManager)
         {
-
+            IdentityResult result = new IdentityResult();
             foreach (var role in Roles)
             {
-                dbContext.Roles.Add(role);
-                dbContext.SaveChanges();
+               result= await roleManager.CreateAsync(role);
             }
+            return result;
         }
 
-        private static async void AddUser(IdentityDbContext dbContext, UserManager<ApplicationUser> userManager)
+        private static async Task<IdentityResult> AddUser(IdentityDbContext dbContext, UserManager<ApplicationUser> userManager)
         {
             var newuser = new ApplicationUser
             {
@@ -53,19 +55,13 @@ namespace Bridge.Infrastructure.Identity
                 Email = AdminEmail,
                 PhoneNumber = "5365425698"
             };
-            await userManager.CreateAsync(newuser, AdminPassword);
+            return await userManager.CreateAsync(newuser, AdminPassword);
         }
 
-        private static void AddUserRoles(IdentityDbContext dbContext)
+        private static async Task<IdentityResult> AddUserRoles(IdentityDbContext dbContext, UserManager<ApplicationUser> userManager)
         {
-
-            var userRole = new IdentityUserRole<string>
-            {
-                UserId = dbContext.Users.Single(r => r.Email == AdminEmail).Id,
-                RoleId = dbContext.Roles.Single(r => r.Name == "Admin").Id
-            };
-            dbContext.UserRoles.Add(userRole);
-            dbContext.SaveChanges();
+            var user = await userManager.FindByEmailAsync(AdminEmail);
+            return await userManager.AddToRoleAsync(user, "Admin");
         }
     }
 }
