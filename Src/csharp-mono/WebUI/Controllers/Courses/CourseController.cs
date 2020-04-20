@@ -27,7 +27,7 @@ namespace WebUI.Controllers.Courses
     [ApiController]
     public class CourseController : BaseController
     {
-        //[Authorize]
+        [Authorize]
         [HttpPost("CourseItemProgressSync")]
         public async Task<IActionResult> AddCourseItemProgressSyncBusiness([FromBody] List<AddCourseItemProgressSyncModel> addCourseItemProgressSyncs)
         {
@@ -39,6 +39,7 @@ namespace WebUI.Controllers.Courses
             return StatusCode(result.ReturnCode, result);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public async Task<IActionResult> PostAsync()
         {
@@ -57,6 +58,7 @@ namespace WebUI.Controllers.Courses
             return StatusCode(result.ReturnCode, result);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id)
         {
@@ -76,6 +78,7 @@ namespace WebUI.Controllers.Courses
             return StatusCode(result.ReturnCode, result);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
@@ -85,6 +88,7 @@ namespace WebUI.Controllers.Courses
             return StatusCode(result.ReturnCode, result);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {   // uses role
@@ -93,6 +97,7 @@ namespace WebUI.Controllers.Courses
             return StatusCode(result.ReturnCode, result);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpGet]
         public async Task<IActionResult> Get(int pagenumber, int perpagerecord, string search)
         {   // uses role
@@ -106,6 +111,7 @@ namespace WebUI.Controllers.Courses
             return StatusCode(result.ReturnCode, result);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpGet("GetCourseList")]
         public async Task<IActionResult> GetCourseList(int pagenumber, int perpagerecord, string search)
         {   // uses role

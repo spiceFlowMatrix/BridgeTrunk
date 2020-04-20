@@ -31,8 +31,6 @@ namespace Application.Courses.Queries.GetCourse
             try
             {
                 string Certificate = Path.GetFileName(Environment.GetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS"));
-                // if (_userService.RoleList.Contains(Roles.admin.ToString()))
-                // {
                 CourseDTO responseCourseModel = null;
                 Course course = await _dbContext.Course.FirstOrDefaultAsync(x=>x.Id == request.id && x.IsDeleted == false);
                 string imageurl = "";

@@ -29,8 +29,6 @@ namespace Application.Courses.Queries.GetCourseList
             try
             {
                 string Certificate = Path.GetFileName(Environment.GetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS"));
-                // if (_userService.RoleList.Contains(Roles.admin.ToString()))
-                // {
                 int total = 0;
                 var courseList = await _dbContext.Course.Where(x=>x.IsDeleted == false).Select(s => new
                 {
@@ -74,14 +72,6 @@ namespace Application.Courses.Queries.GetCourseList
                 res.message = "Course Details";
                 res.status = "Success";
                 res.ReturnCode = 200;
-                // }
-                // else 
-                // {
-                //     res.response_code = 1;
-                //     res.message = "You are not authorized.";
-                //     res.status = "Unsuccess";
-                //     res.ReturnCode = 401;
-                // }
             }
             catch (Exception ex)
             {

@@ -32,8 +32,6 @@ namespace Application.Courses.Queries.GetPaginatedCourse
             try
             {
                 string Certificate = Path.GetFileName(Environment.GetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS"));
-                // if (_userService.RoleList.Contains(Roles.admin.ToString()))
-                // {
                 int total = 0;
                 List<Course> courseList = await _dbContext.Course.Where(x=>x.IsDeleted == false).ToListAsync();
                 List<Grade> gradeList = await _dbContext.Grade.Where(x=>x.IsDeleted == false).ToListAsync();
@@ -106,14 +104,6 @@ namespace Application.Courses.Queries.GetPaginatedCourse
                 res.message = "Course Details";
                 res.status = "Success";
                 res.ReturnCode = 200;
-                // }
-                // else 
-                // {
-                //     res.response_code = 1;
-                //     res.message = "You are not authorized.";
-                //     res.status = "Unsuccess";
-                //     res.ReturnCode = 401;
-                // }
             }
             catch (Exception ex)
             {

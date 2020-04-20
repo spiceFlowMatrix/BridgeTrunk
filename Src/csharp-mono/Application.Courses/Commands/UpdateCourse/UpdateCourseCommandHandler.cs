@@ -32,8 +32,6 @@ namespace Application.Courses.Commands.UpdateCourse
             GoogleCredential credential;
             try
             {
-                // if (_userService.RoleList.Contains(Roles.admin.ToString()))
-                // {
                 // string jsonPath = Path.GetFileName(hostingEnvironment.WebRootPath + "/training24-28e994f9833c.json");
                 using (var stream = new FileStream (Environment.GetEnvironmentVariable ("GOOGLE_APPLICATION_CREDENTIALS"), FileMode.Open, FileAccess.Read)) {
                     credential = GoogleCredential.FromStream (stream);
@@ -109,14 +107,6 @@ namespace Application.Courses.Commands.UpdateCourse
                 res.message = "Course updated";
                 res.status = "Success";
                 res.ReturnCode = 200;
-                // }
-                // else 
-                // {
-                //     res.response_code = 1;
-                //     res.message = "You are not authorized.";
-                //     res.status = "Unsuccess";
-                //     res.ReturnCode = 401;
-                // }
             }
             catch (Exception ex)
             {

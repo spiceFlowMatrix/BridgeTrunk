@@ -26,9 +26,8 @@ namespace Application.Courses.Commands.AddCourse {
             ApiResponse res = new ApiResponse ();
             string mediaLink = "";
             GoogleCredential cred;
-            try {
-                // if (_userService.RoleList.Contains(Roles.admin.ToString()))
-                // {
+            try 
+            {
                 using (var stream = new FileStream (Environment.GetEnvironmentVariable ("GOOGLE_APPLICATION_CREDENTIALS"), FileMode.Open, FileAccess.Read)) {
                     cred = GoogleCredential.FromStream (stream);
                 }
@@ -93,15 +92,9 @@ namespace Application.Courses.Commands.AddCourse {
                 res.message = "Course Created";
                 res.status = "Success";
                 res.ReturnCode = 200;
-                // }
-                // else 
-                // {
-                //     res.response_code = 1;
-                //     res.message = "You are not authorized.";
-                //     res.status = "Unsuccess";
-                //     res.ReturnCode = 401;
-                // }
-            } catch (Exception ex) {
+            } 
+            catch (Exception ex) 
+            {
                 res.response_code = 2;
                 res.message = ex.Message;
                 res.status = "Failure";

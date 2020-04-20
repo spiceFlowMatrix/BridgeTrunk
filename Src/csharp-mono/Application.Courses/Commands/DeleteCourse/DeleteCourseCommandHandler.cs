@@ -30,8 +30,6 @@ namespace Application.Courses.Commands.DeleteCourse
             ApiResponse res = new ApiResponse();
             try
             {
-                // if (_userService.RoleList.Contains(Roles.admin.ToString()))
-                // {
                 object returnModel;
                 Course course = await _dbContext.Course.FirstOrDefaultAsync(x=>x.IsDeleted == false && x.Id == request.id);
                 if(course != null)
@@ -58,14 +56,6 @@ namespace Application.Courses.Commands.DeleteCourse
                 res.message = "Course Deleted";
                 res.status = "Success";
                 res.ReturnCode = 200;
-                // }
-                // else 
-                // {
-                //     res.response_code = 1;
-                //     res.message = "You are not authorized.";
-                //     res.status = "Unsuccess";
-                //     res.ReturnCode = 401;
-                // }
             }
             catch (Exception ex)
             {

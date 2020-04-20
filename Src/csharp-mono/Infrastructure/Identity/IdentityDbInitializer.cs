@@ -16,7 +16,7 @@ namespace Bridge.Infrastructure.Identity
 
         private static readonly List<ApplicationRole> Roles = new List<ApplicationRole>()
         {
-            new ApplicationRole {Name = "Admin", NormalizedName = "ADMIN", ConcurrencyStamp = Guid.NewGuid().ToString()}
+            new ApplicationRole {Name = "admin", NormalizedName = "ADMIN", ConcurrencyStamp = Guid.NewGuid().ToString()}
         };
 
         public static async Task SeedData(IdentityDbContext dbContext, UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager)
@@ -61,7 +61,7 @@ namespace Bridge.Infrastructure.Identity
         private static async Task<IdentityResult> AddUserRoles(IdentityDbContext dbContext, UserManager<ApplicationUser> userManager)
         {
             var user = await userManager.FindByEmailAsync(AdminEmail);
-            return await userManager.AddToRoleAsync(user, "Admin");
+            return await userManager.AddToRoleAsync(user, "admin");
         }
     }
 }
