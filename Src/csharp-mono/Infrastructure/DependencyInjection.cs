@@ -8,11 +8,14 @@ using IdentityModel;
 using IdentityServer4.Models;
 using IdentityServer4.Test;
 using Microsoft.AspNetCore.Authentication;
+using Infrastructure.Unleash;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Application.Interfaces;
 
 namespace Bridge.Infrastructure
 {
@@ -25,12 +28,15 @@ namespace Bridge.Infrastructure
             services.Configure<AuthManagementApiConnectionOptions>(configuration);
 
             services.AddScoped<IUserManager, UserManagerService>();
+            services.AddScoped<IFeatureFlagService, FeatureFlagService>();
+            services.AddScoped<IIdentityUserManager, IdentityUserManagerService>();
 
             services.AddDbContext<IdentityDbContext>(options =>
                 options.UseMySql(Environment.GetEnvironmentVariable("ASPNET_DB_CONNECTIONSTRING")));
 
              services.AddDefaultIdentity<ApplicationUser>()
-                .AddEntityFrameworkStores<IdentityDbContext>();
+                     .AddRoles<IdentityRole>()
+                     .AddEntityFrameworkStores<IdentityDbContext>();
 
             if (environment.IsEnvironment("Test"))
             {

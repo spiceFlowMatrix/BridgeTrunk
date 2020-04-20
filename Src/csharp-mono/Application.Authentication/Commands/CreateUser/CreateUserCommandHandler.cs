@@ -48,8 +48,10 @@ namespace Application.Authentication.Commands.CreateUser
                 {
                     await _signInManager.SignInAsync(user, false);
 
+                    IList<string> roles = await _userManager.GetRolesAsync(user);
+
                     CommonHelpers helpers = new CommonHelpers(_configuration);
-                    return await helpers.GenerateJwtToken(request.Email, user);
+                    return await helpers.GenerateJwtToken(request.Email, user, roles);
                 }
 
                 throw new ApplicationException("UNKNOWN_ERROR");

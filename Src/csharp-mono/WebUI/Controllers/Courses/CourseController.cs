@@ -19,6 +19,7 @@ using Application.Courses.Queries.GetCourse;
 using Application.Courses.Queries.GetPaginatedCourse;
 using Application.Courses.Queries.GetCourseList;
 using Application.Courses.Queries.GetCoursePreviewGradeWise;
+using WebUI.Handler;
 
 namespace WebUI.Controllers.Courses
 {

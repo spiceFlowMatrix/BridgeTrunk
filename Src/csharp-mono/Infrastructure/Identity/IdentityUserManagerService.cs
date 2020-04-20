@@ -2,10 +2,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Application.Interfaces;
 using Bridge.Application.Models;
-using Bridge.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 
-namespace Infrastructure.Identity
+namespace Bridge.Infrastructure.Identity
 {
     public class IdentityUserManagerService: IIdentityUserManager
     {

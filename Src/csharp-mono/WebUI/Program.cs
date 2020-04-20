@@ -5,6 +5,7 @@ using Bridge.Persistence;
 using MediatR;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,6 +27,7 @@ namespace Bridge.WebUI
 
                 try
                 {
+                    var connectionString = Environment.GetEnvironmentVariable("ASPNET_DB_CONNECTIONSTRING");
                     var bridgeDbContext = services.GetRequiredService<BridgeDbContext>();
 
                     bridgeDbContext.Database.Migrate();
@@ -33,9 +35,10 @@ namespace Bridge.WebUI
 
                     var identityContext = services.GetRequiredService<IdentityDbContext>();
                     identityContext.Database.Migrate();
+
+                    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+                    IdentityDbInitializer.SeedData(identityContext, userManager);
                     
-                    var mediator = services.GetRequiredService<IMediator>();
-                    // await mediator.Send(new SeedSampleDataCommand(), CancellationToken.None);
                 }
                 catch (Exception ex)
                 {
