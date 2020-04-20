@@ -39,7 +39,7 @@ namespace Application.Courses.Queries.GetCourseDefinition
                         if (!string.IsNullOrEmpty(request.Search))
                             CourseDefinationList = CourseDefinationList.OrderByDescending(b => b.Id).Where(
                                                                b => b.Id.ToString().Any(k => b.Id.ToString().Contains(request.Search))
-                                                            || b.Subject.ToString().ToLower().Any(k => b.Subject.ToString().Contains(request.Search))
+                                                            || b.Subject.ToString().ToLower().Any(k => b.Subject.ToLower().ToString().Contains(request.Search.ToLower().ToString()))
                                                             || b.BasePrice.ToString().ToLower().Any(k => b.BasePrice.ToString().Contains(request.Search))
                                                             ).ToList();
 

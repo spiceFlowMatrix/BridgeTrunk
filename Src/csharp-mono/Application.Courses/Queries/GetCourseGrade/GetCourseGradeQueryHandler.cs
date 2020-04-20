@@ -12,20 +12,18 @@ using Microsoft.EntityFrameworkCore;
 namespace Application.Courses.Queries.GetCourseGrade {
     public class GetCourseGradeQueryHandler : IRequestHandler<GetCourseGradeQuery, ApiResponse> {
         private readonly IBridgeDbContext _dbContext;
-        private readonly ICurrentUserService _userService;
-        private readonly IUserHelper _userHelper;
-        public GetCourseGradeQueryHandler (IBridgeDbContext dbContext, ICurrentUserService userService, IUserHelper userHelper) {
+        private readonly ICurrentUserService _userService;        
+        public GetCourseGradeQueryHandler (IBridgeDbContext dbContext, ICurrentUserService userService) {
             _dbContext = dbContext;
             _userService = userService;
-            _userHelper = userHelper;
         }
 
         public async Task<ApiResponse> Handle (GetCourseGradeQuery request, CancellationToken cancellationToken) {
             ApiResponse res = new ApiResponse ();
             try {
-                if (_userService.RoleList.Contains (Roles.admin.ToString ())) {
+                //if (_userService.RoleList.Contains (Roles.admin.ToString ())) {
                     CourseGradeVm objVm = await _dbContext.CourseGrade.Where (x => x.Id == request.id
-                        // && x.IsDeleted==false
+                     && x.IsDeleted==false
                     ).Select (y => new CourseGradeVm {
                         id = y.Id,
                             courseid = y.CourseId,
@@ -39,12 +37,12 @@ namespace Application.Courses.Queries.GetCourseGrade {
                         res.status = "Success";
                         res.ReturnCode = 200;
                     }
-                } else {
-                    res.response_code = 1;
-                    res.message = "You are not authorized";
-                    res.status = "Unsuccess";
-                    res.ReturnCode = 401;
-                }
+                // } else {
+                //     res.response_code = 1;
+                //     res.message = "You are not authorized";
+                //     res.status = "Unsuccess";
+                //     res.ReturnCode = 401;
+                // }
             } catch (Exception ex) {
                 res.ReturnCode = 500;
                 res.response_code = 2;

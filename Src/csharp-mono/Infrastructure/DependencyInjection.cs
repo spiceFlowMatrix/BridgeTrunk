@@ -16,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Application.Interfaces;
+using Infrastructure.Identity;
 
 namespace Bridge.Infrastructure
 {
@@ -35,7 +36,7 @@ namespace Bridge.Infrastructure
                 options.UseMySql(Environment.GetEnvironmentVariable("ASPNET_DB_CONNECTIONSTRING")));
 
              services.AddDefaultIdentity<ApplicationUser>()
-                     .AddRoles<IdentityRole>()
+                     .AddRoles<ApplicationRole>()
                      .AddEntityFrameworkStores<IdentityDbContext>();
 
             if (environment.IsEnvironment("Test"))

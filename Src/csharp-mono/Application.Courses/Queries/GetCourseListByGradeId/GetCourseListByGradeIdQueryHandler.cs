@@ -5,11 +5,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using Bridge.Application.Interfaces;
 using Bridge.Application.Models;
-using Bridge.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.Courses.Queries.GetCourseListByGradeId {
+namespace Application.Courses.Queries.GetCourseListByGradeId
+{
     public class GetCourseListByGradeIdQueryHandler : IRequestHandler<GetCourseListByGradeIdQuery, ApiResponse> {
         private readonly IBridgeDbContext _dbContext;
         public GetCourseListByGradeIdQueryHandler (IBridgeDbContext dbContext) {
@@ -20,7 +20,7 @@ namespace Application.Courses.Queries.GetCourseListByGradeId {
             ApiResponse res = new ApiResponse ();
             try {                                
                var CourseGradeList = await _dbContext.CourseGrade.Where(x=>x.Gradeid == request.Id
-                // && x.IsDeleted == false
+                  && x.IsDeleted == false
                 ).ToListAsync();
                if(request.PerPageRecord != 0 && request.PageNumber != 0)
                {
@@ -33,7 +33,7 @@ namespace Application.Courses.Queries.GetCourseListByGradeId {
                 foreach (var item in CourseGradeList)
                 {
                     CourseListByGradeIdVm CourseModel = new CourseListByGradeIdVm();
-                    var course = await _dbContext.Course.FirstOrDefaultAsync(x=>x.Id==item.CourseId);
+                    var course = await _dbContext.Course.FirstOrDefaultAsync(x=>x.Id==item.CourseId && x.IsDeleted==false);
                     CourseModel.id= item.Id;
                     CourseModel.gradeid = item.Gradeid;
                     CourseModel.courseid = item.CourseId;

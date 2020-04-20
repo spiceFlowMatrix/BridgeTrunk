@@ -2,6 +2,7 @@ using System;
 using System.Reflection;
 using Bridge.Infrastructure.Identity;
 using Bridge.Persistence;
+using Infrastructure.Identity;
 using MediatR;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
@@ -37,7 +38,8 @@ namespace Bridge.WebUI
                     identityContext.Database.Migrate();
 
                     var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
-                    IdentityDbInitializer.SeedData(identityContext, userManager);
+                    var roleManager = services.GetRequiredService<RoleManager<ApplicationRole>>();
+                    IdentityDbInitializer.SeedData(identityContext, userManager, roleManager).Wait();
                     
                 }
                 catch (Exception ex)

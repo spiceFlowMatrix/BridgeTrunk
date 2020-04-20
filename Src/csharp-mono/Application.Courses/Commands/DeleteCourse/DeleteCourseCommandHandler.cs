@@ -20,35 +20,42 @@ namespace Application.Courses.Commands.DeleteCourse
     {
         private readonly IBridgeDbContext _dbContext;
         private readonly ICurrentUserService _userService;
-        private readonly IUserHelper _userHelper;
-        public DeleteCourseCommandHandler(IBridgeDbContext dbContext, ICurrentUserService userService, IUserHelper userHelper)
+        public DeleteCourseCommandHandler(IBridgeDbContext dbContext, ICurrentUserService userService)
         {
             _dbContext = dbContext;
             _userService = userService;
-            _userHelper = userHelper;
         }
         public async Task<ApiResponse> Handle(DeleteCourseCommand request, CancellationToken cancellationToken)
         {
             ApiResponse res = new ApiResponse();
             try
             {
-                if (_userService.RoleList.Contains(Roles.admin.ToString()))
+                object returnModel;
+                Course course = await _dbContext.Course.FirstOrDefaultAsync(x=>x.IsDeleted == false && x.Id == request.id);
+                if(course != null)
                 {
-                    // Awaiting specification
+                    course.IsDeleted = true;
+                    await _dbContext.SaveChangesAsync(cancellationToken);
+                    returnModel = new {
+                        Name = course.Name,
+                        Id = int.Parse(course.Id.ToString()),
+                        Code = course.Code,
+                        Description = course.Description,
+                        Image = course.Image,
+                        //TeacherId = newCourse.TeacherId
+                    };
+                }
+                else
+                {
+                    returnModel = null;
+                }
 
-                    // res.data = responseCourseModel;
-                    res.response_code = 0;
-                    res.message = "Course Deleted";
-                    res.status = "Success";
-                    res.ReturnCode = 200;
-                }
-                else 
-                {
-                    res.response_code = 1;
-                    res.message = "You are not authorized.";
-                    res.status = "Unsuccess";
-                    res.ReturnCode = 401;
-                }
+                
+                res.data = returnModel;
+                res.response_code = 0;
+                res.message = "Course Deleted";
+                res.status = "Success";
+                res.ReturnCode = 200;
             }
             catch (Exception ex)
             {

@@ -48,6 +48,7 @@ namespace Application.Courses.Queries.GetCourseDefinitionSubject
                         res.response_code = 0;
                         res.message = "Subject list details";
                         res.status = "Success";
+                        res.ReturnCode = 200;
                     }
                 }
 

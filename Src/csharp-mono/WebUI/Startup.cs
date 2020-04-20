@@ -15,6 +15,15 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Application.Courses;
+using Application.Interfaces;
+using Application.Helpers;
+using NSwag;
+using NSwag.Generation.Processors.Security;
+using System.Linq;
+using System.Net;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Bridge.WebUI
 {
@@ -37,12 +46,14 @@ namespace Bridge.WebUI
             services.AddInfrastructure(Configuration, Environment);
             services.AddPersistence(Configuration);
             services.AddApplication();
+            services.AddApplicationCourses();
             services.AddApplicationAuthentication();
 
             services.AddHealthChecks()
                 .AddDbContextCheck<BridgeDbContext>();
 
             services.AddScoped<ICurrentUserService, CurrentUserService>();
+            services.AddScoped<IUserHelper, UserHelper>();
 
             services.AddHttpContextAccessor();
 
@@ -66,8 +77,31 @@ namespace Bridge.WebUI
             services.AddOpenApiDocument(configure =>
             {
                 configure.Title = "Bridge API";
+                configure.OperationProcessors.Add(new OperationSecurityScopeProcessor("Bearer"));
+                configure.AddSecurity("Bearer", Enumerable.Empty<string>(),
+                    new OpenApiSecurityScheme()
+                    {
+                        Type = OpenApiSecuritySchemeType.ApiKey,
+                        Name = nameof(Authorization),
+                        In = OpenApiSecurityApiKeyLocation.Header,
+                        Description = "Copy this into the value field: Bearer {token}"
+                    }
+                );
             });
-
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(cfg =>
+            {
+                cfg.RequireHttpsMetadata = false;
+                cfg.SaveToken = true;
+                cfg.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidIssuer = Configuration["JwtIssuerOptions:JwtIssuer"],
+                    ValidAudience = Configuration["JwtIssuerOptions:JwtAudience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtIssuerOptions:JwtKey"])),
+                    RequireExpirationTime = true
+                };
+            });
+            
             _services = services;
         }
 
@@ -128,7 +162,7 @@ namespace Bridge.WebUI
                 if (Environment.IsDevelopment() || Environment.IsEnvironment("Test"))
                 {
                     // spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
-                    spa.UseAngularCliServer(npmScript: "start");
+                    //spa.UseAngularCliServer(npmScript: "start");
                 }
             });
         }

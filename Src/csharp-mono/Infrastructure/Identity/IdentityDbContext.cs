@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using IdentityServer4.EntityFramework.Entities;
 using IdentityServer4.EntityFramework.Options;
 using IdentityServer4.EntityFramework.Stores;
+using Infrastructure.Identity;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -36,6 +37,9 @@ namespace Bridge.Infrastructure.Identity
             modelBuilder.Entity<IdentityRole>(entity => entity.Property(m => m.Id).HasMaxLength(127));
             modelBuilder.Entity<IdentityRole>(entity => entity.Property(m => m.Name).HasMaxLength(127));
             modelBuilder.Entity<IdentityRole>(entity => entity.Property(m => m.NormalizedName).HasMaxLength(127));
+            modelBuilder.Entity<ApplicationRole>(entity => entity.Property(m => m.Id).HasMaxLength(127));
+            modelBuilder.Entity<ApplicationRole>(entity => entity.Property(m => m.Name).HasMaxLength(127));
+            modelBuilder.Entity<ApplicationRole>(entity => entity.Property(m => m.NormalizedName).HasMaxLength(127));
             modelBuilder.Entity<IdentityUserLogin<string>>(entity => entity.Property(m => m.LoginProvider).HasMaxLength(127));
             modelBuilder.Entity<IdentityUserLogin<string>>(entity => entity.Property(m => m.ProviderKey).HasMaxLength(127));
             modelBuilder.Entity<IdentityUserRole<string>>(entity => entity.Property(m => m.UserId).HasMaxLength(127));
