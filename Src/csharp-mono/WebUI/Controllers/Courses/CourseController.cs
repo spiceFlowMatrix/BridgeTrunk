@@ -27,7 +27,7 @@ namespace WebUI.Controllers.Courses
     [ApiController]
     public class CourseController : BaseController
     {
-        [Authorize]
+        //[Authorize]
         [HttpPost("CourseItemProgressSync")]
         public async Task<IActionResult> AddCourseItemProgressSyncBusiness([FromBody] List<AddCourseItemProgressSyncModel> addCourseItemProgressSyncs)
         {
@@ -107,7 +107,6 @@ namespace WebUI.Controllers.Courses
         }
 
         [HttpGet("GetCourseList")]
-        [FeatureFlag(flag:"application_coursesapplication_courses")]
         public async Task<IActionResult> GetCourseList(int pagenumber, int perpagerecord, string search)
         {   // uses role
             GetCourseListQuery query = new GetCourseListQuery
