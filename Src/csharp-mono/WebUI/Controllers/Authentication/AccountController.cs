@@ -3,7 +3,7 @@ using Application.Authentication.Commands.CreateUser;
 using Application.Authentication.Commands.LoginUser;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebUI.Controllers.Authentication
+namespace Rest.Courses.Controllers.Authentication
 {
     [Route("api/v1/[controller]")]
     [ApiController]

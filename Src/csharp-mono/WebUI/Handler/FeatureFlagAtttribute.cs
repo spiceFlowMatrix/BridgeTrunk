@@ -3,7 +3,7 @@ using Infrastructure.Unleash;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace WebUI.Handler
+namespace Rest.Courses.Handler
 {
     public class FeatureFlagAttribute : Attribute, IAuthorizationFilter
     {

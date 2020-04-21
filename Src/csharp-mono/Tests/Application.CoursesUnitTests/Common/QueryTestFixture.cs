@@ -3,7 +3,7 @@ using Application.Helpers;
 using AutoMapper;
 using Bridge.Application.Mappings;
 using Bridge.Persistence;
-using Bridge.WebUI.Services;
+using Rest.Courses.Services;
 using Xunit;
 
 namespace Application.CoursesUnitTests.Common {

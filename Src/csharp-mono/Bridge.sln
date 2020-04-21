@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Persistence\Persistence.csproj", "{0AA0E3E7-A656-4BD1-B2AB-011A4047C152}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebUI", "WebUI\WebUI.csproj", "{A5F7F7D7-D5D4-4319-A894-A979A37009E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rest.Courses", "WebUI\Rest.Courses.csproj", "{A5F7F7D7-D5D4-4319-A894-A979A37009E3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{11893C8B-BFC3-4323-BB7A-597E525EDBB1}"
 EndProject
@@ -19,13 +19,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.UnitTests", "Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Courses", "Application.Courses\Application.Courses.csproj", "{E5B86857-A248-44A2-A57D-4B116C17529E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Authentication", "Application.Authentication\Application.Authentication.csproj", "{B9A7EEF2-0858-4C3B-AF41-C8B331A784BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Authentication", "Application.Authentication\Application.Authentication.csproj", "{B9A7EEF2-0858-4C3B-AF41-C8B331A784BB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4EA9D5A0-2DE4-4A89-8117-E63F2C12CE03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.CoursesUnitTests", "Tests\Application.CoursesUnitTests\Application.CoursesUnitTests.csproj", "{6019CD52-B5A2-45A9-B886-8DBA9DE6AD4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.CoursesUnitTests", "Tests\Application.CoursesUnitTests\Application.CoursesUnitTests.csproj", "{6019CD52-B5A2-45A9-B886-8DBA9DE6AD4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence.IntegrationTests", "Tests\Persistence.IntegrationTests\Persistence.IntegrationTests.csproj", "{FFF20CA7-4433-434A-8866-EDAA16269845}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence.IntegrationTests", "Tests\Persistence.IntegrationTests\Persistence.IntegrationTests.csproj", "{FFF20CA7-4433-434A-8866-EDAA16269845}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +65,10 @@ Global
 		{E5B86857-A248-44A2-A57D-4B116C17529E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5B86857-A248-44A2-A57D-4B116C17529E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5B86857-A248-44A2-A57D-4B116C17529E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9A7EEF2-0858-4C3B-AF41-C8B331A784BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9A7EEF2-0858-4C3B-AF41-C8B331A784BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9A7EEF2-0858-4C3B-AF41-C8B331A784BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9A7EEF2-0858-4C3B-AF41-C8B331A784BB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6019CD52-B5A2-45A9-B886-8DBA9DE6AD4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6019CD52-B5A2-45A9-B886-8DBA9DE6AD4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6019CD52-B5A2-45A9-B886-8DBA9DE6AD4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -73,19 +77,15 @@ Global
 		{FFF20CA7-4433-434A-8866-EDAA16269845}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFF20CA7-4433-434A-8866-EDAA16269845}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFF20CA7-4433-434A-8866-EDAA16269845}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B9A7EEF2-0858-4C3B-AF41-C8B331A784BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B9A7EEF2-0858-4C3B-AF41-C8B331A784BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B9A7EEF2-0858-4C3B-AF41-C8B331A784BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B9A7EEF2-0858-4C3B-AF41-C8B331A784BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {913FF6FF-00C2-4454-9098-595E2E861C39}
-	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6019CD52-B5A2-45A9-B886-8DBA9DE6AD4E} = {4EA9D5A0-2DE4-4A89-8117-E63F2C12CE03}
 		{FFF20CA7-4433-434A-8866-EDAA16269845} = {4EA9D5A0-2DE4-4A89-8117-E63F2C12CE03}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {913FF6FF-00C2-4454-9098-595E2E861C39}
 	EndGlobalSection
 EndGlobal

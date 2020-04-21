@@ -14,7 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Persistence;
 
-namespace Bridge.WebUI
+namespace Rest.Courses
 {
     public class Program
     {

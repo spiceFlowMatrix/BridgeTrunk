@@ -49,7 +49,7 @@ namespace Bridge.Infrastructure
                             ClientId = "Bridge.IntegrationTests",
                             AllowedGrantTypes = { GrantType.ResourceOwnerPassword },
                             ClientSecrets = { new Secret("secret".Sha256()) },
-                            AllowedScopes = { "Bridge.WebUIAPI", "openid", "profile" }
+                            AllowedScopes = { "Rest.CoursesAPI", "openid", "profile" }
                         });
                     }).AddTestUsers(new List<TestUser>
                     {

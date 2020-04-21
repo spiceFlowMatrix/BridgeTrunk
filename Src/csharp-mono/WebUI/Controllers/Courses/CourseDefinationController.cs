@@ -6,7 +6,7 @@ using Application.Courses.Queries.GetCourseDefinitionById;
 using Application.Courses.Queries.GetCourseDefinition;
 using Application.Courses.Queries.GetCourseDefinitionSubject;
 
-namespace WebUI.Controllers.Courses
+namespace Rest.Courses.Controllers.Courses
 {
     [Route("api/v1/[controller]")]
     [ApiController]

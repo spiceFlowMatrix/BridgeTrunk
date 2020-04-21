@@ -4,7 +4,7 @@ using Application.Courses.Queries.GetCourseGrade;
 using Application.CoursesUnitTests.Common;
 using Application.Helpers;
 using Bridge.Persistence;
-using Bridge.WebUI.Services;
+using Rest.Courses.Services;
 using Shouldly;
 using Xunit;
 

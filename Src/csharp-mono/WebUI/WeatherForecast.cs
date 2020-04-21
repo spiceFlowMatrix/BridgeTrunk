@@ -1,6 +1,6 @@
 using System;
 
-namespace Bridge.WebUI
+namespace Rest.Courses
 {
     public class WeatherForecast
     {
