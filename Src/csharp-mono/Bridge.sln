@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Persistence\Persistence.csproj", "{0AA0E3E7-A656-4BD1-B2AB-011A4047C152}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rest.Courses", "WebUI\Rest.Courses.csproj", "{A5F7F7D7-D5D4-4319-A894-A979A37009E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rest.Courses", "Rest.Courses\Rest.Courses.csproj", "{A5F7F7D7-D5D4-4319-A894-A979A37009E3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{11893C8B-BFC3-4323-BB7A-597E525EDBB1}"
 EndProject
