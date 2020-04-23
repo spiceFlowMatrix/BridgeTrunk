@@ -7,13 +7,15 @@ import { RouterModule } from '@angular/router';
 // Libraries import
 import '@js-mono/common-ui';  
 import { CommonUiModule } from '@js-mono/common-ui';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     CommonUiModule,
-    RouterModule.forRoot([], { initialNavigation: 'enabled' })
+    RouterModule.forRoot([], { initialNavigation: 'enabled' }),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

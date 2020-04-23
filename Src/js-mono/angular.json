@@ -21,7 +21,10 @@
               "apps/init-demo/src/favicon.ico",
               "apps/init-demo/src/assets"
             ],
-            "styles": ["apps/init-demo/src/styles.css"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/init-demo/src/styles.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -79,7 +82,10 @@
               "apps/init-demo/tsconfig.app.json",
               "apps/init-demo/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/init-demo/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/init-demo/**"
+            ]
           }
         },
         "test": {
@@ -114,8 +120,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/init-demo-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/init-demo-e2e/**"]
+            "tsConfig": [
+              "apps/init-demo-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/init-demo-e2e/**"
+            ]
           }
         }
       }
@@ -144,7 +155,10 @@
               "apps/course-administration/src/favicon.ico",
               "apps/course-administration/src/assets"
             ],
-            "styles": ["apps/course-administration/src/styles.scss"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/course-administration/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -202,7 +216,10 @@
               "apps/course-administration/tsconfig.app.json",
               "apps/course-administration/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/course-administration/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/course-administration/**"
+            ]
           }
         },
         "test": {
@@ -237,7 +254,9 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/course-administration-e2e/tsconfig.e2e.json"],
+            "tsConfig": [
+              "apps/course-administration-e2e/tsconfig.e2e.json"
+            ],
             "exclude": [
               "**/node_modules/**",
               "!apps/course-administration-e2e/**"
@@ -259,7 +278,10 @@
               "libs/common-ui/tsconfig.lib.json",
               "libs/common-ui/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/common-ui/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/common-ui/**"
+            ]
           }
         },
         "test": {
