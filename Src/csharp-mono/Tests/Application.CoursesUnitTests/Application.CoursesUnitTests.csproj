@@ -23,6 +23,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Persistence\Persistence.csproj" />
     <ProjectReference Include="..\..\Application.Courses\Application.Courses.csproj" />
-    <ProjectReference Include="..\..\WebUI\WebUI.csproj" />
+    <ProjectReference Include="..\..\Rest.Courses\Rest.Courses.csproj" />
   </ItemGroup>
 </Project>

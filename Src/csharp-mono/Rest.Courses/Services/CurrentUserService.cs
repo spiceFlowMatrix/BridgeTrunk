@@ -5,7 +5,7 @@ using System.Security.Claims;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Bridge.WebUI.Services
+namespace Rest.Courses.Services
 {
     public class CurrentUserService : ICurrentUserService
     {

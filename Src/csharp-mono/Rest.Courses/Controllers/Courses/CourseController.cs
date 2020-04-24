@@ -19,9 +19,9 @@ using Application.Courses.Queries.GetCourse;
 using Application.Courses.Queries.GetPaginatedCourse;
 using Application.Courses.Queries.GetCourseList;
 using Application.Courses.Queries.GetCoursePreviewGradeWise;
-using WebUI.Handler;
+using Rest.Courses.Handler;
 
-namespace WebUI.Controllers.Courses
+namespace Rest.Courses.Controllers.Courses
 {
     [Route("api/v1/[controller]")]
     [ApiController]

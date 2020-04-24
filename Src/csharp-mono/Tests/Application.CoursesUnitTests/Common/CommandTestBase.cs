@@ -2,7 +2,7 @@ using System;
 using Application.Helpers;
 using Application.Interfaces;
 using Bridge.Persistence;
-using Bridge.WebUI.Services;
+using Rest.Courses.Services;
 
 namespace Application.CoursesUnitTests.Common
 {

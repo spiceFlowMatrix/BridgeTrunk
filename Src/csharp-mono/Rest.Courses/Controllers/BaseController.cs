@@ -2,7 +2,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace WebUI.Controllers
+namespace Rest.Courses.Controllers
 {
     public class BaseController: Controller
     {

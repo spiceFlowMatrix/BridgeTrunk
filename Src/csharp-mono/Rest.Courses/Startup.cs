@@ -4,8 +4,8 @@ using Bridge.Application;
 using Bridge.Application.Interfaces;
 using Bridge.Infrastructure;
 using Bridge.Persistence;
-using Bridge.WebUI.Common;
-using Bridge.WebUI.Services;
+using Rest.Courses.Common;
+using Rest.Courses.Services;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -25,7 +25,7 @@ using System.Net;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Bridge.WebUI
+namespace Rest.Courses
 {
     public class Startup
     {
