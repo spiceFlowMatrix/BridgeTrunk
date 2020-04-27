@@ -1,0 +1,22 @@
+<mat-toolbar>
+ 
+  <div class="col-2"><span>Bridge Trunk</span></div>
+  <div class="col-2">
+    <button mat-button [matMenuTriggerFor]="app">Courses <mat-icon aria-hidden="false" aria-label="Example home icon">arrow_drop_down</mat-icon></button>
+    <mat-menu #app="matMenu">
+      <button mat-menu-item>Sales</button>
+      <button mat-menu-item>Feedback</button>
+    </mat-menu>
+  </div>
+  <div class="col-6">
+  </div>
+  <div class="col-2">
+    <button class="user-dropdown" mat-button [matMenuTriggerFor]="user">Avinash</button>
+    <mat-menu #user="matMenu">
+      <button mat-menu-item>Settings</button>
+      <button mat-menu-item>Logout</button>
+    </mat-menu>
+  </div>
+  
+
+</mat-toolbar>

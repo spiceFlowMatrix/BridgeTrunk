@@ -21,7 +21,10 @@
               "apps/init-demo/src/favicon.ico",
               "apps/init-demo/src/assets"
             ],
-            "styles": ["apps/init-demo/src/styles.css"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/init-demo/src/styles.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -79,7 +82,10 @@
               "apps/init-demo/tsconfig.app.json",
               "apps/init-demo/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/init-demo/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/init-demo/**"
+            ]
           }
         },
         "test": {
@@ -114,9 +120,183 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/init-demo-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/init-demo-e2e/**"]
+            "tsConfig": [
+              "apps/init-demo-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/init-demo-e2e/**"
+            ]
           }
+        }
+      }
+    },
+    "course-administration": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/course-administration",
+      "sourceRoot": "apps/course-administration/src",
+      "prefix": "js-mono",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/course-administration",
+            "index": "apps/course-administration/src/index.html",
+            "main": "apps/course-administration/src/main.ts",
+            "polyfills": "apps/course-administration/src/polyfills.ts",
+            "tsConfig": "apps/course-administration/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/course-administration/src/favicon.ico",
+              "apps/course-administration/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/course-administration/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/course-administration/src/environments/environment.ts",
+                  "with": "apps/course-administration/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "course-administration:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "course-administration:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "course-administration:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/course-administration/tsconfig.app.json",
+              "apps/course-administration/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/course-administration/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/course-administration/jest.config.js",
+            "tsConfig": "apps/course-administration/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/course-administration/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "course-administration-e2e": {
+      "root": "apps/course-administration-e2e",
+      "sourceRoot": "apps/course-administration-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/course-administration-e2e/cypress.json",
+            "tsConfig": "apps/course-administration-e2e/tsconfig.e2e.json",
+            "devServerTarget": "course-administration:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "course-administration:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/course-administration-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/course-administration-e2e/**"
+            ]
+          }
+        }
+      }
+    },
+    "common-ui": {
+      "projectType": "library",
+      "root": "libs/common-ui",
+      "sourceRoot": "libs/common-ui/src",
+      "prefix": "js-mono",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common-ui/tsconfig.lib.json",
+              "libs/common-ui/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/common-ui/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common-ui/jest.config.js",
+            "tsConfig": "libs/common-ui/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/common-ui/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
         }
       }
     }

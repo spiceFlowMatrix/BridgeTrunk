@@ -35,7 +35,8 @@ namespace Application.Courses.Queries.GetAllCoursesDetail
             ApiResponse res = new ApiResponse();
             try
             {
-                var userId = await _userHelper.getUserId(_userService.UserId.ToString());
+                // var userId = await _userHelper.getUserId(_userService.UserId.ToString());
+                 var userId = _userService.UserId;
 
                 if (request.Search == null)
                 {
@@ -43,7 +44,7 @@ namespace Application.Courses.Queries.GetAllCoursesDetail
                     res.message = "No data found";
                     res.status = "Success";
                 }
-                string Certificate = Path.GetFileName(_env.WebRootPath + "/training24-28e994f9833c.json"); //xxx
+                string Certificate = Path.GetFileName ("../../training24-28e994f9833c.json");    //xxx
                 string[] filterArray = null;
                 string[] gradeArray = null;
                 if (!string.IsNullOrEmpty(request.Filter))
@@ -284,11 +285,8 @@ namespace Application.Courses.Queries.GetAllCoursesDetail
                         res.response_code = 0;
                         res.message = "GetAllDetails";
                         res.status = "Success";
-
+                        res.ReturnCode = 200;
                     }
-
-
-
                 }
 
             }
