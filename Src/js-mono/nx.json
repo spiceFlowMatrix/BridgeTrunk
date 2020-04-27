@@ -17,6 +17,16 @@
     "init-demo-e2e": {
       "tags": [],
       "implicitDependencies": ["init-demo"]
+    },
+    "course-administration": {
+      "tags": []
+    },
+    "course-administration-e2e": {
+      "tags": [],
+      "implicitDependencies": ["course-administration"]
+    },
+    "common-ui": {
+      "tags": []
     }
   }
 }
