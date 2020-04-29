@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bridge.Persistence.Migrations
 {
     [DbContext(typeof(BridgeDbContext))]
-    [Migration("20200409073315_InitialMigration")]
+    [Migration("20200429082334_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -779,7 +779,9 @@ namespace Bridge.Persistence.Migrations
             modelBuilder.Entity("Bridge.Domain.Entities.Course", b =>
                 {
                     b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("TeacherId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("Code")
@@ -790,6 +792,9 @@ namespace Bridge.Persistence.Migrations
 
                     b.Property<string>("CreatorUserId")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("CultureId")
+                        .HasColumnType("int");
 
                     b.Property<string>("DeleterUserId")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -818,10 +823,16 @@ namespace Bridge.Persistence.Migrations
                     b.Property<decimal?>("PassMark")
                         .HasColumnType("decimal(65,30)");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.Property<bool>("istrial")
                         .HasColumnType("tinyint(1)");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id", "TeacherId");
+
+                    b.HasIndex("TeacherId")
+                        .IsUnique();
 
                     b.ToTable("Course");
                 });
@@ -4323,6 +4334,29 @@ namespace Bridge.Persistence.Migrations
                     b.ToTable("TaskFileFeedBacks");
                 });
 
+            modelBuilder.Entity("Bridge.Domain.Entities.Teacher", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Bio")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Designation")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("FullName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("PhotoUrl")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Teacher");
+                });
+
             modelBuilder.Entity("Bridge.Domain.Entities.TermsAndConditions", b =>
                 {
                     b.Property<long>("Id")
@@ -4744,6 +4778,15 @@ namespace Bridge.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UserSessions");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.Course", b =>
+                {
+                    b.HasOne("Bridge.Domain.Entities.Teacher", "Teacher")
+                        .WithOne("Course")
+                        .HasForeignKey("Bridge.Domain.Entities.Course", "TeacherId")
+                        .HasConstraintName("FK_Course_Teacher")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Bridge.Domain.Entities.Question", b =>
