@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Application.Courses.Commands.AddCourseItemProgressSync;
-using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 using Application.Courses.Commands.AddCourseGrade;
@@ -19,7 +18,6 @@ using Application.Courses.Queries.GetCourse;
 using Application.Courses.Queries.GetPaginatedCourse;
 using Application.Courses.Queries.GetCourseList;
 using Application.Courses.Queries.GetCoursePreviewGradeWise;
-using Rest.Courses.Handler;
 
 namespace Rest.Courses.Controllers.Courses
 {
@@ -117,15 +115,16 @@ namespace Rest.Courses.Controllers.Courses
             var result = await _mediator.Send(query);
             return StatusCode(result.ReturnCode, result);
         }
-
+        
+        //GetCourseList is craeted by arjun singh 29/04/2020 
         [Authorize(Roles = "admin")]
         [HttpGet("GetCourseList")]
         public async Task<IActionResult> GetCourseList(int pagenumber, int perpagerecord, string search)
         {   // uses role
             GetCourseListQuery query = new GetCourseListQuery
             {
-                pagenumber = pagenumber,
-                perpagerecord = perpagerecord,
+                pageNumber = pagenumber,
+                perPageRecord = perpagerecord,
                 search = search
             };
             var result = await _mediator.Send(query);

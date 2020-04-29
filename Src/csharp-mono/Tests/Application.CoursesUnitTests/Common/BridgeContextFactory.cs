@@ -18,7 +18,75 @@ namespace Application.CoursesUnitTests.Common {
 
             context.Database.EnsureCreated ();
 
+            context.Course.AddRange (new [] {
+                new Course {
+                    Id = 1,
+                        Name = "test",
+                        Code = "test",
+                        Description = "test",
+                        Image = "test",
+                        PassMark = (decimal) 9.9,
+                        istrial = false,
+                        IsDeleted = false
+                }, new Course {
+                    Id = 2,
+                        Name = "test2",
+                        Code = "test2",
+                        Description = "test2",
+                        Image = "test2",
+                        PassMark = (decimal) 9.9,
+                        istrial = false,
+                        IsDeleted = false
+                }, new Course {
+                    Id = 3,
+                        Name = "test3",
+                        Code = "test3",
+                        Description = "test3",
+                        Image = "test3",
+                        PassMark = (decimal) 9.9,
+                        istrial = false,
+                        IsDeleted = false
+                }, new Course {
+                    Id = 4,
+                        Name = "test4",
+                        Code = "test4",
+                        Description = "test4",
+                        Image = "test4",
+                        PassMark = (decimal) 9.9,
+                        istrial = false,
+                        IsDeleted = false
+                }, new Course {
+                    Id = 5,
+                        Name = "test5",
+                        Code = "test5",
+                        Description = "test5",
+                        Image = "test5",
+                        PassMark = (decimal) 9.9,
+                        istrial = false,
+                        IsDeleted = false
+                }, new Course {
+                    Id = 6,
+                        Name = "test6",
+                        Code = "test6",
+                        Description = "test6",
+                        Image = "test6",
+                        PassMark = (decimal) 9.9,
+                        istrial = false,
+                        IsDeleted = false
+                }, new Course {
+                    Id = 7,
+                        Name = "test7",
+                        Code = "test7",
+                        Description = "test7",
+                        Image = "test7",
+                        PassMark = (decimal) 9.9,
+                        istrial = false,
+                        IsDeleted = false
+                }
+            });
+
             context.CourseDefination.AddRange (new [] {
+
                 new CourseDefination {
                     CreationTime = DateTime.UtcNow.ToString (),
                         CreatorUserId = "1",
@@ -89,35 +157,13 @@ namespace Application.CoursesUnitTests.Common {
                         IsDeleted = false
                 }
             });
-            context.Course.AddRange (new [] {
-                new Course {
-                    Id = 1,
-                        Name = "test",
-                        Code = "test",
-                        Description = "test",
-                        Image = "test",
-                        PassMark = (decimal) 9.9,
-                        istrial = false,
-                        IsDeleted = false
-                }, new Course {
-                    Id = 2,
-                        Name = "test2",
-                        Code = "test2",
-                        Description = "test2",
-                        Image = "test2",
-                        PassMark = (decimal) 9.9,
-                        istrial = false,
-                        IsDeleted = false
-                }
+            context.LessonProgresses.Add (new LessonProgress () {
+                Id = 1,
+                    ChapterId = 1,
+                    LessonId = 1,
+                    Progress = 50
             });
 
-            context.LessonProgresses.Add(new LessonProgress() {
-                Id = 1,
-                ChapterId = 1,
-                LessonId = 1,
-                Progress = 50 
-            });
-            
             context.Chapter.AddRange (new [] {
                 new Chapter {
                     Id = 1,
