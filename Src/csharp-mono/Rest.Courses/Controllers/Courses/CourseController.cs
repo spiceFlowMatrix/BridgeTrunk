@@ -46,13 +46,16 @@ namespace Rest.Courses.Controllers.Courses
             // uses role
             AddCourseCommand command = new AddCourseCommand
             {
-                file = Request.Form.Files[0],
+                File = Request.Form.Files[0],
                 FileName = Request.Form.Files[0].FileName,
-                name = Request.Form["name"],
-                code = Request.Form["code"],
-                description = Request.Form["description"],
-                gradeid = string.IsNullOrEmpty(Request.Form["gradeid"]) ? 0 : long.Parse(Request.Form["gradeid"]),
-                istrial = string.IsNullOrEmpty(Request.Form["istrial"]) ? false : bool.Parse(Request.Form["istrial"])
+                Name = Request.Form["name"],
+                Code = Request.Form["code"],
+                Description = Request.Form["description"],
+                TeacherId = string.IsNullOrEmpty(Request.Form["teacherid"])? Convert.ToInt64(Request.Form["teacherid"]): (long?)null,
+                Status= string.IsNullOrEmpty(Request.Form["status"])? Convert.ToInt32(Request.Form["status"]): 0,
+                CultureId = string.IsNullOrEmpty(Request.Form["cultureid"])? Convert.ToInt32(Request.Form["cultureid"]): 0,
+                // gradeid = string.IsNullOrEmpty(Request.Form["gradeid"]) ? 0 : long.Parse(Request.Form["gradeid"]),
+                // istrial = string.IsNullOrEmpty(Request.Form["istrial"]) ? false : bool.Parse(Request.Form["istrial"])
             };
             var result = await _mediator.Send(command);
             return StatusCode(result.ReturnCode, result);
@@ -65,14 +68,18 @@ namespace Rest.Courses.Controllers.Courses
             // uses role
             UpdateCourseCommand command = new UpdateCourseCommand
             {
-                id = id,
-                file = Request.Form.Files[0],
+                Id = id,
+                File = Request.Form.Files[0],
                 FileName = Request.Form.Files[0].FileName,
-                name = Request.Form["name"],
-                code = Request.Form["code"],
-                description = Request.Form["description"],
-                gradeid = string.IsNullOrEmpty(Request.Form["gradeid"]) ? 0 : long.Parse(Request.Form["gradeid"]),
-                istrial = string.IsNullOrEmpty(Request.Form["istrial"]) ? false : bool.Parse(Request.Form["istrial"])
+                Name = Request.Form["name"],
+                Code = Request.Form["code"],
+                Description = Request.Form["description"],
+                TeacherId =  string.IsNullOrEmpty(Request.Form["teacherid"]) ? Convert.ToInt64(Request.Form["teacherid"]): (long?)null,
+                Status= string.IsNullOrEmpty(Request.Form["status"]) ? Convert.ToInt32(Request.Form["status"]): 0,
+                CultureId = string.IsNullOrEmpty(Request.Form["cultureid"]) ? Convert.ToInt32(Request.Form["cultureid"]): 0,
+
+                //Gradeid = string.IsNullOrEmpty(Request.Form["gradeid"]) ? 0 : long.Parse(Request.Form["gradeid"]),
+                //IsTrial = string.IsNullOrEmpty(Request.Form["istrial"]) ? false : bool.Parse(Request.Form["istrial"])
             };
             var result = await _mediator.Send(command);
             return StatusCode(result.ReturnCode, result);

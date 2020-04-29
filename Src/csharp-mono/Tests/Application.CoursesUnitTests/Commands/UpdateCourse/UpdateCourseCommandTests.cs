@@ -20,13 +20,15 @@ namespace Application.CoursesUnitTests.Commands.UpdateCourse
             var sut = new UpdateCourseCommandHandler(_context, _userService);
             var obj = new UpdateCourseCommand 
             {
-                id =  1,
-                name = "abctest",
-                code = "001",
-                description = "test",
-                passmark = 10,
-                gradeid = 1,
-                bundleId = 1   
+                Id =  1,
+                Name = "abctest",
+                Code = "001",
+                Description = "test",
+                Passmark = 10,
+                GradeId = 1,
+                BundleId = 1,
+                CultureId= 1,
+                Status= 1
             };
 
             // Act

@@ -19,12 +19,12 @@ namespace Application.CoursesUnitTests.Commands.AddCourse
             var sut = new AddCourseCommandHandler(_context, _userService);
             var obj = new AddCourseCommand 
             {
-                name = "abctest",
-                code = "001",
-                description = "test",
-                passmark = 10,
-                gradeid = 1,
-                bundleId = 1
+                Name = "abctest",
+                Code = "001",
+                Description = "test",
+                Passmark = 10,
+                GradeId = 1,
+                BundleId = 1
             };
 
             // Act

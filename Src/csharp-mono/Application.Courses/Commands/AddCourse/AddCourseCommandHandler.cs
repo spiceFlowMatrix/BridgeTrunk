@@ -34,56 +34,61 @@ namespace Application.Courses.Commands.AddCourse {
                 // var credential = GoogleCredential.FromFile(Directory.GetCurrentDirectory() + "../../training24-28e994f9833c.json");
                 var _storageClient = StorageClient.Create (cred);
                 string userId = _userService.UserId;
-                if (request.file != null) {
+                if (request.File != null) {
                     IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".gif", ".png" };
-                    var ext = request.FileName.Substring (request.FileName.LastIndexOf ("."));
-                    var extension = ext.ToLower ();
-                    if (AllowedFileExtensions.Contains (extension)) {
-                        Guid imageGuid = Guid.NewGuid ();
-                        request.FileName = request.FileName.Split (".") [0] + "_" + imageGuid.ToString () + extension;
+                    var ext = request.FileName.Substring(request.FileName.LastIndexOf(".")).ToLower();
+                    // var extension = ext.ToLower();
+                    if (AllowedFileExtensions.Contains(ext)) {
+                        request.FileName = request.FileName.Split(".")[0] + "_" + Guid.NewGuid().ToString() + ext;
 
                         var imageAcl = PredefinedObjectAcl.PublicRead;
-                        var imageObject = await _storageClient.UploadObjectAsync (
+                        var imageObject = await _storageClient.UploadObjectAsync(
                             bucket: "edg-primary-course-image-storage",
                             objectName : request.FileName,
-                            contentType : request.file.ContentType,
-                            source : request.file.OpenReadStream (),
+                            contentType : request.File.ContentType,
+                            source : request.File.OpenReadStream(),
                             options : new UploadObjectOptions { PredefinedAcl = imageAcl }
                         );
                         mediaLink = imageObject.MediaLink;
                     }
                 }
-                Course obj = new Course {
-                    Name = request.name,
-                    Code = request.code,
-                    Description = request.description,
-                    Image = mediaLink,
-                    CreationTime = DateTime.Now.ToString (),
-                    CreatorUserId = userId,
-                    istrial = request.istrial,
-                    IsDeleted = false
-                };
-                _dbContext.Course.Add (obj);
-                await _dbContext.SaveChangesAsync (cancellationToken);
 
-                CourseGrade courseGrade = new CourseGrade {
-                    CourseId = obj.Id,
-                    Gradeid = request.gradeid,
+                Course obj = new Course 
+                {
+                    Name = request.Name,
+                    Code = request.Code,
+                    Description = request.Description,
+                    Image = mediaLink,
+                    CreationTime = DateTime.Now.ToString(),
+                    CreatorUserId = userId,
+                    istrial = request.isTrial,
                     IsDeleted = false,
-                    CreationTime = DateTime.Now.ToString (),
-                    CreatorUserId = userId
+                    Status= request.Status,
+                    CultureId= request.CultureId,
+                    TeacherId = request.TeacherId
                 };
-                _dbContext.CourseGrade.Add (courseGrade);
-                await _dbContext.SaveChangesAsync (cancellationToken);
-                Grade newGrade = await _dbContext.Grade.FirstOrDefaultAsync (x => x.Id == request.gradeid && x.IsDeleted == false);
+
+                _dbContext.Course.Add(obj);
+                await _dbContext.SaveChangesAsync(cancellationToken);
+
+                // CourseGrade courseGrade = new CourseGrade {
+                //     CourseId = obj.Id,
+                //     Gradeid = request.GradeId,
+                //     IsDeleted = false,
+                //     CreationTime = DateTime.Now.ToString (),
+                //     CreatorUserId = userId
+                // };
+                // _dbContext.CourseGrade.Add (courseGrade);
+                // await _dbContext.SaveChangesAsync (cancellationToken);
+                // Grade newGrade = await _dbContext.Grade.FirstOrDefaultAsync (x => x.Id == request.GradeId && x.IsDeleted == false);
                 var responseModel = new {
                     Name = obj.Name,
                     Id = int.Parse (obj.Id.ToString ()),
                     Code = obj.Code,
                     Description = obj.Description,
                     Image = obj.Image,
-                    gradeid = newGrade.Id,
-                    gradename = newGrade.Name,
+                    // gradeid = newGrade.Id,
+                    // gradename = newGrade.Name,
                     istrial = obj.istrial
                 };
 

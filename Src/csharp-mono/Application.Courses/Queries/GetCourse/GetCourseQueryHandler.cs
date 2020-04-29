@@ -49,21 +49,24 @@ namespace Application.Courses.Queries.GetCourse
                         Name = course.Name,
                         Id = int.Parse(course.Id.ToString()),
                         Code = course.Code,
+                        CultureId= course.CultureId,
+                        Status= course.Status,
+                        TeacherId= course.TeacherId,
                         Description = course.Description,
                         Image = imageurl,
                         istrial = course.istrial
                     };
 
-                    CourseGrade courseGrade = await _dbContext.CourseGrade.FirstOrDefaultAsync(x=>x.CourseId == course.Id && x.IsDeleted == false);
-                    if (courseGrade != null)
-                    {
-                        Grade grade = await _dbContext.Grade.FirstOrDefaultAsync(x=>x.Id == courseGrade.Gradeid && x.IsDeleted == false);
-                        if (grade != null) 
-                        {
-                            responseCourseModel.gradeid = grade.Id;
-                            responseCourseModel.gradename = grade.Name;
-                        }
-                    }
+                    // CourseGrade courseGrade = await _dbContext.CourseGrade.FirstOrDefaultAsync(x=>x.CourseId == course.Id && x.IsDeleted == false);
+                    // if (courseGrade != null)
+                    // {
+                    //     Grade grade = await _dbContext.Grade.FirstOrDefaultAsync(x=>x.Id == courseGrade.Gradeid && x.IsDeleted == false);
+                    //     if (grade != null) 
+                    //     {
+                    //         responseCourseModel.gradeid = grade.Id;
+                    //         responseCourseModel.gradename = grade.Name;
+                    //     }
+                    // }
                 }
 
                 res.data = responseCourseModel;
