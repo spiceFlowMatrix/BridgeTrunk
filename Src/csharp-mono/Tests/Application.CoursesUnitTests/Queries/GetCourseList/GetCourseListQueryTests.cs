@@ -7,32 +7,70 @@ using Bridge.Persistence;
 using Shouldly;
 using Xunit;
 
-namespace Application.CoursesUnitTests.Queries.GetCourseList
-{
-    [Collection("QueryCollection")]
-    public class GetCourseListQueryTests
-    {
+namespace Application.CoursesUnitTests.Queries.GetCourseList {
+    [Collection ("QueryCollection")]
+
+    // Updated by Arjun Singh 29/04/2020
+    public class GetCourseListQueryTests {
         private readonly BridgeDbContext _context;
 
-        public GetCourseListQueryTests(QueryTestFixture fixture)
-        {
+        public GetCourseListQueryTests (QueryTestFixture fixture) {
             _context = fixture.Context;
         }
 
         [Fact]
-        public async Task GetCourseListTest()
-        {
-            var sut = new GetCourseListQueryHandler(_context);
-            GetCourseListQuery query = new GetCourseListQuery
-            {
-                pagenumber = 1,
-                perpagerecord = 5,
-                search = "test"
+        public async Task Get_WhenCall_ReturnCode () {
+            var sut = new GetCourseListQueryHandler (_context);
+            GetCourseListQuery query = new GetCourseListQuery {
+                pageNumber = 0,
+                perPageRecord = 5,
+                search = ""
             };
 
-            var result = await sut.Handle(query, CancellationToken.None);
+            var result = await sut.Handle (query, CancellationToken.None);
 
-            result.ReturnCode.ShouldBe(200);
+            result.ReturnCode.ShouldBe (200);
+        }
+
+        [Fact]
+        public async Task Get_WhenCallOnPage0_ReturnData () {
+            var sut = new GetCourseListQueryHandler (_context);
+            GetCourseListQuery query = new GetCourseListQuery {
+                pageNumber = 0,
+                perPageRecord = 5,
+                search = ""
+            };
+
+            var result = await sut.Handle (query, CancellationToken.None);
+
+            result.totalcount.ShouldBe (5);
+        }
+
+        [Fact]
+        public async Task Get_WhenCallOnPage1_ReturnData () {
+            var sut = new GetCourseListQueryHandler (_context);
+            GetCourseListQuery query = new GetCourseListQuery {
+                pageNumber = 1,
+                perPageRecord = 5,
+                search = ""
+            };
+
+            var result = await sut.Handle (query, CancellationToken.None);
+
+            result.totalcount.ShouldBe (2);
+        }
+
+        [Fact]
+        public async Task Get_WhenCallOnSearch_ReturnData () {
+            var sut = new GetCourseListQueryHandler (_context);
+            GetCourseListQuery query = new GetCourseListQuery {
+                pageNumber = 0,
+                perPageRecord = 5,
+                search = "1"
+            };
+
+            var result = await sut.Handle (query, CancellationToken.None);
+            result.totalcount.ShouldBe (1);
         }
 
     }
