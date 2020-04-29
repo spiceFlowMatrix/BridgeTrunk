@@ -88,7 +88,7 @@ namespace Rest.Courses.Controllers.Courses {
         [Authorize (Roles = "admin")]
         [HttpGet ("{id}")]
         public async Task<IActionResult> Get (int id) { // uses role
-            GetCourseQuery query = new GetCourseQuery { id = id };
+            GetCourseQuery query = new GetCourseQuery { Id = id };
             var result = await _mediator.Send (query);
             return StatusCode (result.ReturnCode, result);
         }

@@ -16,7 +16,7 @@ using Google.Apis.Auth.OAuth2;
 
 namespace Application.Courses.Queries.GetCourse
 {
-    public class GetCourseQueryHandler: IRequestHandler<GetCourseQuery, ApiResponse>
+    public class GetCourseQueryHandler : IRequestHandler<GetCourseQuery, ApiResponse>
     {
         private readonly IBridgeDbContext _dbContext;
         private readonly IUserHelper _userHelper;
@@ -32,9 +32,9 @@ namespace Application.Courses.Queries.GetCourse
             {
                 string Certificate = Path.GetFileName(Environment.GetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS"));
                 CourseDTO responseCourseModel = null;
-                Course course = await _dbContext.Course.FirstOrDefaultAsync(x=>x.Id == request.id && x.IsDeleted == false);
+                Course course = await _dbContext.Course.FirstOrDefaultAsync(x => x.Id == request.Id && x.IsDeleted == false);
                 string imageurl = "";
-                if(course != null)
+                if (course != null)
                 {
                     if (!string.IsNullOrEmpty(course.Image))
                     {
@@ -49,9 +49,9 @@ namespace Application.Courses.Queries.GetCourse
                         Name = course.Name,
                         Id = int.Parse(course.Id.ToString()),
                         Code = course.Code,
-                        CultureId= course.CultureId,
-                        Status= course.Status,
-                        TeacherId= course.TeacherId,
+                        CultureId = course.CultureId,
+                        Status = course.Status,
+                        TeacherId = course.TeacherId,
                         Description = course.Description,
                         Image = imageurl,
                         istrial = course.istrial
@@ -67,13 +67,19 @@ namespace Application.Courses.Queries.GetCourse
                     //         responseCourseModel.gradename = grade.Name;
                     //     }
                     // }
+                    res.data = responseCourseModel;
+                    res.response_code = 0;
+                    res.message = "Course Detail";
+                    res.status = "Success";
+                    res.ReturnCode = 200;
+                }
+                else
+                {
+                    res.response_code = 1;
+                    res.message = "No data found";
+                    res.status = "Success";
                 }
 
-                res.data = responseCourseModel;
-                res.response_code = 0;
-                res.message = "Course Detail";
-                res.status = "Success";
-                res.ReturnCode = 200;
             }
             catch (Exception ex)
             {
