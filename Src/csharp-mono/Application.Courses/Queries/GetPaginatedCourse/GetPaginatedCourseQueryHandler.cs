@@ -27,10 +27,9 @@ namespace Application.Courses.Queries.GetPaginatedCourse {
             ApiResponse res = new ApiResponse ();
             string certificate = Path.GetFileName (Environment.GetEnvironmentVariable ("GOOGLE_APPLICATION_CREDENTIALS"));
             try {
-                var courseQuery = await _dbContext.Course.AsNoTracking ().Where (x => x.IsDeleted == false).ToListAsync ();
 
                 if (!string.IsNullOrEmpty (request.search)) {
-                    var courseSearchQuery = courseQuery.Where (x =>
+                    var courseSearchQuery = _dbContext.Course.AsNoTracking().Where (x =>
                         (x.Code.ToLower ().Contains (request.search.ToLower ()) ||
                             x.Name.ToLower ().Contains (request.search.ToLower ()) ||
                             x.Id.ToString ().ToLower ().Contains (request.search.ToLower ()))
@@ -48,7 +47,7 @@ namespace Application.Courses.Queries.GetPaginatedCourse {
                         .OrderByDescending (x => x.Code)
                         .ToListAsync ();
                 } else {
-                    var courseSearchQuery = courseQuery.Where (x => x.IsDeleted == false).Select (x => new {
+                    var courseSearchQuery = _dbContext.Course.AsNoTracking().Where (x => x.IsDeleted == false).Select (x => new {
                         Name = x.Name,
                             Id = int.Parse (x.Id.ToString ()),
                             Code = x.Code,

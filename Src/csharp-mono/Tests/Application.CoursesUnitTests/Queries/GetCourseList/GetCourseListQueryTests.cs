@@ -33,7 +33,7 @@ namespace Application.CoursesUnitTests.Queries.GetCourseList {
         }
 
         [Fact]
-        public async Task Get_WhenCallOnPage0_ReturnData () {
+        public async Task Get_WhenCall_ReturnData () {
             var sut = new GetCourseListQueryHandler (_context);
             GetCourseListQuery query = new GetCourseListQuery {
                 pageNumber = 0,
@@ -43,21 +43,7 @@ namespace Application.CoursesUnitTests.Queries.GetCourseList {
 
             var result = await sut.Handle (query, CancellationToken.None);
 
-            result.totalcount.ShouldBe (5);
-        }
-
-        [Fact]
-        public async Task Get_WhenCallOnPage1_ReturnData () {
-            var sut = new GetCourseListQueryHandler (_context);
-            GetCourseListQuery query = new GetCourseListQuery {
-                pageNumber = 1,
-                perPageRecord = 5,
-                search = ""
-            };
-
-            var result = await sut.Handle (query, CancellationToken.None);
-
-            result.totalcount.ShouldBe (2);
+            result.totalcount.ShouldBe (7);
         }
 
         [Fact]

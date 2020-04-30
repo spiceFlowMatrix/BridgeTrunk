@@ -17,10 +17,9 @@ namespace Application.Courses.Queries.GetCourseList {
         }
         public async Task<ApiResponse> Handle (GetCourseListQuery request, CancellationToken cancellationToken) {
             ApiResponse res = new ApiResponse ();
-            try {
-                var courseQuery = await _dbContext.Course.AsNoTracking ().Where (x => x.IsDeleted == false).ToListAsync ();
+            try {               
                 if (!string.IsNullOrEmpty (request.search)) {
-                    var courseSearchQuery = courseQuery.Where (x => x.IsDeleted == false &&
+                    var courseSearchQuery = _dbContext.Course.AsNoTracking().Where (x => x.IsDeleted == false &&
                         (x.Code.ToLower ().Contains (request.search.ToLower ()) ||
                             x.Name.ToLower ().Contains (request.search.ToLower ()) ||
                             x.Id.ToString ().ToLower ().Contains (request.search.ToLower ()))
@@ -37,7 +36,7 @@ namespace Application.Courses.Queries.GetCourseList {
                         .OrderByDescending (x => x.Code)
                         .ToListAsync ();
                 } else {
-                    var courseSearchQuery = courseQuery.Where (x => x.IsDeleted == false).Select (x => new {
+                    var courseSearchQuery = _dbContext.Course.AsNoTracking().Where (x => x.IsDeleted == false).Select (x => new {
                         x.Id,
                             x.Code,
                             x.Name,
