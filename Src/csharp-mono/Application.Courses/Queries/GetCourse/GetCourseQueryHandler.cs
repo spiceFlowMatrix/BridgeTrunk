@@ -72,6 +72,7 @@ namespace Application.Courses.Queries.GetCourse
                     res.response_code = 1;
                     res.message = "No data found";
                     res.status = "Success";
+                    res.ReturnCode = 404;
                 }
 
             }

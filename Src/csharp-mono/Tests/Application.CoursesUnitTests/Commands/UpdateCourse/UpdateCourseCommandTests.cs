@@ -8,23 +8,26 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Application.Courses.Commands.UpdateCourse;
+using System.Net;
 
 namespace Application.CoursesUnitTests.Commands.UpdateCourse
 {
-    public class UpdateCourseCommandTests: CommandTestBase
+    public class UpdateCourseCommandTests : CommandTestBase
     {
         [Fact]
         public async Task Handle_GivenValidRequest_ShouldUpdateCourse()
         {
             // Arrange
             var sut = new UpdateCourseCommandHandler(_context, _userService);
-            var obj = new UpdateCourseCommand 
+            var obj = new UpdateCourseCommand
             {
-                Id =  1,
+                Id = 1,
                 Name = "abctest",
                 Code = "001",
                 Description = "test",
-                Status= 1
+                Status = 1,
+                TeacherId = 1,
+                Culture = 1
             };
 
             // Act
@@ -33,6 +36,29 @@ namespace Application.CoursesUnitTests.Commands.UpdateCourse
             // Assert
             Assert.True(response.ReturnCode == 200);
         }
-        
+
+        [Fact]
+        public async Task Handle_GivenValidRequest_ShouldNotFoundCourse()
+        {
+            // Arrange
+            var sut = new UpdateCourseCommandHandler(_context, _userService);
+            var obj = new UpdateCourseCommand
+            {
+                Id = 10,
+                Name = "abctest",
+                Code = "001",
+                Description = "test",
+                Status = 1,
+                TeacherId = 1,
+                Culture = 1
+            };
+
+            // Act
+            var response = await sut.Handle(obj, CancellationToken.None);
+
+            // Assert
+            Assert.True(response.ReturnCode == 404);
+        }
+
     }
 }

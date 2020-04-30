@@ -10,18 +10,21 @@ using System.Threading.Tasks;
 
 namespace Application.CoursesUnitTests.Commands.AddCourse
 {
-    public class AddCourseCommandTests: CommandTestBase
+    public class AddCourseCommandTests : CommandTestBase
     {
         [Fact]
         public async Task Handle_GivenValidRequest_ShouldAddCourse()
         {
             // Arrange
             var sut = new AddCourseCommandHandler(_context, _userService);
-            var obj = new AddCourseCommand 
+            var obj = new AddCourseCommand
             {
                 Name = "abctest",
                 Code = "001",
                 Description = "test",
+                Culture = 1,
+                Status = 1,
+                TeacherId = 1
             };
 
             // Act
@@ -30,6 +33,6 @@ namespace Application.CoursesUnitTests.Commands.AddCourse
             // Assert
             Assert.True(response.ReturnCode == 200);
         }
-        
+
     }
 }

@@ -38,7 +38,7 @@ namespace Application.CoursesUnitTests.Queries.GetCourse
 
             var result = await sut.Handle(new GetCourseQuery { Id = 10 }, CancellationToken.None);
 
-            result.response_code.ShouldBe(1);
+            result.ReturnCode.ShouldBe(404);
         }
     }
 }
