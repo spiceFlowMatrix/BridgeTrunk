@@ -970,8 +970,8 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("AdministeredBy")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("AdministeredOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("AdministeredOn")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<long>("CourseId")
                         .HasColumnType("bigint");
@@ -1000,14 +1000,14 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("PublishedBy")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("PublishedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("PublishedOn")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("ReleasedBy")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("ReleasedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("ReleasedOn")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("RevisionName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");

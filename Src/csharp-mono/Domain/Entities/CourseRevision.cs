@@ -7,11 +7,11 @@ namespace Bridge.Domain.Entities
     {
         public string RevisionName { get; set; }
         public string Summary { get; set; }
-        public DateTime? AdministeredOn { get; set; }
+        public string AdministeredOn { get; set; }
         public string AdministeredBy { get; set; }
-        public DateTime? PublishedOn { get; set; }
+        public string PublishedOn { get; set; }
         public string PublishedBy { get; set; }
-        public DateTime? ReleasedOn { get; set; }
+        public string ReleasedOn { get; set; }
         public string ReleasedBy { get; set; }
         public int Status { get; set; }
         public long CourseId { get; set; }
