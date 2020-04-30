@@ -5,8 +5,8 @@ namespace Application.Courses.Queries.GetPaginatedCourse
 {
     public class GetPaginatedCourseQuery: IRequest<ApiResponse>
     {
-        public int pagenumber { get; set; }
-        public int perpagerecord { get; set; }
+        public int pageNumber { get; set; }
+        public int perPageRecord { get; set; }
         public string search { get; set; }
     }
 }

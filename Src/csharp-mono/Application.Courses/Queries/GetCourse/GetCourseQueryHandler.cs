@@ -16,7 +16,7 @@ using Google.Apis.Auth.OAuth2;
 
 namespace Application.Courses.Queries.GetCourse
 {
-    public class GetCourseQueryHandler: IRequestHandler<GetCourseQuery, ApiResponse>
+    public class GetCourseQueryHandler : IRequestHandler<GetCourseQuery, ApiResponse>
     {
         private readonly IBridgeDbContext _dbContext;
         private readonly IUserHelper _userHelper;
@@ -34,9 +34,9 @@ namespace Application.Courses.Queries.GetCourse
                 CourseDTO responseCourseModel = null;
                 Course course = await _dbContext.Course
                                                 .Include(x=> x.Teacher)
-                                                .FirstOrDefaultAsync(x=>x.Id == request.id && x.IsDeleted == false);
+                                                .FirstOrDefaultAsync(x=>x.Id == request.Id && x.IsDeleted == false);
                 string imageurl = "";
-                if(course != null)
+                if (course != null)
                 {
                     if (!string.IsNullOrEmpty(course.Image))
                     {
@@ -60,24 +60,20 @@ namespace Application.Courses.Queries.GetCourse
                         StatusName= ((CourseStatus)course.Status).ToString(),
                         CultureName = ((Culture)course.Culture).ToString()
                     };
-
-                    // CourseGrade courseGrade = await _dbContext.CourseGrade.FirstOrDefaultAsync(x=>x.CourseId == course.Id && x.IsDeleted == false);
-                    // if (courseGrade != null)
-                    // {
-                    //     Grade grade = await _dbContext.Grade.FirstOrDefaultAsync(x=>x.Id == courseGrade.Gradeid && x.IsDeleted == false);
-                    //     if (grade != null) 
-                    //     {
-                    //         responseCourseModel.gradeid = grade.Id;
-                    //         responseCourseModel.gradename = grade.Name;
-                    //     }
-                    // }
+                    
+                    res.data = responseCourseModel;
+                    res.response_code = 0;
+                    res.message = "Course Detail";
+                    res.status = "Success";
+                    res.ReturnCode = 200;
+                }
+                else
+                {
+                    res.response_code = 1;
+                    res.message = "No data found";
+                    res.status = "Success";
                 }
 
-                res.data = responseCourseModel;
-                res.response_code = 0;
-                res.message = "Course Detail";
-                res.status = "Success";
-                res.ReturnCode = 200;
             }
             catch (Exception ex)
             {

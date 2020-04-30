@@ -5,6 +5,6 @@ namespace Application.Courses.Queries.GetCourse
 {
     public class GetCourseQuery: IRequest<ApiResponse>
     {
-        public int id { get; set; }
+        public int Id { get; set; }
     }
 }

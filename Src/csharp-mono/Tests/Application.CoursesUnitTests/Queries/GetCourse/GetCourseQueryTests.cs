@@ -26,10 +26,19 @@ namespace Application.CoursesUnitTests.Queries.GetCourse
         {
             var sut = new GetCourseQueryHandler(_context, _userHelper);
 
-            var result = await sut.Handle(new GetCourseQuery { id = 1 }, CancellationToken.None);
+            var result = await sut.Handle(new GetCourseQuery { Id = 1 }, CancellationToken.None);
 
             result.ReturnCode.ShouldBe(200);
         }
 
+        [Fact]
+        public async Task GivenInvalidId_ReturnsNotFoundStatusCode()
+        {
+            var sut = new GetCourseQueryHandler(_context, _userHelper);
+
+            var result = await sut.Handle(new GetCourseQuery { Id = 10 }, CancellationToken.None);
+
+            result.response_code.ShouldBe(1);
+        }
     }
 }
