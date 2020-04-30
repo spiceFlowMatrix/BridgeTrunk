@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Bridge.Persistence.Migrations
@@ -2498,11 +2497,11 @@ namespace Bridge.Persistence.Migrations
                     DeletionTime = table.Column<string>(nullable: true),
                     RevisionName = table.Column<string>(nullable: true),
                     Summary = table.Column<string>(nullable: true),
-                    AdministeredOn = table.Column<DateTime>(nullable: true),
+                    AdministeredOn = table.Column<string>(nullable: true),
                     AdministeredBy = table.Column<string>(nullable: true),
-                    PublishedOn = table.Column<DateTime>(nullable: true),
+                    PublishedOn = table.Column<string>(nullable: true),
                     PublishedBy = table.Column<string>(nullable: true),
-                    ReleasedOn = table.Column<DateTime>(nullable: true),
+                    ReleasedOn = table.Column<string>(nullable: true),
                     ReleasedBy = table.Column<string>(nullable: true),
                     Status = table.Column<int>(nullable: false),
                     CourseId = table.Column<long>(nullable: false)
