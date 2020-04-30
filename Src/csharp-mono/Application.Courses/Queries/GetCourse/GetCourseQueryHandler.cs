@@ -32,7 +32,9 @@ namespace Application.Courses.Queries.GetCourse
             {
                 string Certificate = Path.GetFileName(Environment.GetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS"));
                 CourseDTO responseCourseModel = null;
-                Course course = await _dbContext.Course.FirstOrDefaultAsync(x=>x.Id == request.id && x.IsDeleted == false);
+                Course course = await _dbContext.Course
+                                                .Include(x=> x.Teacher)
+                                                .FirstOrDefaultAsync(x=>x.Id == request.id && x.IsDeleted == false);
                 string imageurl = "";
                 if(course != null)
                 {
@@ -49,12 +51,14 @@ namespace Application.Courses.Queries.GetCourse
                         Name = course.Name,
                         Id = int.Parse(course.Id.ToString()),
                         Code = course.Code,
-                        CultureId= course.CultureId,
+                        Culture= course.Culture,
                         Status= course.Status,
                         TeacherId= course.TeacherId,
                         Description = course.Description,
                         Image = imageurl,
-                        istrial = course.istrial
+                        TeacherName = course.Teacher != null ? course.Teacher.FullName: null,
+                        StatusName= ((CourseStatus)course.Status).ToString(),
+                        CultureName = ((Culture)course.Culture).ToString()
                     };
 
                     // CourseGrade courseGrade = await _dbContext.CourseGrade.FirstOrDefaultAsync(x=>x.CourseId == course.Id && x.IsDeleted == false);

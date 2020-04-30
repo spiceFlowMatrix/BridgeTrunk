@@ -8,10 +8,10 @@ namespace Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Course> builder)
         {
-            builder.HasKey(e => new { e.Id, e.TeacherId });
+            builder.HasKey(e => new { e.Id });
             builder.HasOne(d => d.Teacher)
-                .WithOne(p => p.Course)
-                .HasForeignKey<Course>(x => x.TeacherId)
+                .WithMany(p => p.Course)
+                .HasForeignKey(x => x.TeacherId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Course_Teacher");
         }

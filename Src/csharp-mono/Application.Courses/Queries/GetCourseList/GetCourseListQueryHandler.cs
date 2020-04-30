@@ -27,7 +27,7 @@ namespace Application.Courses.Queries.GetCourseList {
                             x.Id,
                                 x.Code,
                                 x.Name,
-                                x.CultureId,
+                                x.Culture,
                                 x.Status
                         }).AsQueryable ()
                         .Skip (request.perPageRecord * request.pageNumber)
@@ -40,7 +40,7 @@ namespace Application.Courses.Queries.GetCourseList {
                             x.Id,
                                 x.Code,
                                 x.Name,
-                                x.CultureId,
+                                x.Culture,
                                 x.Status
                         }).AsQueryable ()
                         .Skip (request.perPageRecord * request.pageNumber)
@@ -49,36 +49,7 @@ namespace Application.Courses.Queries.GetCourseList {
                     res.totalcount = courseList.Count;
                     res.data = courseList.OrderByDescending (x => x.Code);
                 }
-                // string Certificate = Path.GetFileName (Environment.GetEnvironmentVariable ("GOOGLE_APPLICATION_CREDENTIALS"));
-                // int total = 0;
-                // var courseList = await _dbContext.Course.Where (x => x.IsDeleted == false).Select (s => new {
-                //     s.Id,
-                //         s.Name,
-                //         s.Code
-                // }).ToListAsync ();
-                // if (request.pageNumber != 0 && request.perPageRecord != 0) {
-                //     total = courseList.Count ();
-
-                //     if (!string.IsNullOrEmpty (request.search)) {
-                //         courseList = courseList.Where (b => b.Code != null && b.Code.ToLower ().Contains (request.search.ToLower ()) ||
-                //             b.Name != null && b.Name.ToLower ().Contains (request.search.ToLower ()) ||
-                //             b.Id.ToString ().ToLower ().Contains (request.search.ToLower ())).ToList ();
-
-                //         total = courseList.Count ();
-
-                //         courseList = courseList.OrderByDescending (b => b.Id).
-                //         Skip (request.perPageRecord * (request.pageNumber - 1)).
-                //         Take (request.perPageRecord).
-                //         ToList ();
-                //     } else {
-                //         courseList = courseList.OrderByDescending (b => b.Id).
-                //         Skip (request.perPageRecord * (request.pageNumber - 1)).
-                //         Take (request.perPageRecord).
-                //         ToList ();
-                //     }
-                // } else {
-                //     total = courseList.Count ();
-                // }
+                
                 res.response_code = 0;
                 res.message = "Course Details";
                 res.status = "Success";

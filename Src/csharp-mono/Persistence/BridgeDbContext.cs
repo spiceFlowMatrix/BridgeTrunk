@@ -34,6 +34,7 @@ namespace Bridge.Persistence
         public DbSet<Role> Role { get; set; }
         public DbSet<Bundle> Bundle { get; set; }
         public DbSet<Course> Course { get; set; }
+        public DbSet<CourseRevision> CourseRevision { get; set; }
         public DbSet<Chapter> Chapter { get; set; }
         public DbSet<Lesson> Lesson { get; set; }
         public DbSet<Quiz> Quiz { get; set; }

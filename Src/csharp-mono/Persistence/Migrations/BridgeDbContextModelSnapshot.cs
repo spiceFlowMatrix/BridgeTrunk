@@ -777,9 +777,7 @@ namespace Bridge.Persistence.Migrations
             modelBuilder.Entity("Bridge.Domain.Entities.Course", b =>
                 {
                     b.Property<long>("Id")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("TeacherId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
                     b.Property<string>("Code")
@@ -791,7 +789,7 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("CreatorUserId")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("CultureId")
+                    b.Property<int>("Culture")
                         .HasColumnType("int");
 
                     b.Property<string>("DeleterUserId")
@@ -824,13 +822,12 @@ namespace Bridge.Persistence.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.Property<bool>("istrial")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<long>("TeacherId")
+                        .HasColumnType("bigint");
 
-                    b.HasKey("Id", "TeacherId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("TeacherId")
-                        .IsUnique();
+                    b.HasIndex("TeacherId");
 
                     b.ToTable("Course");
                 });
@@ -962,6 +959,70 @@ namespace Bridge.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CourseItemProgressSync");
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.CourseRevision", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("AdministeredBy")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<DateTime?>("AdministeredOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<long>("CourseId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("CreatorUserId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("DeleterUserId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("LastModifierUserId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("PublishedBy")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<DateTime?>("PublishedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("ReleasedBy")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<DateTime?>("ReleasedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("RevisionName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Summary")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CourseId");
+
+                    b.ToTable("CourseRevision");
                 });
 
             modelBuilder.Entity("Bridge.Domain.Entities.Currency", b =>
@@ -4781,9 +4842,18 @@ namespace Bridge.Persistence.Migrations
             modelBuilder.Entity("Bridge.Domain.Entities.Course", b =>
                 {
                     b.HasOne("Bridge.Domain.Entities.Teacher", "Teacher")
-                        .WithOne("Course")
-                        .HasForeignKey("Bridge.Domain.Entities.Course", "TeacherId")
+                        .WithMany("Course")
+                        .HasForeignKey("TeacherId")
                         .HasConstraintName("FK_Course_Teacher")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.CourseRevision", b =>
+                {
+                    b.HasOne("Bridge.Domain.Entities.Course", "Course")
+                        .WithMany("Revisions")
+                        .HasForeignKey("CourseId")
+                        .HasConstraintName("FK_CourseRevision_Course")
                         .IsRequired();
                 });
 

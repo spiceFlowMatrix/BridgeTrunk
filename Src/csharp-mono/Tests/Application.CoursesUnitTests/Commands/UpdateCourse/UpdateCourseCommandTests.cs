@@ -24,10 +24,6 @@ namespace Application.CoursesUnitTests.Commands.UpdateCourse
                 Name = "abctest",
                 Code = "001",
                 Description = "test",
-                Passmark = 10,
-                GradeId = 1,
-                BundleId = 1,
-                CultureId= 1,
                 Status= 1
             };
 

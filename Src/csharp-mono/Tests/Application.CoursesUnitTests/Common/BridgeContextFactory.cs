@@ -26,7 +26,6 @@ namespace Application.CoursesUnitTests.Common {
                         Description = "test",
                         Image = "test",
                         PassMark = (decimal) 9.9,
-                        istrial = false,
                         IsDeleted = false
                 }, new Course {
                     Id = 2,
@@ -35,7 +34,6 @@ namespace Application.CoursesUnitTests.Common {
                         Description = "test2",
                         Image = "test2",
                         PassMark = (decimal) 9.9,
-                        istrial = false,
                         IsDeleted = false
                 }, new Course {
                     Id = 3,
@@ -44,7 +42,6 @@ namespace Application.CoursesUnitTests.Common {
                         Description = "test3",
                         Image = "test3",
                         PassMark = (decimal) 9.9,
-                        istrial = false,
                         IsDeleted = false
                 }, new Course {
                     Id = 4,
@@ -53,7 +50,6 @@ namespace Application.CoursesUnitTests.Common {
                         Description = "test4",
                         Image = "test4",
                         PassMark = (decimal) 9.9,
-                        istrial = false,
                         IsDeleted = false
                 }, new Course {
                     Id = 5,
@@ -62,7 +58,6 @@ namespace Application.CoursesUnitTests.Common {
                         Description = "test5",
                         Image = "test5",
                         PassMark = (decimal) 9.9,
-                        istrial = false,
                         IsDeleted = false
                 }, new Course {
                     Id = 6,
@@ -71,7 +66,6 @@ namespace Application.CoursesUnitTests.Common {
                         Description = "test6",
                         Image = "test6",
                         PassMark = (decimal) 9.9,
-                        istrial = false,
                         IsDeleted = false
                 }, new Course {
                     Id = 7,
@@ -80,7 +74,6 @@ namespace Application.CoursesUnitTests.Common {
                         Description = "test7",
                         Image = "test7",
                         PassMark = (decimal) 9.9,
-                        istrial = false,
                         IsDeleted = false
                 }
             });

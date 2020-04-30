@@ -21,4 +21,18 @@ namespace Application.Helpers
         sales_agent = 17,
         parent = 18
     }
+
+    public enum CourseStatus
+    {
+        Configure = 1,
+        Review = 2,
+        Publish = 3,
+        Released = 4
+    }
+
+     public enum Culture
+    {
+        Dari = 1,
+        Pashto = 2
+    }
 }

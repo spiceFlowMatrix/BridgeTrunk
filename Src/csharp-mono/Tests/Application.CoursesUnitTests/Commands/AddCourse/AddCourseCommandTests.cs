@@ -22,9 +22,6 @@ namespace Application.CoursesUnitTests.Commands.AddCourse
                 Name = "abctest",
                 Code = "001",
                 Description = "test",
-                Passmark = 10,
-                GradeId = 1,
-                BundleId = 1
             };
 
             // Act

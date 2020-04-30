@@ -82,7 +82,6 @@ namespace Application.Courses.Queries.GetPaginatedCourse
                         Code = course.Code,
                         Description = course.Description,
                         Image = imageurl,
-                        istrial = course.istrial
                     };
 
                     CourseGrade courseGrade = await _dbContext.CourseGrade.FirstOrDefaultAsync(x=>x.CourseId == course.Id && x.IsDeleted == false);
