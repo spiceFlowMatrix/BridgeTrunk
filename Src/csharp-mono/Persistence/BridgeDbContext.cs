@@ -125,6 +125,8 @@ namespace Bridge.Persistence
         public DbSet<DiscussionTopicLikes> DiscussionTopicLikes { get; set; }
         public DbSet<DiscussionCommentLikes> DiscussionCommentLikes { get; set; }
         public DbSet<TermsAndConditions> TermsAndConditions { get; set; }
+        public DbSet<Teacher> Teacher { get; set; }
+
         //Feedback new module
         public DbSet<TaskFeedBack> TaskFeedBacks { get; set; }
         public DbSet<TaskCategoryFeedBack> TaskCategoryFeedBacks { get; set; }

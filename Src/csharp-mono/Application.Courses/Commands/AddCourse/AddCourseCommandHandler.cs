@@ -13,24 +13,28 @@ using Google.Cloud.Storage.V1;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.Courses.Commands.AddCourse {
-    public class AddCourseCommandHandler : IRequestHandler<AddCourseCommand, ApiResponse> {
+namespace Application.Courses.Commands.AddCourse
+{
+    public class AddCourseCommandHandler : IRequestHandler<AddCourseCommand, ApiResponse>
+    {
         private readonly IBridgeDbContext _dbContext;
         private readonly ICurrentUserService _userService;
-        public AddCourseCommandHandler (IBridgeDbContext dbContext, ICurrentUserService userService) {
+        public AddCourseCommandHandler(IBridgeDbContext dbContext, ICurrentUserService userService)
+        {
             _dbContext = dbContext;
             _userService = userService;
         }
 
-        public async Task<ApiResponse> Handle (AddCourseCommand request, CancellationToken cancellationToken) {
-            
-            ApiResponse res = new ApiResponse ();
+        public async Task<ApiResponse> Handle(AddCourseCommand request, CancellationToken cancellationToken)
+        {
 
-            try 
+            ApiResponse res = new ApiResponse();
+
+            try
             {
                 string userId = _userService.UserId;
 
-                Course obj = new Course 
+                Course obj = new Course
                 {
                     Name = request.Name,
                     Code = request.Code,
@@ -38,16 +42,17 @@ namespace Application.Courses.Commands.AddCourse {
                     CreationTime = DateTime.Now.ToString(),
                     CreatorUserId = userId,
                     IsDeleted = false,
-                    Status= request.Status,
+                    Status = request.Status,
                     TeacherId = request.TeacherId
                 };
 
                 _dbContext.Course.Add(obj);
                 await _dbContext.SaveChangesAsync(cancellationToken);
 
-                var responseModel = new {
+                var responseModel = new
+                {
                     Name = obj.Name,
-                    Id = int.Parse (obj.Id.ToString ()),
+                    Id = int.Parse(obj.Id.ToString()),
                     Code = obj.Code,
                     Description = obj.Description,
                     Image = obj.Image,
@@ -58,8 +63,8 @@ namespace Application.Courses.Commands.AddCourse {
                 res.message = "Course Created";
                 res.status = "Success";
                 res.ReturnCode = 200;
-            } 
-            catch (Exception ex) 
+            }
+            catch (Exception ex)
             {
                 res.response_code = 2;
                 res.message = ex.Message;

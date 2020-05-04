@@ -34,21 +34,7 @@ namespace Application.CoursesUnitTests.Queries.GetPaginatedCourse {
         }
 
         [Fact]
-        public async Task Get_WhenCallOnPage0_ReturnData () {
-            var sut = new GetPaginatedCourseQueryHandler (_context, _userHelper);
-            GetPaginatedCourseQuery query = new GetPaginatedCourseQuery {
-                pageNumber = 0,
-                perPageRecord = 5,
-                search = ""
-            };
-
-            var result = await sut.Handle (query, CancellationToken.None);
-
-            result.totalcount.ShouldBe (5);
-        }
-
-        [Fact]
-        public async Task Get_WhenCallOnPage1_ReturnData () {
+        public async Task Get_WhenCall_ReturnData () {
             var sut = new GetPaginatedCourseQueryHandler (_context, _userHelper);
             GetPaginatedCourseQuery query = new GetPaginatedCourseQuery {
                 pageNumber = 1,
@@ -58,7 +44,7 @@ namespace Application.CoursesUnitTests.Queries.GetPaginatedCourse {
 
             var result = await sut.Handle (query, CancellationToken.None);
 
-            result.totalcount.ShouldBe (2);
+            result.totalcount.ShouldBe (7);
         }
 
         [Fact]

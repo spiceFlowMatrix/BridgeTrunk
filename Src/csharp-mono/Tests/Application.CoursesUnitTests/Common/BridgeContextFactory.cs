@@ -7,18 +7,21 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 
-namespace Application.CoursesUnitTests.Common {
-    public class BridgeContextFactory {
-        public static BridgeDbContext Create () {
-            var options = new DbContextOptionsBuilder<BridgeDbContext> ()
-                .UseInMemoryDatabase (Guid.NewGuid ().ToString ())
+namespace Application.CoursesUnitTests.Common
+{
+    public class BridgeContextFactory
+    {
+        public static BridgeDbContext Create()
+        {
+            var options = new DbContextOptionsBuilder<BridgeDbContext>()
+                .UseInMemoryDatabase(Guid.NewGuid().ToString())
                 .Options;
 
-            var context = new BridgeDbContext (options);
+            var context = new BridgeDbContext(options);
 
-            context.Database.EnsureCreated ();
+            context.Database.EnsureCreated();
 
-            context.Course.AddRange (new [] {
+            context.Course.AddRange(new[] {
                 new Course {
                     Id = 1,
                         Name = "test",
@@ -26,7 +29,10 @@ namespace Application.CoursesUnitTests.Common {
                         Description = "test",
                         Image = "test",
                         PassMark = (decimal) 9.9,
-                        IsDeleted = false
+                        IsDeleted = false,
+                        Culture = 1,
+                        TeacherId = 1,
+                        Status = 1
                 }, new Course {
                     Id = 2,
                         Name = "test2",
@@ -34,7 +40,10 @@ namespace Application.CoursesUnitTests.Common {
                         Description = "test2",
                         Image = "test2",
                         PassMark = (decimal) 9.9,
-                        IsDeleted = false
+                        IsDeleted = false,
+                        Culture = 1,
+                        TeacherId = 2,
+                        Status = 1
                 }, new Course {
                     Id = 3,
                         Name = "test3",
@@ -42,7 +51,10 @@ namespace Application.CoursesUnitTests.Common {
                         Description = "test3",
                         Image = "test3",
                         PassMark = (decimal) 9.9,
-                        IsDeleted = false
+                        IsDeleted = false,
+                        Culture = 1,
+                        TeacherId = 1,
+                        Status = 1
                 }, new Course {
                     Id = 4,
                         Name = "test4",
@@ -50,7 +62,10 @@ namespace Application.CoursesUnitTests.Common {
                         Description = "test4",
                         Image = "test4",
                         PassMark = (decimal) 9.9,
-                        IsDeleted = false
+                        IsDeleted = false,
+                        Culture = 1,
+                        TeacherId = 1,
+                        Status = 1
                 }, new Course {
                     Id = 5,
                         Name = "test5",
@@ -58,7 +73,10 @@ namespace Application.CoursesUnitTests.Common {
                         Description = "test5",
                         Image = "test5",
                         PassMark = (decimal) 9.9,
-                        IsDeleted = false
+                        IsDeleted = false,
+                        Culture = 1,
+                        TeacherId = 1,
+                        Status = 1
                 }, new Course {
                     Id = 6,
                         Name = "test6",
@@ -66,7 +84,10 @@ namespace Application.CoursesUnitTests.Common {
                         Description = "test6",
                         Image = "test6",
                         PassMark = (decimal) 9.9,
-                        IsDeleted = false
+                        IsDeleted = false,
+                        Culture = 1,
+                        TeacherId = 1,
+                        Status = 1
                 }, new Course {
                     Id = 7,
                         Name = "test7",
@@ -74,11 +95,14 @@ namespace Application.CoursesUnitTests.Common {
                         Description = "test7",
                         Image = "test7",
                         PassMark = (decimal) 9.9,
-                        IsDeleted = false
+                        IsDeleted = false,
+                        Culture = 1,
+                        TeacherId = 1,
+                        Status = 1
                 }
             });
 
-            context.CourseDefination.AddRange (new [] {
+            context.CourseDefination.AddRange(new[] {
 
                 new CourseDefination {
                     CreationTime = DateTime.UtcNow.ToString (),
@@ -109,14 +133,15 @@ namespace Application.CoursesUnitTests.Common {
                 }
             });
 
-            context.School.Add (new School {
+            context.School.Add(new School
+            {
                 Id = 1,
-                    Code = "001",
-                    Name = "Abc",
-                    IsDeleted = false
+                Code = "001",
+                Name = "Abc",
+                IsDeleted = false
             });
 
-            context.Grade.AddRange (new [] {
+            context.Grade.AddRange(new[] {
                 new Grade {
                     Id = 1,
                         Name = "test",
@@ -137,7 +162,7 @@ namespace Application.CoursesUnitTests.Common {
                         IsDeleted = false
                 },
             });
-            context.CourseGrade.AddRange (new [] {
+            context.CourseGrade.AddRange(new[] {
                 new CourseGrade {
                     Id = 1,
                         CourseId = 1,
@@ -150,14 +175,15 @@ namespace Application.CoursesUnitTests.Common {
                         IsDeleted = false
                 }
             });
-            context.LessonProgresses.Add (new LessonProgress () {
+            context.LessonProgresses.Add(new LessonProgress()
+            {
                 Id = 1,
-                    ChapterId = 1,
-                    LessonId = 1,
-                    Progress = 50
+                ChapterId = 1,
+                LessonId = 1,
+                Progress = 50
             });
 
-            context.Chapter.AddRange (new [] {
+            context.Chapter.AddRange(new[] {
                 new Chapter {
                     Id = 1,
                         Name = "test",
@@ -176,7 +202,7 @@ namespace Application.CoursesUnitTests.Common {
                         IsDeleted = false
                 }
             });
-            context.chapterQuiz.AddRange (new [] {
+            context.chapterQuiz.AddRange(new[] {
                 new ChapterQuiz {
                     Id = 1,
                         ChapterId = 1,
@@ -191,7 +217,7 @@ namespace Application.CoursesUnitTests.Common {
                         IsDeleted = false
                 }
             });
-            context.Quiz.AddRange (new [] {
+            context.Quiz.AddRange(new[] {
                 new Quiz {
                     Id = 1,
                         Name = "test",
@@ -212,7 +238,7 @@ namespace Application.CoursesUnitTests.Common {
                         IsDeleted = false
                 }
             });
-            context.Assignment.AddRange (new [] {
+            context.Assignment.AddRange(new[] {
                 new Assignment {
                     Id = 1,
                         Name = "test",
@@ -231,7 +257,7 @@ namespace Application.CoursesUnitTests.Common {
                         IsDeleted = false
                 }
             });
-            context.Lesson.AddRange (new [] {
+            context.Lesson.AddRange(new[] {
                 new Lesson {
                     Id = 1,
                         Name = "test",
@@ -250,7 +276,7 @@ namespace Application.CoursesUnitTests.Common {
                         IsDeleted = false
                 }
             });
-            context.LessonAssignmentFiles.AddRange (new [] {
+            context.LessonAssignmentFiles.AddRange(new[] {
                 new LessonAssignmentFile {
                     Id = 1,
                         FileId = 1,
@@ -263,7 +289,7 @@ namespace Application.CoursesUnitTests.Common {
                         IsDeleted = false
                 }
             });
-            context.Files.AddRange (new [] {
+            context.Files.AddRange(new[] {
                 new Files {
                     Id = 1,
                         Name = "test",
@@ -288,7 +314,7 @@ namespace Application.CoursesUnitTests.Common {
                         IsDeleted = false
                 }
             });
-            context.FileTypes.AddRange (new [] {
+            context.FileTypes.AddRange(new[] {
                 new FileTypes {
                     Id = 1,
                         Filetype = "test",
@@ -299,7 +325,7 @@ namespace Application.CoursesUnitTests.Common {
                         IsDeleted = false
                 }
             });
-            context.AssignmentFile.AddRange (new [] {
+            context.AssignmentFile.AddRange(new[] {
                 new AssignmentFile {
                     Id = 1,
                         AssignmentId = 1,
@@ -312,7 +338,7 @@ namespace Application.CoursesUnitTests.Common {
                         IsDeleted = false
                 }
             });
-            context.LessonFile.AddRange (new [] {
+            context.LessonFile.AddRange(new[] {
                 new LessonFile {
                     Id = 1,
                         LessionId = 1,
@@ -325,7 +351,7 @@ namespace Application.CoursesUnitTests.Common {
                         IsDeleted = false
                 }
             });
-            context.UserCourse.AddRange (new [] {
+            context.UserCourse.AddRange(new[] {
                 new UserCourse {
                     Id = 1,
                         UserId = 1,
@@ -344,7 +370,7 @@ namespace Application.CoursesUnitTests.Common {
                         IsDeleted = false
                 }
             });
-            context.Users.AddRange (new [] {
+            context.Users.AddRange(new[] {
                 new User {
                     Id = 1,
                         Username = "test",
@@ -372,31 +398,43 @@ namespace Application.CoursesUnitTests.Common {
                         IsDeleted = false
                 }
             });
-            context.SaveChanges ();
+            context.Teacher.AddRange(new[] {
+                 new Teacher {
+                            Id = 1,
+                            FullName = "test"
+                        },
+                 new Teacher {
+                           Id =2,
+                           FullName = "test1"
+                       }
+             });
+            context.SaveChanges();
 
             return context;
         }
 
-        public static HttpContextAccessor CreateHttpContext () {
-            var userIdClaim = new Mock<Claim> (ClaimTypes.NameIdentifier, "auth0|test123456");
-            var roleClaim = new Mock<Claim> (ClaimTypes.Role, "Admin");
+        public static HttpContextAccessor CreateHttpContext()
+        {
+            var userIdClaim = new Mock<Claim>(ClaimTypes.NameIdentifier, "auth0|test123456");
+            var roleClaim = new Mock<Claim>(ClaimTypes.Role, "Admin");
 
-            var httpContextAccessor = new Mock<HttpContextAccessor> ();
-            var httpContext = new Mock<HttpContext> ();
-            var fakeIdentity = new GenericIdentity ("User");
-            var principal = new GenericPrincipal (fakeIdentity, new String[] { "Admin" });
+            var httpContextAccessor = new Mock<HttpContextAccessor>();
+            var httpContext = new Mock<HttpContext>();
+            var fakeIdentity = new GenericIdentity("User");
+            var principal = new GenericPrincipal(fakeIdentity, new String[] { "Admin" });
 
-            httpContext.Setup (t => t.User).Returns (principal);
+            httpContext.Setup(t => t.User).Returns(principal);
             //httpContextAccessor.SetupProperty(_=>_.HttpContext).Setup(_=>_.HttpContext).Returns(httpContext.Object);
             // httpContextAccessor.Setup(_ => _.HttpContext).Returns(httpContext.Object);
             // httpContextAccessor.SetupSet(_ => _.HttpContext.User = new Mock<ClaimsPrincipal>().Object);
             //httpContextAccessor.SetupSet(_ => _.HttpContext.User.Claims = new List<Claim> { userIdClaim.Object, roleClaim.Object }).Returns(new List<Claim> { userIdClaim.Object, roleClaim.Object });
             return httpContextAccessor.Object;
         }
-        public static void Destroy (BridgeDbContext context) {
-            context.Database.EnsureDeleted ();
+        public static void Destroy(BridgeDbContext context)
+        {
+            context.Database.EnsureDeleted();
 
-            context.Dispose ();
+            context.Dispose();
         }
     }
 }
