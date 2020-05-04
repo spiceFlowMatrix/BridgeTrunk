@@ -9,10 +9,9 @@ namespace Rest.Courses.Controllers.Lessons
 
         [Authorize (Roles = "admin")]
         [HttpPost]
-        public async Task<IActionResult> AddNewLesson([FromBody] AddCourseCommand command)
+        public async Task<IActionResult> AddNewLesson([FromBody] AddNewLessonCommand command)
         {
-            var result = await _mediator.Send(command);
-            return StatusCode(result.ReturnCode, result);
+            return await _mediator.Send(command);
         }
 
     }
