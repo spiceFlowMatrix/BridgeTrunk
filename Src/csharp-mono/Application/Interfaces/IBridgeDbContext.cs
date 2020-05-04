@@ -12,6 +12,7 @@ namespace Bridge.Application.Interfaces
         DbSet<Role> Role { get; set; }
         DbSet<Bundle> Bundle { get; set; }
         DbSet<Course> Course { get; set; }
+        DbSet<CourseRevision> CourseRevision { get; set; }
         DbSet<Chapter> Chapter { get; set; }
         DbSet<Lesson> Lesson { get; set; }
         DbSet<Quiz> Quiz { get; set; }
