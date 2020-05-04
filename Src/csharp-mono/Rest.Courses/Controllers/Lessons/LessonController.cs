@@ -1,4 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using System.Threading.Tasks;
+using Application.Courses.Commands.AddNewLesson;
 
 namespace Rest.Courses.Controllers.Lessons
 {
@@ -11,7 +14,8 @@ namespace Rest.Courses.Controllers.Lessons
         [HttpPost]
         public async Task<IActionResult> AddNewLesson([FromBody] AddNewLessonCommand command)
         {
-            return await _mediator.Send(command);
+            var result=  await _mediator.Send(command);
+            return Ok(result);
         }
 
     }
