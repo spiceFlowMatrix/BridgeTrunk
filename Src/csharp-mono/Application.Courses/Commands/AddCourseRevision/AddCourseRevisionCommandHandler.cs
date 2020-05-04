@@ -7,6 +7,7 @@ using Application.Interfaces;
 using Bridge.Application.Interfaces;
 using Bridge.Application.Models;
 using Bridge.Domain.Entities;
+using Domain.Enum;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -29,6 +30,7 @@ namespace Application.Courses.Commands.AddCourseRevision {
                     RevisionName = request.RevisionName,
                     Summary = request.Summary,
                     CourseId = request.CourseId,
+                    Status = (int)RevisionStatus.revision_start,
                     AdministeredOn = DateTime.Now.ToString(),
                     AdministeredBy = _userService.UserId,
                     CreatorUserId = _userService.UserId,
