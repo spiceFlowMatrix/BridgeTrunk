@@ -12,7 +12,6 @@ namespace Bridge.Domain.Entities
         public int Culture {get; set;}
         public long TeacherId {get; set;}
         public string Image { get; set; }        
-        public decimal? PassMark { get; set; }
         public int Status { get; set; }
         public Teacher Teacher { get; set; }
         public ICollection<CourseRevision> Revisions { get; set; }
