@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using System.IO;
 using Google.Cloud.Storage.V1;
 using Google.Apis.Auth.OAuth2;
-using Domain.Enum;
+using Domain.Enums;
 
 namespace Application.Courses.Queries.GetCourse
 {
