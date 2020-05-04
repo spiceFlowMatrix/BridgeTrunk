@@ -12,6 +12,7 @@ using Bridge.Domain.Entities;
 using Google.Apis.Auth.OAuth2;
 using Google.Cloud.Storage.V1;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Courses.Queries.GetPaginatedCourse {
@@ -29,7 +30,7 @@ namespace Application.Courses.Queries.GetPaginatedCourse {
             try {
 
                 if (!string.IsNullOrEmpty (request.search)) {
-                    var courseSearchQuery = _dbContext.Course.AsNoTracking().Where (x =>
+                    var courseSearchQuery = _dbContext.Course.AsNoTracking ().Where (x =>
                         (x.Code.ToLower ().Contains (request.search.ToLower ()) ||
                             x.Name.ToLower ().Contains (request.search.ToLower ()) ||
                             x.Id.ToString ().ToLower ().Contains (request.search.ToLower ()))
@@ -47,7 +48,7 @@ namespace Application.Courses.Queries.GetPaginatedCourse {
                         .OrderByDescending (x => x.Code)
                         .ToListAsync ();
                 } else {
-                    var courseSearchQuery = _dbContext.Course.AsNoTracking().Where (x => x.IsDeleted == false).Select (x => new {
+                    var courseSearchQuery = _dbContext.Course.AsNoTracking ().Where (x => x.IsDeleted == false).Select (x => new {
                         Name = x.Name,
                             Id = int.Parse (x.Id.ToString ()),
                             Code = x.Code,
@@ -65,12 +66,12 @@ namespace Application.Courses.Queries.GetPaginatedCourse {
                 res.response_code = 0;
                 res.message = "Course Details";
                 res.status = "Success";
-                res.ReturnCode = 200;
+                res.ReturnCode = StatusCodes.Status200OK;
             } catch (Exception ex) {
                 res.response_code = 2;
                 res.message = ex.Message;
                 res.status = "Failure";
-                res.ReturnCode = 500;
+                res.ReturnCode = StatusCodes.Status500InternalServerError;
             }
             return res;
         }
