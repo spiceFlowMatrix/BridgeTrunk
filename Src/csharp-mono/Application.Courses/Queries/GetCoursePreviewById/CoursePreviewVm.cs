@@ -67,7 +67,7 @@ namespace Application.Courses.Queries.GetCoursePreviewById
         public string name { get; set; }
         public string code { get; set; }
         public string description { get; set; }
-        public int itemorder { get; set; }
+        public int? itemorder { get; set; }
         public int type { get; set; }
         public List<ResponseLessonFileModel> lessonfiles { get; set; }
         public ResponseLessionAssignmentDTO assignment { get; set; }

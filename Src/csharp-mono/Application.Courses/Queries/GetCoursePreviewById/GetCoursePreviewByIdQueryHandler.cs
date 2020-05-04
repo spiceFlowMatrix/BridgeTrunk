@@ -166,8 +166,7 @@ namespace Application.Courses.Queries.GetCoursePreviewById {
                             if (lessons.Count != 0) {
                                 lessonPreviewModel = lessons.Select (x => new LessonPreviewModel {
                                     id = x.Id,
-                                        name = x.Name,
-                                        code = x.Code,
+                                        name = x.Title,
                                         description = x.Description,
                                         itemorder = x.ItemOrder,
                                         type = 1
@@ -191,8 +190,7 @@ namespace Application.Courses.Queries.GetCoursePreviewById {
                                 try {
                                     lessonPreviewModel = lessons.Select (x => new LessonPreviewModel {
                                         id = x.Id,
-                                            name = x.Name,
-                                            code = x.Code,
+                                            name = x.Title,
                                             description = x.Description,
                                             itemorder = x.ItemOrder,
                                             lessonfiles = GetLessionFilesByLessionId (x.Id, request.StudentId, certificate),

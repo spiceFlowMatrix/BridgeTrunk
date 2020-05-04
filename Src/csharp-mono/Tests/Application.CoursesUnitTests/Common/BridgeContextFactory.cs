@@ -253,16 +253,14 @@ namespace Application.CoursesUnitTests.Common
             context.Lesson.AddRange(new[] {
                 new Lesson {
                     Id = 1,
-                        Name = "test",
-                        Code = "1",
+                        Title = "test",
                         Description = "test",
                         ChapterId = 1,
                         ItemOrder = 1,
                         IsDeleted = false
                 }, new Lesson {
                     Id = 2,
-                        Name = "test2",
-                        Code = "2",
+                        Title = "test2",
                         Description = "test2",
                         ChapterId = 2,
                         ItemOrder = 1,
