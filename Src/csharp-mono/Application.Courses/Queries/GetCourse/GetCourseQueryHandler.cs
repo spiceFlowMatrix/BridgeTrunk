@@ -7,12 +7,12 @@ using MediatR;
 using Bridge.Application.Models;
 using Bridge.Domain.Entities;
 using Bridge.Application.Interfaces;
-using Application.Helpers;
 using Application.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.IO;
 using Google.Cloud.Storage.V1;
 using Google.Apis.Auth.OAuth2;
+using Domain.Enum;
 
 namespace Application.Courses.Queries.GetCourse
 {
