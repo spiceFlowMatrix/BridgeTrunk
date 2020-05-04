@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Bridge.Persistence.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class InitalMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -2406,7 +2406,6 @@ namespace Bridge.Persistence.Migrations
                     Culture = table.Column<int>(nullable: false),
                     TeacherId = table.Column<long>(nullable: false),
                     Image = table.Column<string>(nullable: true),
-                    PassMark = table.Column<decimal>(nullable: true),
                     Status = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

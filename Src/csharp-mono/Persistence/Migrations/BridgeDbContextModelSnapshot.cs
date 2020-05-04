@@ -816,9 +816,6 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<decimal?>("PassMark")
-                        .HasColumnType("decimal(65,30)");
-
                     b.Property<int>("Status")
                         .HasColumnType("int");
 

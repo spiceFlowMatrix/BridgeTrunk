@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bridge.Persistence.Migrations
 {
     [DbContext(typeof(BridgeDbContext))]
-    [Migration("20200430083544_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20200504054341_InitalMigration")]
+    partial class InitalMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -817,9 +817,6 @@ namespace Bridge.Persistence.Migrations
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<decimal?>("PassMark")
-                        .HasColumnType("decimal(65,30)");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
