@@ -5,11 +5,34 @@
     left: 0;
     right: 0;
   }
-  .example-sidenav {
+  .mono-sidenav {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 200px;
+    width: 230px;
     background:#ffff;
   }
-  
+  .nav-side-menu {
+    overflow: auto;
+    font-size: 12px;
+    font-weight: 400;
+    background-color: #ffff;
+    top: 0px;
+    width:100%;
+    height: 100%;
+    color: #000;
+  }
+  .nav-side-menu .brand {
+      height: 70px;
+      display: block;
+      font-size: 18px;
+      font-weight: 500;
+      color: #000;
+      letter-spacing: 1px;
+      border-bottom: 1px solid #222b37;
+      padding: 13px 28px;
+  }
+  .nav-side-menu .brand-text {
+   margin-left: 20px;
+}
+  .nav-side-menu .brand i{margin-right: 10px; font-size: 28px; position: relative;top: 3px;}

@@ -3,12 +3,17 @@
     <mat-drawer-content>Main content</mat-drawer-content>
   </mat-drawer-container> -->
 <mat-sidenav-container class="nav-container">
-  <mat-sidenav #sidenav mode="side" opened class="example-sidenav" [fixedInViewport]="false"
-    [fixedTopGap]="0" [fixedBottomGap]="0">
-    <div class="col-12"><button mat-button >Add Course</button></div>
-    <div class="col-12"><button mat-button >Review Course</button></div>
-    
-  </mat-sidenav>
+  <mat-sidenav #sidenav mode="side" opened class="mono-sidenav" [fixedInViewport]="false" [fixedTopGap]="0"
+    [fixedBottomGap]="0">
+
+    <div class="nav-side-menu">
+      <div class="brand">
+        <mat-icon>send</mat-icon>
+        <span class="brand-text">Education</span>
+      </div>
+      <!-- <div class="menu-list">Humanitarian</div> -->
+    </div>
+    </mat-sidenav>
   <mat-sidenav-content>
     <ng-content></ng-content>
   </mat-sidenav-content>

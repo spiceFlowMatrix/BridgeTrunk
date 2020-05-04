@@ -5,19 +5,21 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 
 // Libraries import
-import '@js-mono/common-ui';  
-import { CommonUiModule } from '@js-mono/common-ui';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UiComponentsComponent } from './components/ui-components/ui-components.component';
+import { AppRoutingModule } from './app-routing.module';
+import { CommonUiModule } from '@js-mono/common-ui';
+
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, UiComponentsComponent],
   imports: [
     BrowserModule,
     CommonUiModule,
-    RouterModule.forRoot([], { initialNavigation: 'enabled' }),
+    AppRoutingModule,
     BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
