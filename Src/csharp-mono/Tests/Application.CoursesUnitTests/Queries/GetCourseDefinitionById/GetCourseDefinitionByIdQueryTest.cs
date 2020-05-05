@@ -4,6 +4,7 @@ using Application.Courses.Queries.GetCourseDefinitionById;
 using Application.CoursesUnitTests.Common;
 using Application.Helpers;
 using Bridge.Persistence;
+using Microsoft.AspNetCore.Http;
 using Shouldly;
 using Xunit;
 
@@ -26,7 +27,7 @@ namespace Application.CoursesUnitTests.Queries.GetCourseDefinitionById
             var sut = new GetCourseDefinitionByIdQueryHandler(_context);
             var result = await sut.Handle(new GetCourseDefinitionByIdQuery { Id = 1 }, CancellationToken.None);
             result.data.ShouldBeOfType<CourseDefinitionVm>();
-            result.ReturnCode.ShouldBe(200);
+            result.ReturnCode.ShouldBe(StatusCodes.Status200OK);
         }
     }
 }

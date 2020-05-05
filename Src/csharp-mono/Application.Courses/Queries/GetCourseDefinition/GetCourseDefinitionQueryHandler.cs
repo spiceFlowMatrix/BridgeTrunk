@@ -7,6 +7,7 @@ using Bridge.Application.Interfaces;
 using Bridge.Application.Models;
 using Bridge.Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Courses.Queries.GetCourseDefinition
@@ -66,12 +67,12 @@ namespace Application.Courses.Queries.GetCourseDefinition
                     res.response_code = 0;
                     res.message = "CourseDefination Details";
                     res.status = "Success";
-                    res.ReturnCode = 200;
+                    res.ReturnCode = StatusCodes.Status200OK;
                 }
             }
             catch (Exception ex)
             {
-                res.ReturnCode = 500;
+                res.ReturnCode = StatusCodes.Status500InternalServerError;
                 res.response_code = 2;
                 res.message = ex.Message;
                 res.status = "Failure";

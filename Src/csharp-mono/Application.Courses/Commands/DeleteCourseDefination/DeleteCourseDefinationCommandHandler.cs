@@ -7,6 +7,7 @@ using Bridge.Application.Interfaces;
 using Bridge.Application.Models;
 using Bridge.Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Courses.Commands.DeleteCourseDefination
@@ -53,14 +54,14 @@ namespace Application.Courses.Commands.DeleteCourseDefination
                     res.response_code = 0;
                     res.message = "CourseDefination Deleted";
                     res.status = "Success";
-                    res.ReturnCode = 200;
+                    res.ReturnCode = StatusCodes.Status200OK;
                 }
                 else
                 {
                     res.response_code = 1;
                     res.message = "No data found.";
-                    res.status = "Unsuccess";
-                    res.ReturnCode = 400;
+                    res.status = "NotFound";
+                    res.ReturnCode = StatusCodes.Status404NotFound;
                 }
                 // }
                 // else
@@ -73,7 +74,7 @@ namespace Application.Courses.Commands.DeleteCourseDefination
             }
             catch (Exception ex)
             {
-                res.ReturnCode = 500;
+                res.ReturnCode = StatusCodes.Status500InternalServerError;
                 res.response_code = 2;
                 res.message = ex.Message;
                 res.status = "Failure";

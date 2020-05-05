@@ -7,6 +7,7 @@ using Application.Courses.Commands.AddCourse;
 using Bridge.Application.Interfaces;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace Application.CoursesUnitTests.Commands.AddCourse
 {
@@ -31,7 +32,7 @@ namespace Application.CoursesUnitTests.Commands.AddCourse
             var response = await sut.Handle(obj, CancellationToken.None);
 
             // Assert
-            Assert.True(response.ReturnCode == 200);
+            Assert.True(response.ReturnCode == StatusCodes.Status200OK);
         }
 
     }
