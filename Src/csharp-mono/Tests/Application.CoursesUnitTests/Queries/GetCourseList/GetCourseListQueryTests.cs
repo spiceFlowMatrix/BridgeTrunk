@@ -2,12 +2,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using Application.Courses.Queries.GetCourseList;
 using Application.CoursesUnitTests.Common;
-using Application.Helpers;
 using Bridge.Persistence;
+using Microsoft.AspNetCore.Http;
 using Shouldly;
 using Xunit;
 
-namespace Application.CoursesUnitTests.Queries.GetCourseList {
+namespace Application.CoursesUnitTests.Queries.GetCourseList
+{
     [Collection ("QueryCollection")]
 
     // Updated by Arjun Singh 29/04/2020
@@ -29,7 +30,7 @@ namespace Application.CoursesUnitTests.Queries.GetCourseList {
 
             var result = await sut.Handle (query, CancellationToken.None);
 
-            result.ReturnCode.ShouldBe (200);
+            result.ReturnCode.ShouldBe (StatusCodes.Status200OK);
         }
 
         [Fact]

@@ -3,10 +3,8 @@ using System.Threading.Tasks;
 using Bridge.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Bridge.Application.Interfaces
-{
-    public interface IBridgeDbContext
-    {
+namespace Bridge.Application.Interfaces {
+    public interface IBridgeDbContext {
         DbSet<User> Users { get; set; }
         DbSet<Deposit> Deposit { get; set; }
         DbSet<Role> Role { get; set; }
@@ -104,12 +102,13 @@ namespace Bridge.Application.Interfaces
         DbSet<DiscussionTopicLikes> DiscussionTopicLikes { get; set; }
         DbSet<DiscussionCommentLikes> DiscussionCommentLikes { get; set; }
         DbSet<TermsAndConditions> TermsAndConditions { get; set; }
+        DbSet<Teacher> Teacher { get; set; }
         //Feedback new module
         DbSet<TaskFeedBack> TaskFeedBacks { get; set; }
         DbSet<TaskCategoryFeedBack> TaskCategoryFeedBacks { get; set; }
         DbSet<TaskFileFeedBack> TaskFileFeedBacks { get; set; }
         DbSet<TaskActivityFeedBack> TaskActivityFeedBacks { get; set; }
         DbSet<TaskActivityCategoryFeedBack> TaskActivityCategoryFeedBacks { get; set; }
-        Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+        Task<int> SaveChangesAsync (CancellationToken cancellationToken);
     }
 }
