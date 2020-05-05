@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Bridge.Persistence.Migrations
 {
-    public partial class InitalMigration : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -750,6 +750,33 @@ namespace Bridge.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "DocumentFileDetail",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CreatorUserId = table.Column<string>(nullable: true),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<string>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: true),
+                    DeleterUserId = table.Column<string>(nullable: true),
+                    DeletionTime = table.Column<string>(nullable: true),
+                    EntityType = table.Column<int>(nullable: false),
+                    EntityRecordId = table.Column<long>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    RawFileMimeType = table.Column<string>(nullable: true),
+                    RawFileSizeBytes = table.Column<long>(nullable: false),
+                    StorageDirectoryPath = table.Column<string>(nullable: true),
+                    ContentType = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DocumentFileDetail", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ERPAccounts",
                 columns: table => new
                 {
@@ -1109,30 +1136,6 @@ namespace Bridge.Persistence.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_IndividualDetails", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Lesson",
-                columns: table => new
-                {
-                    Id = table.Column<long>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CreatorUserId = table.Column<string>(nullable: true),
-                    CreationTime = table.Column<string>(nullable: true),
-                    LastModifierUserId = table.Column<string>(nullable: true),
-                    LastModificationTime = table.Column<string>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: true),
-                    DeleterUserId = table.Column<string>(nullable: true),
-                    DeletionTime = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    Code = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    ChapterId = table.Column<long>(nullable: true),
-                    ItemOrder = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Lesson", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -2359,6 +2362,37 @@ namespace Bridge.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Lesson",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CreatorUserId = table.Column<string>(nullable: true),
+                    CreationTime = table.Column<string>(nullable: true),
+                    LastModifierUserId = table.Column<string>(nullable: true),
+                    LastModificationTime = table.Column<string>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: true),
+                    DeleterUserId = table.Column<string>(nullable: true),
+                    DeletionTime = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    ChapterId = table.Column<long>(nullable: true),
+                    ItemOrder = table.Column<int>(nullable: true),
+                    LessonType = table.Column<int>(nullable: false),
+                    Status = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Lesson", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Lesson_Chapter",
+                        column: x => x.ChapterId,
+                        principalTable: "Chapter",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Question",
                 columns: table => new
                 {
@@ -2527,6 +2561,11 @@ namespace Bridge.Persistence.Migrations
                 column: "CourseId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Lesson_ChapterId",
+                table: "Lesson",
+                column: "ChapterId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Question_QuestionTypeId",
                 table: "Question",
                 column: "QuestionTypeId");
@@ -2589,9 +2628,6 @@ namespace Bridge.Persistence.Migrations
                 name: "BundleCourse");
 
             migrationBuilder.DropTable(
-                name: "Chapter");
-
-            migrationBuilder.DropTable(
                 name: "ChapterProgresses");
 
             migrationBuilder.DropTable(
@@ -2647,6 +2683,9 @@ namespace Bridge.Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "DocumentDetails");
+
+            migrationBuilder.DropTable(
+                name: "DocumentFileDetail");
 
             migrationBuilder.DropTable(
                 name: "ERPAccounts");
@@ -2851,6 +2890,9 @@ namespace Bridge.Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "Course");
+
+            migrationBuilder.DropTable(
+                name: "Chapter");
 
             migrationBuilder.DropTable(
                 name: "Question");

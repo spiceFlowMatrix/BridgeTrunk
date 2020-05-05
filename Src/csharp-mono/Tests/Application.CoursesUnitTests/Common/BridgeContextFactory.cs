@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Security.Principal;
 using Bridge.Domain.Entities;
 using Bridge.Persistence;
+using Domain.Enums;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Moq;
@@ -29,7 +30,7 @@ namespace Application.CoursesUnitTests.Common
                         Description = "test",
                         Image = "test",
                         IsDeleted = false,
-                        Culture = 1,
+                        Culture = (Culture)1,
                         TeacherId = 1,
                         Status = 1
                 }, new Course {
@@ -39,7 +40,7 @@ namespace Application.CoursesUnitTests.Common
                         Description = "test2",
                         Image = "test2",
                         IsDeleted = false,
-                        Culture = 1,
+                        Culture = (Culture)1,
                         TeacherId = 2,
                         Status = 1
                 }, new Course {
@@ -49,7 +50,7 @@ namespace Application.CoursesUnitTests.Common
                         Description = "test3",
                         Image = "test3",
                         IsDeleted = false,
-                        Culture = 1,
+                        Culture = (Culture)1,
                         TeacherId = 1,
                         Status = 1
                 }, new Course {
@@ -59,7 +60,7 @@ namespace Application.CoursesUnitTests.Common
                         Description = "test4",
                         Image = "test4",
                         IsDeleted = false,
-                        Culture = 1,
+                        Culture = (Culture)1,
                         TeacherId = 1,
                         Status = 1
                 }, new Course {
@@ -69,7 +70,7 @@ namespace Application.CoursesUnitTests.Common
                         Description = "test5",
                         Image = "test5",
                         IsDeleted = false,
-                        Culture = 1,
+                        Culture = (Culture)1,
                         TeacherId = 1,
                         Status = 1
                 }, new Course {
@@ -79,7 +80,7 @@ namespace Application.CoursesUnitTests.Common
                         Description = "test6",
                         Image = "test6",
                         IsDeleted = false,
-                        Culture = 1,
+                        Culture = (Culture)1,
                         TeacherId = 1,
                         Status = 1
                 }, new Course {
@@ -89,7 +90,7 @@ namespace Application.CoursesUnitTests.Common
                         Description = "test7",
                         Image = "test7",
                         IsDeleted = false,
-                        Culture = 1,
+                        Culture = (Culture)1,
                         TeacherId = 1,
                         Status = 1
                 }

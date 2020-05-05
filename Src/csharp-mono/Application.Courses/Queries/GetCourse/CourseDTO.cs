@@ -1,3 +1,5 @@
+using Domain.Enums;
+
 namespace Application.Courses.Queries.GetCourse
 {
     public class CourseDTO
@@ -8,7 +10,7 @@ namespace Application.Courses.Queries.GetCourse
         public string Description { get; set; }
         public string Image { get; set; }
         public int Status { get; set; }
-        public int Culture { get; set; }
+        public Culture Culture { get; set; }
         public long TeacherId { get; set; }
         public string CultureName { get; set; }
         public string StatusName { get; set; }

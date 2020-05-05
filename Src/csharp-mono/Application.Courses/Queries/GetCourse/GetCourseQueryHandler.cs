@@ -51,14 +51,14 @@ namespace Application.Courses.Queries.GetCourse
                         Name = course.Name,
                         Id = int.Parse(course.Id.ToString()),
                         Code = course.Code,
-                        Culture= course.Culture,
+                        Culture= (Culture)course.Culture,
                         Status= course.Status,
                         TeacherId= course.TeacherId,
                         Description = course.Description,
                         Image = imageurl,
                         TeacherName = course.Teacher != null ? course.Teacher.FullName: null,
                         StatusName= ((CourseStatus)course.Status).ToString(),
-                        CultureName = ((Culture)course.Culture).ToString()
+                        CultureName = course.Culture.ToString()
                     };
                     
                     res.data = responseCourseModel;

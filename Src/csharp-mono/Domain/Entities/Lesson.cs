@@ -10,5 +10,6 @@ namespace Bridge.Domain.Entities
         public int? ItemOrder { get; set; }
         public int LessonType { get; set; }
         public int? Status { get; set; }
+        public Chapter Chapter { get; set; }
     }
 }

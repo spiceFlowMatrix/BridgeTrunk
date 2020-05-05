@@ -13,9 +13,19 @@ namespace REST.Courses.Controllers.FileManagement
     public class FileManagementController : BaseController
     {
         [HttpPost]
-        public async Task<object> GetSignedURL([FromBody]GetSignedURLQuery query)
+        [Authorize (Roles = "admin")]
+        public async Task<IActionResult> GetSignedURL([FromBody]GetSignedURLQuery query)
         {
-            return await _mediator.Send(query);
+            var result= await _mediator.Send(query);
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Authorize (Roles = "admin")]
+        public async Task<IActionResult> AddUploadedFileInfo([FromBody]AddUploadedFileInfoCommand command)
+        {
+            var result=  await _mediator.Send(command);
+            return Ok(result);
         }
     }
 }
