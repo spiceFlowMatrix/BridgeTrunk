@@ -1,3 +1,5 @@
+using Domain.Enums;
+
 namespace Application.Courses.Queries.GetCourseRevisionDetail {
     public class CourseRevisionDetailVm {
         public RevisionDetail RevisionDetails { get; set; }
@@ -11,7 +13,7 @@ namespace Application.Courses.Queries.GetCourseRevisionDetail {
         public string Name { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
-        public int Culture { get; set; }
+        public Culture Culture { get; set; }
         public string TeacherName { get; set; }
     }
 

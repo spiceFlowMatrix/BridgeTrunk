@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 using Rest.Courses.Controllers;
 using Application.Courses.Queries.GetSignedUrl;
+using Application.Courses.Commands.AddUploadedFileInfo;
 
 namespace REST.Courses.Controllers.FileManagement
 {
