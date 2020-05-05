@@ -75,6 +75,7 @@ namespace Bridge.Application.Interfaces {
         DbSet<DiscussionFiles> DiscussionFiles { get; set; }
         DbSet<DiscussionComments> DiscussionComments { get; set; }
         DbSet<DiscussionCommentFiles> DiscussionCommentFiles { get; set; }
+        DbSet<DocumentFileDetail> DocumentFileDetail {get; set;}
         DbSet<UserNotifications> UserNotifications { get; set; }
         DbSet<LogObjectTypes> LogObjectTypes { get; set; }
         DbSet<LogObject> LogObjects { get; set; }

@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using System.IO;
 using Google.Cloud.Storage.V1;
 using Google.Apis.Auth.OAuth2;
+using Domain.Enums;
 using Microsoft.AspNetCore.Http;
 
 namespace Application.Courses.Commands.UpdateCourse
@@ -40,7 +41,7 @@ namespace Application.Courses.Commands.UpdateCourse
                     obj.Code = request.Code;
                     obj.Description = request.Description;
                     obj.Status = request.Status;
-                    obj.Culture = request.Culture;
+                    obj.Culture = (Culture)request.Culture;
                     obj.TeacherId = request.TeacherId;
                     obj.LastModificationTime = DateTime.Now.ToString();
                     obj.LastModifierUserId = userId;
