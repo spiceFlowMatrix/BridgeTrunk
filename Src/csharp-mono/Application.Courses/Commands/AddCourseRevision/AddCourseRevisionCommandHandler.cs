@@ -7,7 +7,7 @@ using Application.Interfaces;
 using Bridge.Application.Interfaces;
 using Bridge.Application.Models;
 using Bridge.Domain.Entities;
-using Domain.Enum;
+using Domain.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;

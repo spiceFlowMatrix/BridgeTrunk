@@ -4,6 +4,7 @@ using Application.Courses.Queries.GetCourse;
 using Application.CoursesUnitTests.Common;
 using Application.Helpers;
 using Bridge.Persistence;
+using Microsoft.AspNetCore.Http;
 using Shouldly;
 using Xunit;
 
@@ -28,7 +29,7 @@ namespace Application.CoursesUnitTests.Queries.GetCourse
 
             var result = await sut.Handle(new GetCourseQuery { Id = 1 }, CancellationToken.None);
 
-            result.ReturnCode.ShouldBe(200);
+            result.ReturnCode.ShouldBe(StatusCodes.Status200OK);
         }
 
         [Fact]
@@ -38,7 +39,7 @@ namespace Application.CoursesUnitTests.Queries.GetCourse
 
             var result = await sut.Handle(new GetCourseQuery { Id = 10 }, CancellationToken.None);
 
-            result.ReturnCode.ShouldBe(404);
+            result.ReturnCode.ShouldBe(StatusCodes.Status404NotFound);
         }
     }
 }

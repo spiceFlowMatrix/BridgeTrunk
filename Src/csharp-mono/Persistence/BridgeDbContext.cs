@@ -55,6 +55,7 @@ namespace Bridge.Persistence
         public DbSet<AssignmentStudent> AssignmentStudent { get; set; }
         public DbSet<QuestionFile> QuestionFile { get; set; }
         public DbSet<UserRole> UserRole { get; set; }
+        public DbSet<DocumentFileDetail> DocumentFileDetail {get; set;}
         public DbSet<AnswerFile> AnswerFile { get; set; }
         public DbSet<Contact> Contact { get; set; }
         public DbSet<Feedback> Feedback { get; set; }

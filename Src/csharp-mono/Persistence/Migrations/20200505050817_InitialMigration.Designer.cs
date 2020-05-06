@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bridge.Persistence.Migrations
 {
     [DbContext(typeof(BridgeDbContext))]
-    [Migration("20200504054341_InitalMigration")]
-    partial class InitalMigration
+    [Migration("20200505050817_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -1564,6 +1564,62 @@ namespace Bridge.Persistence.Migrations
                     b.ToTable("DocumentDetails");
                 });
 
+            modelBuilder.Entity("Bridge.Domain.Entities.DocumentFileDetail", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("ContentType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("CreatorUserId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("DeleterUserId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("DeletionTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("EntityRecordId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("EntityType")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastModificationTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("LastModifierUserId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("RawFileMimeType")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<long>("RawFileSizeBytes")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("StorageDirectoryPath")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DocumentFileDetail");
+                });
+
             modelBuilder.Entity("Bridge.Domain.Entities.ERPAccounts", b =>
                 {
                     b.Property<long>("Id")
@@ -2284,9 +2340,6 @@ namespace Bridge.Persistence.Migrations
                     b.Property<long?>("ChapterId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("Code")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.Property<string>("CreationTime")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -2305,7 +2358,7 @@ namespace Bridge.Persistence.Migrations
                     b.Property<bool?>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int>("ItemOrder")
+                    b.Property<int?>("ItemOrder")
                         .HasColumnType("int");
 
                     b.Property<string>("LastModificationTime")
@@ -2314,10 +2367,18 @@ namespace Bridge.Persistence.Migrations
                     b.Property<string>("LastModifierUserId")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("Name")
+                    b.Property<int>("LessonType")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ChapterId");
 
                     b.ToTable("Lesson");
                 });
@@ -4854,6 +4915,14 @@ namespace Bridge.Persistence.Migrations
                         .HasForeignKey("CourseId")
                         .HasConstraintName("FK_CourseRevision_Course")
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Bridge.Domain.Entities.Lesson", b =>
+                {
+                    b.HasOne("Bridge.Domain.Entities.Chapter", "Chapter")
+                        .WithMany("Lessons")
+                        .HasForeignKey("ChapterId")
+                        .HasConstraintName("FK_Lesson_Chapter");
                 });
 
             modelBuilder.Entity("Bridge.Domain.Entities.Question", b =>

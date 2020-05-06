@@ -6,6 +6,7 @@ using Xunit;
 using Bridge.Application.Interfaces;
 using Application.Interfaces;
 using System.Threading;
+using Microsoft.AspNetCore.Http;
 
 namespace Application.CoursesUnitTests.Commands.UpsertCourseDefination
 {
@@ -66,7 +67,7 @@ namespace Application.CoursesUnitTests.Commands.UpsertCourseDefination
             }, CancellationToken.None);
 
             // Assert
-            Assert.True(response.Result.ReturnCode == 200);
+            Assert.True(response.Result.ReturnCode == StatusCodes.Status200OK);
         }
     }
 }

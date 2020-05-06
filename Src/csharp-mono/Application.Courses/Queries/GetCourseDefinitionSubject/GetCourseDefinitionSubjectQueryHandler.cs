@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Bridge.Domain.Entities;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace Application.Courses.Queries.GetCourseDefinitionSubject
 {
@@ -48,14 +49,14 @@ namespace Application.Courses.Queries.GetCourseDefinitionSubject
                         res.response_code = 0;
                         res.message = "Subject list details";
                         res.status = "Success";
-                        res.ReturnCode = 200;
+                        res.ReturnCode = StatusCodes.Status200OK;
                     }
                 }
 
             }
             catch (Exception ex)
             {
-                res.ReturnCode = 500;
+                res.ReturnCode = StatusCodes.Status500InternalServerError;
                 res.response_code = 2;
                 res.message = ex.Message;
                 res.status = "Failure";

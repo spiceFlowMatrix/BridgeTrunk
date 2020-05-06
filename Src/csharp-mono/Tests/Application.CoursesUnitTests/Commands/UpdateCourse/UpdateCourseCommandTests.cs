@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Application.Courses.Commands.UpdateCourse;
 using System.Net;
+using Microsoft.AspNetCore.Http;
 
 namespace Application.CoursesUnitTests.Commands.UpdateCourse
 {
@@ -34,7 +35,7 @@ namespace Application.CoursesUnitTests.Commands.UpdateCourse
             var response = await sut.Handle(obj, CancellationToken.None);
 
             // Assert
-            Assert.True(response.ReturnCode == 200);
+            Assert.True(response.ReturnCode == StatusCodes.Status200OK);
         }
 
         [Fact]
@@ -57,7 +58,7 @@ namespace Application.CoursesUnitTests.Commands.UpdateCourse
             var response = await sut.Handle(obj, CancellationToken.None);
 
             // Assert
-            Assert.True(response.ReturnCode == 404);
+            Assert.True(response.ReturnCode == StatusCodes.Status404NotFound);
         }
 
     }

@@ -6,6 +6,7 @@ using Application.CoursesUnitTests.Common;
 using Application.Interfaces;
 using Bridge.Application.Exceptions;
 using Bridge.Application.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Xunit;
 
 namespace Application.CoursesUnitTests.Commands.DeleteCourseDefination
@@ -35,7 +36,7 @@ namespace Application.CoursesUnitTests.Commands.DeleteCourseDefination
             var validId = 1;
             var command = new DeleteCourseDefinationCommand { Id = validId };
             var response = await _sut.Handle(command, CancellationToken.None);
-            Assert.True(response.ReturnCode == 200);
+            Assert.True(response.ReturnCode == StatusCodes.Status200OK);
         }
 
     }

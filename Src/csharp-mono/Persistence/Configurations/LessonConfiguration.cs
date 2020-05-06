@@ -9,6 +9,11 @@ namespace Persistence.Configurations
         public void Configure(EntityTypeBuilder<Lesson> builder)
         {
             builder.HasKey(e => e.Id);
+            builder.HasOne(d => d.Chapter)
+                .WithMany(p => p.Lessons)
+                .HasForeignKey(x => x.ChapterId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Lesson_Chapter");
         }
         
     }

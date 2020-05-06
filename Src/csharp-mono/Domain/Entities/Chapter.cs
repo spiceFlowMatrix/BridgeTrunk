@@ -1,4 +1,5 @@
-﻿using Bridge.Domain.Common;
+﻿using System.Collections.Generic;
+using Bridge.Domain.Common;
 
 namespace Bridge.Domain.Entities
 {
@@ -9,5 +10,6 @@ namespace Bridge.Domain.Entities
         public long CourseId { get; set; }
         public long? QuizId { get; set; }
         public int ItemOrder { get; set; }
+        public ICollection<Lesson> Lessons {get; set;}
     }
 }

@@ -13,6 +13,8 @@ using Microsoft.EntityFrameworkCore;
 using System.IO;
 using Google.Cloud.Storage.V1;
 using Google.Apis.Auth.OAuth2;
+using Domain.Enums;
+using Microsoft.AspNetCore.Http;
 
 namespace Application.Courses.Commands.UpdateCourse
 {
@@ -39,7 +41,7 @@ namespace Application.Courses.Commands.UpdateCourse
                     obj.Code = request.Code;
                     obj.Description = request.Description;
                     obj.Status = request.Status;
-                    obj.Culture = request.Culture;
+                    obj.Culture = (Culture)request.Culture;
                     obj.TeacherId = request.TeacherId;
                     obj.LastModificationTime = DateTime.Now.ToString();
                     obj.LastModifierUserId = userId;
@@ -58,14 +60,14 @@ namespace Application.Courses.Commands.UpdateCourse
                     res.response_code = 0;
                     res.message = "Course updated";
                     res.status = "Success";
-                    res.ReturnCode = 200;
+                    res.ReturnCode = StatusCodes.Status200OK;
                 }
                 else
                 {
                     res.response_code = 1;
                     res.message = "No data found";
-                    res.status = "Success";
-                    res.ReturnCode = 404;
+                    res.status = "NotFound";
+                    res.ReturnCode = StatusCodes.Status404NotFound;
                 }
             }
             catch (Exception ex)
@@ -73,7 +75,7 @@ namespace Application.Courses.Commands.UpdateCourse
                 res.response_code = 2;
                 res.message = ex.Message;
                 res.status = "Failure";
-                res.ReturnCode = 500;
+                res.ReturnCode = StatusCodes.Status500InternalServerError;
             }
             return res;
         }

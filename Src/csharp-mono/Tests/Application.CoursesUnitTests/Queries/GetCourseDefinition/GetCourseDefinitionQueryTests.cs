@@ -6,6 +6,7 @@ using Application.CoursesUnitTests.Common;
 using Application.Helpers;
 using AutoMapper;
 using Bridge.Persistence;
+using Microsoft.AspNetCore.Http;
 using Shouldly;
 using Xunit;
 
@@ -31,7 +32,7 @@ namespace Application.CoursesUnitTests.Queries.GetCourseDefinition
 
             result.data.ShouldBeOfType<List<CourseDefinitionVm>>();
 
-            result.ReturnCode.ShouldBe(200);
+            result.ReturnCode.ShouldBe(StatusCodes.Status200OK);
         }
 
     }

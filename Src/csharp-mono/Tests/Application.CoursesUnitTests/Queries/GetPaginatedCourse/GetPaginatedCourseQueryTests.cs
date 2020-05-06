@@ -4,6 +4,7 @@ using Application.Courses.Queries.GetPaginatedCourse;
 using Application.CoursesUnitTests.Common;
 using Application.Helpers;
 using Bridge.Persistence;
+using Microsoft.AspNetCore.Http;
 using Shouldly;
 using Xunit;
 
@@ -30,7 +31,7 @@ namespace Application.CoursesUnitTests.Queries.GetPaginatedCourse {
 
             var result = await sut.Handle (query, CancellationToken.None);
 
-            result.ReturnCode.ShouldBe (200);
+            result.ReturnCode.ShouldBe (StatusCodes.Status200OK);
         }
 
         [Fact]
