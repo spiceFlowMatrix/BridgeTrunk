@@ -9,6 +9,7 @@ using Bridge.Application.Models;
 using Bridge.Domain.Entities;
 using Domain.Enum;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Courses.Commands.AddCourseRevision {
@@ -42,14 +43,14 @@ namespace Application.Courses.Commands.AddCourseRevision {
                 res.response_code = 0;
                 res.message = "Revision Created";
                 res.status = "Success";
-                res.ReturnCode = 200;
+                res.ReturnCode = StatusCodes.Status200OK;
             }
             catch(Exception ex)
             {
                 res.response_code = 2;
                 res.message = ex.Message;
                 res.status = "Failure";
-                res.ReturnCode = 500;
+                res.ReturnCode = StatusCodes.Status500InternalServerError;
             }
             return res;
         }

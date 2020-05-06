@@ -11,6 +11,7 @@ using Bridge.Domain.Entities;
 using Google.Apis.Auth.OAuth2;
 using Google.Cloud.Storage.V1;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Courses.Commands.AddCourse
@@ -62,14 +63,14 @@ namespace Application.Courses.Commands.AddCourse
                 res.response_code = 0;
                 res.message = "Course Created";
                 res.status = "Success";
-                res.ReturnCode = 200;
+                res.ReturnCode = StatusCodes.Status200OK;
             }
             catch (Exception ex)
             {
                 res.response_code = 2;
                 res.message = ex.Message;
                 res.status = "Failure";
-                res.ReturnCode = 500;
+                res.ReturnCode = StatusCodes.Status500InternalServerError;
             }
             return res;
         }
