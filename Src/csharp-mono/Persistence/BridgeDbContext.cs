@@ -34,6 +34,7 @@ namespace Bridge.Persistence
         public DbSet<Role> Role { get; set; }
         public DbSet<Bundle> Bundle { get; set; }
         public DbSet<Course> Course { get; set; }
+        public DbSet<CourseRevision> CourseRevision { get; set; }
         public DbSet<Chapter> Chapter { get; set; }
         public DbSet<Lesson> Lesson { get; set; }
         public DbSet<Quiz> Quiz { get; set; }
@@ -54,6 +55,7 @@ namespace Bridge.Persistence
         public DbSet<AssignmentStudent> AssignmentStudent { get; set; }
         public DbSet<QuestionFile> QuestionFile { get; set; }
         public DbSet<UserRole> UserRole { get; set; }
+        public DbSet<DocumentFileDetail> DocumentFileDetail {get; set;}
         public DbSet<AnswerFile> AnswerFile { get; set; }
         public DbSet<Contact> Contact { get; set; }
         public DbSet<Feedback> Feedback { get; set; }
@@ -124,6 +126,8 @@ namespace Bridge.Persistence
         public DbSet<DiscussionTopicLikes> DiscussionTopicLikes { get; set; }
         public DbSet<DiscussionCommentLikes> DiscussionCommentLikes { get; set; }
         public DbSet<TermsAndConditions> TermsAndConditions { get; set; }
+        public DbSet<Teacher> Teacher { get; set; }
+
         //Feedback new module
         public DbSet<TaskFeedBack> TaskFeedBacks { get; set; }
         public DbSet<TaskCategoryFeedBack> TaskCategoryFeedBacks { get; set; }

@@ -1,4 +1,4 @@
-namespace Application.Helpers
+namespace Domain.Enums
 {
     public enum Roles
     {

@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Security.Principal;
 using Bridge.Domain.Entities;
 using Bridge.Persistence;
+using Domain.Enums;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Moq;
@@ -18,7 +19,113 @@ namespace Application.CoursesUnitTests.Common {
 
             context.Database.EnsureCreated ();
 
+            context.Course.AddRange (new [] {
+                new Course {
+                    Id = 1,
+                        Name = "test",
+                        Code = "test",
+                        Description = "test",
+                        Image = "test",
+                        IsDeleted = false,
+                        Culture = (Culture)1,
+                        TeacherId = 1,
+                        Status = 1
+                }, new Course {
+                    Id = 2,
+                        Name = "test2",
+                        Code = "test2",
+                        Description = "test2",
+                        Image = "test2",
+                        IsDeleted = false,
+                        Culture = (Culture)1,
+                        TeacherId = 2,
+                        Status = 1
+                }, new Course {
+                    Id = 3,
+                        Name = "test3",
+                        Code = "test3",
+                        Description = "test3",
+                        Image = "test3",
+                        IsDeleted = false,
+                        Culture = (Culture)1,
+                        TeacherId = 1,
+                        Status = 1
+                }, new Course {
+                    Id = 4,
+                        Name = "test4",
+                        Code = "test4",
+                        Description = "test4",
+                        Image = "test4",
+                        IsDeleted = false,
+                        Culture = (Culture)1,
+                        TeacherId = 1,
+                        Status = 1
+                }, new Course {
+                    Id = 5,
+                        Name = "test5",
+                        Code = "test5",
+                        Description = "test5",
+                        Image = "test5",
+                        IsDeleted = false,
+                        Culture = (Culture)1,
+                        TeacherId = 1,
+                        Status = 1
+                }, new Course {
+                    Id = 6,
+                        Name = "test6",
+                        Code = "test6",
+                        Description = "test6",
+                        Image = "test6",
+                        IsDeleted = false,
+                        Culture = (Culture)1,
+                        TeacherId = 1,
+                        Status = 1
+                }, new Course {
+                    Id = 7,
+                        Name = "test7",
+                        Code = "test7",
+                        Description = "test7",
+                        Image = "test7",
+                        IsDeleted = false,
+                        Culture = (Culture)1,
+                        TeacherId = 1,
+                        Status = 1
+                }
+            });
+
+            context.CourseRevision.AddRange (new [] {
+                new CourseRevision {
+                    Id = 1,
+                        RevisionName = "test",
+                        Summary = "test",
+                        AdministeredOn = "01/01/2000",
+                        AdministeredBy = "test",
+                        PublishedOn = "01/01/2000",
+                        PublishedBy = "test",
+                        ReleasedOn = "01/01/2000",
+                        ReleasedBy = "test",
+                        Status = 1,
+                        CourseId = 1,
+                        IsDeleted = false
+                },
+                new CourseRevision {
+                    Id = 2,
+                        RevisionName = "test",
+                        Summary = "test",
+                        AdministeredOn = "01/01/2000",
+                        AdministeredBy = "test",
+                        PublishedOn = "01/01/2000",
+                        PublishedBy = "test",
+                        ReleasedOn = "01/01/2000",
+                        ReleasedBy = "test",
+                        Status = 1,
+                        CourseId = 2,
+                        IsDeleted = false
+                }
+            });
+
             context.CourseDefination.AddRange (new [] {
+
                 new CourseDefination {
                     CreationTime = DateTime.UtcNow.ToString (),
                         CreatorUserId = "1",
@@ -89,35 +196,13 @@ namespace Application.CoursesUnitTests.Common {
                         IsDeleted = false
                 }
             });
-            context.Course.AddRange (new [] {
-                new Course {
-                    Id = 1,
-                        Name = "test",
-                        Code = "test",
-                        Description = "test",
-                        Image = "test",
-                        PassMark = (decimal) 9.9,
-                        istrial = false,
-                        IsDeleted = false
-                }, new Course {
-                    Id = 2,
-                        Name = "test2",
-                        Code = "test2",
-                        Description = "test2",
-                        Image = "test2",
-                        PassMark = (decimal) 9.9,
-                        istrial = false,
-                        IsDeleted = false
-                }
+            context.LessonProgresses.Add (new LessonProgress () {
+                Id = 1,
+                    ChapterId = 1,
+                    LessonId = 1,
+                    Progress = 50
             });
 
-            context.LessonProgresses.Add(new LessonProgress() {
-                Id = 1,
-                ChapterId = 1,
-                LessonId = 1,
-                Progress = 50 
-            });
-            
             context.Chapter.AddRange (new [] {
                 new Chapter {
                     Id = 1,
@@ -195,16 +280,14 @@ namespace Application.CoursesUnitTests.Common {
             context.Lesson.AddRange (new [] {
                 new Lesson {
                     Id = 1,
-                        Name = "test",
-                        Code = "1",
+                        Title = "test",
                         Description = "test",
                         ChapterId = 1,
                         ItemOrder = 1,
                         IsDeleted = false
                 }, new Lesson {
                     Id = 2,
-                        Name = "test2",
-                        Code = "2",
+                        Title = "test2",
                         Description = "test2",
                         ChapterId = 2,
                         ItemOrder = 1,
@@ -331,6 +414,16 @@ namespace Application.CoursesUnitTests.Common {
                         istrial = false,
                         isallowmap = false,
                         IsDeleted = false
+                }
+            });
+            context.Teacher.AddRange (new [] {
+                new Teacher {
+                    Id = 1,
+                        FullName = "test"
+                },
+                new Teacher {
+                    Id = 2,
+                        FullName = "test1"
                 }
             });
             context.SaveChanges ();

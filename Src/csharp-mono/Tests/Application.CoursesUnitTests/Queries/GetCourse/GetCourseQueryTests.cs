@@ -4,6 +4,7 @@ using Application.Courses.Queries.GetCourse;
 using Application.CoursesUnitTests.Common;
 using Application.Helpers;
 using Bridge.Persistence;
+using Microsoft.AspNetCore.Http;
 using Shouldly;
 using Xunit;
 
@@ -26,10 +27,19 @@ namespace Application.CoursesUnitTests.Queries.GetCourse
         {
             var sut = new GetCourseQueryHandler(_context, _userHelper);
 
-            var result = await sut.Handle(new GetCourseQuery { id = 1 }, CancellationToken.None);
+            var result = await sut.Handle(new GetCourseQuery { Id = 1 }, CancellationToken.None);
 
-            result.ReturnCode.ShouldBe(200);
+            result.ReturnCode.ShouldBe(StatusCodes.Status200OK);
         }
 
+        [Fact]
+        public async Task GivenInvalidId_ReturnsNotFoundStatusCode()
+        {
+            var sut = new GetCourseQueryHandler(_context, _userHelper);
+
+            var result = await sut.Handle(new GetCourseQuery { Id = 10 }, CancellationToken.None);
+
+            result.ReturnCode.ShouldBe(StatusCodes.Status404NotFound);
+        }
     }
 }

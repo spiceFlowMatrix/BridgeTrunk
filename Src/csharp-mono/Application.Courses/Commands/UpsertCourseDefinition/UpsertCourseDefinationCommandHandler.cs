@@ -8,6 +8,7 @@ using Bridge.Application.Interfaces;
 using Bridge.Application.Models;
 using Bridge.Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Courses.Commands.UpsertCourseDefinition
@@ -74,7 +75,7 @@ namespace Application.Courses.Commands.UpsertCourseDefinition
                         res.response_code = 0;
                         res.message = "CourseDefination Created";
                         res.status = "Success";
-                        res.ReturnCode = 200;
+                        res.ReturnCode = StatusCodes.Status200OK;
 
                     }
                 }
@@ -124,7 +125,7 @@ namespace Application.Courses.Commands.UpsertCourseDefinition
                             res.response_code = 0;
                             res.message = "CourseDefination Updated";
                             res.status = "Success";
-                            res.ReturnCode = 200;
+                            res.ReturnCode = StatusCodes.Status200OK;
                         }
                     }
                 }
@@ -142,7 +143,7 @@ namespace Application.Courses.Commands.UpsertCourseDefinition
                 res.response_code = 2;
                 res.message = ex.Message;
                 res.status = "Failure";
-                res.ReturnCode = 500;
+                res.ReturnCode = StatusCodes.Status500InternalServerError;
             }
             return res;
         }

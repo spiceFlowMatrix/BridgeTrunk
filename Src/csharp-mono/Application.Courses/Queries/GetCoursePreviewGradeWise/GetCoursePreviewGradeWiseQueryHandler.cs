@@ -43,7 +43,7 @@ namespace Application.Courses.Queries.GetCoursePreviewGradeWise {
                 if (user.istrial) {
                     var days = (DateTime.Now.Date - Convert.ToDateTime (user.CreationTime, CultureInfo.InvariantCulture).Date).Days;
                     if (days < 15) {
-                        var list = await _dbContext.Course.Where (x => x.istrial == true).ToListAsync ();
+                        var list = await _dbContext.Course.ToListAsync();
                         foreach (var usercourse in list) {
                             var courseGrade = await _dbContext.CourseGrade.Where (x => x.CourseId == usercourse.Id).ToListAsync ();
                             var course = await _dbContext.Course.FirstOrDefaultAsync (x => x.Id == usercourse.Id &&

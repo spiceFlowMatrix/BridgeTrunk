@@ -6,13 +6,14 @@ using Xunit;
 using Bridge.Application.Interfaces;
 using Application.Interfaces;
 using System.Threading;
+using Microsoft.AspNetCore.Http;
 
 namespace Application.CoursesUnitTests.Commands.UpsertCourseDefination
 {
     public class UpsertCourseDefinationCommandTests : CommandTestBase
     {
         [Fact]
-        public void Handle_GivenValidRequest_ShouldCourseDefinationCreate()
+        public void Handle_GivenValidRequest_ShouldCreateCourseDefination()
         {
             // Arrange
             var sut = new UpsertCourseDefinationCommandHandler(_context, _userService);
@@ -50,7 +51,7 @@ namespace Application.CoursesUnitTests.Commands.UpsertCourseDefination
             Assert.True(response.Result.ReturnCode == 422);
         }
         [Fact]
-        public void Handle_GivenValidRequest_ShouldCourseDefinationUpdate()
+        public void Handle_GivenValidRequest_ShouldUpdateCourseDefination()
         {
             // Arrange
             var sut = new UpsertCourseDefinationCommandHandler(_context, _userService);
@@ -66,7 +67,7 @@ namespace Application.CoursesUnitTests.Commands.UpsertCourseDefination
             }, CancellationToken.None);
 
             // Assert
-            Assert.True(response.Result.ReturnCode == 200);
+            Assert.True(response.Result.ReturnCode == StatusCodes.Status200OK);
         }
     }
 }

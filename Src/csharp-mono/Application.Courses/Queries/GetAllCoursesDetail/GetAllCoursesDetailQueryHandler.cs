@@ -106,7 +106,7 @@ namespace Application.Courses.Queries.GetAllCoursesDetail
                                     LessonDetailModel rlModel = new LessonDetailModel
                                     {
                                         id = int.Parse(lesson.Id.ToString()),
-                                        name = lesson.Name,
+                                        name = lesson.Title,
                                         chapterid = lesson.ChapterId.Value,
                                         courseid = usercourse.CourseId,
                                         coursename = course.Name,
@@ -125,7 +125,7 @@ namespace Application.Courses.Queries.GetAllCoursesDetail
                                         rlModel = new LessonDetailModel
                                         {
                                             id = int.Parse(lesson.Id.ToString()),
-                                            name = lesson.Name,
+                                            name = lesson.Title,
                                             chapterid = lesson.ChapterId.Value,
                                             courseid = usercourse.CourseId,
                                             coursename = course.Name,

@@ -7,6 +7,7 @@ using Bridge.Application.Interfaces;
 using Bridge.Application.Models;
 using Bridge.Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Courses.Queries.GetCourseDefinitionById
@@ -23,7 +24,7 @@ namespace Application.Courses.Queries.GetCourseDefinitionById
             ApiResponse res = new ApiResponse();
             try
             {
-                CourseDefination ifExist = await _dbContext.CourseDefination.FirstOrDefaultAsync(x => x.Id == request.Id );
+                CourseDefination ifExist = await _dbContext.CourseDefination.FirstOrDefaultAsync(x => x.Id == request.Id);
                 if (ifExist != null)
                 {
 
@@ -32,7 +33,7 @@ namespace Application.Courses.Queries.GetCourseDefinitionById
                         Id = ifExist.Id,
                         BasePrice = ifExist.BasePrice,
                         CourseId = ifExist.CourseId,
-                        CourseName = _dbContext.Course.FirstOrDefault(x => x.Id == ifExist.CourseId ).Name,
+                        CourseName = _dbContext.Course.FirstOrDefault(x => x.Id == ifExist.CourseId).Name,
                         GradeId = ifExist.GradeId,
                         GradeName = _dbContext.Grade.FirstOrDefault(x => x.Id == ifExist.GradeId).Name,
                         Subject = ifExist.Subject,
@@ -44,13 +45,13 @@ namespace Application.Courses.Queries.GetCourseDefinitionById
                         res.response_code = 0;
                         res.message = "CourseDefination Detail";
                         res.status = "Success";
-                        res.ReturnCode = 200;
+                        res.ReturnCode = StatusCodes.Status200OK; 
                     }
                 };
             }
             catch (Exception ex)
             {
-                res.ReturnCode = 500;
+                res.ReturnCode = StatusCodes.Status500InternalServerError;
                 res.response_code = 2;
                 res.message = ex.Message;
                 res.status = "Failure";

@@ -4,22 +4,15 @@ using Bridge.Application.Models;
 
 namespace Application.Courses.Commands.UpdateCourse
 {
-    public class UpdateCourseCommand: IRequest<ApiResponse>
+    public class UpdateCourseCommand : IRequest<ApiResponse>
     {
-        public UpdateCourseCommand()
-        {
-            bundleId = 0;
-            passmark = 0;
-        }
-        public int id { get; set; }
+        public int Id { get; set; }
         public string FileName { get; set; }
-        public IFormFile file { get; set; }
-        public string name { get; set; }
-        public string code { get; set; }
-        public string description { get; set; }       
-        public decimal passmark { get; set; }
-        public long gradeid { get; set; }
-        public long bundleId { get; set; }
-        public bool istrial { get; set; }
+        public string Name { get; set; }
+        public string Code { get; set; }
+        public int Culture { get; set; }
+        public long TeacherId { get; set; }
+        public int Status { get; set; }
+        public string Description { get; set; }
     }
 }

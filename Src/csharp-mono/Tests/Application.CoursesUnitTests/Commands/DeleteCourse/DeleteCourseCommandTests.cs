@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Application.Courses.Commands.DeleteCourse;
+using Microsoft.AspNetCore.Http;
 
 namespace Application.CoursesUnitTests.Commands.DeleteCourse
 {
@@ -27,7 +28,7 @@ namespace Application.CoursesUnitTests.Commands.DeleteCourse
             var response = await sut.Handle(obj, CancellationToken.None);
 
             // Assert
-            Assert.True(response.ReturnCode == 200);
+            Assert.True(response.ReturnCode == StatusCodes.Status200OK);
         }
         
     }

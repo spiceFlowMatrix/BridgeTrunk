@@ -7,32 +7,33 @@ using Application.Courses.Commands.AddCourse;
 using Bridge.Application.Interfaces;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace Application.CoursesUnitTests.Commands.AddCourse
 {
-    public class AddCourseCommandTests: CommandTestBase
+    public class AddCourseCommandTests : CommandTestBase
     {
         [Fact]
         public async Task Handle_GivenValidRequest_ShouldAddCourse()
         {
             // Arrange
             var sut = new AddCourseCommandHandler(_context, _userService);
-            var obj = new AddCourseCommand 
+            var obj = new AddCourseCommand
             {
-                name = "abctest",
-                code = "001",
-                description = "test",
-                passmark = 10,
-                gradeid = 1,
-                bundleId = 1
+                Name = "abctest",
+                Code = "001",
+                Description = "test",
+                Culture = 1,
+                Status = 1,
+                TeacherId = 1
             };
 
             // Act
             var response = await sut.Handle(obj, CancellationToken.None);
 
             // Assert
-            Assert.True(response.ReturnCode == 200);
+            Assert.True(response.ReturnCode == StatusCodes.Status200OK);
         }
-        
+
     }
 }
